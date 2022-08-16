@@ -1,9 +1,3 @@
 * {
   box-sizing: border-box;
 }
-
-@mixin flex($justify, $align) {
-  display: flex;
-  justify-content: $justify;
-  align-items: $align;
-}
