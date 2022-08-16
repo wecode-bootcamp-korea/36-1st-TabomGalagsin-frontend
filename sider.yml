@@ -1,0 +1,6 @@
+# This is a YAML file. See <https://yaml.org>.
+linter:
+  eslint:
+    root_dir: 'src/'
+    npm_install: false
+    config: '/.eslintrc'
