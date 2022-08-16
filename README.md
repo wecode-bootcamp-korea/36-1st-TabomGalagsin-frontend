@@ -12,5 +12,10 @@
 
 ## 기술 스택
 
-> HTML / scss / javascript / React.JS
-> Node.JS / Express / MySQL / AWS
+- FE
+
+  > HTML / scss / javascript / React.JS
+
+- BE
+
+  > Node.JS / Express / MySQL / AWS
