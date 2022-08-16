@@ -1,5 +1,14 @@
+import BestSeller from './components/BestSeller';
+
+import './Main.scss';
+
 function Main() {
-  return <h1>Main입니다.</h1>;
+  return (
+    <div className="main">
+      <h1>Main입니다.</h1>
+      <BestSeller />
+    </div>
+  );
 }
 
 export default Main;

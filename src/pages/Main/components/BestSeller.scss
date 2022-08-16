@@ -1,0 +1,15 @@
+@import '../../../styles/variables.scss';
+
+.bestSeller {
+  @include flex(center, center);
+  flex-direction: column;
+  // width: 50rem;
+
+  .header {
+    @include flex(center, center);
+  }
+
+  .slide {
+    @include flex(center, center);
+  }
+}
