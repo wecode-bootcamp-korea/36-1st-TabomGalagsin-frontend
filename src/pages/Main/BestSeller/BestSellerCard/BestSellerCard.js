@@ -2,7 +2,6 @@ import './BestSellerCard.scss';
 
 function BestSellerCard({ hasTwoCard, imgUrl, activation }) {
   return (
-    // <div className={`bestSellerCard ${activation}`}>
     <div className="bestSellerCard">
       {hasTwoCard ? (
         <div className="shortCardsBox">

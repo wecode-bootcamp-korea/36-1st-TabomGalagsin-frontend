@@ -5,6 +5,7 @@ import BestSellerCard from './BestSellerCard/BestSellerCard';
 function BestSeller() {
   const [currentPosition, setCurrentPosition] = useState(0);
   const [transitionTime, setTransitionTime] = useState(0.3);
+  const cardSize = 23;
 
   const handleClickLeftButton = () => {
     if (currentPosition === 0) {
@@ -42,7 +43,7 @@ function BestSeller() {
       <div
         className="slide"
         style={{
-          transform: `translateX(${(currentPosition - 1) * -23}rem)`,
+          transform: `translateX(${(currentPosition - 1) * -cardSize}rem)`,
           transition: `all ${transitionTime}s`,
         }}
       >
@@ -53,14 +54,29 @@ function BestSeller() {
               key={idx}
               hasTwoCard={hasTwoCard}
               imgUrl={card.imgUrl}
-              // activation={idx === currentPosition ? 'active' : ''}
             />
           );
         })}
       </div>
-      <div className="slideSelector">
-        <button onClick={handleClickLeftButton}>&lt;</button> - - - - -
-        <button onClick={handleClickRightButton}>&gt;</button>
+      <div className="slideButtonContainer">
+        <button onClick={handleClickLeftButton}>
+          <i className="fa-solid fa-angle-left fa-xl" />
+        </button>
+        <ul className="slideStateContainer">
+          {CardsList.map((card, idx) => {
+            return (
+              <li
+                key={idx}
+                className={`slideState ${
+                  idx === currentPosition ? 'positionNow' : ''
+                }`}
+              />
+            );
+          })}
+        </ul>
+        <button onClick={handleClickRightButton}>
+          <i className="fa-solid fa-angle-right fa-xl" />
+        </button>
       </div>
     </div>
   );

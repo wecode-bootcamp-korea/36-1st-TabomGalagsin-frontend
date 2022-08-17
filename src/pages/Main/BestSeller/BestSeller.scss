@@ -27,4 +27,35 @@
     @include flex(center, center);
     position: relative;
   }
+
+  .slideButtonContainer {
+    @include flex(center, center);
+
+    button {
+      margin: 0 30px;
+      width: 32px;
+      height: 32px;
+      background-color: #14a7ff;
+      border: none;
+      font-size: 20px;
+      color: white;
+    }
+    .slideStateContainer {
+      @include flex(center, center);
+
+      .slideState {
+        margin: 5px;
+        width: 8px;
+        height: 8px;
+        background-color: #ffffff33;
+        border-radius: 4px;
+        transition: all 0.3s;
+      }
+
+      .positionNow {
+        width: 30px;
+        background-color: white;
+      }
+    }
+  }
 }
