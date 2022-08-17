@@ -1,0 +1,37 @@
+@import '../../styles/variables.scss';
+.Nav {
+  .navTopContainer {
+    height: 32px;
+    width: 100vw;
+  }
+
+  .navBottomContainer {
+    height: 65px;
+    width: 100vw;
+    background-color: #13a7ff;
+    // background: none;
+    @include flex(space-between, center);
+    padding: 1px 50px 1px 50px;
+    color: white;
+    font-size: 35px;
+    box-shadow: 0 8px 15px rgb(0 0 0 / 10%);
+    // position: fixed;
+
+    .navIcon {
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .iconLeftSide {
+      @include flex(space-between, null);
+      width: 70px;
+    }
+
+    .logo {
+      height: 200px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+  }
+}

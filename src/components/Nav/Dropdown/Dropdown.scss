@@ -1,0 +1,32 @@
+@import '../../../styles/variables.scss';
+
+.Dropdown {
+  border: 2px solid red;
+  position: absolute;
+  width: 100vw;
+  @include flex(center, center);
+  background-color: #ddf2ff;
+
+  .dropdownMenu {
+    @include flex(center, center);
+    flex-direction: row;
+  }
+
+  .dropdownCategory {
+    border: 2px solid red;
+    width: 20vw;
+    height: 60vh;
+    padding: 70px 10px 0;
+    font-size: 20px;
+    font-family: sans-serif;
+
+    .arrow {
+      @include flex(space-between, center);
+      margin: 10px;
+    }
+  }
+
+  li {
+    margin: 30px;
+  }
+}
