@@ -37,12 +37,12 @@ function Main() {
 
 export default Main;
 
-const mainSlideData = [
-  {
-    id: 1,
-    textBig: '웹사이트에 새로운 소식이 있습니다!',
-    textSmall: '새로운 제품을 만나보세요',
-    imageLink:
-      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-  },
-];
+// const mainSlideData = [
+//   {
+//     id: 1,
+//     textBig: '웹사이트에 새로운 소식이 있습니다!',
+//     textSmall: '새로운 제품을 만나보세요',
+//     imageLink:
+//       'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+//   },
+// ];
