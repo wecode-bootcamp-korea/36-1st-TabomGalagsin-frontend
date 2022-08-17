@@ -1,4 +1,4 @@
-import BestSeller from './components/BestSeller';
+import BestSeller from './BestSeller/BestSeller';
 
 import './Main.scss';
 

@@ -1,0 +1,46 @@
+@import '../../../../styles/variables.scss';
+
+.bestSellerCard {
+  overflow: hidden;
+
+  .shortCardsBox {
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 2rem;
+    }
+
+    .shortTopCard {
+      width: 20rem;
+      height: 19rem;
+      margin: 1rem 3rem;
+      background-color: white;
+      border-radius: 2rem;
+    }
+
+    .shortBottomCard {
+      width: 20rem;
+      height: 19rem;
+      margin: 1rem 3rem;
+      background-color: white;
+      border-radius: 2rem;
+    }
+
+    @include flex(center, center);
+    flex-direction: column;
+  }
+
+  .longCardBox {
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 2rem;
+    }
+    .longCard {
+      width: 20rem;
+      height: 40rem;
+      background-color: white;
+      border-radius: 2rem;
+    }
+  }
+}
