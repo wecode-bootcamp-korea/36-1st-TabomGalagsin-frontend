@@ -1,0 +1,17 @@
+.categoryImage {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 20px 10px 60px;
+  background-color: #ffffff33;
+  width: 160px;
+  height: 160px;
+  padding: 30px;
+  border-radius: 70px;
+  p {
+    margin-top: 50px;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 18px;
+    font-weight: 800;
+  }
+}
