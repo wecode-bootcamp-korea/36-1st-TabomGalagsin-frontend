@@ -2,14 +2,15 @@ import './BestSellerCard.scss';
 
 function BestSellerCard({ hasTwoCard, imgUrl, activation }) {
   return (
-    <div className={`bestSellerCard ${activation}`}>
+    // <div className={`bestSellerCard ${activation}`}>
+    <div className="bestSellerCard">
       {hasTwoCard ? (
         <div className="shortCardsBox">
-          <div className="shortTopCard">
+          <div className="shortCard">
             <img alt="filp-flops" src={imgUrl[0]} />
           </div>
 
-          <div className="shortBottomCard">
+          <div className="shortCard">
             <img alt="filp-flops" src={imgUrl[1]} />
           </div>
         </div>

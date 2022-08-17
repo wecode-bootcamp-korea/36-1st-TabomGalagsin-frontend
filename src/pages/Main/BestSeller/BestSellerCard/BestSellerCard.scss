@@ -1,7 +1,8 @@
 @import '../../../../styles/variables.scss';
 
 .bestSellerCard {
-  overflow: hidden;
+  @include flex(center, center);
+  flex-direction: column;
 
   .shortCardsBox {
     img {
@@ -10,24 +11,12 @@
       border-radius: 2rem;
     }
 
-    .shortTopCard {
+    .shortCard {
       width: 20rem;
       height: 19rem;
       margin: 1rem 3rem;
-      background-color: white;
       border-radius: 2rem;
     }
-
-    .shortBottomCard {
-      width: 20rem;
-      height: 19rem;
-      margin: 1rem 3rem;
-      background-color: white;
-      border-radius: 2rem;
-    }
-
-    @include flex(center, center);
-    flex-direction: column;
   }
 
   .longCardBox {

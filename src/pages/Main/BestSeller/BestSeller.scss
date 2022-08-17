@@ -3,10 +3,10 @@
 .bestSeller {
   @include flex(center, center);
   flex-direction: column;
+  width: 92rem;
+  overflow: hidden;
   font-size: 3rem;
   font-weight: bold;
-  overflow: hidden;
-  width: 92rem;
 
   .header {
     @include flex(space-around, center);
@@ -14,9 +14,9 @@
     margin: 3rem;
 
     .linkButton {
+      padding: 1rem 1.5rem;
       border-style: none;
       border-radius: 2rem;
-      padding: 1rem 1.5rem;
       color: white;
       background-color: #5f0081;
       font-size: 1rem;
@@ -26,10 +26,5 @@
   .slide {
     @include flex(center, center);
     position: relative;
-    transition: all 1s;
-    // :after,
-    // :before {
-    //   transition: background-color 0.2s ease-out, color 0.2s ease-out;
-    // }
   }
 }
