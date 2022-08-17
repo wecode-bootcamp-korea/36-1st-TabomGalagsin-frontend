@@ -4,27 +4,22 @@
   @include flex(center, center);
   flex-direction: column;
 
-  .shortCardsBox {
-    img {
-      width: 100%;
-      height: 100%;
-      border-radius: 2rem;
-    }
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+  }
 
+  .shortCardsBox {
     .shortCard {
       width: 20rem;
       height: 19rem;
-      margin: 1rem 3rem;
+      margin: 2rem 3rem;
       border-radius: 2rem;
     }
   }
 
   .longCardBox {
-    img {
-      width: 100%;
-      height: 100%;
-      border-radius: 2rem;
-    }
     .longCard {
       width: 20rem;
       height: 40rem;
