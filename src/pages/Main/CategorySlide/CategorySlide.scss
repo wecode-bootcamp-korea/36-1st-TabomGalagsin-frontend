@@ -1,14 +1,14 @@
 @import '/src/styles/variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
 
-.categoryContainer {
-  width: 100vw;
+.categorySlide {
   @include flex(center, center);
   flex-direction: column;
+  width: 100vw;
   background-color: #14a7ff;
-  .categorySlideContainer {
+  .categorySlideViewer {
     overflow: hidden;
-    .categorySlide {
+    .categorySlideItem {
       @include flex(center, center);
       width: 900px;
     }
@@ -19,13 +19,10 @@
       margin: 0 30px;
       width: 32px;
       height: 32px;
-      font-size: 20px;
       background-color: #14a7ff;
-      outline: none;
-      color: white;
-      padding: 0;
       border: none;
-      background: none;
+      font-size: 20px;
+      color: white;
     }
     .slideStateContainer {
       @include flex(center, center);

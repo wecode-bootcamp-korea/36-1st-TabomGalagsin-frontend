@@ -39,10 +39,10 @@ function CategorySlide() {
   };
 
   return (
-    <div className="categoryContainer">
-      <div className="categorySlideContainer">
+    <div className="categorySlide">
+      <div className="categorySlideViewer">
         <div
-          className="categorySlide"
+          className="categorySlideItem"
           style={{
             transform: `translateX(${-1 * ((100 / 5) * categoryPosition)}%)`,
             transition: `all ${transitionTime}s`,
