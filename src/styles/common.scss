@@ -3,8 +3,3 @@
 * {
   box-sizing: border-box;
 }
-
-body {
-  @include flex(center, center);
-  flex-direction: column;
-}

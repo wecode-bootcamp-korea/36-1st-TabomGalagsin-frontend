@@ -1,6 +1,6 @@
 import './BestSellerCard.scss';
 
-function BestSellerCard({ hasTwoCard, imgUrl, activation }) {
+function BestSellerCard({ hasTwoCard, imgUrl }) {
   return (
     <div className="bestSellerCard">
       {hasTwoCard ? (

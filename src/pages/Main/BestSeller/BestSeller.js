@@ -10,17 +10,17 @@ function BestSeller() {
   const handleClickLeftButton = () => {
     if (currentPosition === 0) {
       setTransitionTime(0);
-      setCurrentPosition(CardsList.length - 1 + 1);
+      setCurrentPosition(CARD_LIST.length);
       setTimeout(() => {
         setTransitionTime(0.3);
-        setCurrentPosition(CardsList.length - 1);
+        setCurrentPosition(CARD_LIST.length - 1);
       }, 10);
     } else {
       setCurrentPosition(prev => prev - 1);
     }
   };
   const handleClickRightButton = () => {
-    if (currentPosition === CardsList.length - 1) {
+    if (currentPosition === CARD_LIST.length - 1) {
       setTransitionTime(0);
       setCurrentPosition(-1);
       setTimeout(() => {
@@ -37,7 +37,8 @@ function BestSeller() {
       <div className="header">
         <h1 className="title">Best Seller</h1>
         <button className="linkButton">
-          더 많은 제품 보기&nbsp;&nbsp;&nbsp;>
+          <span>더 많은 제품 보기</span>
+          <i className="fa-solid fa-angle-right fa-lg" />
         </button>
       </div>
       <div
@@ -47,14 +48,10 @@ function BestSeller() {
           transition: `all ${transitionTime}s`,
         }}
       >
-        {dummyCardsList.map((card, idx) => {
-          const hasTwoCard = card.imgUrl.length === 2;
+        {DUMMY_CARD_LIST.map(({ imgUrl }, idx) => {
+          const hasTwoCard = imgUrl.length === 2;
           return (
-            <BestSellerCard
-              key={idx}
-              hasTwoCard={hasTwoCard}
-              imgUrl={card.imgUrl}
-            />
+            <BestSellerCard key={idx} hasTwoCard={hasTwoCard} imgUrl={imgUrl} />
           );
         })}
       </div>
@@ -63,7 +60,7 @@ function BestSeller() {
           <i className="fa-solid fa-angle-left fa-xl" />
         </button>
         <ul className="slideStateContainer">
-          {CardsList.map((card, idx) => {
+          {CARD_LIST.map((_, idx) => {
             return (
               <li
                 key={idx}
@@ -84,7 +81,7 @@ function BestSeller() {
 
 export default BestSeller;
 
-const CardsList = [
+const CARD_LIST = [
   {
     id: 0,
     imgUrl: ['/images/main/filp-flops-1.jpg', '/images/main/filp-flops-2.jpg'],
@@ -102,4 +99,4 @@ const CardsList = [
   { id: 5, imgUrl: ['/images/main/filp-flops-9.jpg'] },
 ];
 
-let dummyCardsList = [...CardsList, ...CardsList, ...CardsList];
+let DUMMY_CARD_LIST = [...CARD_LIST, ...CARD_LIST, ...CARD_LIST];
