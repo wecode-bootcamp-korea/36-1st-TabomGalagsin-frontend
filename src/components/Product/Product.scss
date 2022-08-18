@@ -1,0 +1,103 @@
+@import '../../styles/variables.scss';
+
+.product {
+  @include flex(null, center);
+  flex-direction: column;
+  width: 12rem;
+  padding: 1rem;
+  line-height: 1.25rem;
+  transition: all 0.2s ease-in;
+  border-radius: 1rem;
+
+  .colorPickers {
+    button {
+      display: none;
+    }
+    transition: all 0.2s ease-out;
+  }
+
+  .sizePickers {
+    button {
+      display: none;
+    }
+    transition: all 0.2s ease-out;
+  }
+
+  .cartBtn {
+    display: none;
+    transition: all 0.2s ease-out;
+  }
+
+  &:hover {
+    background-color: white;
+    border-radius: 1rem;
+    transition: all 0.2s ease-out;
+
+    .colorPickers {
+      margin-top: 1rem;
+      transition: all 0.2s ease-out;
+      display: block;
+
+      button {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 1rem;
+        border: 1px solid black;
+        display: inline;
+        margin: 0 0.2rem;
+      }
+    }
+
+    .sizePickers {
+      margin-top: 1rem;
+      transition: all 0.2s ease-out;
+      display: block;
+
+      button {
+        height: 2rem;
+        border-radius: 1rem;
+        border: 1px solid black;
+        display: inline;
+        margin: 0 0.2rem;
+      }
+    }
+    .cartBtn {
+      display: block;
+      margin-top: 1.5rem;
+      background-color: grey;
+      color: white;
+      border: none;
+      border-radius: 2rem;
+      padding: 0.5rem 2rem;
+    }
+  }
+
+  .tagContainer {
+    width: 100%;
+    display: flex;
+  }
+
+  .young {
+    background-color: blue;
+    color: white;
+    border-radius: 1rem;
+    padding: 0.2rem;
+    margin: 0.2rem;
+    font-weight: 500;
+  }
+
+  img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 1rem;
+  }
+
+  .desc {
+    font-weight: 500;
+  }
+
+  .price {
+    width: 100%;
+    font-weight: bolder;
+  }
+}
