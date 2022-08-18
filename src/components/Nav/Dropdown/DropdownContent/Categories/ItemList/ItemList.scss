@@ -1,0 +1,18 @@
+@import '../../../../../../styles/variables.scss';
+
+.ItemList {
+  @include flex(flex-start, center);
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.ItemList:hover {
+  color: tomato;
+  cursor: pointer;
+}
+
+.icon {
+  height: 30px;
+  margin: -10px 10px 0 0;
+}

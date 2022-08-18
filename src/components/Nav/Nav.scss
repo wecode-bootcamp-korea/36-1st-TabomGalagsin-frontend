@@ -15,12 +15,16 @@
     color: white;
     font-size: 35px;
     box-shadow: 0 8px 15px rgb(0 0 0 / 10%);
-    // position: fixed;
+    position: fixed;
 
     .navIcon {
       color: white;
       font-size: 20px;
       cursor: pointer;
+    }
+
+    .navIcon:hover {
+      transform: scale(1.2, 1.2);
     }
 
     .iconLeftSide {

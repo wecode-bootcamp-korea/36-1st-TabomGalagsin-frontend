@@ -9,7 +9,7 @@ function Nav() {
       <div className="navTopContainer">navbar 상단입니다.</div>
       <div className="navBottomContainer">
         <i
-          className="fa-solid fa-bars navIcon dropdownbtn"
+          className="fa-solid fa-bars navIcon"
           onMouseEnter={() => setIsMouseEnter(!isMouseEnter)}
         />
         <img className="logo" src="/images/Nav/logo-yellow.png" alt="logo" />

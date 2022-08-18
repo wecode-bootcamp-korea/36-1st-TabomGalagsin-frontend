@@ -1,11 +1,12 @@
 @import '../../../styles/variables.scss';
 
 .Dropdown {
-  border: 2px solid red;
+  margin-top: 65px;
   position: absolute;
   width: 100vw;
   @include flex(center, center);
   background-color: #ddf2ff;
+  border-radius: 0 0 60px 60px;
 
   .dropdownMenu {
     @include flex(center, center);
@@ -13,7 +14,6 @@
   }
 
   .dropdownCategory {
-    border: 2px solid red;
     width: 20vw;
     height: 60vh;
     padding: 70px 10px 0;
@@ -23,6 +23,12 @@
     .arrow {
       @include flex(space-between, center);
       margin: 10px;
+      cursor: pointer;
+      height: 3rem;
+    }
+
+    .arrow:hover {
+      color: tomato;
     }
   }
 

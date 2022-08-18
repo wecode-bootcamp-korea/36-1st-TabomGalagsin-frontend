@@ -16,7 +16,10 @@ function Dropdown({ onMouseLeave }) {
                 setMenuMouseEnter('Categories');
               }}
             >
-              Categories <i className="fa-solid fa-angle-right arrow" />
+              Categories
+              {menuMouseEnter === 'Categories' && (
+                <i className="fa-solid fa-angle-right arrow" />
+              )}
             </li>
             <li
               className="arrow"
@@ -24,7 +27,10 @@ function Dropdown({ onMouseLeave }) {
                 setMenuMouseEnter('Colour');
               }}
             >
-              Colour <i className="fa-solid fa-angle-right arrow" />
+              Colour
+              {menuMouseEnter === 'Colour' && (
+                <i className="fa-solid fa-angle-right arrow" />
+              )}
             </li>
           </ul>
         </div>

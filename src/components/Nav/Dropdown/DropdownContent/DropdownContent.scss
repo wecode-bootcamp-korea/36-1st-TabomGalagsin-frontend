@@ -1,16 +1,11 @@
 @import '../../../../styles/variables.scss';
 
 .DropdownContent {
-  border: 2px solid green;
   width: 40vw;
   height: 60vh;
-  padding: 70px 10px 0;
+  padding: 70px 10px 0 20px;
   font-size: 20px;
   font-family: sans-serif;
-
-  .colorPalette {
-    @include flex(space-evenly, space-evenly);
-  }
 }
 
 .title {
