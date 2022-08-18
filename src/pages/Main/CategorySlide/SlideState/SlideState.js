@@ -1,15 +1,21 @@
 import React from 'react';
 import './SlideState.scss';
 
-function SlideState({ categoryPosition, listPosition, length }) {
+function SlideState({
+  categoryPosition,
+  listPosition,
+  length,
+  mappingArrayLastIndex,
+  firstPosition,
+}) {
   return (
     <li
       className={`slideState ${
-        listPosition - 0.5 ===
-        (categoryPosition % length < -0.5
-          ? (categoryPosition % length) + 6
-          : categoryPosition % length > 4.5
-          ? (categoryPosition % length) - 6
+        listPosition + firstPosition ===
+        (categoryPosition % length < firstPosition
+          ? (categoryPosition % length) + length
+          : categoryPosition % length > mappingArrayLastIndex + firstPosition
+          ? (categoryPosition % length) - length
           : categoryPosition % length)
           ? 'positionNow'
           : ''

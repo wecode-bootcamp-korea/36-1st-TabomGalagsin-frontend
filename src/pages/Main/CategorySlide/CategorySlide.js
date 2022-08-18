@@ -74,6 +74,8 @@ function CategorySlide() {
               key={index}
               listPosition={index}
               length={categoryDataPast.length}
+              firstPosition={firstPosition}
+              mappingArrayLastIndex={categoryDataPast.length - 1}
               categoryPosition={categoryPosition}
             />
           ))}
