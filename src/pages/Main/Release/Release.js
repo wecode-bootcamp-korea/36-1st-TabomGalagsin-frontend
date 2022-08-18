@@ -10,7 +10,6 @@ function Release() {
     fetch('/data/releaseProducts.json')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setProductsList(data);
       });
   }, []);
