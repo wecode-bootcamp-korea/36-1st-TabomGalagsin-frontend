@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import NavTopContainer from './NavTopContainer/NavTopContainer';
 import Dropdown from './Dropdown/Dropdown';
 import './Nav.scss';
 
@@ -6,7 +7,7 @@ function Nav() {
   const [isMouseEnter, setIsMouseEnter] = useState(false);
   return (
     <nav className="Nav">
-      <div className="navTopContainer">navbar 상단입니다.</div>
+      <NavTopContainer />
       <div className="navBottomContainer">
         <i
           className="fa-solid fa-bars navIcon"
