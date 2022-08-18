@@ -1,0 +1,70 @@
+[{
+  "productId" : "1",
+  "name" : "example",
+  "price" : 100000,
+  "Desc" : "Havaianas 슬림 스퀘어 로고 메탈릭 플립플롭",
+  "typeId" : 1,
+  "imageUrl" : "http://drive.google.com/uc?export=view&id=15OAKGoy-JDvbA2MaMuQmdfitgWtO7fN4",
+  "color" : [{"1" : "orange"}, {"8" : "white"}],
+  "size" : [{"1" : "free(man)"}, {"2": "free(woman)"}],
+},
+{
+  "productId" : "2",
+  "name" : "example",
+  "price" : 200000,
+  "Desc" : "Havaianas 멋진 모자",
+  "typeId" : 1,
+  "imageUrl" : "http://drive.google.com/uc?export=view&id=15OAKGoy-JDvbA2MaMuQmdfitgWtO7fN4",
+  "color" : [{"1" : "orange"}, {"8" : "white"}],
+  "size" : [{"1" : "free(man)"}, {"2": "free(woman)"}],
+},
+{
+  "productId" : "3",
+  "name" : "example",
+  "price" : 300000,
+  "Desc" : "Havaianas Slide Stradi 플립플랍s",
+  "typeId" : 1,
+  "imageUrl" : "http://drive.google.com/uc?export=view&id=15OAKGoy-JDvbA2MaMuQmdfitgWtO7fN4",
+  "color" : [{"1" : "orange"}, {"8" : "white"}],
+  "size" : [{"1" : "free(man)"}, {"2": "free(woman)"}],
+},
+{
+  "productId" : "4",
+  "name" : "example",
+  "price" : 400000,
+  "Desc" : "Havaianas Light 솔리드 플립플랍",
+  "typeId" : 1,
+  "imageUrl" : "http://drive.google.com/uc?export=view&id=15OAKGoy-JDvbA2MaMuQmdfitgWtO7fN4",
+  "color" : [{"1" : "orange"}, {"8" : "white"}],
+  "size" : [{"1" : "free(man)"}, {"2": "free(woman)"}],
+},
+
+
+]
+
+[
+  {
+    "id": 1,
+    "description": "",
+    "price": "BRL 49.99",
+    "imgUrl": "http://drive.google.com/uc?export=view&id=10PS1GO2GS-jeoFSNyJucFV1KilLH4si9",
+    "colorList": ["blue", "red", "white", "black"],
+    "sizeList": ["male", "female"]
+  },
+  {
+    "id": 2,
+    "description": "",
+    "price": "BRL 49.99",
+    "imgUrl": "http://drive.google.com/uc?export=view&id=1QxEJrqlPQjlwEbGzh8qE7LVSAmjP5e1I",
+    "colorList": ["red", "white", "black"],
+    "sizeList": ["male"]
+  },
+  {
+    "id": 3,
+    "description": "",
+    "price": "BRL 49.99",
+    "imgUrl": "http://drive.google.com/uc?export=view&id=1woefXrsz3EXtFY0yaQZsOCBIzG8oJW4T",
+    "colorList": ["blue", "red"],
+    "sizeList": ["male", "female"]
+  },
+]

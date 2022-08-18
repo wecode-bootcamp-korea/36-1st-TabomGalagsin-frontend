@@ -1,13 +1,13 @@
 import './Product.scss';
 
-function Product({ tag, desc, price, imgUrl, colorList, sizeList }) {
+function Product({ tag, description, price, imgUrl, colorList, sizeList }) {
   return (
     <div className="product">
       <img alt="product" src={imgUrl} />
-      <div className="tagContainer">
-        <div className={`tag ${tag}`}>{tag}</div>
-      </div>
-      <p className="desc">{desc}</p>
+      {/* <div className="tagContainer"> */}
+      {/* <div className={`tag ${tag}`}>{tag}</div> */}
+      {/* </div> */}
+      <p className="description">{description}</p>
       <p className="price">{price}</p>
       <div className="colorPickers">
         {colorList.map(color => (

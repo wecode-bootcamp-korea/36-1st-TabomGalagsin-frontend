@@ -57,14 +57,15 @@
         border-radius: 1rem;
       }
     }
+
     .cartBtn {
       display: block;
       margin-top: 1.5rem;
       padding: 0.5rem 2rem;
       background-color: grey;
-      color: white;
       border: none;
       border-radius: 2rem;
+      color: white;
     }
   }
 
@@ -88,8 +89,9 @@
     border-radius: 1rem;
   }
 
-  .desc {
+  .description {
     font-weight: 500;
+    margin: 0.5rem 0;
   }
 
   .price {
