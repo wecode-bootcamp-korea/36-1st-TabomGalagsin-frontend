@@ -1,6 +1,6 @@
 import './Product.scss';
 
-function Product({ tag, desc, price, imgUrl }) {
+function Product({ tag, desc, price, imgUrl, colorList, sizeList }) {
   return (
     <div className="product">
       <img alt="product" src={imgUrl} />
@@ -10,14 +10,14 @@ function Product({ tag, desc, price, imgUrl }) {
       <p className="desc">{desc}</p>
       <p className="price">{price}</p>
       <div className="colorPickers">
-        <button style={{ backgroundColor: 'blue' }} />
-        <button style={{ backgroundColor: 'blue' }} />
-        <button style={{ backgroundColor: 'blue' }} />
-        <button style={{ backgroundColor: 'blue' }} />
+        {colorList.map(color => (
+          <button key={color} style={{ backgroundColor: color }} />
+        ))}
       </div>
       <div className="sizePickers">
-        <button>male</button>
-        <button>female</button>
+        {sizeList.map(size => (
+          <button key={size}>{size}</button>
+        ))}
       </div>
       <button className="cartBtn">장바구니에 담기</button>
     </div>
