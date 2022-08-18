@@ -33,39 +33,50 @@
     border-radius: 1rem;
     transition: all 0.2s ease-out;
 
+    button {
+      display: inline;
+      height: 1.5rem;
+      margin: 0 0.2rem;
+      border: 1px solid black;
+      border-radius: 1rem;
+      background-color: white;
+    }
+
+    .active {
+      border: 1.5px solid black;
+      transition: all 0.2s;
+      transform: scale(1.25);
+    }
+
     .colorPickers {
+      @include flex(flex-start, center);
+      width: 100%;
       margin-top: 1rem;
 
       button {
-        display: inline;
         width: 1.5rem;
-        height: 1.5rem;
-        margin: 0 0.2rem;
-        border: 1px solid black;
-        border-radius: 1rem;
       }
     }
 
     .sizePickers {
+      @include flex(flex-start, center);
+      width: 100%;
       margin-top: 1rem;
-
-      button {
-        display: inline;
-        height: 2rem;
-        margin: 0 0.2rem;
-        border: 1px solid black;
-        border-radius: 1rem;
-      }
     }
 
     .cartBtn {
-      display: block;
+      width: 100%;
       margin-top: 1.5rem;
-      padding: 0.5rem 2rem;
-      background-color: grey;
+      padding: 0rem 1rem;
       border: none;
       border-radius: 2rem;
+      background-color: grey;
       color: white;
+    }
+
+    .enabledBtn {
+      background-color: blue;
+      transform: scale(1.1);
     }
   }
 

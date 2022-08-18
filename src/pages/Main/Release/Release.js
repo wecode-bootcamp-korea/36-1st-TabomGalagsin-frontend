@@ -1,8 +1,19 @@
+import { useEffect, useState } from 'react';
 import Product from '../../../components/Product/Product';
 
 import './release.scss';
 
 function Release() {
+  const [productsList, setProductsList] = useState([]);
+
+  useEffect(() => {
+    fetch('/data/releaseProducts.json')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setProductsList(data);
+      });
+  }, []);
   return (
     <div className="release">
       <div className="header">
@@ -13,17 +24,16 @@ function Release() {
         </button>
       </div>
       <div className="carouselContainer">
-        {PRODUCTS.map(product => {
-          const { id, description, price, imgUrl, colorList, sizeList } =
-            product;
+        {productsList.map(product => {
+          const { productId, Desc, price, imageUrl, color, size } = product;
           return (
             <Product
-              key={id}
-              description={description}
+              key={productId}
+              description={Desc}
               price={price}
-              imgUrl={imgUrl}
-              colorList={colorList}
-              sizeList={sizeList}
+              imgUrl={imageUrl}
+              colorList={color}
+              sizeList={size}
             />
           );
         })}
@@ -33,42 +43,3 @@ function Release() {
 }
 
 export default Release;
-
-const PRODUCTS = [
-  {
-    id: 1,
-    description: 'Havaianas 슬림 스퀘어 로고 메탈릭 플립플롭',
-    price: 'BRL 49.99',
-    imgUrl:
-      'http://drive.google.com/uc?export=view&id=10PS1GO2GS-jeoFSNyJucFV1KilLH4si9',
-    colorList: ['blue', 'red', 'white', 'black'],
-    sizeList: ['male', 'female'],
-  },
-  {
-    id: 2,
-    description: 'Havaianas Light 솔리드 플립플랍',
-    price: 'BRL 49.99',
-    imgUrl:
-      'http://drive.google.com/uc?export=view&id=1QxEJrqlPQjlwEbGzh8qE7LVSAmjP5e1I',
-    colorList: ['red', 'white', 'black'],
-    sizeList: ['male'],
-  },
-  {
-    id: 3,
-    description: 'Havaianas Slide Stradi 플립플랍',
-    price: 'BRL 49.99',
-    imgUrl:
-      'http://drive.google.com/uc?export=view&id=1woefXrsz3EXtFY0yaQZsOCBIzG8oJW4T',
-    colorList: ['blue', 'red'],
-    sizeList: ['male', 'female'],
-  },
-  {
-    id: 4,
-    description: 'Havaianas 멋진 모자',
-    price: 'BRL 49.99 - BRL 99.99',
-    imgUrl:
-      'http://drive.google.com/uc?export=view&id=1Y5TbNc58aYSC1ZqyO70vRfImHdH21BDA',
-    colorList: ['blue'],
-    sizeList: ['female'],
-  },
-];
