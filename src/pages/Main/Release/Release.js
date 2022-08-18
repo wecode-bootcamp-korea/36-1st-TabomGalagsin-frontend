@@ -48,8 +48,8 @@ const products = [
     price: 'BRL 49.99',
     imgUrl:
       'http://drive.google.com/uc?export=view&id=1QxEJrqlPQjlwEbGzh8qE7LVSAmjP5e1I',
-    colorList: ['blue', 'red', 'white', 'black'],
-    sizeList: ['male', 'female'],
+    colorList: ['red', 'white', 'black'],
+    sizeList: ['male'],
   },
   {
     id: 3,
@@ -58,7 +58,7 @@ const products = [
     price: 'BRL 49.99',
     imgUrl:
       'http://drive.google.com/uc?export=view&id=1woefXrsz3EXtFY0yaQZsOCBIzG8oJW4T',
-    colorList: ['blue', 'red', 'white', 'black'],
+    colorList: ['blue', 'red'],
     sizeList: ['male', 'female'],
   },
   {
@@ -68,7 +68,7 @@ const products = [
     price: 'BRL 49.99 - BRL 99.99',
     imgUrl:
       'http://drive.google.com/uc?export=view&id=1Y5TbNc58aYSC1ZqyO70vRfImHdH21BDA',
-    colorList: ['blue', 'red', 'white', 'black'],
-    sizeList: ['male', 'female'],
+    colorList: ['blue'],
+    sizeList: ['female'],
   },
 ];
