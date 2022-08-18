@@ -4,32 +4,38 @@ import SlideState from './SlideState/SlideState';
 import './CategorySlide.scss';
 
 function CategorySlide() {
-  const [categoryPosition, setCategoryPosition] = useState(-0.5);
+  const firstPosition = categoryDataPast.length % 2 === 0 ? -0.5 : 0;
+  const [categoryPosition, setCategoryPosition] = useState(firstPosition);
   const [transitionTime, setTransitionTime] = useState(0.3);
+  const categoryData = [
+    ...categoryDataPast,
+    ...categoryDataPast,
+    ...categoryDataPast,
+  ];
 
   const buttonClick = event => {
     if (
       event.target.className === 'previousButton' ||
       event.target.className === 'fa-solid fa-angle-left fa-xl'
     ) {
-      if (categoryPosition === -6.5) {
+      if (categoryPosition === -(categoryData.length / 3) - firstPosition) {
         setTransitionTime(0);
-        setCategoryPosition(-0.5);
+        setCategoryPosition(firstPosition + 1);
         setTimeout(() => {
           setTransitionTime(0.3);
-          setCategoryPosition(-1.5);
+          setCategoryPosition(firstPosition);
         }, 0);
       } else {
         setTransitionTime(0.3);
         setCategoryPosition(categoryPosition - 1);
       }
     } else {
-      if (categoryPosition === 5.5) {
+      if (categoryPosition === categoryData.length / 3 + firstPosition) {
         setTransitionTime(0);
-        setCategoryPosition(-0.5);
+        setCategoryPosition(firstPosition);
         setTimeout(() => {
           setTransitionTime(0.3);
-          setCategoryPosition(0.5);
+          setCategoryPosition(firstPosition + 1);
         }, 0);
       } else {
         setTransitionTime(0.3);
@@ -48,9 +54,9 @@ function CategorySlide() {
             transition: `all ${transitionTime}s`,
           }}
         >
-          {categoryData.map(data => (
+          {categoryData.map((data, index) => (
             <CategoryImage
-              key={data.id}
+              key={index}
               className={data.className}
               url={data.url}
               text={data.text}
@@ -63,10 +69,11 @@ function CategorySlide() {
           <i className="fa-solid fa-angle-left fa-xl" />
         </button>
         <ul className="slideStateContainer">
-          {positionData.map(data => (
+          {categoryDataPast.map((_, index) => (
             <SlideState
-              key={data.id}
-              position={data.position}
+              key={index}
+              listPosition={index}
+              length={categoryDataPast.length}
               categoryPosition={categoryPosition}
             />
           ))}
@@ -81,140 +88,35 @@ function CategorySlide() {
 
 export default CategorySlide;
 
-const categoryData = [
+const categoryDataPast = [
   {
-    id: 1,
     className: 'sliper',
     url: 'https://cdn-icons-png.flaticon.com/512/7705/7705554.png',
     text: '슬리퍼',
   },
   {
-    id: 2,
     className: 'snikers',
     url: 'https://cdn-icons-png.flaticon.com/512/2553/2553852.png',
     text: '운동화',
   },
   {
-    id: 3,
     className: 'shoes',
     url: 'https://cdn-icons.flaticon.com/png/512/3345/premium/3345800.png?token=exp=1660708197~hmac=43aa6881dcbbb086d80827cdcb21d124',
     text: '구두',
   },
   {
-    id: 4,
     className: 'backpack',
     url: 'https://cdn-icons.flaticon.com/png/512/4663/premium/4663075.png?token=exp=1660708981~hmac=b91d7b1d7de2454b09e95e2d35f8e41f',
     text: '가방',
   },
   {
-    id: 5,
     className: 'shirt',
     url: 'https://cdn-icons-png.flaticon.com/512/1867/1867631.png',
     text: '티셔츠',
   },
   {
-    id: 6,
     className: 'ring',
     url: 'https://cdn-icons.flaticon.com/png/512/721/premium/721913.png?token=exp=1660709195~hmac=c0365c627eada4ae1a2f325f4b2feab1',
     text: '악세사리',
-  },
-  {
-    id: 7,
-    className: 'sliper',
-    url: 'https://cdn-icons-png.flaticon.com/512/7705/7705554.png',
-    text: '슬리퍼',
-  },
-  {
-    id: 8,
-    className: 'snikers',
-    url: 'https://cdn-icons-png.flaticon.com/512/2553/2553852.png',
-    text: '운동화',
-  },
-  {
-    id: 9,
-    className: 'shoes',
-    url: 'https://cdn-icons.flaticon.com/png/512/3345/premium/3345800.png?token=exp=1660708197~hmac=43aa6881dcbbb086d80827cdcb21d124',
-    text: '구두',
-  },
-  {
-    id: 10,
-    className: 'backpack',
-    url: 'https://cdn-icons.flaticon.com/png/512/4663/premium/4663075.png?token=exp=1660708981~hmac=b91d7b1d7de2454b09e95e2d35f8e41f',
-    text: '가방',
-  },
-  {
-    id: 11,
-    className: 'shirt',
-    url: 'https://cdn-icons-png.flaticon.com/512/1867/1867631.png',
-    text: '티셔츠',
-  },
-  {
-    id: 12,
-    className: 'ring',
-    url: 'https://cdn-icons.flaticon.com/png/512/721/premium/721913.png?token=exp=1660709195~hmac=c0365c627eada4ae1a2f325f4b2feab1',
-    text: '악세사리',
-  },
-  {
-    id: 13,
-    className: 'sliper',
-    url: 'https://cdn-icons-png.flaticon.com/512/7705/7705554.png',
-    text: '슬리퍼',
-  },
-  {
-    id: 14,
-    className: 'snikers',
-    url: 'https://cdn-icons-png.flaticon.com/512/2553/2553852.png',
-    text: '운동화',
-  },
-  {
-    id: 15,
-    className: 'shoes',
-    url: 'https://cdn-icons.flaticon.com/png/512/3345/premium/3345800.png?token=exp=1660708197~hmac=43aa6881dcbbb086d80827cdcb21d124',
-    text: '구두',
-  },
-  {
-    id: 16,
-    className: 'backpack',
-    url: 'https://cdn-icons.flaticon.com/png/512/4663/premium/4663075.png?token=exp=1660708981~hmac=b91d7b1d7de2454b09e95e2d35f8e41f',
-    text: '가방',
-  },
-  {
-    id: 17,
-    className: 'shirt',
-    url: 'https://cdn-icons-png.flaticon.com/512/1867/1867631.png',
-    text: '티셔츠',
-  },
-  {
-    id: 18,
-    className: 'ring',
-    url: 'https://cdn-icons.flaticon.com/png/512/721/premium/721913.png?token=exp=1660709195~hmac=c0365c627eada4ae1a2f325f4b2feab1',
-    text: '악세사리',
-  },
-];
-
-const positionData = [
-  {
-    id: 1,
-    position: [-6.5, -0.5, 5.5],
-  },
-  {
-    id: 2,
-    position: [-5.5, 0.5],
-  },
-  {
-    id: 3,
-    position: [-4.5, 1.5],
-  },
-  {
-    id: 4,
-    position: [-3.5, 2.5],
-  },
-  {
-    id: 5,
-    position: [-2.5, 3.5],
-  },
-  {
-    id: 6,
-    position: [-1.5, 4.5],
   },
 ];
