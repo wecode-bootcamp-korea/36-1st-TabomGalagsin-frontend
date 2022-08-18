@@ -6,48 +6,27 @@ $themeColorGreen: #00c9a2;
 $themeColorSkyBlue: #2cdcdf;
 $themeColorRed: #f24936;
 
+@mixin colors() {
+  .blue {
+    background-color: $themeColorBlue;
+  }
+
+  .red {
+    background-color: $themeColorRed;
+  }
+
+  .yellow {
+    background-color: $themeColorYellow;
+  }
+
+  .green {
+    background-color: $themeColorGreen;
+  }
+}
+
 .main {
   @include flex(center, center);
   flex-direction: column;
-  background-color: $themeColorBlue;
-  .mainSlideContainer {
-    @include flex(center, center);
-    margin: 40px;
-    .mainText {
-      width: 25%;
-      margin: 0 40px;
-      .textBig {
-        font-size: 64px;
-        font-weight: bolder;
-        color: white;
-        letter-spacing: 3px;
-        margin-bottom: 40px;
-        line-height: 80px;
-      }
-      .textSmall {
-        font-size: 32px;
-        font-weight: bolder;
-        color: white;
-        margin-bottom: 24px;
-      }
-      .aboutLink {
-        @include flex(center, center);
-        width: 120px;
-        font-size: 14px;
-        padding: 16px;
-        font-weight: bold;
-        color: white;
-        background-color: #5f0081;
-        border-radius: 22px;
-      }
-    }
-    .bannerImageContainer {
-      img {
-        width: 800px;
-        border-radius: 200px;
-      }
-    }
-  }
   .buttonContainer {
     @include flex(center, center);
     button {
@@ -57,18 +36,12 @@ $themeColorRed: #f24936;
       background-color: #14a7ff;
       border: none;
       font-size: 20px;
-      color: white;
     }
-    .positionState {
-      width: 8px;
-      height: 8px;
-      margin: 5px;
-      background-color: #ffffff33;
-      border-radius: 4px;
-    }
-    .positionNow {
-      width: 35px;
-      background-color: white;
+    @include colors();
+
+    .slideStateContainer {
+      @include flex(center, center);
     }
   }
 }
+@include colors();
