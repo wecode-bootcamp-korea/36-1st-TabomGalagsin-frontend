@@ -1,0 +1,65 @@
+@import '../../../styles/variables.scss';
+
+.bestSeller {
+  @include flex(center, center);
+  flex-direction: column;
+  width: 88vw;
+  font-size: 3rem;
+  font-weight: bold;
+  overflow: hidden;
+
+  .header {
+    @include flex(space-around, center);
+    width: 100%;
+    margin: 3rem;
+
+    .linkButton {
+      padding: 1rem 1.5rem;
+      border-style: none;
+      border-radius: 2rem;
+      color: white;
+      background-color: #5f0081;
+      font-size: 1rem;
+
+      i {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .slide {
+    @include flex(center, center);
+    position: relative;
+  }
+
+  .slideButtonContainer {
+    @include flex(center, center);
+
+    button {
+      margin: 0 30px;
+      width: 32px;
+      height: 32px;
+      background-color: #14a7ff;
+      border: none;
+      font-size: 20px;
+      color: white;
+    }
+    .slideStateContainer {
+      @include flex(center, center);
+
+      .slideState {
+        margin: 5px;
+        width: 8px;
+        height: 8px;
+        background-color: #ffffff33;
+        border-radius: 4px;
+        transition: all 0.3s;
+      }
+
+      .positionNow {
+        width: 30px;
+        background-color: white;
+      }
+    }
+  }
+}

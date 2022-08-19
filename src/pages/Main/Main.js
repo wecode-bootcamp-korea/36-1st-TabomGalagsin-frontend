@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import './Main.scss';
 import SlideState from './SlideState/SlideState';
 import MainText from './MainText/MainText.js';
+import BestSeller from './BestSeller/BestSeller';
+import './Main.scss';
 
 function Main() {
   const [positionNow, setPositionNow] = useState(0);
@@ -49,6 +50,7 @@ function Main() {
           <i className="fa-solid fa-angle-right fa-xl" />
         </button>
       </div>
+      <BestSeller />
     </div>
   );
 }
