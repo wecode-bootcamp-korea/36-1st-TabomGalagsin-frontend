@@ -1,10 +1,10 @@
 @import '/src/styles/variables.scss';
 
-.mainSlideContainer {
+.mainText {
   @include flex(center, center);
   margin: 40px;
 
-  .mainText {
+  .mainSlideContainer {
     margin: 0 40px;
     width: 25%;
 

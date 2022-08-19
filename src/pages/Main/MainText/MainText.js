@@ -3,8 +3,8 @@ import './MainText.scss';
 
 function MainText({ mainSlideData, positionNow }) {
   return (
-    <div className="mainSlideContainer">
-      <div className="mainText">
+    <div className="mainText">
+      <div className="mainSlideContainer">
         <div className={`textBig ${mainSlideData[positionNow].textColor}`}>
           {mainSlideData[positionNow].textBig}
         </div>
