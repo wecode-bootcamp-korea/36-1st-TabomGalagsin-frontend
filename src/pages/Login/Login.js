@@ -6,24 +6,28 @@ function Login() {
     <div className="login-field">
       <div className="login-box">
         <ul className="login-nav">
-          <li id="login-text" className="nav-item">
-            로그인
+          <li className="nav-item">
+            <div className="login-nav">
+              <font id="login-text">로그인</font>
+            </div>
           </li>
-          <li id="signup-text" className="nav-item">
-            계정만들기
+          <li className="nav-item">
+            <div className="signup-nav">
+              <font id="signup-text">계정 만들기</font>
+            </div>
           </li>
         </ul>
         <form className="login-content">
           <div className="email-form">
             <label className="form-label">
-              <font>이메일</font>
-              <input className="input-email" />
+              이메일
+              <input type="text" className="input-email" />
             </label>
           </div>
           <div className="passsword-form">
             <label className="form-label">
-              <font>비밀번호</font>
-              <input className="input-password" />
+              비밀번호
+              <input type="password" className="input-password" />
             </label>
           </div>
           <button type="submit" className="login-btn">

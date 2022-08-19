@@ -1,22 +1,41 @@
 .login-field {
   display: flex;
-  align-items: center;
   justify-content: center;
+  background-color: #fee3cb;
+  margin-top: 100px;
+  height: 900px;
+}
+
+.login-box {
+  width: 447px;
+  height: 600px;
+  margin-top: 190px;
 }
 
 .login-nav {
   display: flex;
   list-style: none;
+  height: 50px;
 }
 
 .nav-item {
   font-size: 20px;
   font-weight: 700;
+  margin: 0 8px;
+  color: #646464;
   letter-spacing: 0.03em;
 }
 
-#signup-text {
-  margin: 0 8px;
+.nav-item:hover {
+  color: #b60060;
+  cursor: pointer;
+  padding-bottom: 20px;
+  font-weight: 900;
+}
+
+font {
+  font-size: 20px;
+  font-weight: 500;
 }
 
 input {
@@ -25,10 +44,28 @@ input {
   border-radius: 9px;
   width: 100%;
   height: 48px;
+  background-color: #fee3cb;
+}
+
+.passsword-form {
+  margin-bottom: 15px;
 }
 
 .form-label {
   font-size: 14px;
   color: gray;
   margin: 0 0 0 18px;
+}
+
+.login-btn {
+  cursor: pointer;
+  width: 100%;
+  background-color: #007300;
+  border: 1px solid;
+  color: white;
+  padding: 0 23px;
+  border-radius: 48px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 43px;
 }
