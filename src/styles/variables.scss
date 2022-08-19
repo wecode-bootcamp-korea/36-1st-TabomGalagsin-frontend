@@ -4,6 +4,24 @@
   align-items: $align;
 }
 
+@mixin colors() {
+  .blue {
+    background-color: $themeColorBlue;
+  }
+
+  .red {
+    background-color: $themeColorRed;
+  }
+
+  .yellow {
+    background-color: $themeColorYellow;
+  }
+
+  .green {
+    background-color: $themeColorGreen;
+  }
+}
+
 /* main */
 $themeColorBlue: #14a7ff;
 $themeColorYellow: #ffee4d;

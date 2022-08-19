@@ -1,0 +1,35 @@
+@import '/src/styles/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
+
+.categorySlide {
+  @include flex(center, center);
+  flex-direction: column;
+  margin-top: 70px;
+  width: 100%;
+
+  .categorySlideViewer {
+    overflow: hidden;
+
+    .categorySlideItem {
+      @include flex(center, center);
+      width: 900px;
+    }
+  }
+
+  .slideButtonContainer {
+    @include flex(center, center);
+
+    button {
+      margin: 0 30px;
+      width: 32px;
+      height: 32px;
+      border: none;
+      font-size: 20px;
+      color: white;
+    }
+
+    .categorySlideStateContainer {
+      @include flex(center, center);
+    }
+  }
+}

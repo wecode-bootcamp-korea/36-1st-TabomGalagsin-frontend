@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SlideState from './SlideState/SlideState.js';
 import MainText from './MainText/MainText.js';
 import BestSeller from './BestSeller/BestSeller.js';
+import CategorySlide from './CategorySlide/CategorySlide.js';
 import './Main.scss';
 
 function Main() {
@@ -50,6 +51,10 @@ function Main() {
           <i className="fa-solid fa-angle-right fa-xl" />
         </button>
       </div>
+      <CategorySlide
+        color={mainSlideData[positionNow].color}
+        textColor={mainSlideData[positionNow].textColor}
+      />
       <BestSeller />
     </div>
   );
