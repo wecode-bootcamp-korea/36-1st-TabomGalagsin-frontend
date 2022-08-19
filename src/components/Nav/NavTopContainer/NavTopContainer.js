@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import './NavTopContainer.scss';
 
 function NavTopContainer() {
-  const [count, setCount] = useState(0);
+  const [currentPosition, setCurrentPosition] = useState(0);
 
   useEffect(() => {
     setInterval(() => {
-      setCount(prev => prev + 1);
+      setCurrentPosition(prev => prev + 1);
     }, 1000);
   }, []);
 
@@ -21,7 +21,10 @@ function NavTopContainer() {
         </div>
         <div
           className="slider"
-          style={{ transform: `translate(${count * -100}vw)` }}
+          style={{
+            transform: `translate(${currentPosition * -100}vw)`,
+            transition: '100s',
+          }}
         >
           <section className="list">content for section 1</section>
           <section className="list">content for section 2</section>
@@ -40,10 +43,10 @@ function NavTopContainer() {
 
 export default NavTopContainer;
 
-const data = [
-  { item: 'content for section 1' },
-  { item: 'content for section 2' },
-  { item: 'content for section 3' },
-  { item: 'content for section 4' },
-  { item: 'content for section 5' },
-];
+// const data = [
+//   { item: 'content for section 1' },
+//   { item: 'content for section 2' },
+//   { item: 'content for section 3' },
+//   { item: 'content for section 4' },
+//   { item: 'content for section 5' },
+// ];

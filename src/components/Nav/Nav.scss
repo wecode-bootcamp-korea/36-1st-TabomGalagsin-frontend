@@ -1,5 +1,6 @@
 @import '../../styles/variables.scss';
 .Nav {
+  z-index: 1000;
   .navBottomContainer {
     height: 65px;
     width: 100vw;
