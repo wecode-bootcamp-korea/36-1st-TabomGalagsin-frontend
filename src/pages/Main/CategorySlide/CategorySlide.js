@@ -112,12 +112,12 @@ const categoryDataPast = [
   },
   {
     className: 'shoes',
-    url: 'https://cdn-icons.flaticon.com/png/512/3345/premium/3345800.png?token=exp=1660708197~hmac=43aa6881dcbbb086d80827cdcb21d124',
+    url: 'https://cdn-icons-png.flaticon.com/512/2290/2290456.png',
     text: '구두',
   },
   {
     className: 'backpack',
-    url: 'https://cdn-icons.flaticon.com/png/512/4663/premium/4663075.png?token=exp=1660708981~hmac=b91d7b1d7de2454b09e95e2d35f8e41f',
+    url: 'https://cdn-icons-png.flaticon.com/512/8185/8185975.png',
     text: '가방',
   },
   {
@@ -127,7 +127,7 @@ const categoryDataPast = [
   },
   {
     className: 'ring',
-    url: 'https://cdn-icons.flaticon.com/png/512/721/premium/721913.png?token=exp=1660709195~hmac=c0365c627eada4ae1a2f325f4b2feab1',
+    url: 'https://cdn-icons-png.flaticon.com/512/4003/4003300.png',
     text: '악세사리',
   },
 ];
