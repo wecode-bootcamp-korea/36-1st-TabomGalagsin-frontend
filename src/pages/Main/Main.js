@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import SlideState from './SlideState/SlideState';
+import SlideState from './SlideState/SlideState.js';
 import MainText from './MainText/MainText.js';
-import BestSeller from './BestSeller/BestSeller';
+import BestSeller from './BestSeller/BestSeller.js';
 import './Main.scss';
 
 function Main() {
