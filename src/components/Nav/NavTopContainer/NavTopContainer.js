@@ -1,6 +1,15 @@
+import { useState, useEffect } from 'react';
 import './NavTopContainer.scss';
 
 function NavTopContainer() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setInterval(() => {
+      setCount(prev => prev + 1);
+    }, 1000);
+  }, []);
+
   return (
     <div className="NavTopContainer">
       <div className="carousel">
@@ -10,12 +19,15 @@ function NavTopContainer() {
         <div className="rightCover">
           <i className="fa-solid fa-chevron-right rightArrow" />
         </div>
-        <div className="slider">
+        <div
+          className="slider"
+          style={{ transform: `translate(${count * -100}vw)` }}
+        >
           <section className="list">content for section 1</section>
           <section className="list">content for section 2</section>
           <section className="list">content for section 3</section>
           <section className="list">content for section 4</section>
-          <sectionn className="list">content for section 5</sectionn>
+          <section className="list">content for section 5</section>
         </div>
         <div className="controls">
           <span className="arrow prev">1</span>
@@ -27,3 +39,11 @@ function NavTopContainer() {
 }
 
 export default NavTopContainer;
+
+const data = [
+  { item: 'content for section 1' },
+  { item: 'content for section 2' },
+  { item: 'content for section 3' },
+  { item: 'content for section 4' },
+  { item: 'content for section 5' },
+];

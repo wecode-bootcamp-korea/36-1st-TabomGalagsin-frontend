@@ -1,12 +1,14 @@
 @import '../../../styles/variables.scss';
 
 .Dropdown {
-  margin-top: 65px;
+  top: 100%;
+  left: 0;
   position: absolute;
   width: 100vw;
   @include flex(center, center);
   background-color: #ddf2ff;
   border-radius: 0 0 60px 60px;
+  color: black;
 
   .dropdownMenu {
     @include flex(center, center);
@@ -15,7 +17,7 @@
 
   .dropdownCategory {
     width: 20vw;
-    height: 60vh;
+    height: 70vh;
     padding: 70px 10px 0;
     font-size: 20px;
     font-family: sans-serif;

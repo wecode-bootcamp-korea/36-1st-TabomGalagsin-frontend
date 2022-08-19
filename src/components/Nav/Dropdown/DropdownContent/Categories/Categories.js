@@ -3,16 +3,23 @@ import './Categories.scss';
 
 const Categories = () => {
   return (
-    <ul className="Categories">
-      {categoryData.map(item => (
-        <ItemList
-          key={item.id}
-          alt={item.alt}
-          src={item.src}
-          name={item.name}
-        />
-      ))}
-    </ul>
+    <div className="Categories">
+      <ul>
+        {categoryData.map(item => (
+          <ItemList
+            key={item.id}
+            alt={item.alt}
+            src={item.src}
+            name={item.name}
+          />
+        ))}
+      </ul>
+      <img
+        className="categoryImg"
+        alt="people"
+        src="https://images.unsplash.com/photo-1481016570479-9eab6349fde7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fGZsaXAlMjBmbG9wc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+      />
+    </div>
   );
 };
 

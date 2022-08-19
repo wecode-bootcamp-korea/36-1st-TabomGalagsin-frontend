@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import DropdownContent from './DropdownContent/DropdownContent';
 import './Dropdown.scss';
 
-function Dropdown({ onMouseLeave }) {
+function Dropdown() {
   const [menuMouseEnter, setMenuMouseEnter] = useState('Categories');
 
   return (
-    <div className="Dropdown" onMouseLeave={onMouseLeave}>
+    <div className="Dropdown">
       <div className="dropdownMenu">
         <div className="dropdownCategory">
           <ul>

@@ -48,8 +48,6 @@
       width: 500%;
       flex-shrink: 0;
       @include flex(flex-start, null);
-      transition: 1s;
-      transform: translate(-100vw);
 
       .list {
         flex-basis: 20%;
