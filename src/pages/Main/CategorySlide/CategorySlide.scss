@@ -4,8 +4,8 @@
 .categorySlide {
   @include flex(center, center);
   flex-direction: column;
-  width: 100vw;
-  background-color: #14a7ff;
+  margin-top: 70px;
+  width: 100%;
 
   .categorySlideViewer {
     overflow: hidden;
@@ -23,13 +23,12 @@
       margin: 0 30px;
       width: 32px;
       height: 32px;
-      background-color: #14a7ff;
       border: none;
       font-size: 20px;
       color: white;
     }
 
-    .slideStateContainer {
+    .categorySlideStateContainer {
       @include flex(center, center);
     }
   }

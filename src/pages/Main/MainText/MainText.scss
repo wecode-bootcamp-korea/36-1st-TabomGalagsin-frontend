@@ -1,0 +1,55 @@
+@import '/src/styles/variables.scss';
+
+.mainText {
+  @include flex(center, center);
+  margin: 40px;
+
+  .mainSlideContainer {
+    margin: 0 40px;
+    width: 25%;
+
+    .textBig {
+      margin-bottom: 40px;
+      color: white;
+      font-size: 64px;
+      font-weight: bolder;
+      letter-spacing: 3px;
+      line-height: 80px;
+    }
+
+    .textSmall {
+      margin-bottom: 24px;
+      color: white;
+      font-size: 32px;
+      font-weight: bolder;
+      letter-spacing: 3px;
+    }
+
+    .aboutLink {
+      @include flex(center, center);
+      padding: 16px;
+      width: 120px;
+      background-color: #5f0081;
+      border-radius: 22px;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .black {
+      color: black;
+    }
+
+    .white {
+      color: white;
+    }
+  }
+
+  .bannerImageContainer {
+    img {
+      width: 800px;
+      height: 550px;
+      border-radius: 200px;
+    }
+  }
+}

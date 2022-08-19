@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import CategoryImage from './CategoryImage/CategoryImage';
-import SlideState from './SlideState/SlideState';
+import CategorySlideState from './CategorySlideState/CategorySlideState';
 import './CategorySlide.scss';
 
-function CategorySlide() {
+function CategorySlide({ color, textColor }) {
   const firstPosition = categoryDataPast.length % 2 === 0 ? -0.5 : 0;
   const [categoryPosition, setCategoryPosition] = useState(firstPosition);
   const [transitionTime, setTransitionTime] = useState(0.3);
@@ -45,7 +45,7 @@ function CategorySlide() {
   };
 
   return (
-    <div className="categorySlide">
+    <div className={`categorySlide  ${color}`}>
       <div className="categorySlideViewer">
         <div
           className="categorySlideItem"
@@ -65,22 +65,31 @@ function CategorySlide() {
         </div>
       </div>
       <div className="slideButtonContainer">
-        <button className="previousButton" onClick={buttonClick}>
+        <button
+          className={`previousButton ${color}`}
+          onClick={buttonClick}
+          style={{ color: textColor }}
+        >
           <i className="fa-solid fa-angle-left fa-xl" />
         </button>
-        <ul className="slideStateContainer">
+        <ul className="categorySlideStateContainer">
           {categoryDataPast.map((_, index) => (
-            <SlideState
+            <CategorySlideState
               key={index}
               listPosition={index}
               length={categoryDataPast.length}
               firstPosition={firstPosition}
               mappingArrayLastIndex={categoryDataPast.length - 1}
               categoryPosition={categoryPosition}
+              stateColor={textColor}
             />
           ))}
         </ul>
-        <button className="nextButton" onClick={buttonClick}>
+        <button
+          className={`nextButton ${color}`}
+          onClick={buttonClick}
+          style={{ color: textColor }}
+        >
           <i className="fa-solid fa-angle-right fa-xl" />
         </button>
       </div>
