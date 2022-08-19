@@ -1,21 +1,13 @@
-import React, { useState, useEffect } from 'react';
 import './NavTopContainer.scss';
 
 function NavTopContainer() {
-  const [carousel, setCarousel] = useState(0);
-  const nextButton = () => {
-    setCarousel(1);
-  };
-  const prevButton = () => {
-    setCarousel(1);
-  };
   return (
     <div className="NavTopContainer">
       <div className="carousel">
-        <div className="leftCover" onClick={prevButton}>
+        <div className="leftCover">
           <i className="fa-solid fa-chevron-left leftArrow" />
         </div>
-        <div className="rightCover" onClick={nextButton}>
+        <div className="rightCover">
           <i className="fa-solid fa-chevron-right rightArrow" />
         </div>
         <div className="slider">
