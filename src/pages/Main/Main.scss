@@ -1,0 +1,43 @@
+@import '../../styles/variables.scss';
+
+@mixin colors() {
+  .blue {
+    background-color: $themeColorBlue;
+  }
+
+  .red {
+    background-color: $themeColorRed;
+  }
+
+  .yellow {
+    background-color: $themeColorYellow;
+  }
+
+  .green {
+    background-color: $themeColorGreen;
+  }
+}
+
+@include colors();
+.main {
+  @include flex(center, center);
+  flex-direction: column;
+
+  .buttonContainer {
+    @include flex(center, center);
+    @include colors();
+
+    button {
+      margin: 0 30px;
+      width: 32px;
+      height: 32px;
+      background-color: #14a7ff;
+      border: none;
+      font-size: 20px;
+    }
+
+    .slideStateContainer {
+      @include flex(center, center);
+    }
+  }
+}

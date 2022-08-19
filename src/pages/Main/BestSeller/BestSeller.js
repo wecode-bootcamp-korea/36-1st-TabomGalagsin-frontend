@@ -5,7 +5,7 @@ import BestSellerCard from './BestSellerCard/BestSellerCard';
 function BestSeller() {
   const [currentPosition, setCurrentPosition] = useState(0);
   const [transitionTime, setTransitionTime] = useState(0.3);
-  const cardSize = 23;
+  const cardSize = 22;
 
   const handleClickLeftButton = () => {
     if (currentPosition === 0) {
@@ -44,7 +44,7 @@ function BestSeller() {
       <div
         className="slide"
         style={{
-          transform: `translateX(${(currentPosition - 1) * -cardSize}rem)`,
+          transform: `translateX(${(currentPosition - 1) * -cardSize}vw)`,
           transition: `all ${transitionTime}s`,
         }}
       >
