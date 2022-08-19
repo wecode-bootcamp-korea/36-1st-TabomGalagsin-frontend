@@ -1,4 +1,4 @@
-import './LoginInput.scss';
+import './signIn.scss';
 
 function LoginInput() {
   return (

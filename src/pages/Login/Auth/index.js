@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './Login.scss';
-import LoginInput from './components/LoginInput/LoginInput';
-import SingupInput from './components/SignupInput/SignupInput';
+import './auth.scss';
+import LoginInput from '../Auth/SignIn/index';
+import SingupInput from '../Auth/SignUp/index';
 
 function Login() {
   const [currentId, setcurrentId] = useState(1);
