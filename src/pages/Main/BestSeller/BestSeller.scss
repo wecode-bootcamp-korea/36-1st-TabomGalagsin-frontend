@@ -3,10 +3,10 @@
 .bestSeller {
   @include flex(center, center);
   flex-direction: column;
-  width: 92rem;
-  overflow: hidden;
+  width: 88vw;
   font-size: 3rem;
   font-weight: bold;
+  overflow: hidden;
 
   .header {
     @include flex(space-around, center);
@@ -44,6 +44,7 @@
       font-size: 20px;
       color: white;
     }
+
     .slideStateContainer {
       @include flex(center, center);
 
