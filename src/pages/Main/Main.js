@@ -1,10 +1,16 @@
-import Nav from '../../../src/components/Nav/Nav';
+import BestSeller from './BestSeller/BestSeller';
+import Nav from '../../components/Nav/Nav';
+
+import './Main.scss';
 
 function Main() {
   return (
     <>
       <Nav />
-      <h1>Main입니다.</h1>
+      <div className="main">
+        <h1>Main입니다.</h1>
+        <BestSeller />
+      </div>
     </>
   );
 }
