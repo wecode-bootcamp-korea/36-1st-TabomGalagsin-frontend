@@ -3,7 +3,6 @@ import SlideState from './SlideState/SlideState.js';
 import MainText from './MainText/MainText.js';
 import BestSeller from './BestSeller/BestSeller.js';
 import Nav from '../../components/Nav/Nav';
->>>>>>> main
 import './Main.scss';
 
 function Main() {
@@ -20,44 +19,43 @@ function Main() {
       : setPositionNow(positionNow + 1);
   };
   return (
-<>
-<Nav />
-    <div className={`main  ${mainSlideData[positionNow].color}`}>
-      <MainText mainSlideData={mainSlideData} positionNow={positionNow} />
-      <div className="buttonContainer">
-        <button
-          className={`previous ${mainSlideData[positionNow].color}`}
-          onClick={mainSlideButtonClick}
-          style={{
-            color: `${mainSlideData[positionNow].textColor}`,
-          }}
-        >
-          <i className="fa-solid fa-angle-left fa-xl" />
-        </button>
-        <ul className="slideStateContainer">
-          {mainSlideData.map((_, index) => (
-            <SlideState
-              key={index}
-              position={index}
-              slidePosition={positionNow}
-              stateColor={mainSlideData[positionNow].textColor}
-            />
-          ))}
-        </ul>
-        <button
-          className={`next ${mainSlideData[positionNow].color}`}
-          onClick={mainSlideButtonClick}
-          style={{
-            color: `${mainSlideData[positionNow].textColor}`,
-          }}
-        >
-          <i className="fa-solid fa-angle-right fa-xl" />
-        </button>
+    <>
+      <Nav />
+      <div className={`main  ${mainSlideData[positionNow].color}`}>
+        <MainText mainSlideData={mainSlideData} positionNow={positionNow} />
+        <div className="buttonContainer">
+          <button
+            className={`previous ${mainSlideData[positionNow].color}`}
+            onClick={mainSlideButtonClick}
+            style={{
+              color: `${mainSlideData[positionNow].textColor}`,
+            }}
+          >
+            <i className="fa-solid fa-angle-left fa-xl" />
+          </button>
+          <ul className="slideStateContainer">
+            {mainSlideData.map((_, index) => (
+              <SlideState
+                key={index}
+                position={index}
+                slidePosition={positionNow}
+                stateColor={mainSlideData[positionNow].textColor}
+              />
+            ))}
+          </ul>
+          <button
+            className={`next ${mainSlideData[positionNow].color}`}
+            onClick={mainSlideButtonClick}
+            style={{
+              color: `${mainSlideData[positionNow].textColor}`,
+            }}
+          >
+            <i className="fa-solid fa-angle-right fa-xl" />
+          </button>
+        </div>
+        <BestSeller />
       </div>
-      <BestSeller />
-    </div>
     </>
-
   );
 }
 
