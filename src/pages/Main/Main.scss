@@ -24,11 +24,15 @@ $themeColorRed: #f24936;
   }
 }
 
+@include colors();
 .main {
   @include flex(center, center);
   flex-direction: column;
+
   .buttonContainer {
     @include flex(center, center);
+    @include colors();
+
     button {
       margin: 0 30px;
       width: 32px;
@@ -37,11 +41,9 @@ $themeColorRed: #f24936;
       border: none;
       font-size: 20px;
     }
-    @include colors();
 
     .slideStateContainer {
       @include flex(center, center);
     }
   }
 }
-@include colors();

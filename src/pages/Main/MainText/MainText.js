@@ -5,18 +5,16 @@ function MainText({ mainSlideData, positionNow }) {
   return (
     <div className="mainSlideContainer">
       <div className="mainText">
-        <div className={`textBig ${mainSlideData[positionNow - 1].textColor}`}>
-          {mainSlideData[positionNow - 1].textBig}
+        <div className={`textBig ${mainSlideData[positionNow].textColor}`}>
+          {mainSlideData[positionNow].textBig}
         </div>
-        <div
-          className={`textSmall ${mainSlideData[positionNow - 1].textColor}`}
-        >
-          {mainSlideData[positionNow - 1].textSmall}
+        <div className={`textSmall ${mainSlideData[positionNow].textColor}`}>
+          {mainSlideData[positionNow].textSmall}
         </div>
         <div className="aboutLink">지금 보러가기</div>
       </div>
       <div className="bannerImageContainer">
-        <img src={mainSlideData[positionNow - 1].imageLink} alt="banner" />
+        <img src={mainSlideData[positionNow].imageLink} alt="banner" />
       </div>
     </div>
   );

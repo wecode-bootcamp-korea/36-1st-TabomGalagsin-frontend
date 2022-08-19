@@ -5,8 +5,8 @@ function SlideState({ slidePosition, position, stateColor }) {
   return (
     <li
       className={`slideState ${
-        position === slidePosition ? 'positionNow' : null
-      } ${position === slidePosition ? stateColor + 'P' : null}`}
+        position === slidePosition ? 'positionNow' : ''
+      } ${position === slidePosition ? stateColor + 'P' : ''}`}
     />
   );
 }

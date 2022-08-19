@@ -4,46 +4,46 @@ import SlideState from './SlideState/SlideState';
 import MainText from './MainText/MainText.js';
 
 function Main() {
-  const [positionNow, setPositionNow] = useState(1);
+  const [positionNow, setPositionNow] = useState(0);
 
   const mainSlideButtonClick = event => {
     event.target.className === 'previous' ||
     event.target.className === 'fa-solid fa-angle-left fa-xl'
-      ? positionNow === 1
-        ? setPositionNow(4)
+      ? positionNow === 0
+        ? setPositionNow(3)
         : setPositionNow(positionNow - 1)
-      : positionNow === 4
-      ? setPositionNow(1)
+      : positionNow === mainSlideData.length - 1
+      ? setPositionNow(0)
       : setPositionNow(positionNow + 1);
   };
   return (
-    <div className={`main  ${mainSlideData[positionNow - 1].color}`}>
+    <div className={`main  ${mainSlideData[positionNow].color}`}>
       <MainText mainSlideData={mainSlideData} positionNow={positionNow} />
       <div className="buttonContainer">
         <button
-          className={`previous ${mainSlideData[positionNow - 1].color}`}
+          className={`previous ${mainSlideData[positionNow].color}`}
           onClick={mainSlideButtonClick}
           style={{
-            color: `${mainSlideData[positionNow - 1].textColor}`,
+            color: `${mainSlideData[positionNow].textColor}`,
           }}
         >
           <i className="fa-solid fa-angle-left fa-xl" />
         </button>
         <ul className="slideStateContainer">
-          {mainSlidePositionData.map(data => (
+          {mainSlideData.map((_, index) => (
             <SlideState
-              key={data.id}
-              position={data.position}
+              key={index}
+              position={index}
               slidePosition={positionNow}
-              stateColor={mainSlideData[positionNow - 1].textColor}
+              stateColor={mainSlideData[positionNow].textColor}
             />
           ))}
         </ul>
         <button
-          className={`next ${mainSlideData[positionNow - 1].color}`}
+          className={`next ${mainSlideData[positionNow].color}`}
           onClick={mainSlideButtonClick}
           style={{
-            color: `${mainSlideData[positionNow - 1].textColor}`,
+            color: `${mainSlideData[positionNow].textColor}`,
           }}
         >
           <i className="fa-solid fa-angle-right fa-xl" />
@@ -91,24 +91,5 @@ const mainSlideData = [
       'https://images.unsplash.com/photo-1607958674115-05b24858a945?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2825&q=80',
     color: 'green',
     textColor: 'white',
-  },
-];
-
-const mainSlidePositionData = [
-  {
-    id: 1,
-    position: 1,
-  },
-  {
-    id: 2,
-    position: 2,
-  },
-  {
-    id: 3,
-    position: 3,
-  },
-  {
-    id: 4,
-    position: 4,
   },
 ];
