@@ -1,39 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.scss';
+import LoginInput from './components/LoginInput/LoginInput';
+import SingupInput from './components/SignupInput/SignupInput';
 
 function Login() {
+  const [currentId, setcurrentId] = useState(1);
+  const MappingObject = {
+    1: <LoginInput />,
+    2: <SingupInput />,
+  };
+  const clickHandler = id => {
+    setcurrentId(id);
+  };
+
+  const Switch = ['로그인', '회원가입'];
+
   return (
     <div className="login-field">
       <div className="login-box">
         <ul className="login-nav">
-          <li className="nav-item">
-            <div className="login-nav">
-              <font id="login-text">로그인</font>
-            </div>
-          </li>
-          <li className="nav-item">
-            <div className="signup-nav">
-              <font id="signup-text">계정 만들기</font>
-            </div>
-          </li>
+          {Switch.map((sw, index) => {
+            return (
+              <li
+                className="nav-item"
+                key={sw + index}
+                onClick={() => clickHandler(index + 1)}
+              >
+                <div className="login-nav">
+                  <font id="login-text">{sw}</font>
+                </div>
+              </li>
+            );
+          })}
         </ul>
-        <form className="login-content">
-          <div className="email-form">
-            <label className="form-label">
-              이메일
-              <input type="text" className="input-email" />
-            </label>
-          </div>
-          <div className="passsword-form">
-            <label className="form-label">
-              비밀번호
-              <input type="password" className="input-password" />
-            </label>
-          </div>
-          <button type="submit" className="login-btn">
-            로그인
-          </button>
-        </form>
+        {MappingObject[currentId]}
       </div>
     </div>
   );
