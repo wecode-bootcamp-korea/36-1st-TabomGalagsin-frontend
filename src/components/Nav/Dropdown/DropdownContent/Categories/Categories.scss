@@ -4,9 +4,9 @@
   @include flex(space-between, null);
 
   .categoryImg {
-    border: 1px solid rgb(0 0 0 / 10%);
-    border-radius: 20px;
     width: 13rem;
     margin-right: 40px;
+    border: 1px solid rgb(0 0 0 / 10%);
+    border-radius: 20px;
   }
 }

@@ -6,7 +6,7 @@ function Dropdown() {
   const [menuMouseEnter, setMenuMouseEnter] = useState('Categories');
 
   return (
-    <div className="Dropdown">
+    <div className="dropdown">
       <div className="dropdownMenu">
         <div className="dropdownCategory">
           <ul>

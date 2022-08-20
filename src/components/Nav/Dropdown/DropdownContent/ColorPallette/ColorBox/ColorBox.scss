@@ -2,24 +2,24 @@
 
 .ColorBox {
   .colorBoxes {
+    position: relative;
     width: 120px;
     height: 80px;
     margin: 20px 10px;
-    position: relative;
     border-radius: 10px;
     border: none;
     cursor: pointer;
 
     font {
-      background-color: white;
-      width: 100%;
       position: absolute;
+      width: 100%;
       bottom: 0;
-      border-radius: 0 0 10px 10px;
-      text-align: center;
-      border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
-      font-size: 15px;
       padding: 10px;
+      background-color: white;
+      text-align: center;
+      font-size: 15px;
+      border-radius: 0 0 10px 10px;
+      border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
     }
   }
 }

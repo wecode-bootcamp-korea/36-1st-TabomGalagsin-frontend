@@ -1,6 +1,10 @@
 @import '../../../styles/variables.scss';
+@mixin arrow {
+  font-size: 12px;
+  cursor: pointer;
+}
 
-.NavTopContainer {
+.navTopContainer {
   height: 32px;
   width: 100vw;
   overflow: hidden;
@@ -11,26 +15,34 @@
     height: 100%;
 
     .leftCover {
-      @include flex(center, center);
+      @include flex(flex-end, center);
       width: 30vw;
       height: 100%;
       background-color: white;
       z-index: 100;
+
+      .arrow {
+        @include arrow;
+      }
     }
 
     .rightCover {
-      @include flex(center, center);
+      @include flex(flex-start, center);
       width: 30vw;
       height: 100%;
       background-color: white;
       z-index: 100;
+
+      .arrow {
+        @include arrow;
+      }
     }
 
     .slider {
       @include flex(center, null);
-      overflow: hidden;
       height: 100%;
       width: 40vw;
+      overflow: hidden;
 
       .sliderInner {
         @include flex(center, center);

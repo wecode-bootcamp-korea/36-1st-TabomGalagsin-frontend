@@ -17,10 +17,10 @@
       color: white;
       font-size: 20px;
       cursor: pointer;
-    }
 
-    .navIcon:hover {
-      transform: scale(1.2, 1.2);
+      &:hover {
+        transform: scale(1.2, 1.2);
+      }
     }
 
     .menu {

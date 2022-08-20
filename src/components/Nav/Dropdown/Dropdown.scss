@@ -1,18 +1,17 @@
 @import '../../../styles/variables.scss';
 
-.Dropdown {
+.dropdown {
+  @include flex(center, center);
+  position: absolute;
   top: 100%;
   left: 0;
-  position: absolute;
   width: 100vw;
-  @include flex(center, center);
-  background-color: #fefce3;
   border-radius: 0 0 60px 60px;
+  background-color: whitesmoke;
   color: black;
 
   .dropdownMenu {
-    @include flex(center, center);
-    flex-direction: row;
+    @include flex(center, flex-start);
   }
 
   .dropdownCategory {
@@ -25,8 +24,9 @@
     .arrow {
       @include flex(space-between, center);
       margin: 10px;
-      cursor: pointer;
       height: 3rem;
+      cursor: pointer;
+      transition: 0.2s;
     }
 
     .arrow:hover {

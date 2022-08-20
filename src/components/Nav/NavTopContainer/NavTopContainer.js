@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState /*useEffect*/ } from 'react';
 import './NavTopContainer.scss';
 
 function NavTopContainer() {
@@ -49,11 +49,11 @@ function NavTopContainer() {
   };
 
   return (
-    <div className="NavTopContainer">
+    <div className="navTopContainer">
       <div className="carousel">
         <div className="leftCover">
           <i
-            className="fa-solid fa-chevron-left leftArrow"
+            className="fa-solid fa-chevron-left arrow"
             onClick={carouselButton}
           />
         </div>
@@ -76,7 +76,7 @@ function NavTopContainer() {
         </div>
         <div className="rightCover">
           <i
-            className="fa-solid fa-chevron-right rightArrow"
+            className="fa-solid fa-chevron-right arrow"
             onClick={carouselButton}
           />
         </div>
