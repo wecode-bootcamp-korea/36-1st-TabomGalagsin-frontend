@@ -10,7 +10,7 @@ const ColorBox = ({ color, name, id }) => {
   // };
 
   return (
-    <div className="ColorBox" onClick={clickBox}>
+    <div className="ColorBox" /*onClick={clickBox}*/>
       <div className="colorBoxes" style={{ backgroundColor: color }}>
         <font>{name}</font>
       </div>
