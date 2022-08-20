@@ -2,39 +2,83 @@ import { useState, useEffect } from 'react';
 import './NavTopContainer.scss';
 
 function NavTopContainer() {
-  const [currentPosition, setCurrentPosition] = useState(0);
+  const [currentPosition, setCurrentPosition] = useState(-2);
+  const [transitionTime, setTransitionTime] = useState(0.5);
 
   useEffect(() => {
     setInterval(() => {
-      setCurrentPosition(prev => prev + 1);
+      if (currentPosition > 2) {
+        setTransitionTime(0);
+        setCurrentPosition(-2);
+        setTimeout(() => {
+          setTransitionTime(0.5);
+          setCurrentPosition(-1);
+        }, 0);
+      } else {
+        setCurrentPosition(prew => prew + 1);
+      }
     }, 1000);
   }, []);
+
+  const currentData = [...data, ...data, ...data];
+
+  const carouselButton = event => {
+    if (event.target.className === 'fa-solid fa-chevron-left leftArrow') {
+      if (currentPosition < -2) {
+        setTransitionTime(0);
+        setCurrentPosition(2);
+        setTimeout(() => {
+          setTransitionTime(0.5);
+          setCurrentPosition(1);
+        }, 0);
+      } else {
+        setCurrentPosition(currentPosition - 1);
+      }
+    } else {
+      if (currentPosition > 2) {
+        setTransitionTime(0);
+        setCurrentPosition(-2);
+        setTimeout(() => {
+          setTransitionTime(0.5);
+          setCurrentPosition(-1);
+        }, 0);
+      } else {
+        setCurrentPosition(currentPosition + 1);
+      }
+    }
+  };
 
   return (
     <div className="NavTopContainer">
       <div className="carousel">
         <div className="leftCover">
-          <i className="fa-solid fa-chevron-left leftArrow" />
+          <i
+            className="fa-solid fa-chevron-left leftArrow"
+            onClick={carouselButton}
+          />
+        </div>
+        <div className="slider">
+          <div
+            className="sliderInner"
+            style={{
+              transform: `translate(${(currentPosition * -100) / 15}%)`,
+              transition: `all ${transitionTime}s`,
+            }}
+          >
+            {currentData.map((data, index) => {
+              return (
+                <section className="list" key={index}>
+                  {data.item}
+                </section>
+              );
+            })}
+          </div>
         </div>
         <div className="rightCover">
-          <i className="fa-solid fa-chevron-right rightArrow" />
-        </div>
-        <div
-          className="slider"
-          style={{
-            transform: `translate(${currentPosition * -100}vw)`,
-            transition: '100s',
-          }}
-        >
-          <section className="list">content for section 1</section>
-          <section className="list">content for section 2</section>
-          <section className="list">content for section 3</section>
-          <section className="list">content for section 4</section>
-          <section className="list">content for section 5</section>
-        </div>
-        <div className="controls">
-          <span className="arrow prev">1</span>
-          <span className="arrow next">1</span>
+          <i
+            className="fa-solid fa-chevron-right rightArrow"
+            onClick={carouselButton}
+          />
         </div>
       </div>
     </div>
@@ -43,10 +87,10 @@ function NavTopContainer() {
 
 export default NavTopContainer;
 
-// const data = [
-//   { item: 'content for section 1' },
-//   { item: 'content for section 2' },
-//   { item: 'content for section 3' },
-//   { item: 'content for section 4' },
-//   { item: 'content for section 5' },
-// ];
+const data = [
+  { item: 'content for section 1' },
+  { item: 'content for section 2' },
+  { item: 'content for section 3' },
+  { item: 'content for section 4' },
+  { item: 'content for section 5' },
+];

@@ -6,62 +6,52 @@
   overflow: hidden;
 
   .carousel {
+    @include flex(center, center);
     background: none;
-    // @include flex(flex-start, null);
-    width: 100%;
+    width: 100vw;
     height: 100%;
-    position: relative;
 
     .leftCover {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 30%;
+      @include flex(center, center);
+      width: 30vw;
       height: 100%;
       background-color: white;
       z-index: 100;
     }
 
     .rightCover {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 30%;
+      @include flex(center, center);
+      width: 30vw;
       height: 100%;
       background-color: white;
       z-index: 100;
     }
 
     .leftArrow {
-      position: absolute;
       right: 0;
       padding: 7px;
     }
 
     .rightArrow {
-      position: absolute;
       left: 0;
       padding: 7px;
     }
 
     .slider {
-      // border: 2px solid red;
+      @include flex(center, null);
+      overflow: hidden;
       height: 100%;
-      width: 500%;
-      flex-shrink: 0;
-      @include flex(flex-start, null);
+      width: 40vw;
 
-      .list {
-        flex-basis: 20%;
-        flex-shrink: 0;
-        flex: 1;
-        width: 20%;
+      .sliderInner {
         @include flex(center, center);
+        width: 600vw;
+
+        .list {
+          @include flex(center, center);
+          width: 40vw;
+        }
       }
     }
-  }
-  .controls {
-    @include flex(space-around, center);
-    position: absolute;
   }
 }

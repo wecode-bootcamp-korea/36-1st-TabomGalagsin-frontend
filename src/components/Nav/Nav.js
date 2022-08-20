@@ -3,7 +3,7 @@ import NavTopContainer from './NavTopContainer/NavTopContainer';
 import Dropdown from './Dropdown/Dropdown';
 import './Nav.scss';
 
-function Nav() {
+function Nav({ color }) {
   const [isMouseEnter, setIsMouseEnter] = useState(false);
 
   return (
@@ -14,7 +14,7 @@ function Nav() {
       </div> */}
 
       <NavTopContainer />
-      <div className="navBottomContainer">
+      <div className={`navBottomContainer ${color}`}>
         <div
           onMouseEnter={() => setIsMouseEnter(!isMouseEnter)}
           onMouseLeave={() => setIsMouseEnter(!isMouseEnter)}

@@ -1,11 +1,11 @@
 @import '../../styles/variables.scss';
 .Nav {
   z-index: 1000;
+  @include colors();
+
   .navBottomContainer {
     height: 65px;
     width: 100vw;
-    // background-color: #13a7ff;
-    background: none;
     @include flex(space-between, center);
     padding: 1px 50px 1px 50px;
     color: white;
