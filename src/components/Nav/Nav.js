@@ -7,12 +7,7 @@ function Nav({ color }) {
   const [isMouseEnter, setIsMouseEnter] = useState(false);
 
   return (
-    <nav className="Nav">
-      {/* <div on>
-        <button>on</button>
-        {true && <Component />}
-      </div> */}
-
+    <nav className="nav">
       <NavTopContainer />
       <div className={`navBottomContainer ${color}`}>
         <div
@@ -22,7 +17,6 @@ function Nav({ color }) {
           <i className="fa-solid fa-bars navIcon menu" />
           {isMouseEnter && <Dropdown />}
         </div>
-
         <img className="logo" src="/images/Nav/logo-yellow.png" alt="logo" />
         <div className="iconLeftSide">
           <i className="fa-solid fa-user navIcon" />

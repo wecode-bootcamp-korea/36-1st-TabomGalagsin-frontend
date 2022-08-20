@@ -5,20 +5,20 @@ function NavTopContainer() {
   const [currentPosition, setCurrentPosition] = useState(-2);
   const [transitionTime, setTransitionTime] = useState(0.5);
 
-  useEffect(() => {
-    setInterval(() => {
-      if (currentPosition > 2) {
-        setTransitionTime(0);
-        setCurrentPosition(-2);
-        setTimeout(() => {
-          setTransitionTime(0.5);
-          setCurrentPosition(-1);
-        }, 0);
-      } else {
-        setCurrentPosition(prew => prew + 1);
-      }
-    }, 1000);
-  }, []);
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     if (currentPosition > 2) {
+  //       setTransitionTime(0);
+  //       setCurrentPosition(-2);
+  //       setTimeout(() => {
+  //         setTransitionTime(0.5);
+  //         setCurrentPosition(-1);
+  //       }, 0);
+  //     } else {
+  //       setCurrentPosition(prew => prew + 1);
+  //     }
+  //   }, 1000);
+  // }, []);
 
   const currentData = [...data, ...data, ...data];
 

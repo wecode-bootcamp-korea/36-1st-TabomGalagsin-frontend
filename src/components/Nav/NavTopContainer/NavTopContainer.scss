@@ -7,7 +7,6 @@
 
   .carousel {
     @include flex(center, center);
-    background: none;
     width: 100vw;
     height: 100%;
 
@@ -25,16 +24,6 @@
       height: 100%;
       background-color: white;
       z-index: 100;
-    }
-
-    .leftArrow {
-      right: 0;
-      padding: 7px;
-    }
-
-    .rightArrow {
-      left: 0;
-      padding: 7px;
     }
 
     .slider {
