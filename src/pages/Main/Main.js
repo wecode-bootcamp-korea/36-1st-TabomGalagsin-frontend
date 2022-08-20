@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SlideState from './SlideState/SlideState.js';
 import MainText from './MainText/MainText.js';
 import BestSeller from './BestSeller/BestSeller.js';
+import CategorySlide from './CategorySlide/CategorySlide.js';
 import Nav from '../../components/Nav/Nav';
 import './Main.scss';
 
@@ -55,7 +56,16 @@ function Main() {
         </div>
         <BestSeller />
       </div>
+<<<<<<< HEAD
     </>
+=======
+      <CategorySlide
+        color={mainSlideData[positionNow].color}
+        textColor={mainSlideData[positionNow].textColor}
+      />
+      <BestSeller />
+    </div>
+>>>>>>> main
   );
 }
 
