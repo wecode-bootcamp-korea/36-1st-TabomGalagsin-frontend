@@ -56,16 +56,12 @@ function Main() {
         </div>
         <BestSeller />
       </div>
-<<<<<<< HEAD
-    </>
-=======
       <CategorySlide
         color={mainSlideData[positionNow].color}
         textColor={mainSlideData[positionNow].textColor}
       />
       <BestSeller />
-    </div>
->>>>>>> main
+    </>
   );
 }
 

@@ -1,14 +1,13 @@
 import './ColorBox.scss';
 
 const ColorBox = ({ color, name, id }) => {
-  const clickBox = () => {
-    fetch(`http://10.58.0.22/categories/category/2/color/${id}`, {
-      method: 'GET',
-      // headers: { 'content-type': 'application/json' },
-    })
-      .then(res => res.json)
-      .then(data => console.log(data));
-  };
+  // const clickBox = () => {
+  //   fetch(`http://10.58.0.22/categories/category/2/color/${id}`, {
+  //     method: 'GET',
+  //   })
+  //     .then(res => res.json)
+  //     .then(data => console.log(data));
+  // };
 
   return (
     <div className="ColorBox" onClick={clickBox}>
