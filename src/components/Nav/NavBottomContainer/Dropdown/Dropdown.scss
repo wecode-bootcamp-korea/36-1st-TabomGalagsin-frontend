@@ -1,14 +1,14 @@
-@import '../../../styles/variables.scss';
+@import '../../../../styles/variables.scss';
 
 .dropdown {
   @include flex(center, center);
   position: absolute;
-  top: 100%;
   left: 0;
   width: 100vw;
   border-radius: 0 0 60px 60px;
   background-color: whitesmoke;
   color: black;
+  z-index: 100;
 
   .dropdownMenu {
     @include flex(center, flex-start);

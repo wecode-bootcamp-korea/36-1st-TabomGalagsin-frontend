@@ -5,9 +5,11 @@
 }
 
 .navTopContainer {
+  display: block;
   height: 32px;
   width: 100vw;
   overflow: hidden;
+  transition: top 0.3s;
 
   .carousel {
     @include flex(center, center);
@@ -47,10 +49,13 @@
       .sliderInner {
         @include flex(center, center);
         width: 600vw;
+        z-index: 1;
 
         .list {
           @include flex(center, center);
           width: 40vw;
+          font-size: 14px;
+          font-family: sans-serif;
         }
       }
     }

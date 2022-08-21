@@ -1,29 +1,49 @@
-import { useState /*useEffect*/ } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './NavTopContainer.scss';
 
 function NavTopContainer() {
   const [currentPosition, setCurrentPosition] = useState(-2);
   const [transitionTime, setTransitionTime] = useState(0.5);
 
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     if (currentPosition > 2) {
-  //       setTransitionTime(0);
-  //       setCurrentPosition(-2);
-  //       setTimeout(() => {
-  //         setTransitionTime(0.5);
-  //         setCurrentPosition(-1);
-  //       }, 0);
-  //     } else {
-  //       setCurrentPosition(prew => prew + 1);
-  //     }
-  //   }, 1000);
-  // }, []);
-
   const currentData = [...data, ...data, ...data];
 
-  const carouselButton = event => {
-    if (event.target.className === 'fa-solid fa-chevron-left leftArrow') {
+  function useInterval(callback, delay) {
+    const savedCallback = useRef();
+
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
+  }
+
+  const sliding = () => {
+    if (currentPosition > 2) {
+      setTransitionTime(0);
+      setCurrentPosition(-2);
+      setTimeout(() => {
+        setTransitionTime(0.5);
+        setCurrentPosition(-1);
+      }, 0);
+    } else {
+      setCurrentPosition(currentPosition + 1);
+    }
+  };
+
+  useInterval(() => {
+    sliding();
+  }, 1500);
+
+  const carouselButton = e => {
+    if (e.target.className === 'fa-solid fa-chevron-left arrow') {
       if (currentPosition < -2) {
         setTransitionTime(0);
         setCurrentPosition(2);
@@ -88,8 +108,8 @@ function NavTopContainer() {
 export default NavTopContainer;
 
 const data = [
-  { item: 'content for section 1' },
-  { item: 'content for section 2' },
+  { item: '상파울루시로 특급배송' },
+  { item: '배송 옵션 및 서비스를 확인하려면 우편번호를 입력해 확인해 보세요.' },
   { item: 'content for section 3' },
   { item: 'content for section 4' },
   { item: 'content for section 5' },

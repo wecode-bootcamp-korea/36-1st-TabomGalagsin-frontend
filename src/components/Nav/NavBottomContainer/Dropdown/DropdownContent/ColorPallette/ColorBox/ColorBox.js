@@ -1,6 +1,6 @@
 import './ColorBox.scss';
 
-const ColorBox = ({ color, name, id }) => {
+const ColorBox = ({ color, name /*id*/ }) => {
   // const clickBox = () => {
   //   fetch(`http://10.58.0.22/categories/category/2/color/${id}`, {
   //     method: 'GET',
