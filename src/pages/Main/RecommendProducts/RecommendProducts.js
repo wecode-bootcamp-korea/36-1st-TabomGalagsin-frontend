@@ -25,8 +25,6 @@ function RecommendProducts() {
     fetchData();
   }, []);
 
-  console.log(productsList);
-
   return (
     <div className="recommendProducts">
       <div className="header">
