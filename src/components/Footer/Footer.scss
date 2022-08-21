@@ -2,6 +2,7 @@
 
 .footer {
   width: 90vw;
+  margin-top: 5rem;
 
   .menuContainer {
     @include flex(space-evenly, null);
@@ -19,6 +20,7 @@
       @include flex(flex-start, center);
       width: 100%;
       margin-bottom: 1rem;
+      font-weight: 500;
     }
 
     .menuIcon {
