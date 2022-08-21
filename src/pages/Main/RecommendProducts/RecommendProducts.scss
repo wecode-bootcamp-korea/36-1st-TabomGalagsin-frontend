@@ -1,7 +1,7 @@
 @import '../../../styles/variables.scss';
 
-.release {
-  width: 100vw;
+.recommendProducts {
+  width: 84vw;
   @include flex(center, center);
   flex-direction: column;
 
@@ -28,7 +28,7 @@
   }
 
   .carouselContainer {
-    @include flex(space-around, null);
+    @include flex(center, null);
     width: 100%;
   }
 }

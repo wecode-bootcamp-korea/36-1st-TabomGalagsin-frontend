@@ -3,7 +3,7 @@
 .bestSeller {
   @include flex(center, center);
   flex-direction: column;
-  width: 88vw;
+  width: 84vw;
   font-size: 3rem;
   font-weight: bold;
   overflow: hidden;
@@ -20,6 +20,7 @@
       color: white;
       background-color: #5f0081;
       font-size: 1rem;
+      font-weight: 500;
 
       i {
         margin-left: 1rem;
@@ -34,6 +35,15 @@
 
   .slideButtonContainer {
     @include flex(center, center);
+    @include colors;
+
+    .black {
+      color: black;
+    }
+
+    .white {
+      color: white;
+    }
 
     button {
       margin: 0 30px;
@@ -59,6 +69,14 @@
 
       .positionNow {
         width: 30px;
+        background-color: white;
+      }
+
+      .black {
+        background-color: black;
+      }
+
+      .white {
         background-color: white;
       }
     }

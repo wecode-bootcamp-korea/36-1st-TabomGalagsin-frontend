@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import SlideState from './SlideState/SlideState.js';
 import MainText from './MainText/MainText.js';
 import BestSeller from './BestSeller/BestSeller.js';
-import Release from './Release/Release.js';
+import CategorySlide from './CategorySlide/CategorySlide.js';
+import RecommendProducts from './RecommendProducts/RecommendProducts.js';
 import './Main.scss';
 
 function Main() {
@@ -51,8 +52,16 @@ function Main() {
           <i className="fa-solid fa-angle-right fa-xl" />
         </button>
       </div>
-      <BestSeller />
-      <Release />
+      <CategorySlide
+        color={mainSlideData[positionNow].color}
+        textColor={mainSlideData[positionNow].textColor}
+      />
+      <BestSeller
+        color={mainSlideData[positionNow].color}
+        textColor={mainSlideData[positionNow].textColor}
+      />
+      <RecommendProducts />
+      <RecommendProducts />
     </div>
   );
 }

@@ -2,10 +2,10 @@ import { useState } from 'react';
 import './BestSeller.scss';
 import BestSellerCard from './BestSellerCard/BestSellerCard';
 
-function BestSeller() {
+function BestSeller({ color, textColor }) {
   const [currentPosition, setCurrentPosition] = useState(0);
   const [transitionTime, setTransitionTime] = useState(0.3);
-  const cardSize = 22;
+  const cardSize = 21;
 
   const handleClickLeftButton = () => {
     if (currentPosition === 0) {
@@ -56,7 +56,11 @@ function BestSeller() {
         })}
       </div>
       <div className="slideButtonContainer">
-        <button onClick={handleClickLeftButton}>
+        <button
+          onClick={handleClickLeftButton}
+          className={color}
+          style={{ color: textColor }}
+        >
           <i className="fa-solid fa-angle-left fa-xl" />
         </button>
         <ul className="slideStateContainer">
@@ -64,14 +68,18 @@ function BestSeller() {
             return (
               <li
                 key={idx}
-                className={`slideState ${
-                  idx === currentPosition ? 'positionNow' : ''
+                className={`slideState  ${
+                  idx === currentPosition ? `positionNow ${textColor}` : ''
                 }`}
               />
             );
           })}
         </ul>
-        <button onClick={handleClickRightButton}>
+        <button
+          className={color}
+          style={{ color: textColor }}
+          onClick={handleClickRightButton}
+        >
           <i className="fa-solid fa-angle-right fa-xl" />
         </button>
       </div>

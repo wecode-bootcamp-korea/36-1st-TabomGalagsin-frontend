@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import Product from '../../../components/Product/Product';
 
-import './release.scss';
+import './RecommendProducts.scss';
 
-function Release() {
+function RecommendProducts() {
   const [productsList, setProductsList] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ function Release() {
       });
   }, []);
   return (
-    <div className="release">
+    <div className="recommendProducts">
       <div className="header">
         <h1 className="title">Release</h1>
         <button className="linkButton">
@@ -41,4 +41,4 @@ function Release() {
   );
 }
 
-export default Release;
+export default RecommendProducts;
