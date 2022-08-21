@@ -68,8 +68,8 @@ function BestSeller({ color, textColor }) {
             return (
               <li
                 key={idx}
-                className={`slideState  ${
-                  idx === currentPosition ? `positionNow ${textColor}` : ''
+                className={`slideState ${textColor} ${
+                  idx === currentPosition ? `positionNow` : ''
                 }`}
               />
             );
