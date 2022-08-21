@@ -7,12 +7,26 @@ function RecommendProducts() {
   const [productsList, setProductsList] = useState([]);
 
   useEffect(() => {
-    fetch('/data/releaseProducts.json')
-      .then(response => response.json())
-      .then(data => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/data/releaseProducts.json');
+
+        if (!response.ok) {
+          throw new Error('서버가 이상합니다.');
+        }
+
+        const data = await response.json();
         setProductsList(data);
-      });
+      } catch (error) {
+        throw new Error(`에러가 발생했습니다. ${error.message}`);
+      }
+    };
+
+    fetchData();
   }, []);
+
+  console.log(productsList);
+
   return (
     <div className="recommendProducts">
       <div className="header">

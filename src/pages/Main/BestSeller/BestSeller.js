@@ -14,7 +14,7 @@ function BestSeller({ color, textColor }) {
       setTimeout(() => {
         setTransitionTime(0.3);
         setCurrentPosition(CARD_LIST.length - 1);
-      }, 10);
+      }, 0);
     } else {
       setCurrentPosition(prev => prev - 1);
     }
