@@ -1,21 +1,24 @@
-.slideState {
-  margin: 5px;
-  width: 8px;
-  height: 8px;
-  background-color: #ffffff33;
-  border-radius: 4px;
-  transition: all 0.3s;
-}
+.slideStateContainer {
+  .slideState {
+    margin: 5px;
+    width: 8px;
+    height: 8px;
+    opacity: 0.2;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
 
-.positionNow {
-  width: 35px;
-}
+  .positionNow {
+    width: 35px;
+    opacity: 1;
+  }
 
-/* function color */
-.whiteP {
-  background-color: white;
-}
+  /* function color */
+  .whiteP {
+    background-color: white;
+  }
 
-.blackP {
-  background-color: black;
+  .blackP {
+    background-color: black;
+  }
 }

@@ -11,14 +11,14 @@ function SlideState({
 }) {
   return (
     <li
-      className={`slideState ${
+      className={`slideState  ${stateColor} ${
         listPosition + firstPosition ===
         (categoryPosition % length < firstPosition
           ? (categoryPosition % length) + length
           : categoryPosition % length > mappingArrayLastIndex + firstPosition
           ? (categoryPosition % length) - length
           : categoryPosition % length)
-          ? `positionNow ${stateColor}`
+          ? `positionNow`
           : ''
       }`}
     />
