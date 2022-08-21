@@ -3,7 +3,7 @@ import './auth.scss';
 import LoginInput from '../Auth/SignIn/index';
 import SingupInput from '../Auth/SignUp/index';
 
-function Login() {
+function Auth() {
   const [currentId, setcurrentId] = useState(1);
   const MappingObject = {
     1: <LoginInput />,
@@ -39,4 +39,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Auth;
