@@ -10,7 +10,7 @@ import './Main.scss';
 
 function Main() {
   const [positionNow, setPositionNow] = useState(0);
-  const [releaseProductsList, setReleaseProductsList] = useState([]);
+  const [newProductsList, setNewProductsList] = useState([]);
   const [recommendProductsList, setRecommendProductsList] = useState([]);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ function Main() {
       }
     };
 
-    fetchData(API.RELEASE, setReleaseProductsList);
+    fetchData(API.NEW, setNewProductsList);
     fetchData(API.RECOMMEND, setRecommendProductsList);
   }, []);
 
@@ -88,7 +88,7 @@ function Main() {
         color={mainSlideData[positionNow].color}
         textColor={mainSlideData[positionNow].textColor}
       />
-      <RecommendProducts productsList={releaseProductsList} title="Release" />
+      <RecommendProducts productsList={newProductsList} title="New" />
       <RecommendProducts
         productsList={recommendProductsList}
         title="Recommend"
