@@ -1,9 +1,7 @@
-import { useState } from 'react';
+import FilterMenu from './FilterMenu/FilterMenu.js';
 import './ProductsList.scss';
 
 function ProductsList() {
-  const [isMenuOpened, setIsMenuOpened] = useState(false);
-
   return (
     <div className="productsList">
       <div className="listNav">
@@ -12,15 +10,9 @@ function ProductsList() {
       </div>
 
       <aside className="filterAside">
-        <div className="filter" onClick={setIsMenuOpened(!isMenuOpened)}>
-          색상
-        </div>
-        {isMenuOpened && <input}
-        <div className="filterMenu"></div>
-        <div className="filter">가격</div>
-        <div className="filter">크기</div>
-        <div className="filter">백엔드</div>
-        <div className="filter">화이팅</div>
+        {MENU_LIST.map(({ title, list }) => {
+          return <FilterMenu key={title} title={title} list={list} />;
+        })}
       </aside>
       <section className="listContainer">list</section>
     </div>
@@ -28,3 +20,12 @@ function ProductsList() {
 }
 
 export default ProductsList;
+
+const MENU_LIST = [
+  { title: '그림 물감', list: ['노란색', '푸른', '베이지', '하얀색', 'ㅇㅇ'] },
+  { title: '느낌', list: ['좋음', '나쁨', '적당'] },
+  {
+    title: '사이즈',
+    list: ['Free(Man)', 'Free(Woman)', 'One'],
+  },
+];
