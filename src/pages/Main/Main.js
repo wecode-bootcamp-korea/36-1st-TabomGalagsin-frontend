@@ -4,15 +4,14 @@ import MainText from './MainText/MainText.js';
 import BestSeller from './BestSeller/BestSeller.js';
 import CategorySlide from './CategorySlide/CategorySlide.js';
 import RecommendProducts from './RecommendProducts/RecommendProducts.js';
+
+import { API } from '../../config.js';
 import './Main.scss';
 
 function Main() {
   const [positionNow, setPositionNow] = useState(0);
   const [releaseProductsList, setReleaseProductsList] = useState([]);
   const [recommendProductsList, setRecommendProductsList] = useState([]);
-
-  const RELEASE_URI = 'http://10.58.0.192:3000/products/new';
-  const RECOMMEND_URI = 'http://10.58.0.192:3000/products/recommend';
 
   useEffect(() => {
     const fetchData = async (uri, setState) => {
@@ -33,8 +32,8 @@ function Main() {
       }
     };
 
-    fetchData(RELEASE_URI, setReleaseProductsList);
-    fetchData(RECOMMEND_URI, setRecommendProductsList);
+    fetchData(API.RELEASE, setReleaseProductsList);
+    fetchData(API.RECOMMEND, setRecommendProductsList);
   }, []);
 
   const mainSlideButtonClick = event => {
