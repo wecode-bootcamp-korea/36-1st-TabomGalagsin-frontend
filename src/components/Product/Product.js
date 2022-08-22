@@ -37,7 +37,6 @@ function Product({ productName, price, imgUrl, colorList, sizeList }) {
       </div>
       <div className="sizePickers">
         {sizeList.map(({ size }) => {
-          // size = size === 'null' ? '하나의' : size;
           return (
             <button
               key={size}
