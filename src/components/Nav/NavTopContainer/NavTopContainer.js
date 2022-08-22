@@ -38,9 +38,16 @@ function NavTopContainer() {
     }
   };
 
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     sliding();
+  //   }, 3000);
+  //   return () => clearTimeout(timer);
+  // });
+
   useInterval(() => {
     sliding();
-  }, 1500);
+  }, 3000);
 
   const carouselButton = e => {
     if (e.target.className === 'fa-solid fa-chevron-left arrow') {
@@ -48,7 +55,7 @@ function NavTopContainer() {
         setTransitionTime(0);
         setCurrentPosition(2);
         setTimeout(() => {
-          setTransitionTime(0.5);
+          setTransitionTime(2);
           setCurrentPosition(1);
         }, 0);
       } else {
@@ -59,7 +66,7 @@ function NavTopContainer() {
         setTransitionTime(0);
         setCurrentPosition(-2);
         setTimeout(() => {
-          setTransitionTime(0.5);
+          setTransitionTime(2);
           setCurrentPosition(-1);
         }, 0);
       } else {
@@ -110,7 +117,7 @@ export default NavTopContainer;
 const data = [
   { item: '상파울루시로 특급배송' },
   { item: '배송 옵션 및 서비스를 확인하려면 우편번호를 입력해 확인해 보세요.' },
-  { item: 'content for section 3' },
-  { item: 'content for section 4' },
-  { item: 'content for section 5' },
+  { item: '상파울루시로 특급배송' },
+  { item: '배송 옵션 및 서비스를 확인하려면 우편번호를 입력해 확인해 보세요.' },
+  { item: '따봉 가락신  화이팅!' },
 ];

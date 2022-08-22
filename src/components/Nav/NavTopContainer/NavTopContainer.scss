@@ -8,8 +8,9 @@
   display: block;
   height: 32px;
   width: 100vw;
-  overflow: hidden;
-  transition: top 0.3s;
+  // overflow: hidden;
+  // transition: top 0.3s;
+  background-color: white;
 
   .carousel {
     @include flex(center, center);

@@ -4,14 +4,15 @@
   @include colors();
   .navbar {
     @include flex(space-between, center);
-    top: 0;
+    // position: fixed;
+    // top: 20;
     padding: 1px 50px 1px 50px;
     height: 65px;
     width: 100vw;
     box-shadow: 0 8px 15px rgb(0 0 0 / 10%);
     color: white;
     font-size: 35px;
-    z-index: 500;
+    z-index: 1;
 
     .navIcon {
       color: white;

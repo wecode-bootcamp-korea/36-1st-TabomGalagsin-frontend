@@ -54,13 +54,12 @@ function Main() {
             <i className="fa-solid fa-angle-right fa-xl" />
           </button>
         </div>
+        <CategorySlide
+          color={mainSlideData[positionNow].color}
+          textColor={mainSlideData[positionNow].textColor}
+        />
         <BestSeller />
       </div>
-      <CategorySlide
-        color={mainSlideData[positionNow].color}
-        textColor={mainSlideData[positionNow].textColor}
-      />
-      <BestSeller />
     </>
   );
 }
