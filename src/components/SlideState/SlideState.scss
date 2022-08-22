@@ -1,4 +1,8 @@
+@import '../../styles/variables.scss';
+
 .slideStateContainer {
+  @include flex(center, center);
+
   .slideState {
     margin: 5px;
     width: 8px;
@@ -13,12 +17,11 @@
     opacity: 1;
   }
 
-  /* function color */
-  .whiteP {
+  .white {
     background-color: white;
   }
 
-  .blackP {
+  .black {
     background-color: black;
   }
 }

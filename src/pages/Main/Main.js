@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SlideState from './SlideState/SlideState.js';
+import SlideState from '../../components/SlideState/SlideState.js';
 import MainText from './MainText/MainText.js';
 import BestSeller from './BestSeller/BestSeller.js';
 import CategorySlide from './CategorySlide/CategorySlide.js';

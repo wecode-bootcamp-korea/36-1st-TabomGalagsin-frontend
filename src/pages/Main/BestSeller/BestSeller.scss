@@ -54,31 +54,5 @@
       font-size: 20px;
       color: white;
     }
-
-    .slideStateContainer {
-      @include flex(center, center);
-
-      .slideState {
-        margin: 5px;
-        width: 8px;
-        height: 8px;
-        opacity: 0.2;
-        border-radius: 4px;
-        transition: all 0.3s;
-      }
-
-      .positionNow {
-        width: 30px;
-        opacity: 1;
-      }
-
-      .black {
-        background-color: black;
-      }
-
-      .white {
-        background-color: white;
-      }
-    }
   }
 }

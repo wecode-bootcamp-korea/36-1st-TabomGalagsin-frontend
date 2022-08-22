@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CategoryImage from './CategoryImage/CategoryImage';
-import CategorySlideState from './CategorySlideState/CategorySlideState';
+import SlideState from '../../../components/SlideState/SlideState';
 import './CategorySlide.scss';
 
 function CategorySlide({ color, textColor }) {
@@ -72,15 +72,21 @@ function CategorySlide({ color, textColor }) {
         >
           <i className="fa-solid fa-angle-left fa-xl" />
         </button>
-        <ul className="categorySlideStateContainer">
+        <ul className="slideStateContainer">
           {categoryDataPast.map((_, index) => (
-            <CategorySlideState
+            <SlideState
               key={index}
-              listPosition={index}
-              length={categoryDataPast.length}
-              firstPosition={firstPosition}
-              mappingArrayLastIndex={categoryDataPast.length - 1}
-              categoryPosition={categoryPosition}
+              position={index + firstPosition}
+              slidePosition={
+                categoryPosition % categoryDataPast.length < firstPosition
+                  ? (categoryPosition % categoryDataPast.length) +
+                    categoryDataPast.length
+                  : categoryPosition % categoryDataPast.length >
+                    categoryDataPast.length - 1 + firstPosition
+                  ? (categoryPosition % categoryDataPast.length) -
+                    categoryDataPast.length
+                  : categoryPosition % categoryDataPast.length
+              }
               stateColor={textColor}
             />
           ))}

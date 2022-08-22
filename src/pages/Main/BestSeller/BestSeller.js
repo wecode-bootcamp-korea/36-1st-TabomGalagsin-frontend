@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import './BestSeller.scss';
+import SlideState from '../../../components/SlideState/SlideState.js';
 import BestSellerCard from './BestSellerCard/BestSellerCard';
+import './BestSeller.scss';
 
 function BestSeller({ color, textColor }) {
   const [currentPosition, setCurrentPosition] = useState(0);
@@ -66,11 +67,11 @@ function BestSeller({ color, textColor }) {
         <ul className="slideStateContainer">
           {CARD_LIST.map((_, idx) => {
             return (
-              <li
+              <SlideState
                 key={idx}
-                className={`slideState ${textColor} ${
-                  idx === currentPosition ? `positionNow` : ''
-                }`}
+                position={idx}
+                slidePosition={currentPosition}
+                stateColor={textColor}
               />
             );
           })}

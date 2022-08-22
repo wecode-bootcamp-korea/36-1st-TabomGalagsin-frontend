@@ -4,7 +4,7 @@ import './SlideState.scss';
 function SlideState({ slidePosition, position, stateColor }) {
   return (
     <li
-      className={`slideState ${stateColor + 'P'} ${
+      className={`slideState ${stateColor} ${
         position === slidePosition ? 'positionNow' : ''
       }`}
     />
