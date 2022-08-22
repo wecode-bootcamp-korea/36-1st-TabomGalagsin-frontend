@@ -21,8 +21,6 @@ function Main() {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRzaGtAbmF2ZXIuY29tIiwiaWF0IjoxNjYwODg1OTUwfQ.95kRV0Iby1Ot_0xPoiKhgZKrZs5BnczsUwjtm-PzV4E',
           },
         });
         if (!response.ok) {

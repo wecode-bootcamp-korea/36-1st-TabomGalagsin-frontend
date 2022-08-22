@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Product.scss';
 
-function Product({ description, price, imgUrl, colorList, sizeList }) {
+function Product({ productName, price, imgUrl, colorList, sizeList }) {
   const [clickedInfo, setClickedInfo] = useState({
     color: '',
     size: '',
@@ -19,7 +19,7 @@ function Product({ description, price, imgUrl, colorList, sizeList }) {
   return (
     <div className="product">
       <img alt="product" src={imgUrl} />
-      <p className="description">{description}</p>
+      <p className="description">{productName}</p>
       <p className="price">KRW {price}</p>
       <div className="colorPickers">
         {colorList.map(({ color }) => {
@@ -37,7 +37,7 @@ function Product({ description, price, imgUrl, colorList, sizeList }) {
       </div>
       <div className="sizePickers">
         {sizeList.map(({ size }) => {
-          size = size === 'null' ? '하나의' : size;
+          // size = size === 'null' ? '하나의' : size;
           return (
             <button
               key={size}

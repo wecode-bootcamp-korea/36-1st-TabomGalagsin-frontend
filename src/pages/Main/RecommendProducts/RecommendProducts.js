@@ -14,12 +14,12 @@ function RecommendProducts({ productsList, title }) {
       <div className="carouselContainer">
         {productsList &&
           productsList.map(product => {
-            const { productId, Desc, price, thumbnailUrl, color, size } =
+            const { productId, name, price, thumbnailUrl, color, size } =
               product;
             return (
               <Product
                 key={productId}
-                description={Desc}
+                productName={name}
                 price={price}
                 imgUrl={thumbnailUrl}
                 colorList={color}
