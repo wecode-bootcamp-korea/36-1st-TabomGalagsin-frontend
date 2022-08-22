@@ -43,12 +43,6 @@
       background-color: white;
     }
 
-    .active {
-      border: 1.5px solid black;
-      transition: all 0.2s;
-      transform: scale(1.25);
-    }
-
     .colorPickers {
       @include flex(flex-start, center);
       width: 100%;
@@ -57,12 +51,24 @@
       button {
         width: 1.5rem;
       }
+
+      .active {
+        border: 2px solid black;
+        transition: all 0.2s;
+        transform: scale(1.25);
+      }
     }
 
     .sizePickers {
       @include flex(flex-start, center);
       width: 100%;
       margin-top: 1rem;
+
+      .active {
+        border: 2px solid black;
+        transition: all 0.2s;
+        transform: scale(1.25);
+      }
     }
 
     .cartBtn {

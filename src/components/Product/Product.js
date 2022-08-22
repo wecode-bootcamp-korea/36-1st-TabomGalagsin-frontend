@@ -2,19 +2,19 @@ import { useState } from 'react';
 import './Product.scss';
 
 function Product({ description, price, imgUrl, colorList, sizeList }) {
-  const [clickedColor, setClickedColor] = useState();
-  const [clickedSize, setClickedSize] = useState();
+  const [clickedInfo, setClickedInfo] = useState({
+    color: '',
+    size: '',
+  });
 
-  const handleClickColorButton = e => {
-    const { name } = e.target;
-    clickedColor === name ? setClickedColor(!name) : setClickedColor(name);
-  };
-  const handleClickSizeButton = e => {
-    const { name } = e.target;
-    clickedSize === name ? setClickedSize(!name) : setClickedSize(name);
+  const handleClickButton = e => {
+    const { name, value } = e.target;
+    clickedInfo[name] === name
+      ? setClickedInfo({ ...clickedInfo, [name]: '' })
+      : setClickedInfo({ ...clickedInfo, [name]: value });
   };
 
-  const isClickedAll = !!clickedColor && !!clickedSize;
+  const isClickedAll = !!clickedInfo.color && !!clickedInfo.size;
 
   return (
     <div className="product">
@@ -22,31 +22,32 @@ function Product({ description, price, imgUrl, colorList, sizeList }) {
       <p className="description">{description}</p>
       <p className="price">KRW {price}</p>
       <div className="colorPickers">
-        {Object.values(colorList).map(color => {
+        {colorList.map(({ color }) => {
           return (
             <button
               key={color}
-              name={color}
-              onClick={handleClickColorButton}
-              className={color === clickedColor ? 'active' : ''}
+              value={color}
+              name="color"
+              onClick={handleClickButton}
+              className={color === clickedInfo.color ? 'active' : ''}
               style={{ backgroundColor: color }}
             />
           );
         })}
       </div>
       <div className="sizePickers">
-        {Object.values(sizeList).map(size => {
+        {sizeList.map(({ size }) => {
           size = size === 'null' ? '하나의' : size;
           return (
-            <div key={size}>
-              <button
-                name={size}
-                onClick={handleClickSizeButton}
-                className={size === clickedSize ? 'active' : ''}
-              >
-                {size}
-              </button>
-            </div>
+            <button
+              key={size}
+              value={size}
+              name="size"
+              onClick={handleClickButton}
+              className={size === clickedInfo.size ? 'active' : ''}
+            >
+              {size}
+            </button>
           );
         })}
       </div>
