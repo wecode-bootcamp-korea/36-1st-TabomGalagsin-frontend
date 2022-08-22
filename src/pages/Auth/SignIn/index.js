@@ -1,6 +1,5 @@
 import './signIn.scss';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 function LoginInput() {
   // response를 담을 상태 하나 만들기
@@ -14,30 +13,21 @@ function LoginInput() {
     setInputs({ ...inputs, [name]: value });
   };
 
-  const IsValidate =
+  const IsValidate = () => {
+    if (inputs.email === '') {
+      return '필수 입력창입니다.';
+    } else if (inputs.email.indexOf('@') === -1) {
+      return '이메일 형식을 확인해주세요.';
+    }
+  };
+
+  const idate =
     inputs.email.indexOf('@') !== -1 &&
     inputs.email.length >= 6 &&
     inputs.password.length >= 5;
 
-  const navigate = useNavigate();
-
   const handleSubmit = e => {
     e.preventDefault();
-    fetch('', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: inputs.email,
-        password: inputs.password,
-      }),
-    })
-      .then(response => response.json())
-      .then(data => localStorage.setItem('token', JSON.stringify(data)));
-    if (localStorage.token) {
-      navigate('/main');
-    }
   };
 
   return (
@@ -52,7 +42,11 @@ function LoginInput() {
             className="input-email"
           />
         </label>
+        <div className="error-message">
+          <span>{IsValidate()}</span>
+        </div>
       </div>
+
       <div className="passsword-form">
         <label className="form-label">
           비밀번호

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './auth.scss';
 import LoginInput from '../Auth/SignIn/index';
-import SingupInput from '../Auth/SignUp/index';
+import SignupInput from '../Auth/SignUp/index';
 
 function Auth() {
   const [currentId, setcurrentId] = useState(1);
   const MappingObject = {
     1: <LoginInput />,
-    2: <SingupInput />,
+    2: <SignupInput />,
   };
   const clickHandler = id => {
     setcurrentId(id);

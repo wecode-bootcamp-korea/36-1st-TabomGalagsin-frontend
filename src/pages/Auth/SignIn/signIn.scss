@@ -5,10 +5,12 @@ input {
   width: 100%;
   height: 48px;
   background-color: #fee3cb;
+  outline-style: none;
 }
 
 .passsword-form {
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .form-label {
@@ -28,4 +30,12 @@ input {
   font-weight: 600;
   letter-spacing: 0.03em;
   line-height: 43px;
+}
+
+.error-message {
+  margin-top: -1.5rem;
+  height: 17px;
+  font-size: 80%;
+  color: #c00;
+  letter-spacing: 0.03em;
 }
