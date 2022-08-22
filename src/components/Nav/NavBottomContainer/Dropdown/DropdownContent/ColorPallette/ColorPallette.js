@@ -3,9 +3,9 @@ import './ColorPallette.scss';
 
 const ColorPallette = () => {
   return (
-    <div className="ColorPalette">
+    <div className="colorPalette">
       <div className="colorBoxContainer">
-        {colorMockData.map(box => (
+        {COLOUR_MOCK_DATA.map(box => (
           <ColorBox
             key={box.id}
             color={box.color}
@@ -15,7 +15,7 @@ const ColorPallette = () => {
         ))}
       </div>
       <div className="colorBoxContainer">
-        {colorMockData2.map(box => (
+        {COLOUR_MOCK_DATA2.map(box => (
           <ColorBox
             key={box.id}
             color={box.color}
@@ -30,14 +30,14 @@ const ColorPallette = () => {
 
 export default ColorPallette;
 
-const colorMockData = [
+const COLOUR_MOCK_DATA = [
   { id: 8, color: 'red', name: 'Red' },
   { id: 2, color: 'orange', name: 'Orange' },
   { id: 3, color: 'yellow', name: 'Yellow' },
   { id: 4, color: 'green', name: 'Green' },
 ];
 
-const colorMockData2 = [
+const COLOUR_MOCK_DATA2 = [
   { id: 5, color: 'blue', name: 'Blue' },
   { id: 6, color: 'purple', name: 'Purple' },
   { id: 7, color: 'black', name: 'Black' },

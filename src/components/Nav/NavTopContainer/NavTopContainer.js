@@ -5,7 +5,7 @@ function NavTopContainer() {
   const [currentPosition, setCurrentPosition] = useState(-2);
   const [transitionTime, setTransitionTime] = useState(0.5);
 
-  const currentData = [...data, ...data, ...data];
+  const currentData = [...CAROUSEL_DATA, ...CAROUSEL_DATA, ...CAROUSEL_DATA];
 
   function useInterval(callback, delay) {
     const savedCallback = useRef();
@@ -38,51 +38,15 @@ function NavTopContainer() {
     }
   };
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     sliding();
-  //   }, 3000);
-  //   return () => clearTimeout(timer);
-  // });
-
   useInterval(() => {
     sliding();
   }, 3000);
-
-  const carouselButton = e => {
-    if (e.target.className === 'fa-solid fa-chevron-left arrow') {
-      if (currentPosition < -2) {
-        setTransitionTime(0);
-        setCurrentPosition(2);
-        setTimeout(() => {
-          setTransitionTime(2);
-          setCurrentPosition(1);
-        }, 0);
-      } else {
-        setCurrentPosition(currentPosition - 1);
-      }
-    } else {
-      if (currentPosition > 2) {
-        setTransitionTime(0);
-        setCurrentPosition(-2);
-        setTimeout(() => {
-          setTransitionTime(2);
-          setCurrentPosition(-1);
-        }, 0);
-      } else {
-        setCurrentPosition(currentPosition + 1);
-      }
-    }
-  };
 
   return (
     <div className="navTopContainer">
       <div className="carousel">
         <div className="leftCover">
-          <i
-            className="fa-solid fa-chevron-left arrow"
-            onClick={carouselButton}
-          />
+          <i className="fa-solid fa-chevron-left arrow" />
         </div>
         <div className="slider">
           <div
@@ -102,10 +66,7 @@ function NavTopContainer() {
           </div>
         </div>
         <div className="rightCover">
-          <i
-            className="fa-solid fa-chevron-right arrow"
-            onClick={carouselButton}
-          />
+          <i className="fa-solid fa-chevron-right arrow" />
         </div>
       </div>
     </div>
@@ -114,7 +75,7 @@ function NavTopContainer() {
 
 export default NavTopContainer;
 
-const data = [
+const CAROUSEL_DATA = [
   { item: '상파울루시로 특급배송' },
   { item: '배송 옵션 및 서비스를 확인하려면 우편번호를 입력해 확인해 보세요.' },
   { item: '상파울루시로 특급배송' },

@@ -1,6 +1,6 @@
 @import '../../../../../../../styles/variables.scss';
 
-.ItemList {
+.itemList {
   @include flex(flex-start, center);
   margin: 0;
   padding: 0;
@@ -8,7 +8,7 @@
   transition: 0.2s;
 }
 
-.ItemList:hover {
+.itemList:hover {
   color: tomato;
   cursor: pointer;
 }

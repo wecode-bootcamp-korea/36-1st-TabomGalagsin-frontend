@@ -4,8 +4,6 @@
   @include colors();
   .navbar {
     @include flex(space-between, center);
-    // position: fixed;
-    // top: 20;
     padding: 1px 50px 1px 50px;
     height: 65px;
     width: 100vw;

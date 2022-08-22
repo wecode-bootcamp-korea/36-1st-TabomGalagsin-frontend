@@ -1,0 +1,107 @@
+@import '../../styles/variables.scss';
+
+.detailPage {
+  @include flex(center, center);
+  flex-direction: column;
+  border: 2px dotted black;
+  padding: 80px;
+  background-color: #fee3cb;
+
+  .container {
+    border: 2px solid pink;
+    width: 75vw;
+
+    .productNavigation {
+      @include flex(flex-start, center);
+      margin-bottom: 50px;
+      .link {
+        text-decoration: none;
+        color: black;
+
+        .bold {
+          font-weight: 600;
+        }
+      }
+    }
+
+    .middleContainer {
+      @include flex(space-between, flex-start);
+      flex-direction: row;
+
+      .leftSide {
+        @include flex(center, center);
+        border: 2px solid red;
+        width: 45vw;
+        background-color: white;
+        border-radius: 20px;
+
+        .productPicWrapper {
+          border: 2px solid blue;
+          margin: 60px;
+          width: 430px;
+          height: 430px;
+        }
+
+        .pic {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .productDetail {
+        @include flex(space-between, flex-start);
+        flex-direction: column;
+        border: 2px solid blue;
+        width: 30vw;
+
+        .status {
+          background-color: #0063ff;
+          padding: 6px;
+          border-radius: 24px;
+          color: white;
+          font-size: 0.625rem;
+          font-weight: 700;
+          text-align: center;
+          text-transform: uppercase;
+          height: 24px;
+          min-width: 39px;
+          letter-spacing: 0.03em;
+        }
+
+        .font {
+          color: #b60060;
+        }
+
+        .title {
+          font-size: 30px;
+          padding: 20px 0;
+        }
+
+        .price {
+          font-size: 23px;
+          font-weight: bolder;
+        }
+
+        .option {
+          margin: 50px 0;
+          font-weight: 700;
+          font-size: 20px;
+        }
+
+        .colourOption {
+          @include flex(space-between, flex-start);
+          height: 100px;
+
+          .selectedColour {
+            border-right: 2px solid black;
+          }
+        }
+      }
+    }
+
+    .productDesc {
+      border: 2px solid purple;
+    }
+  }
+}

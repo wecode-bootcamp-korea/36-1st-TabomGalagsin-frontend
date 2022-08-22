@@ -3,14 +3,11 @@ import ColorPallette from './ColorPallette/ColorPallette';
 import './DropdownContent.scss';
 
 function DropdownContent({ title }) {
-  return (
-    <div className="DropdownContent">
-      <h2 className="title">{title}</h2>
-      <hr />
-      {title === 'Categories' && <Categories />}
-      {title === 'Colour' && <ColorPallette />}
-    </div>
-  );
+  const titleList = {
+    Categories: <Categories />,
+    Colour: <ColorPallette />,
+  };
+  return <div className="DropdownContent">{titleList[title]}</div>;
 }
 
 export default DropdownContent;
