@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SlideState from '../../components/SlideState/SlideState.js';
 import MainText from './MainText/MainText.js';
 import BestSeller from './BestSeller/BestSeller.js';
@@ -8,6 +8,36 @@ import './Main.scss';
 
 function Main() {
   const [positionNow, setPositionNow] = useState(0);
+  const [releaseProductsList, setReleaseProductsList] = useState([]);
+  const [recommendProductsList, setRecommendProductsList] = useState([]);
+
+  const RELEASE_URI = 'http://10.58.0.192:3000/products/new';
+  const RECOMMEND_URI = 'http://10.58.0.192:3000/products/recommend';
+
+  useEffect(() => {
+    const fetchData = async (uri, setState) => {
+      try {
+        const response = await fetch(uri, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization:
+              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRzaGtAbmF2ZXIuY29tIiwiaWF0IjoxNjYwODg1OTUwfQ.95kRV0Iby1Ot_0xPoiKhgZKrZs5BnczsUwjtm-PzV4E',
+          },
+        });
+        if (!response.ok) {
+          throw new Error('서버가 이상합니다.');
+        }
+        const data = await response.json();
+        setState(Object.values(data)[0]);
+      } catch (error) {
+        throw new Error(`에러가 발생했습니다. ${error.message}`);
+      }
+    };
+
+    fetchData(RELEASE_URI, setReleaseProductsList);
+    fetchData(RECOMMEND_URI, setRecommendProductsList);
+  }, []);
 
   const mainSlideButtonClick = event => {
     event.target.className === 'previous' ||
@@ -19,6 +49,7 @@ function Main() {
       ? setPositionNow(0)
       : setPositionNow(positionNow + 1);
   };
+
   return (
     <div className={`main  ${mainSlideData[positionNow].color}`}>
       <MainText mainSlideData={mainSlideData} positionNow={positionNow} />
@@ -60,8 +91,11 @@ function Main() {
         color={mainSlideData[positionNow].color}
         textColor={mainSlideData[positionNow].textColor}
       />
-      <RecommendProducts />
-      <RecommendProducts />
+      <RecommendProducts productsList={releaseProductsList} title="Release" />
+      <RecommendProducts
+        productsList={recommendProductsList}
+        title="Recommend"
+      />
     </div>
   );
 }

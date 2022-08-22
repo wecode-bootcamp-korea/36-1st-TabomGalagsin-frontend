@@ -22,8 +22,7 @@ function Product({ description, price, imgUrl, colorList, sizeList }) {
       <p className="description">{description}</p>
       <p className="price">KRW {price}</p>
       <div className="colorPickers">
-        {colorList.map(colorObj => {
-          const color = Object.values(colorObj)[0];
+        {Object.values(colorList).map(color => {
           return (
             <button
               key={color}
@@ -36,8 +35,7 @@ function Product({ description, price, imgUrl, colorList, sizeList }) {
         })}
       </div>
       <div className="sizePickers">
-        {sizeList.map(sizeObj => {
-          let size = Object.values(sizeObj)[0];
+        {Object.values(sizeList).map(size => {
           size = size === 'null' ? '하나의' : size;
           return (
             <div key={size}>
