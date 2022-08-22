@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import './BestSeller.scss';
+import SlideState from '../../../components/SlideState/SlideState.js';
 import BestSellerCard from './BestSellerCard/BestSellerCard';
+import './BestSeller.scss';
 
-function BestSeller() {
+function BestSeller({ color, textColor }) {
   const [currentPosition, setCurrentPosition] = useState(0);
   const [transitionTime, setTransitionTime] = useState(0.3);
-  const cardSize = 22;
+  const cardSize = 21;
 
   const handleClickLeftButton = () => {
     if (currentPosition === 0) {
@@ -14,7 +15,7 @@ function BestSeller() {
       setTimeout(() => {
         setTransitionTime(0.3);
         setCurrentPosition(CARD_LIST.length - 1);
-      }, 10);
+      }, 0);
     } else {
       setCurrentPosition(prev => prev - 1);
     }
@@ -56,22 +57,30 @@ function BestSeller() {
         })}
       </div>
       <div className="slideButtonContainer">
-        <button onClick={handleClickLeftButton}>
+        <button
+          onClick={handleClickLeftButton}
+          className={color}
+          style={{ color: textColor }}
+        >
           <i className="fa-solid fa-angle-left fa-xl" />
         </button>
         <ul className="slideStateContainer">
           {CARD_LIST.map((_, idx) => {
             return (
-              <li
+              <SlideState
                 key={idx}
-                className={`slideState ${
-                  idx === currentPosition ? 'positionNow' : ''
-                }`}
+                position={idx}
+                slidePosition={currentPosition}
+                stateColor={textColor}
               />
             );
           })}
         </ul>
-        <button onClick={handleClickRightButton}>
+        <button
+          className={color}
+          style={{ color: textColor }}
+          onClick={handleClickRightButton}
+        >
           <i className="fa-solid fa-angle-right fa-xl" />
         </button>
       </div>

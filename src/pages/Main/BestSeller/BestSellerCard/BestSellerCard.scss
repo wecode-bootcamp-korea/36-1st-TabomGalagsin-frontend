@@ -8,23 +8,27 @@
     width: 100%;
     height: 100%;
     border-radius: 2rem;
+    object-fit: cover;
   }
 
   .shortCardsBox {
     .shortCard {
-      width: 20vw;
+      width: 19vw;
       height: 19rem;
-      margin: 2vw 2vw;
+      margin: 2vw 1vw;
       border-radius: 2rem;
+      box-shadow: 2px 2px #66666633;
     }
   }
 
   .longCardBox {
     .longCard {
-      width: 20vw;
-      height: 40rem;
+      width: 19vw;
+      height: 39rem;
+      margin: 0vw 1vw;
       background-color: white;
       border-radius: 2rem;
+      box-shadow: 2px 2px #66666633;
     }
   }
 }
