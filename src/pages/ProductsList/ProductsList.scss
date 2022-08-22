@@ -1,0 +1,23 @@
+@import '../../styles/variables.scss';
+
+.productsList {
+  margin: 5rem 3rem;
+
+  .listNav {
+    @include flex(space-between, center);
+
+    .breadCrumps {
+      width: 80%;
+    }
+
+    .orderContainer {
+      width: 20%;
+      text-align: end;
+    }
+  }
+
+  .filterAside {
+    width: 20%;
+    background: peru;
+  }
+}
