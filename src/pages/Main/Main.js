@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SlideState from '../../components/SlideState/SlideState.js';
 import MainText from './MainText/MainText.js';
 import BestSeller from './BestSeller/BestSeller.js';
+import Footer from '../../components/Footer/Footer.js';
 import CategorySlide from './CategorySlide/CategorySlide.js';
 import RecommendProducts from './RecommendProducts/RecommendProducts.js';
 
@@ -93,6 +94,7 @@ function Main() {
         productsList={recommendProductsList}
         title="Recommend"
       />
+      <Footer />
     </div>
   );
 }
