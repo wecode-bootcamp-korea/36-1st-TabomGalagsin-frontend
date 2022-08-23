@@ -15,17 +15,23 @@ function FilterMenu({ title, list }) {
       }}
     >
       {title}
-      {isMenuOpened &&
-        list.map(subMenu => {
-          return (
-            isMenuOpened && (
-              <div key={subMenu}>
-                <input type="checkbox" className="filter" />
-                {subMenu}
-              </div>
-            )
-          );
-        })}
+      {list.map(subMenu => {
+        return (
+          <div
+            className={`filter ${isMenuOpened ? 'active' : ''}`}
+            key={subMenu}
+          >
+            <input
+              type="checkbox"
+              className="check"
+              placeholder={subMenu}
+              value={subMenu}
+            />
+            <label for="check" />
+            {subMenu}
+          </div>
+        );
+      })}
     </div>
   );
 }
