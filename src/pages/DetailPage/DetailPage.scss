@@ -9,7 +9,7 @@
   flex-direction: column;
   border: 2px dotted black;
   padding: 170px 80px;
-  background-color: #fee3cb;
+  background-color: #ffc3d4;
 
   .container {
     // border: 2px solid pink;
@@ -39,7 +39,7 @@
         width: 45vw;
         background-color: white;
         border-radius: 20px;
-        margin-bottom: 100px;
+        margin-bottom: 1rem;
 
         .productPicWrapper {
           // border: 2px solid blue;
@@ -67,7 +67,7 @@
           padding: 6px;
           border-radius: 24px;
           color: white;
-          font-size: 0.625rem;
+          font-size: 0.7rem;
           font-weight: 700;
           text-align: center;
           text-transform: uppercase;
@@ -86,7 +86,7 @@
         .price {
           font-size: 23px;
           font-weight: bolder;
-          margin-bottom: 5rem;
+          margin-bottom: 3.9rem;
           @include font;
         }
 
@@ -97,48 +97,19 @@
         }
 
         .colourOption {
-          @include flex(space-between, flex-start);
+          @include flex(center, flex-start);
+          flex-direction: row;
           height: 100px;
-
-          .selectedColour {
-            @include flex(center, center);
-            flex-direction: column;
-            border-style: none;
-            border-right: 1px solid rgb(0 0 0 / 10%);
-            background: none;
-            cursor: pointer;
-            height: 5rem;
-            width: 3.4rem;
-
-            .circle {
-              width: 35px;
-              height: 35px;
-              background: #51f568;
-              border-radius: 100%;
-              border: 5px solid black;
-              margin: 0 0 0.2rem 0;
-            }
-          }
-        }
-        .size {
-          margin: 10px;
-          padding: 10px;
-          border-style: none;
-          border-radius: 45%;
-          width: 4rem;
-          height: 3rem;
-          border: 1px solid black;
-          cursor: pointer;
         }
 
         .addToBag {
-          background-color: green;
+          background-color: #8e8e8e;
           color: white;
           border-style: none;
           width: 100%;
           height: 3rem;
           border-radius: 20rem;
-          margin-top: 20px;
+          margin-top: 4rem;
           cursor: pointer;
           font-weight: 700;
         }
@@ -146,12 +117,18 @@
     }
 
     .productDesc {
-      margin-top: 100px;
+      // margin-top: 1rem;
 
       .font {
         @include font;
+        font-size: 2rem;
+        margin: 1.5rem 0;
+      }
+      .subFont {
+        color: black;
         font-size: 1.4rem;
-        margin: 2rem 0;
+        margin: 1rem 0;
+        line-height: 2rem;
       }
     }
   }

@@ -2,7 +2,7 @@
 
 .navBottomContainer {
   @include colors();
-  background-color: #fee3cb;
+  background-color: #ffc3d4;
 
   .navbar {
     @include flex(space-between, center);
