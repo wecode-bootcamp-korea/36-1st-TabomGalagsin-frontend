@@ -1,0 +1,8 @@
+@import '../../../../../../styles/variables.scss';
+
+.colorPalette {
+  .colorBoxContainer {
+    @include flex(space-around, space-around);
+    flex-direction: row;
+  }
+}

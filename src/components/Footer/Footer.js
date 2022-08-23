@@ -28,7 +28,6 @@ function Footer() {
         })}
       </div>
       <footer className="footerInfo">
-        {/* <hr /> */}
         <div className="icons">
           <img src="/images/footer/icon-instagram.png" alt="linkIcon" />
           <img src="/images/footer/icon-facebook.png" alt="linkIcon" />
