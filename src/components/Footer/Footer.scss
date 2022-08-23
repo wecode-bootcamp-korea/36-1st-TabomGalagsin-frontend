@@ -1,7 +1,8 @@
 @import '../../styles/variables.scss';
 
 .footer {
-  width: 90vw;
+  max-width: 1140px;
+  width: 84vw;
   margin-top: 5rem;
 
   .menuContainer {
@@ -38,7 +39,9 @@
 
     li {
       max-width: 80%;
-      margin: 1rem 0rem;
+      // margin: 1rem 0rem;
+      line-height: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     a {
@@ -49,6 +52,7 @@
 
   .footerInfo {
     font-size: small;
+    border-top: 1px solid #00000033;
 
     .icons {
       @include flex(flex-end, center);
@@ -66,8 +70,10 @@
     }
 
     .infos {
+      margin-bottom: 5rem;
+
       p {
-        margin: 1rem 2rem;
+        margin: 1rem 0;
         line-height: 1rem;
       }
 

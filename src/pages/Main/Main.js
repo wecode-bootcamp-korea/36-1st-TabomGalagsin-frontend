@@ -2,14 +2,11 @@ import React, { useEffect, useState } from 'react';
 import SlideState from '../../components/SlideState/SlideState.js';
 import MainText from './MainText/MainText.js';
 import BestSeller from './BestSeller/BestSeller.js';
-<<<<<<< HEAD
 import Footer from '../../components/Footer/Footer.js';
-=======
 import CategorySlide from './CategorySlide/CategorySlide.js';
 import RecommendProducts from './RecommendProducts/RecommendProducts.js';
 
 import { API } from '../../config.js';
->>>>>>> main
 import './Main.scss';
 
 function Main() {
@@ -84,10 +81,6 @@ function Main() {
           <i className="fa-solid fa-angle-right fa-xl" />
         </button>
       </div>
-<<<<<<< HEAD
-      <BestSeller />
-      <Footer />
-=======
       <CategorySlide
         color={mainSlideData[positionNow].color}
         textColor={mainSlideData[positionNow].textColor}
@@ -101,7 +94,7 @@ function Main() {
         productsList={recommendProductsList}
         title="Recommend"
       />
->>>>>>> main
+      <Footer />
     </div>
   );
 }
