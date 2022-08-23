@@ -2,14 +2,23 @@
 
 .productsList {
   width: 100vw;
-  margin: 0 auto;
+  margin: 5rem 0 auto;
   background-color: #ffc3d4;
 
+  .bold {
+    font-weight: 600;
+  }
+
   .productsListContainer {
-    margin: 0rem 3rem;
+    width: 880px;
+    min-width: 880px;
+    margin: 0rem auto;
     padding: 5rem 0rem;
     .listNav {
       @include flex(space-between, center);
+      width: 880px;
+      min-width: 880px;
+      margin-bottom: 2rem;
 
       .breadCrumps {
         width: 80%;
@@ -18,36 +27,71 @@
       .orderContainer {
         width: 20%;
         text-align: end;
+
+        .orderBtn {
+          border: 1px solid black;
+          border-radius: 1rem;
+          padding: 0.2rem 1rem;
+          margin-left: 1rem;
+        }
+      }
+
+      .orderSelector {
+        position: absolute;
+        margin-top: 1rem;
+        transform: translateX(-20px);
+        width: 230px;
+        height: 230px;
+        background-color: white;
+        z-index: 999;
+        border-radius: 1rem;
+
+        .selectorHeader {
+          @include flex(space-between, center);
+          margin: 1rem 1rem;
+          padding: 1rem 0 2rem 0;
+          font-weight: 500;
+          border-bottom: 1px solid #99999999;
+
+          .orderTitle {
+            @include flex(center, center);
+
+            img {
+              display: block;
+              width: 0.8rem;
+              height: 0.8rem;
+              transform: rotate(90deg);
+              margin-right: 0.5rem;
+            }
+          }
+        }
+
+        .radioSelector {
+          @include flex(flex-start, flex-start);
+          flex-direction: column;
+          margin: 1rem;
+          font-weight: 500;
+
+          li {
+            padding: 0.5rem;
+          }
+
+          input {
+            accent-color: #b60060;
+          }
+        }
       }
     }
 
     .productsContainer {
       @include flex(center, flex-start);
+
       .filterAside {
         height: 50rem;
         color: #b60060;
         font-size: 1.1rem;
         font-weight: 500;
         transition: all 0.5s;
-
-        .filterMenu {
-          transition: all 0.5s;
-          overflow: hidden;
-
-          .filter {
-            height: 0px;
-            font-size: 1rem;
-            font-weight: 400;
-            transition: all 0.5s;
-            position: relative;
-            min-width: 130px;
-          }
-
-          .active {
-            height: 20px;
-            transition: all 0.5s;
-          }
-        }
       }
 
       .listContainer {
@@ -57,6 +101,16 @@
         min-width: 880px;
         position: relative;
       }
+    }
+  }
+
+  .productNavigation {
+    @include flex(flex-start, center);
+
+    .link {
+      text-decoration: none;
+      color: black;
+      margin: 0 10px;
     }
   }
 }

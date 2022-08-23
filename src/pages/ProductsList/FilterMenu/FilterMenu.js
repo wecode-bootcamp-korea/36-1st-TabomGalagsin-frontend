@@ -4,18 +4,18 @@ import './FilterMenu.scss';
 function FilterMenu({ title, list }) {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
 
+  const handleClickOpenBtn = e => setIsMenuOpened(prev => !prev);
+
   return (
-    <div
-      key={title}
-      className="filterMenu"
-      onClick={e => {
-        if (e.target.className === 'filterMenu') {
-          setIsMenuOpened(!isMenuOpened);
-        }
-      }}
-    >
-      {title}
-      <i class={`fa-solid fa-chevron-up ${isMenuOpened ? 'activeIcon' : ''}`} />
+    <div key={title} className={`filterMenu ${isMenuOpened ? 'openMenu' : ''}`}>
+      <div onClick={handleClickOpenBtn} className="filterTitleContainer">
+        <span className="filterTitle">{title}</span>
+        <i
+          className={`fa-solid fa-chevron-up ${
+            isMenuOpened ? 'open' : 'close'
+          }`}
+        />
+      </div>
       {list.map(subMenu => {
         return (
           <div
@@ -29,8 +29,8 @@ function FilterMenu({ title, list }) {
               value={subMenu}
             />
             <label htmlFor="check" />
-            <span className="checkNonSelect" />
-            {subMenu}
+            {/* <div className="alterCheckBox" /> */}
+            <span>{subMenu}</span>
           </div>
         );
       })}

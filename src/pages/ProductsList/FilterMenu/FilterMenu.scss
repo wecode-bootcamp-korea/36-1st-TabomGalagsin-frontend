@@ -1,20 +1,56 @@
-.filterMenu {
-  .activeIcon {
-    animation-name: rotate;
-    animation: rotate 1s ease-in 1 1s;
-    animation-iteration-count: 1;
-  }
-}
+@import '../../../styles/variables.scss';
 
-@keyframes rotate {
-  from {
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
+.filterMenu {
+  line-height: 2rem;
+  transition: all 0.2s;
+  overflow: hidden;
+
+  &.openMenu {
+    margin-bottom: 2rem;
   }
-  to {
-    -webkit-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
+
+  .filterTitleContainer {
+    @include flex(space-around, center);
+    cursor: pointer;
+
+    .filterTitle {
+      display: inline-block;
+      width: 100%;
+      text-align: left;
+      pointer-events: none;
+    }
+  }
+
+  .filter {
+    height: 0px;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: all 0.5s;
+    min-width: 130px;
+    line-height: 2rem;
+    transition: all 0.5s;
+
+    span {
+      pointer-events: none;
+    }
+
+    .check {
+      accent-color: #b60060;
+    }
+  }
+
+  .open {
+    transform: rotate(0deg);
+    transition: all 0.2s;
+  }
+
+  .active {
+    height: 30px;
+    transition: all 0.5s;
+  }
+
+  .close {
     transform: rotate(180deg);
+    transition: all 0.2s;
   }
 }
