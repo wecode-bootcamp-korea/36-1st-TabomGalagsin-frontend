@@ -1,8 +1,36 @@
+import { useEffect, useState } from 'react';
 import Product from '../../components/Product/Product.js';
+import { API } from '../../config.js';
 import FilterMenu from './FilterMenu/FilterMenu.js';
 import './ProductsList.scss';
 
 function ProductsList() {
+  const [productsList, setProductsList] = useState();
+
+  useEffect(() => {
+    const fetchData = async (uri, setState) => {
+      try {
+        const response = await fetch(uri, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        if (!response.ok) {
+          throw new Error('서버가 이상합니다.');
+        }
+        const data = await response.json();
+        setState(Object.values(data)[0]);
+      } catch (error) {
+        throw new Error(`에러가 발생했습니다. ${error.message}`);
+      }
+    };
+
+    fetchData(API.PRODUCTS, setProductsList);
+  }, []);
+
+  console.log(productsList);
+
   return (
     <div className="productsList">
       <div className="productsListContainer">
@@ -18,27 +46,21 @@ function ProductsList() {
             })}
           </aside>
           <section className="listContainer">
-            {ProductComponents.map(({ title, img }) => (
-              <div key={title} className="card">
-                {title} {img}
-              </div>
-              //  {productsList &&
-              //   productsList.map(product => {
-              //     const { productId, name, price, thumbnailUrl, color, size } =
-              //       product;
-              //     return (
-              //       <Product
-              //         key={productId}
-              //         productName={name}
-              //         price={price}
-              //         imgUrl={thumbnailUrl}
-              //         colorList={color}
-              //         sizeList={size}
-              //       />
-              //     );
-              //   })}
-            ))}
-            list
+            {productsList &&
+              productsList.map(product => {
+                const { productId, name, price, thumbnailUrl, color, size } =
+                  product;
+                return (
+                  <Product
+                    key={productId}
+                    productName={name}
+                    price={price}
+                    imgUrl={thumbnailUrl}
+                    colorList={color}
+                    sizeList={size}
+                  />
+                );
+              })}
           </section>
         </main>
       </div>

@@ -27,7 +27,8 @@ function FilterMenu({ title, list }) {
               placeholder={subMenu}
               value={subMenu}
             />
-            <label for="check" />
+            <label htmlFor="check" />
+            <span className="checkNonSelect" />
             {subMenu}
           </div>
         );

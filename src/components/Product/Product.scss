@@ -9,30 +9,13 @@
   line-height: 1.25rem;
   transition: all 0.2s ease-in;
   border-radius: 1rem;
-
-  .colorPickers {
-    button {
-      display: none;
-    }
-    transition: all 0.2s ease-out;
-  }
-
-  .sizePickers {
-    button {
-      display: none;
-    }
-    transition: all 0.2s ease-out;
-  }
-
-  .cartBtn {
-    display: none;
-    transition: all 0.2s ease-out;
-  }
+  position: relative;
 
   &:hover {
     background-color: white;
     border-radius: 1rem;
     transition: all 0.2s ease-out;
+    z-index: 100;
 
     button {
       display: inline;
@@ -85,6 +68,25 @@
       background-color: blue;
       transform: scale(1.1);
     }
+  }
+
+  .colorPickers {
+    button {
+      display: none;
+    }
+    transition: all 0.2s ease-out;
+  }
+
+  .sizePickers {
+    button {
+      display: none;
+    }
+    transition: all 0.2s ease-out;
+  }
+
+  .cartBtn {
+    display: none;
+    transition: all 0.2s ease-out;
   }
 
   .tagContainer {
