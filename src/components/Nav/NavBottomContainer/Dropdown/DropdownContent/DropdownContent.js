@@ -8,7 +8,12 @@ function DropdownContent({ title }) {
     Colour: <ColorPallette />,
   };
 
-  return <div className="dropdownContent">{titleList[title]}</div>;
+  return (
+    <div className="dropdownContent">
+      <p className="title">{title}</p>
+      {titleList[title]}
+    </div>
+  );
 }
 
 export default DropdownContent;

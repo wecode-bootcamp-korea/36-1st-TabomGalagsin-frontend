@@ -10,9 +10,9 @@ function DetailPage() {
         <div className="container">
           <div className="productNavigation">
             <Link to="/" className="link">
-              Main page &nbsp;&nbsp;&nbsp;
+              Main page
             </Link>
-            <span> >&nbsp;&nbsp;&nbsp;</span>
+            <span>></span>
             <Link to="/" className="link bold">
               <span className="bold">Flipflops</span>
             </Link>

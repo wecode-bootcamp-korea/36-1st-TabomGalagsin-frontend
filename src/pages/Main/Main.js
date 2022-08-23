@@ -51,7 +51,7 @@ function Main() {
 
   return (
     <>
-      <Nav />
+      <Nav color={mainSlideData[positionNow].color} />
       <div className={`main  ${mainSlideData[positionNow].color}`}>
         <MainText mainSlideData={mainSlideData} positionNow={positionNow} />
         <div className="buttonContainer">
