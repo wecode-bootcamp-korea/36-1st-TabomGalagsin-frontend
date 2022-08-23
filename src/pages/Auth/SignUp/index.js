@@ -5,31 +5,31 @@ function SignupInput() {
     <form className="signup-content">
       <div className="email-form">
         <label className="form-label">
-          이메일
+          <font className="label-font">이메일</font>
           <input name="email" className="input-email" />
         </label>
       </div>
       <div className="name-form">
         <label className="form-label">
-          이름
+          <font className="label-font">이름</font>
           <input name="name" className="input-name" />
         </label>
       </div>
       <div className="nickname-form">
         <label className="form-label">
-          닉네임
+          <font className="label-font">닉네임</font>
           <input name="nickname" className="input-nickname" />
         </label>
       </div>
       <div className="address-form">
         <label className="form-label">
-          주소
+          <font className="label-font">주소</font>
           <input name="address" className="input-address" />
         </label>
       </div>
       <div className="passsword-form">
         <label className="form-label">
-          비밀번호
+          <font className="label-font">비밀번호</font>
           <input name="password" type="password" className="input-password" />
         </label>
       </div>

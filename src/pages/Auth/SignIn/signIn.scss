@@ -8,15 +8,22 @@ input {
   outline-style: none;
 }
 
-.passsword-form {
-  margin-bottom: 15px;
-  margin-top: 15px;
+.form-label {
+  position: relative;
 }
 
-.form-label {
+.passsword-form {
+  margin-bottom: 15px;
+}
+
+.label-font {
   font-size: 14px;
+  height: 18px;
   color: gray;
-  margin: 0 0 0 18px;
+  letter-spacing: 0.03em;
+  position: absolute;
+  top: -20px;
+  background-color: #fee3cb;
 }
 
 .login-btn {

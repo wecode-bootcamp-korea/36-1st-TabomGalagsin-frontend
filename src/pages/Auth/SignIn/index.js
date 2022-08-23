@@ -21,11 +21,6 @@ function LoginInput() {
     }
   };
 
-  const idate =
-    inputs.email.indexOf('@') !== -1 &&
-    inputs.email.length >= 6 &&
-    inputs.password.length >= 5;
-
   const handleSubmit = e => {
     e.preventDefault();
   };
@@ -34,7 +29,7 @@ function LoginInput() {
     <form className="login-content" onSubmit={handleSubmit}>
       <div className="email-form">
         <label className="form-label">
-          이메일
+          <font className="label-font">이메일</font>
           <input
             name="email"
             onChange={handleInput}
@@ -46,10 +41,9 @@ function LoginInput() {
           <span>{IsValidate()}</span>
         </div>
       </div>
-
       <div className="passsword-form">
         <label className="form-label">
-          비밀번호
+          <font className="label-font">비밀번호</font>
           <input
             name="password"
             onChange={handleInput}
