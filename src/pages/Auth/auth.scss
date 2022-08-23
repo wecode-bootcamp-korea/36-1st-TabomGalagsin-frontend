@@ -1,38 +1,38 @@
-.login-field {
+.loginField {
   display: flex;
   justify-content: center;
-  background-color: #fee3cb;
+  background-color: #ffc3d4;
   height: 1000px;
 
-  .login-box {
+  .loginBox {
     width: 447px;
     height: 600px;
     margin-top: 300px;
+
+    .loginNav {
+      display: flex;
+      list-style: none;
+      height: 50px;
+
+      .navItem {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0 8px;
+        color: #646464;
+        letter-spacing: 0.03em;
+
+        &:hover {
+          color: #b60060;
+          cursor: pointer;
+          padding-bottom: 20px;
+          font-weight: 900;
+        }
+
+        &:hover font {
+          font-size: 20px;
+          font-weight: 500;
+        }
+      }
+    }
   }
-}
-
-.login-nav {
-  display: flex;
-  list-style: none;
-  height: 50px;
-}
-
-.nav-item {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0 8px;
-  color: #646464;
-  letter-spacing: 0.03em;
-}
-
-.nav-item:hover {
-  color: #b60060;
-  cursor: pointer;
-  padding-bottom: 20px;
-  font-weight: 900;
-}
-
-font {
-  font-size: 20px;
-  font-weight: 500;
 }
