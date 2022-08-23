@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
-import Product from '../../components/Product/Product.js';
 import { API } from '../../config.js';
+import Product from '../../components/Product/Product.js';
 import FilterMenu from './FilterMenu/FilterMenu.js';
+import Footer from '../../components/Footer/Footer.js';
 import './ProductsList.scss';
 
 function ProductsList() {
   const [productsList, setProductsList] = useState();
+  const backgroudColor = 'brown';
 
   useEffect(() => {
     const fetchData = async (uri, setState) => {
@@ -29,8 +31,6 @@ function ProductsList() {
     fetchData(API.PRODUCTS, setProductsList);
   }, []);
 
-  console.log(productsList);
-
   return (
     <div className="productsList">
       <div className="productsListContainer">
@@ -47,12 +47,13 @@ function ProductsList() {
           </aside>
           <section className="listContainer">
             {productsList &&
-              productsList.map(product => {
+              productsList.map((product, idx) => {
                 const { productId, name, price, thumbnailUrl, color, size } =
                   product;
                 return (
                   <Product
                     key={productId}
+                    dataArrIdx={idx}
                     productName={name}
                     price={price}
                     imgUrl={thumbnailUrl}
@@ -64,6 +65,7 @@ function ProductsList() {
           </section>
         </main>
       </div>
+      <Footer backgroudColor={backgroudColor} />
     </div>
   );
 }
@@ -77,13 +79,4 @@ const MENU_LIST = [
     title: '사이즈',
     list: ['Free(Man)', 'Free(Woman)', 'One'],
   },
-];
-
-const ProductComponents = [
-  { title: 'title 1', img: 'img 1' },
-  { title: 'title 2', img: 'img 2' },
-  { title: 'title 3', img: 'img 3' },
-  { title: 'title 4', img: 'img 4' },
-  { title: 'title 5', img: 'img 5' },
-  { title: 'title 6', img: 'img 6' },
 ];

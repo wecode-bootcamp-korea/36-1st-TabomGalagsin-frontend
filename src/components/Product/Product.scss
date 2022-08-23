@@ -1,21 +1,41 @@
 @import '../../styles/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 .product {
+  font-family: 'Roboto', sans-serif;
   @include flex(null, center);
   flex-direction: column;
   width: 12rem;
-  padding: 1rem;
-  margin: 0 1rem;
+  padding: 1rem 1rem;
+  margin: 0rem 1rem 1rem;
   line-height: 1.25rem;
   transition: all 0.2s ease-in;
   border-radius: 1rem;
-  position: relative;
+
+  .colorPickers {
+    button {
+      display: none;
+    }
+    transition: all 0.2s ease-out;
+  }
+
+  .sizePickers {
+    button {
+      display: none;
+    }
+    transition: all 0.2s ease-out;
+  }
+
+  .cartBtn {
+    display: none;
+    transition: all 0.2s ease-out;
+  }
 
   &:hover {
     background-color: white;
     border-radius: 1rem;
     transition: all 0.2s ease-out;
-    z-index: 100;
+    z-index: 101;
 
     button {
       display: inline;
@@ -69,25 +89,7 @@
       transform: scale(1.1);
     }
   }
-
-  .colorPickers {
-    button {
-      display: none;
-    }
-    transition: all 0.2s ease-out;
-  }
-
-  .sizePickers {
-    button {
-      display: none;
-    }
-    transition: all 0.2s ease-out;
-  }
-
-  .cartBtn {
-    display: none;
-    transition: all 0.2s ease-out;
-  }
+  // 여기
 
   .tagContainer {
     width: 100%;
@@ -110,6 +112,8 @@
   }
 
   .description {
+    width: 100%;
+    text-align: left;
     font-weight: 500;
     margin: 0.5rem 0;
   }
@@ -117,5 +121,129 @@
   .price {
     width: 100%;
     font-weight: bolder;
+  }
+}
+
+.product {
+  &_col0_row0 {
+    position: absolute;
+    top: 0;
+    left: 2rem;
+  }
+
+  &_col1_row0 {
+    position: absolute;
+    top: 0;
+    left: 16rem;
+  }
+
+  &_col2_row0 {
+    position: absolute;
+    top: 0;
+    left: 30rem;
+  }
+
+  &_col0_row1 {
+    position: absolute;
+    top: 20rem;
+    left: 2rem;
+  }
+
+  &_col1_row1 {
+    position: absolute;
+    top: 20rem;
+    left: 16rem;
+  }
+
+  &_col2_row1 {
+    position: absolute;
+    top: 20rem;
+    left: 30rem;
+  }
+
+  &_col0_row2 {
+    position: absolute;
+    top: 40rem;
+    left: 2rem;
+  }
+
+  &_col1_row2 {
+    position: absolute;
+    top: 40rem;
+    left: 16rem;
+  }
+
+  &_col2_row2 {
+    position: absolute;
+    top: 40rem;
+    left: 30rem;
+  }
+
+  &_col0_row3 {
+    position: absolute;
+    top: 60rem;
+    left: 2rem;
+  }
+
+  &_col1_row3 {
+    position: absolute;
+    top: 60rem;
+    left: 16rem;
+  }
+
+  &_col2_row3 {
+    position: absolute;
+    top: 60rem;
+    left: 30rem;
+  }
+
+  &_col0_row4 {
+    position: absolute;
+    top: 80rem;
+    left: 2rem;
+  }
+
+  &_col1_row4 {
+    position: absolute;
+    top: 80rem;
+    left: 16rem;
+  }
+
+  &_col2_row4 {
+    position: absolute;
+    top: 80rem;
+    left: 30rem;
+  }
+
+  &_col0_row5 {
+    position: absolute;
+    top: 100rem;
+    left: 2rem;
+  }
+  &_col1_row5 {
+    position: absolute;
+    top: 100rem;
+    left: 16rem;
+  }
+  &_col2_row5 {
+    position: absolute;
+    top: 100rem;
+    left: 30rem;
+  }
+
+  &_col0_row6 {
+    position: absolute;
+    top: 120rem;
+    left: 2rem;
+  }
+  &_col1_row6 {
+    position: absolute;
+    top: 120rem;
+    left: 16rem;
+  }
+  &_col2_row6 {
+    position: absolute;
+    top: 120rem;
+    left: 30rem;
   }
 }

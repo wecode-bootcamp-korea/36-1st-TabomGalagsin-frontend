@@ -2,10 +2,8 @@
 
 .productsList {
   width: 100vw;
-  max-width: 1140px;
-  height: 100vh;
   margin: 0 auto;
-  background-color: #fee3cb;
+  background-color: #ffc3d4;
 
   .productsListContainer {
     margin: 0rem 3rem;
@@ -24,11 +22,8 @@
     }
 
     .productsContainer {
-      display: grid;
-      grid-template-columns: 10rem auto;
-
+      @include flex(center, flex-start);
       .filterAside {
-        background: peru;
         height: 50rem;
         color: #b60060;
         font-size: 1.1rem;
@@ -45,6 +40,7 @@
             font-weight: 400;
             transition: all 0.5s;
             position: relative;
+            min-width: 130px;
           }
 
           .active {
@@ -57,10 +53,9 @@
       .listContainer {
         @include flex(space-around, space-around);
         flex-wrap: wrap;
-        // display: grid;
-        // grid-template-columns: 1fr 1fr 1fr;
-        // grid-template-rows: 1fr 1fr;
-        // height: 50rem;
+        width: 880px;
+        min-width: 880px;
+        position: relative;
       }
     }
   }

@@ -1,8 +1,9 @@
 import './Footer.scss';
 
-function Footer() {
+function Footer({ backgroudColor }) {
+  console.log(backgroudColor);
   return (
-    <div className="footer">
+    <div className={`footer ${backgroudColor}`}>
       <div className="menuContainer">
         {MENU_LIST.map(({ title, iconSrc, detailedMenus }) => {
           return (
@@ -28,7 +29,6 @@ function Footer() {
         })}
       </div>
       <footer className="footerInfo">
-        {/* <hr /> */}
         <div className="icons">
           <img src="/images/footer/icon-instagram.png" alt="linkIcon" />
           <img src="/images/footer/icon-facebook.png" alt="linkIcon" />

@@ -15,6 +15,7 @@ function FilterMenu({ title, list }) {
       }}
     >
       {title}
+      <i class={`fa-solid fa-chevron-up ${isMenuOpened ? 'activeIcon' : ''}`} />
       {list.map(subMenu => {
         return (
           <div
