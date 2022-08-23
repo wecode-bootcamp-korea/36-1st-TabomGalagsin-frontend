@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 .cart {
-  padding-top: 50px;
+  padding-top: 140px;
+  background-color: #fee3cb;
 
   .cartMain {
     @include flex(center, flex-start);
@@ -108,7 +109,7 @@
 
         button {
           margin: 0 25px;
-          background-color: #ffffff;
+          background-color: #fee3cb;
           border: none;
           color: #ff0000;
         }
@@ -119,7 +120,7 @@
       @include flex(center, center);
       width: 100%;
 
-      button {
+      .buyingSubmit {
         margin: 20px;
         padding: 15px;
         width: 90%;

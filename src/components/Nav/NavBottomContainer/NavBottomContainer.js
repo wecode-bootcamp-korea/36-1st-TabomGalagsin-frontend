@@ -22,13 +22,9 @@ function NavBottomContainer({ color }) {
           <div className="navIconWrap">
             <i className="fa-solid fa-user navIcon" />
           </div>
-          <div
-            className="navIconWrap"
-            onMouseEnter={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(true)}
-          >
+          <div className="navIconWrap" onMouseOver={() => setIsHover(true)}>
             <i className="fa-solid fa-basket-shopping navIcon" />
-            {isHover ? <NavCart /> : null}
+            {isHover ? <NavCart onMouse={setIsHover} /> : null}
           </div>
         </div>
       </div>

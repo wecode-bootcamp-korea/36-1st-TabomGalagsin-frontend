@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import CartProduct from './CartProduct/CartProduct';
 import CartSlideState from './CartSlideState/CartSlideState';
 import RecommendProduct from './RecommendProduct/RecommendProduct.js';
+import Nav from '../../components/Nav/Nav.js';
+import CartFooter from '../Cart/CartFooter/CartFooter.js';
 import './Cart.scss';
 
 function Cart() {
@@ -58,7 +60,7 @@ function Cart() {
 
   return (
     <>
-      {/*  <Nav /> */}
+      <Nav />
       <main className="cart">
         <article className="cartMain">
           <section className="cartProductslist">
@@ -148,7 +150,7 @@ function Cart() {
           </aside>
         </article>
       </main>
-      {/*  <Footer /> */}
+      <CartFooter />
     </>
   );
 }

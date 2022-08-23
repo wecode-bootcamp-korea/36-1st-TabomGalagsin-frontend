@@ -1,0 +1,39 @@
+@import '../../../styles/variables.scss';
+.cartFooter {
+  @include flex(center, center);
+  flex-direction: column;
+  background-color: #fee3cb;
+  .footerInfo {
+    max-width: 1140px;
+    font-size: small;
+    border-top: 1px solid #00000033;
+
+    .icons {
+      @include flex(flex-end, center);
+
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin: 1rem 0.5rem;
+      }
+
+      .github {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
+    }
+
+    .infos {
+      padding-bottom: 5rem;
+
+      p {
+        margin: 1rem 0;
+        line-height: 1rem;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -1,15 +1,18 @@
 @import '../../styles/variables.scss';
 
 .footer {
-  max-width: 1140px;
-  width: 84vw;
-  margin-top: 5rem;
+  @include flex(center, center);
+  flex-direction: column;
+  background-color: #fee3cb;
+  width: 100vw;
+  padding-top: 5rem;
 
   .menuContainer {
     @include flex(space-evenly, null);
     padding: 1rem;
     margin: 0.5rem;
     position: relative;
+    max-width: 1140px;
 
     .menu {
       width: 100%;
@@ -50,6 +53,7 @@
   }
 
   .footerInfo {
+    max-width: 1140px;
     font-size: small;
     border-top: 1px solid #00000033;
 
@@ -69,7 +73,7 @@
     }
 
     .infos {
-      margin-bottom: 5rem;
+      padding-bottom: 5rem;
 
       p {
         margin: 1rem 0;

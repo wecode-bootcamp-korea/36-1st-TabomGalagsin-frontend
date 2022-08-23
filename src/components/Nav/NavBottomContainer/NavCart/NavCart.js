@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import NavCartProduct from '../NavCart/NavCartProduct/NavCartProduct.js';
 import './NavCart.scss';
 
-function NavCart() {
+function NavCart({ onMouse }) {
+  const navigate = useNavigate();
   const [productListData, setProductListData] = useState(productListDataPast);
   const [summaryPrice, setSummaryPrice] = useState(
     productListData.reduce((acc, cur) => (acc += cur.price), 0)
@@ -12,7 +14,11 @@ function NavCart() {
   };
 
   return (
-    <div className="navCart">
+    <div
+      className="navCart"
+      onMouseLeave={() => onMouse(false)}
+      onMouseOver={() => onMouse(true)}
+    >
       <div className="cartSummary">
         <div className="cartSummaryHeader">장바구니</div>
         <div className="cartSummaryProducts">
@@ -39,10 +45,12 @@ function NavCart() {
       </div>
       <div className="cartResult">
         <div className="cartResultTextContainer">
-          <div className="cartResultText" />
-          <div className="cartResultPrice" />
+          <div className="cartResultText">총 금액</div>
+          <div className="cartResultPrice">BRL 220.0</div>
         </div>
-        <div className="cartResultSubmit" />
+        <button className="cartResultSubmit" onClick={() => navigate('/cart')}>
+          구매하기
+        </button>
       </div>
     </div>
   );
