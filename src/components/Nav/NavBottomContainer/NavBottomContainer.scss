@@ -14,23 +14,30 @@
     font-size: 35px;
     z-index: 1;
 
-    .navIcon {
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-
-      &:hover {
-        transform: scale(1.2, 1.2);
-      }
-    }
-
     .menu {
       padding: 20px;
     }
 
     .iconLeftSide {
-      @include flex(space-between, null);
-      width: 70px;
+      @include flex(space-between, center);
+      width: 100px;
+      height: 100%;
+      .navIconWrap {
+        @include flex(center, center);
+        width: 100px;
+        height: 100%;
+        position: relative;
+        .navIcon {
+          color: white;
+          font-size: 20px;
+          cursor: pointer;
+          position: relative;
+
+          &:hover {
+            transform: scale(1.2, 1.2);
+          }
+        }
+      }
     }
 
     .logo {

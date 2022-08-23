@@ -1,0 +1,38 @@
+@import '/src/styles/variables.scss';
+
+.navCart {
+  position: absolute;
+  top: 65px;
+  right: 100px;
+  width: 450px;
+  height: 360px;
+  background-color: #ffffff;
+  .cartSummary {
+    @include flex(center, center);
+    flex-direction: column;
+    .cartSummaryHeader {
+      @include flex(flex-start, center);
+      width: 100%;
+      font-size: 20px;
+      color: black;
+      margin: 20px 0;
+      font-weight: 600;
+      padding-left: 30px;
+    }
+    .cartSummaryProducts {
+      height: 220px;
+      overflow-y: scroll;
+      border-bottom: 1px solid rgb(177, 177, 177);
+    }
+  }
+  .cartResult {
+    .cartResultTextContainer {
+      .cartResultText {
+      }
+      .cartResultPrice {
+      }
+    }
+    .cartResultSubmit {
+    }
+  }
+}
