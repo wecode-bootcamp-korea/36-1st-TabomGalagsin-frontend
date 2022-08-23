@@ -1,6 +1,6 @@
 @import '../../../../../../styles/variables.scss';
 
-.Categories {
+.categories {
   @include flex(space-between, null);
 
   .categoryImg {

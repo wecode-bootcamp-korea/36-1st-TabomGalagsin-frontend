@@ -1,0 +1,84 @@
+@import '../../styles/variables.scss';
+
+.footer {
+  max-width: 1140px;
+  width: 84vw;
+  margin-top: 5rem;
+
+  .menuContainer {
+    @include flex(space-evenly, null);
+    padding: 1rem;
+    margin: 0.5rem;
+    position: relative;
+
+    .menu {
+      width: 100%;
+      margin: 0rem 0.5rem;
+      padding: 0rem 0.5rem;
+    }
+
+    .title {
+      @include flex(flex-start, center);
+      width: 100%;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .menuIcon {
+      display: inline;
+      width: 1rem;
+      height: 1rem;
+      position: absolute;
+      transform: translateX(-1.2rem);
+    }
+
+    .chevron {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    li {
+      max-width: 80%;
+      line-height: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+  }
+
+  .footerInfo {
+    font-size: small;
+    border-top: 1px solid #00000033;
+
+    .icons {
+      @include flex(flex-end, center);
+
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin: 1rem 0.5rem;
+      }
+
+      .github {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
+    }
+
+    .infos {
+      margin-bottom: 5rem;
+
+      p {
+        margin: 1rem 0;
+        line-height: 1rem;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+    }
+  }
+}

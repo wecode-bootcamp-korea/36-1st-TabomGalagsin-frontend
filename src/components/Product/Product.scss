@@ -1,0 +1,119 @@
+@import '../../styles/variables.scss';
+
+.product {
+  @include flex(null, center);
+  flex-direction: column;
+  width: 12rem;
+  padding: 1rem;
+  margin: 0 1rem;
+  line-height: 1.25rem;
+  transition: all 0.2s ease-in;
+  border-radius: 1rem;
+
+  .colorPickers {
+    button {
+      display: none;
+    }
+    transition: all 0.2s ease-out;
+  }
+
+  .sizePickers {
+    button {
+      display: none;
+    }
+    transition: all 0.2s ease-out;
+  }
+
+  .cartBtn {
+    display: none;
+    transition: all 0.2s ease-out;
+  }
+
+  &:hover {
+    background-color: white;
+    border-radius: 1rem;
+    transition: all 0.2s ease-out;
+
+    button {
+      display: inline;
+      height: 1.5rem;
+      margin: 0 0.2rem;
+      border: 1px solid black;
+      border-radius: 1rem;
+      background-color: white;
+    }
+
+    .colorPickers {
+      @include flex(flex-start, center);
+      width: 100%;
+      margin-top: 1rem;
+
+      button {
+        width: 1.5rem;
+      }
+
+      .active {
+        border: 2px solid black;
+        transition: all 0.2s;
+        transform: scale(1.25);
+      }
+    }
+
+    .sizePickers {
+      @include flex(flex-start, center);
+      width: 100%;
+      margin-top: 1rem;
+
+      .active {
+        border: 2px solid black;
+        transition: all 0.2s;
+        transform: scale(1.25);
+      }
+    }
+
+    .cartBtn {
+      width: 100%;
+      margin-top: 1.5rem;
+      padding: 0rem 1rem;
+      border: none;
+      border-radius: 2rem;
+      background-color: grey;
+      color: white;
+    }
+
+    .enabledBtn {
+      background-color: blue;
+      transform: scale(1.1);
+    }
+  }
+
+  .tagContainer {
+    width: 100%;
+    display: flex;
+  }
+
+  .young {
+    padding: 0.2rem;
+    margin: 0.2rem;
+    border-radius: 1rem;
+    background-color: blue;
+    color: white;
+    font-weight: 500;
+  }
+
+  img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 1rem;
+  }
+
+  .description {
+    font-weight: 500;
+    margin: 0.5rem 0;
+  }
+
+  .price {
+    width: 100%;
+    font-weight: bolder;
+  }
+}

@@ -1,0 +1,34 @@
+@import '../../../styles/variables.scss';
+
+.recommendProducts {
+  width: 84vw;
+  @include flex(center, center);
+  flex-direction: column;
+
+  .header {
+    @include flex(space-around, center);
+    width: 100%;
+    margin: 3rem;
+    font-size: 3rem;
+    font-weight: bold;
+
+    .linkButton {
+      padding: 1rem 1.5rem;
+      border-style: none;
+      border-radius: 2rem;
+      color: white;
+      background-color: #5f0081;
+      font-size: 1rem;
+      font-weight: 500;
+
+      i {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .carouselContainer {
+    @include flex(center, null);
+    width: 100%;
+  }
+}

@@ -3,9 +3,10 @@
 .navBottomContainer {
   @include colors();
   background-color: #fee3cb;
+
   .navbar {
     @include flex(space-between, center);
-    padding: 1px 50px 1px 50px;
+    padding: 1px 50px;
     height: 65px;
     width: 100vw;
     box-shadow: 0 8px 15px rgb(0 0 0 / 10%);

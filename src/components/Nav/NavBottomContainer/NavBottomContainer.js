@@ -4,6 +4,7 @@ import './NavBottomContainer.scss';
 
 function NavBottomContainer({ color }) {
   const [isMouseEnter, setIsMouseEnter] = useState(false);
+
   return (
     <div className="navBottomContainer">
       <div className={`navbar ${color}`}>

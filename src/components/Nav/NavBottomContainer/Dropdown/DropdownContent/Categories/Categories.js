@@ -3,7 +3,7 @@ import './Categories.scss';
 
 const Categories = () => {
   return (
-    <div className="Categories">
+    <div className="categories">
       <ul>
         {categoryData.map(item => (
           <ItemList

@@ -7,7 +7,8 @@ function DropdownContent({ title }) {
     Categories: <Categories />,
     Colour: <ColorPallette />,
   };
-  return <div className="DropdownContent">{titleList[title]}</div>;
+
+  return <div className="dropdownContent">{titleList[title]}</div>;
 }
 
 export default DropdownContent;

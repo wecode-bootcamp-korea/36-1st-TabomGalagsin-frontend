@@ -1,52 +1,64 @@
-import { useEffect, useState, useRef } from 'react';
+import { useState } from 'react';
+import useInterval from '../../../useInterval';
 import './NavTopContainer.scss';
 
 function NavTopContainer() {
   const [currentPosition, setCurrentPosition] = useState(-2);
   const [transitionTime, setTransitionTime] = useState(0.5);
+  const [resetAuto, setResetAuto] = useState(1);
 
   const currentData = [...CAROUSEL_DATA, ...CAROUSEL_DATA, ...CAROUSEL_DATA];
 
-  function useInterval(callback, delay) {
-    const savedCallback = useRef();
-
-    useEffect(() => {
-      savedCallback.current = callback;
-    }, [callback]);
-
-    useEffect(() => {
-      function tick() {
-        savedCallback.current();
+  const clickButton = event => {
+    if (event.target.className !== 'fa-solid fa-chevron-left arrow') {
+      if (currentPosition > 2) {
+        setTransitionTime(0);
+        setCurrentPosition(-2);
+        setTimeout(() => {
+          setTransitionTime(0.5);
+          setCurrentPosition(-1);
+        }, 0);
+      } else {
+        setCurrentPosition(currentPosition + 1);
       }
-      if (delay !== null) {
-        let id = setInterval(tick, delay);
-        return () => clearInterval(id);
-      }
-    }, [delay]);
-  }
-
-  const sliding = () => {
-    if (currentPosition > 2) {
-      setTransitionTime(0);
-      setCurrentPosition(-2);
-      setTimeout(() => {
-        setTransitionTime(0.5);
-        setCurrentPosition(-1);
-      }, 0);
     } else {
-      setCurrentPosition(currentPosition + 1);
+      if (currentPosition < -2) {
+        setTransitionTime(0);
+        setCurrentPosition(2);
+        setTimeout(() => {
+          setTransitionTime(0.5);
+          setCurrentPosition(1);
+        }, 0);
+      } else {
+        setCurrentPosition(currentPosition - 1);
+      }
     }
   };
 
   useInterval(() => {
-    sliding();
-  }, 3000);
+    if (currentPosition > 2) {
+      setTransitionTime(0);
+      setCurrentPosition(-2);
+      setTimeout(() => {
+        setTransitionTime(() => 0.5);
+        setCurrentPosition(() => -1);
+      }, 100);
+    } else {
+      setCurrentPosition(prev => prev + 1);
+    }
+  }, 3000 + resetAuto);
 
   return (
     <div className="navTopContainer">
       <div className="carousel">
         <div className="leftCover">
-          <i className="fa-solid fa-chevron-left arrow" />
+          <i
+            className="fa-solid fa-chevron-left arrow"
+            onClick={event => {
+              clickButton(event);
+              setResetAuto(prev => prev * -1);
+            }}
+          />
         </div>
         <div className="slider">
           <div
@@ -66,7 +78,13 @@ function NavTopContainer() {
           </div>
         </div>
         <div className="rightCover">
-          <i className="fa-solid fa-chevron-right arrow" />
+          <i
+            className="fa-solid fa-chevron-right arrow"
+            onClick={event => {
+              clickButton(event);
+              setResetAuto(prev => prev * -1);
+            }}
+          />
         </div>
       </div>
     </div>
