@@ -1,12 +1,44 @@
-import React, { useState } from 'react';
-import SlideState from './SlideState/SlideState.js';
+import React, { useEffect, useState } from 'react';
+import SlideState from '../../components/SlideState/SlideState.js';
 import MainText from './MainText/MainText.js';
 import BestSeller from './BestSeller/BestSeller.js';
+<<<<<<< HEAD
 import Footer from '../../components/Footer/Footer.js';
+=======
+import CategorySlide from './CategorySlide/CategorySlide.js';
+import RecommendProducts from './RecommendProducts/RecommendProducts.js';
+
+import { API } from '../../config.js';
+>>>>>>> main
 import './Main.scss';
 
 function Main() {
   const [positionNow, setPositionNow] = useState(0);
+  const [newProductsList, setNewProductsList] = useState([]);
+  const [recommendProductsList, setRecommendProductsList] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async (uri, setState) => {
+      try {
+        const response = await fetch(uri, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        if (!response.ok) {
+          throw new Error('서버가 이상합니다.');
+        }
+        const data = await response.json();
+        setState(Object.values(data)[0]);
+      } catch (error) {
+        throw new Error(`에러가 발생했습니다. ${error.message}`);
+      }
+    };
+
+    fetchData(API.NEW, setNewProductsList);
+    fetchData(API.RECOMMEND, setRecommendProductsList);
+  }, []);
 
   const mainSlideButtonClick = event => {
     event.target.className === 'previous' ||
@@ -18,6 +50,7 @@ function Main() {
       ? setPositionNow(0)
       : setPositionNow(positionNow + 1);
   };
+
   return (
     <div className={`main  ${mainSlideData[positionNow].color}`}>
       <MainText mainSlideData={mainSlideData} positionNow={positionNow} />
@@ -51,8 +84,24 @@ function Main() {
           <i className="fa-solid fa-angle-right fa-xl" />
         </button>
       </div>
+<<<<<<< HEAD
       <BestSeller />
       <Footer />
+=======
+      <CategorySlide
+        color={mainSlideData[positionNow].color}
+        textColor={mainSlideData[positionNow].textColor}
+      />
+      <BestSeller
+        color={mainSlideData[positionNow].color}
+        textColor={mainSlideData[positionNow].textColor}
+      />
+      <RecommendProducts productsList={newProductsList} title="New" />
+      <RecommendProducts
+        productsList={recommendProductsList}
+        title="Recommend"
+      />
+>>>>>>> main
     </div>
   );
 }
