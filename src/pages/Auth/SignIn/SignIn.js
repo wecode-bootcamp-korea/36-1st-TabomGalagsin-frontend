@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import './SignIn.scss';
 
 function SignIn({ inputValue, setInputValue }) {
@@ -72,8 +71,3 @@ function SignIn({ inputValue, setInputValue }) {
 }
 
 export default SignIn;
-
-// const inputValueChange = e => {
-//   const { id, value } = e.target;
-//   setInputValue({ ...inputValue, [id]: value });
-// };

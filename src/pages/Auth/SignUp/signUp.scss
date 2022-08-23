@@ -17,7 +17,6 @@
       }
 
       .inputEmail {
-        margin-bottom: 32px;
         border: 1px solid #646464;
         border-radius: 9px;
         width: 100%;
@@ -25,6 +24,15 @@
         background-color: #ffc3d4;
         outline-style: none;
       }
+    }
+
+    .errorMessage {
+      margin-top: 5px;
+      height: 17px;
+      font-size: 80%;
+      color: #c00;
+      letter-spacing: 0.03em;
+      padding-bottom: 45px;
     }
   }
 
@@ -49,7 +57,7 @@
         }
 
         .inputName {
-          margin-bottom: 32px;
+          margin-bottom: 5px;
           border: 1px solid #646464;
           border-radius: 9px;
           width: 200px;
@@ -57,6 +65,14 @@
           background-color: #ffc3d4;
           outline-style: none;
         }
+      }
+
+      .errorMessage {
+        height: 17px;
+        font-size: 80%;
+        color: #c00;
+        letter-spacing: 0.03em;
+        padding-bottom: 45px;
       }
     }
   }
@@ -77,7 +93,7 @@
       }
 
       .inputNickname {
-        margin-bottom: 32px;
+        margin-bottom: 5px;
         border: 1px solid #646464;
         border-radius: 9px;
         width: 100%;
@@ -85,6 +101,14 @@
         background-color: #ffc3d4;
         outline-style: none;
       }
+    }
+
+    .errorMessage {
+      height: 17px;
+      font-size: 80%;
+      color: #c00;
+      letter-spacing: 0.03em;
+      padding-bottom: 45px;
     }
   }
 
@@ -104,7 +128,7 @@
       }
 
       .inputAddress {
-        margin-bottom: 32px;
+        margin-bottom: 5px;
         border: 1px solid #646464;
         border-radius: 9px;
         width: 100%;
@@ -112,6 +136,14 @@
         background-color: #ffc3d4;
         outline-style: none;
       }
+    }
+
+    .errorMessage {
+      height: 17px;
+      font-size: 80%;
+      color: #c00;
+      letter-spacing: 0.03em;
+      padding-bottom: 45px;
     }
   }
 
@@ -131,7 +163,7 @@
       }
 
       .inputPassword {
-        margin-bottom: 32px;
+        margin-bottom: 25px;
         border: 1px solid #646464;
         border-radius: 9px;
         width: 100%;
@@ -139,6 +171,15 @@
         background-color: #ffc3d4;
         outline-style: none;
       }
+    }
+
+    .errorMessage {
+      margin-top: -20px;
+      height: 17px;
+      font-size: 80%;
+      color: #c00;
+      letter-spacing: 0.03em;
+      padding-bottom: 45px;
     }
   }
 
@@ -153,5 +194,6 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     line-height: 43px;
+    margin-top: 15px;
   }
 }
