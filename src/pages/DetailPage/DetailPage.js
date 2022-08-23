@@ -34,31 +34,21 @@ function DetailPage() {
               <span className="option">Select colour:</span>
               <div className="colourOption">
                 <button className="selectedColour">
+                  <div className="circle" />
                   <font>calm lilac</font>
-                </button>
-                <button>
-                  <font>crystal rose</font>
-                </button>
-                <button>
-                  <font>blue water</font>
-                </button>
-                <button>
-                  <font>red crush</font>
-                </button>
-                <button>
-                  <font>lemon yellow</font>
                 </button>
               </div>
               <span className="option">Select Size:</span>
               <div className="sizeOption">
-                <button>women</button>
-                <button>men</button>
+                <button className="size">women</button>
+                <button className="size">men</button>
               </div>
-              <button>SELECT COLOUR</button>
+              <button className="addToBag">SELECT COLOUR</button>
             </div>
           </div>
+          <hr />
           <div className="productDesc">
-            <p>Description</p>
+            <p className="font">Description</p>
             <p>
               Havaianas and Farm came together for this very Brazilian
               partnership: the combination of the comfort you already know from
@@ -66,13 +56,13 @@ function DetailPage() {
               the carioca brand. It had to be right! The Tem Coco 22 model is an
               invitation to enjoy the summer!
             </p>
-            <p>Care List</p>
+            <p className="font">Care List</p>
             <p>
               Hand wash with mild soap and a soft brush or in the washing
               machine. Let it dry in a well-ventilated place and... Ready! Your
               Havaianas look brand new!
             </p>
-            <p>Details</p>
+            <p className="font">Details</p>
             <p>
               Color: Country Green Sole Type: Traditional Sole print: Printed
               Strip type: Regular Monocolor Care:
