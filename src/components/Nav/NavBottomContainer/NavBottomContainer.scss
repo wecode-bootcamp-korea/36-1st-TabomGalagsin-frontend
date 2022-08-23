@@ -1,0 +1,42 @@
+@import '../../../styles/variables.scss';
+
+.navBottomContainer {
+  @include colors();
+  background-color: #fee3cb;
+
+  .navbar {
+    @include flex(space-between, center);
+    padding: 1px 50px;
+    height: 65px;
+    width: 100vw;
+    box-shadow: 0 8px 15px rgb(0 0 0 / 10%);
+    color: white;
+    font-size: 35px;
+    z-index: 1;
+
+    .navIcon {
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.2, 1.2);
+      }
+    }
+
+    .menu {
+      padding: 20px;
+    }
+
+    .iconLeftSide {
+      @include flex(space-between, null);
+      width: 70px;
+    }
+
+    .logo {
+      height: 200px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+  }
+}

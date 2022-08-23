@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
 import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
+import DetailPage from './pages/DetailPage/DetailPage';
 import Cart from './pages/Cart/Cart';
 
 function Router() {
@@ -11,6 +11,7 @@ function Router() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/detail" element={<DetailPage />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
     </BrowserRouter>

@@ -1,0 +1,62 @@
+@import '../../../styles/variables.scss';
+@mixin arrow {
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.navTopContainer {
+  display: block;
+  height: 32px;
+  width: 100vw;
+  background-color: white;
+
+  .carousel {
+    @include flex(center, center);
+    width: 100vw;
+    height: 100%;
+
+    .leftCover {
+      @include flex(flex-end, center);
+      width: 30vw;
+      height: 100%;
+      background-color: white;
+      z-index: 100;
+
+      .arrow {
+        @include arrow;
+      }
+    }
+
+    .rightCover {
+      @include flex(flex-start, center);
+      width: 30vw;
+      height: 100%;
+      background-color: white;
+      z-index: 100;
+
+      .arrow {
+        @include arrow;
+      }
+    }
+
+    .slider {
+      @include flex(center, null);
+      height: 100%;
+      width: 40vw;
+      overflow: hidden;
+
+      .sliderInner {
+        @include flex(center, center);
+        width: 600vw;
+        z-index: 1;
+
+        .list {
+          @include flex(center, center);
+          width: 40vw;
+          font-size: 14px;
+          font-family: sans-serif;
+        }
+      }
+    }
+  }
+}
