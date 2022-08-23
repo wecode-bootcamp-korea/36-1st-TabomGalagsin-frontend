@@ -4,7 +4,7 @@
   @include flex(center, center);
   flex-direction: column;
   border: 2px dotted black;
-  padding: 80px;
+  padding: 170px 80px;
   background-color: #fee3cb;
 
   .container {
@@ -54,6 +54,7 @@
         flex-direction: column;
         border: 2px solid blue;
         width: 30vw;
+        margin-left: 50px;
 
         .status {
           background-color: #0063ff;
@@ -95,6 +96,9 @@
 
           .selectedColour {
             border-right: 2px solid black;
+            border: none;
+            cursor: pointer;
+            background-color: none;
           }
         }
       }

@@ -9,6 +9,8 @@
   background-color: whitesmoke;
   color: black;
   z-index: 100;
+  transform: translateX(0%);
+  opacity: 2s;
 
   .dropdownMenu {
     @include flex(center, flex-start);
