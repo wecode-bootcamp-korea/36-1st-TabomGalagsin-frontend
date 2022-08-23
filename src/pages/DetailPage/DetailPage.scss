@@ -1,0 +1,158 @@
+@import '../../styles/variables.scss';
+@mixin font {
+  color: #b60060;
+  font-weight: 700;
+}
+
+.detailPage {
+  @include flex(center, center);
+  flex-direction: column;
+  border: 2px dotted black;
+  padding: 170px 80px;
+  background-color: #fee3cb;
+
+  .container {
+    // border: 2px solid pink;
+    width: 75vw;
+
+    .productNavigation {
+      @include flex(flex-start, center);
+      margin: 0 0 50px;
+      .link {
+        text-decoration: none;
+        color: black;
+        margin: 0 10px;
+
+        .bold {
+          font-weight: 600;
+        }
+      }
+    }
+
+    .middleContainer {
+      @include flex(space-between, flex-start);
+      flex-direction: row;
+
+      .leftSide {
+        @include flex(center, center);
+        // border: 2px solid red;
+        width: 45vw;
+        background-color: white;
+        border-radius: 20px;
+        margin-bottom: 100px;
+
+        .productPicWrapper {
+          // border: 2px solid blue;
+          margin: 60px;
+          width: 430px;
+          height: 430px;
+        }
+
+        .pic {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .productDetail {
+        @include flex(space-evenly, flex-start);
+        flex-direction: column;
+        // border: 2px solid blue;
+        width: 30vw;
+        margin-left: 40px;
+
+        .status {
+          background-color: #0063ff;
+          padding: 6px;
+          border-radius: 24px;
+          color: white;
+          font-size: 0.625rem;
+          font-weight: 700;
+          text-align: center;
+          text-transform: uppercase;
+          height: 24px;
+          min-width: 39px;
+          letter-spacing: 0.03em;
+        }
+
+        .title {
+          padding: 20px 0;
+          border-bottom: 0;
+          font-size: 30px;
+          @include font;
+        }
+
+        .price {
+          font-size: 23px;
+          font-weight: bolder;
+          margin-bottom: 5rem;
+          @include font;
+        }
+
+        .option {
+          margin: 10px 0;
+          font-weight: 700;
+          font-size: 20px;
+        }
+
+        .colourOption {
+          @include flex(space-between, flex-start);
+          height: 100px;
+
+          .selectedColour {
+            @include flex(center, center);
+            flex-direction: column;
+            border-style: none;
+            border-right: 1px solid rgb(0 0 0 / 10%);
+            background: none;
+            cursor: pointer;
+            height: 5rem;
+            width: 3.4rem;
+
+            .circle {
+              width: 35px;
+              height: 35px;
+              background: #51f568;
+              border-radius: 100%;
+              border: 5px solid black;
+              margin: 0 0 0.2rem 0;
+            }
+          }
+        }
+        .size {
+          margin: 10px;
+          padding: 10px;
+          border-style: none;
+          border-radius: 45%;
+          width: 4rem;
+          height: 3rem;
+          border: 1px solid black;
+          cursor: pointer;
+        }
+
+        .addToBag {
+          background-color: green;
+          color: white;
+          border-style: none;
+          width: 100%;
+          height: 3rem;
+          border-radius: 20rem;
+          margin-top: 20px;
+          cursor: pointer;
+          font-weight: 700;
+        }
+      }
+    }
+
+    .productDesc {
+      margin-top: 100px;
+
+      .font {
+        @include font;
+        font-size: 1.4rem;
+        margin: 2rem 0;
+      }
+    }
+  }
+}

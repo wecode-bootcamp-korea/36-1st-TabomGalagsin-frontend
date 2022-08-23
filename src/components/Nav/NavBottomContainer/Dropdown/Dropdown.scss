@@ -1,0 +1,42 @@
+@import '../../../../styles/variables.scss';
+
+.dropdown {
+  @include flex(center, center);
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  border-radius: 0 0 60px 60px;
+  background-color: whitesmoke;
+  color: black;
+  z-index: 100;
+  transform: translateX(0%);
+  opacity: 2s;
+
+  .dropdownMenu {
+    @include flex(center, flex-start);
+  }
+
+  .dropdownCategory {
+    width: 20vw;
+    height: 70vh;
+    padding: 70px 10px 0;
+    font-size: 20px;
+    font-family: sans-serif;
+
+    .arrow {
+      @include flex(space-between, center);
+      margin: 10px;
+      height: 3rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .arrow:hover {
+      color: tomato;
+    }
+  }
+
+  li {
+    margin: 30px;
+  }
+}

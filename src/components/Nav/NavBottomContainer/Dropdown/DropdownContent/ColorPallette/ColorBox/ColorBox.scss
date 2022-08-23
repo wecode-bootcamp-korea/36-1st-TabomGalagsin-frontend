@@ -1,0 +1,25 @@
+@import '../../../../../../../styles/variables.scss';
+
+.colorBox {
+  .colorBoxes {
+    position: relative;
+    width: 120px;
+    height: 80px;
+    margin: 20px 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+
+    font {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      padding: 10px;
+      border-radius: 0 0 10px 10px;
+      border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
+      background-color: white;
+      text-align: center;
+      font-size: 15px;
+    }
+  }
+}
