@@ -9,7 +9,7 @@ import Nav from '../../components/Nav/Nav.js';
 
 function ProductsList() {
   const [productsList, setProductsList] = useState();
-  const [selectedOrder, setSelectedOrder] = useState('');
+  const [selectedOrder, setSelectedOrder] = useState(ORDER_LIST[0]);
   const [isOpenedOrder, setIsOpenedOrder] = useState(false);
 
   const backgroudColor = 'brown';
@@ -78,36 +78,20 @@ function ProductsList() {
                     </div>
                   </div>
                   <ul className="radioSelector">
-                    <li>
-                      <input
-                        type="radio"
-                        name="order"
-                        value="릴리스"
-                        checked={selectedOrder === '릴리스'}
-                        onChange={handleChange}
-                      />
-                      릴리스
-                    </li>
-                    <li>
-                      <input
-                        type="radio"
-                        name="order"
-                        value="가격순"
-                        checked={selectedOrder === '가격순'}
-                        onChange={handleChange}
-                      />
-                      가격순
-                    </li>
-                    <li>
-                      <input
-                        type="radio"
-                        name="order"
-                        value="가격역순"
-                        checked={selectedOrder === '가격역순'}
-                        onChange={handleChange}
-                      />
-                      가격역순
-                    </li>
+                    {ORDER_LIST.map(title => {
+                      return (
+                        <li key={title}>
+                          <input
+                            type="radio"
+                            name="order"
+                            value={title}
+                            checked={selectedOrder === title}
+                            onChange={handleChange}
+                          />
+                          {title}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               )}

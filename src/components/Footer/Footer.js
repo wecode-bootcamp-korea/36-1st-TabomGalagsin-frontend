@@ -1,7 +1,6 @@
 import './Footer.scss';
 
 function Footer({ backgroudColor }) {
-  console.log(backgroudColor);
   return (
     <div className={`footer ${backgroudColor}`}>
       <div className="menuContainer">

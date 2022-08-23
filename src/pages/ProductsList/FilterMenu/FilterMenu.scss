@@ -16,19 +16,19 @@
     .filterTitle {
       display: inline-block;
       width: 100%;
-      text-align: left;
       pointer-events: none;
+      text-align: left;
     }
   }
 
   .filter {
     height: 0px;
-    font-size: 1rem;
-    font-weight: 400;
-    transition: all 0.5s;
     min-width: 130px;
+    transition: all 0.5s;
     line-height: 2rem;
     transition: all 0.5s;
+    font-size: 1rem;
+    font-weight: 400;
 
     span {
       pointer-events: none;

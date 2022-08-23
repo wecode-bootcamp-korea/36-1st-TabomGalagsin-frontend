@@ -14,6 +14,7 @@
     min-width: 880px;
     margin: 0rem auto;
     padding: 5rem 0rem;
+
     .listNav {
       @include flex(space-between, center);
       width: 880px;
@@ -29,20 +30,20 @@
         text-align: end;
 
         .orderBtn {
+          margin-left: 1rem;
+          padding: 0.2rem 1rem;
           border: 1px solid black;
           border-radius: 1rem;
-          padding: 0.2rem 1rem;
-          margin-left: 1rem;
         }
       }
 
       .orderSelector {
-        position: absolute;
-        margin-top: 1rem;
-        transform: translateX(-20px);
         width: 230px;
         height: 230px;
+        margin-top: 1rem;
+        position: absolute;
         background-color: white;
+        transform: translateX(-20px);
         z-index: 999;
         border-radius: 1rem;
 
@@ -50,8 +51,8 @@
           @include flex(space-between, center);
           margin: 1rem 1rem;
           padding: 1rem 0 2rem 0;
-          font-weight: 500;
           border-bottom: 1px solid #99999999;
+          font-weight: 500;
 
           .orderTitle {
             @include flex(center, center);
@@ -60,8 +61,8 @@
               display: block;
               width: 0.8rem;
               height: 0.8rem;
-              transform: rotate(90deg);
               margin-right: 0.5rem;
+              transform: rotate(90deg);
             }
           }
         }
@@ -89,9 +90,9 @@
       .filterAside {
         height: 50rem;
         color: #b60060;
+        transition: all 0.5s;
         font-size: 1.1rem;
         font-weight: 500;
-        transition: all 0.5s;
       }
 
       .listContainer {
@@ -108,9 +109,9 @@
     @include flex(flex-start, center);
 
     .link {
-      text-decoration: none;
-      color: black;
       margin: 0 10px;
+      color: black;
+      text-decoration: none;
     }
   }
 }
