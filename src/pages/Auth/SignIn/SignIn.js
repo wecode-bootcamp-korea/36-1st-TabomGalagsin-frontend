@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SignIn.scss';
 
 function SignIn({ inputValue, setInputValue }) {
+  const navigate = useNavigate();
   const { email, password } = inputValue;
   const [error, setError] = useState({ email: '', password: '' });
 
@@ -30,6 +32,27 @@ function SignIn({ inputValue, setInputValue }) {
         setError({ ...error, [name]: '' });
       }
     }
+  };
+
+  const validSignIn = () => {
+    fetch('http://10.58.0.234:3000/users/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, password: password }),
+    })
+      .then(response => {
+        if (response.ok === true) {
+          return response.json();
+        }
+      })
+      .then(data => {
+        if (data.message === 'success') {
+          localStorage.setItem('token', data.token);
+          navigate('/main');
+        } else if (data.message === 'invalid') {
+          alert('아이디 또는 비밀번호를 확인해주세요');
+        }
+      });
   };
 
   return (
@@ -63,7 +86,7 @@ function SignIn({ inputValue, setInputValue }) {
           <span>{error.password}</span>
         </div>
       </div>
-      <button type="submit" className="loginBtn">
+      <button type="submit" className="loginBtn" onClick={validSignIn}>
         로그인
       </button>
     </form>
