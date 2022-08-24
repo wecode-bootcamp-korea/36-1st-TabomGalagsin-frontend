@@ -1,10 +1,16 @@
 import './ColourOption.scss';
 
-function ColourOption({ color, id }) {
+function ColourOption({ color, idex, setSelectColour, changeColor }) {
   return (
-    <button className={id === 0 ? 'selectedColour' : 'nonSelectedColour'}>
+    <button
+      className={idex === 0 ? 'selectedColour' : 'nonSelectedColour'}
+      onClick={() => {
+        setSelectColour(prev => prev + 1);
+        changeColor(idex);
+      }}
+    >
       <div
-        className={id === 0 ? 'circle' : 'circle nonSelected'}
+        className={idex === 0 ? 'circle' : 'circle nonSelected'}
         style={{ backgroundColor: color }}
       />
       <font>{color}</font>

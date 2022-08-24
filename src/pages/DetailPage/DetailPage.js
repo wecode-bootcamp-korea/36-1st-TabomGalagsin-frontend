@@ -8,24 +8,32 @@ import './DetailPage.scss';
 function DetailPage() {
   const [productDetail, setProductDetail] = useState({});
   useEffect(() => {
-    fetch('/data/detail.json', {
+    fetch('http://10.58.0.250:3000/products/2', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => setProductDetail(data.products));
   }, []);
 
-  const { category, is_new, name, price, description, imageUrl, color, size } =
-    productDetail;
+  const {
+    category,
+    is_new,
+    name,
+    price,
+    description,
+    thumbnailUrl,
+    color,
+    size,
+  } = productDetail;
 
-  const [selectColour, setSelectColour] = useState([]);
-  colourClickHandler = () => {
-    color.forEach((el, idx) => {
-      el.onclick = () => {
-        console.log(idx);
-      };
-    });
+  const setSelectColour = useState(0)[1];
+
+  const changeColor = id => {
+    color.unshift(color[id]);
+    color.splice(id + 1, 1);
   };
+
+  const [click, setClick] = useState(false);
 
   return (
     <>
@@ -44,7 +52,11 @@ function DetailPage() {
           <div className="middleContainer">
             <div className="leftSide">
               <div className="productPicWrapper">
-                <img className="pic" alt="flipflops in sand" src={imageUrl} />
+                <img
+                  className="pic"
+                  alt="flipflops in sand"
+                  src={thumbnailUrl}
+                />
               </div>
             </div>
             <div className="productDetail">
@@ -64,8 +76,10 @@ function DetailPage() {
                       <ColourOption
                         key={colourItem.colorId}
                         color={colourItem.color}
-                        id={index}
-                        onClick={colourClickHandler}
+                        idex={index}
+                        setSelectColour={setSelectColour}
+                        changeColor={changeColor}
+                        colorId={colourItem.colorId}
                       />
                     );
                   })}
@@ -75,7 +89,13 @@ function DetailPage() {
               <div className="sizeOption">
                 {Object.keys(productDetail).length > 0 &&
                   size.map(sizeItem => (
-                    <SizeOption key={sizeItem.sizeId} size={sizeItem.size} />
+                    <SizeOption
+                      key={sizeItem.sizeId}
+                      id={sizeItem.sizeId}
+                      size={sizeItem.size}
+                      click={click}
+                      setClick={setClick}
+                    />
                   ))}
               </div>
               <button className="addToBag">SELECT SIZE</button>
