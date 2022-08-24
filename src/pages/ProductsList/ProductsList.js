@@ -4,40 +4,56 @@ import { API } from '../../config.js';
 import Product from '../../components/Product/Product.js';
 import FilterMenu from './FilterMenu/FilterMenu.js';
 import Footer from '../../components/Footer/Footer.js';
-import './ProductsList.scss';
 import Nav from '../../components/Nav/Nav.js';
+import './ProductsList.scss';
 
 function ProductsList() {
-  const [productsList, setProductsList] = useState();
+  const [productsList, setProductsList] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(ORDER_LIST[0]);
   const [isOpenedOrder, setIsOpenedOrder] = useState(false);
 
-  const backgroudColor = 'brown';
+  const backgroudColor = 'pink';
+
+  const fetchData = async (uri, options, setState) => {
+    try {
+      const response = await fetch(uri, options);
+      if (!response.ok) {
+        throw new Error('서버가 이상합니다.');
+      }
+      const data = await response.json();
+      setState(Object.values(data)[0]);
+    } catch (error) {
+      throw new Error(`에러가 발생했습니다. ${error.message}`);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async (uri, setState) => {
-      try {
-        const response = await fetch(uri, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        if (!response.ok) {
-          throw new Error('서버가 이상합니다.');
-        }
-        const data = await response.json();
-        setState(Object.values(data)[0]);
-      } catch (error) {
-        throw new Error(`에러가 발생했습니다. ${error.message}`);
-      }
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     };
 
-    fetchData(API.PRODUCTS, setProductsList);
+    fetchData(API.PRODUCTS, options, setProductsList);
   }, []);
 
-  const openedClassName = isOpenedOrder ? 'openedOrder' : 'closedOrder';
-  const handleChange = e => setSelectedOrder(e.target.value);
+  const handleChange = e => {
+    const { value, dataset } = e.target;
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    setSelectedOrder(value);
+    fetchData(
+      `${API.ORDERING}?ordering=${dataset.querystring}`,
+      options,
+      setProductsList
+    );
+  };
 
   return (
     <>
@@ -61,30 +77,35 @@ function ProductsList() {
                 onClick={() => setIsOpenedOrder(prev => !prev)}
               >
                 릴리스
-                <i class="fa-solid fa-chevron-down" />
+                <i className="fa-solid fa-chevron-down" />
               </span>
               {isOpenedOrder && (
-                <div className={`orderSelector ${openedClassName}`}>
+                <div
+                  className={`orderSelector ${
+                    isOpenedOrder ? 'openedOrder' : 'closedOrder'
+                  }`}
+                >
                   <div className="selectorHeader">
                     <div className="orderTitle">
                       <img
-                        src="https://cdn-icons.flaticon.com/png/512/2990/premium/2990154.png?token=exp=1661263573~hmac=095b0df3617a8bf88c3105d546a558eb"
+                        src="https://cdn-icons-png.flaticon.com/512/3193/3193845.png"
                         alt="arrow"
                       />
                       <span>{selectedOrder}</span>
                     </div>
-                    <div className="x">
-                      <i class="fa-solid fa-x fa-xs" />
+                    <div>
+                      <i className="fa-solid fa-x fa-xs" />
                     </div>
                   </div>
                   <ul className="radioSelector">
-                    {ORDER_LIST.map(title => {
+                    {ORDER_LIST.map((title, idx) => {
                       return (
                         <li key={title}>
                           <input
                             type="radio"
                             name="order"
                             value={title}
+                            data-querystring={ORDER_QUERY_STRINGS[idx]}
                             checked={selectedOrder === title}
                             onChange={handleChange}
                           />
@@ -105,7 +126,7 @@ function ProductsList() {
               })}
             </aside>
             <section className="listContainer">
-              {productsList &&
+              {productsList.length > 0 &&
                 productsList.map((product, idx) => {
                   const { productId, name, price, thumbnailUrl, color, size } =
                     product;
@@ -132,7 +153,13 @@ function ProductsList() {
 
 export default ProductsList;
 
-const ORDER_LIST = ['릴리스', '가격 순', '가격 역순'];
+const ORDER_LIST = [
+  '최신 상품 순',
+  '오래된 상품 순',
+  '낮은 가격 순',
+  '높은 가격 순',
+];
+const ORDER_QUERY_STRINGS = ['created_at', '-created_at', 'price', '-price'];
 
 const MENU_LIST = [
   { title: '그림 물감', list: ['노란색', '푸른', '베이지', '하얀색', 'ㅇㅇ'] },
