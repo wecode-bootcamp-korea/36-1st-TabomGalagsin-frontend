@@ -54,6 +54,10 @@ function ProductsList() {
       options,
       setProductsList
     );
+
+    document
+      .querySelectorAll(`input[type=checkbox]`)
+      .forEach(el => (el.checked = false));
   };
 
   const handleChangeFilter = e => {

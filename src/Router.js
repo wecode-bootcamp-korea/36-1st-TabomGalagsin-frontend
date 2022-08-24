@@ -14,6 +14,10 @@ function Router() {
           path="/category/:categoryId/type/:typeId"
           element={<ProductsList />}
         />
+        <Route
+          path="/category/:categoryId/color/:typeId"
+          element={<ProductsList />}
+        />
       </Routes>
     </BrowserRouter>
   );

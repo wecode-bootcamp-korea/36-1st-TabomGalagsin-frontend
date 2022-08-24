@@ -36,8 +36,17 @@ function Main() {
       },
     };
 
+    const optionsWithToken = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJ0ZXN0QGVtYWlsLmNvbSIsImlhdCI6MTY2MTIxMTQzNX0.iE6H7FA8L1x5zE3K85qypYPtQoWN1Btki8yw4mru5U0',
+      },
+    };
+
     fetchData(API.NEW, options, setNewProductsList);
-    fetchData(API.RECOMMEND, options, setRecommendProductsList);
+    fetchData(API.RECOMMEND, optionsWithToken, setRecommendProductsList);
   }, []);
 
   const mainSlideButtonClick = event => {
