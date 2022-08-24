@@ -1,7 +1,8 @@
 @import '../../styles/variables.scss';
 
 .productsList {
-  width: 100vw;
+  @include flex(null, center);
+  flex-direction: column;
   margin: 5rem 0 auto;
   background-color: #ffc3d4;
 
