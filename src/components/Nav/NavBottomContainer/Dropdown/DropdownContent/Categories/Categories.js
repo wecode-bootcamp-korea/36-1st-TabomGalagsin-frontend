@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import ItemList from './ItemList/ItemList';
 import './Categories.scss';
 
@@ -6,12 +7,14 @@ const Categories = () => {
     <div className="categories">
       <ul>
         {categoryData.map(item => (
-          <ItemList
-            key={item.id}
-            alt={item.alt}
-            src={item.src}
-            name={item.name}
-          />
+          <Link key={item.id} to={`/categories/${item.alt}`}>
+            <ItemList
+              key={item.id}
+              alt={item.alt}
+              src={item.src}
+              name={item.name}
+            />
+          </Link>
         ))}
       </ul>
       <img

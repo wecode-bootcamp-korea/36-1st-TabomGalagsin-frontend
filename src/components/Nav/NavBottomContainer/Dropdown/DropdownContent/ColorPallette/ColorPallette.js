@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import ColorBox from './ColorBox/ColorBox';
 import './ColorPallette.scss';
 
@@ -6,22 +7,26 @@ const ColorPallette = () => {
     <div className="colorPalette">
       <div className="colorBoxContainer">
         {COLOUR_MOCK_DATA.map(box => (
-          <ColorBox
-            key={box.id}
-            color={box.color}
-            name={box.name}
-            id={box.id}
-          />
+          <Link key={box.id} to={`/colors/${box.color}`}>
+            <ColorBox
+              key={box.id}
+              color={box.color}
+              name={box.name}
+              id={box.id}
+            />
+          </Link>
         ))}
       </div>
       <div className="colorBoxContainer">
         {COLOUR_MOCK_DATA2.map(box => (
-          <ColorBox
-            key={box.id}
-            color={box.color}
-            name={box.name}
-            id={box.id}
-          />
+          <Link key={box.id} to={`/colors/${box.color}`}>
+            <ColorBox
+              key={box.id}
+              color={box.color}
+              name={box.name}
+              id={box.id}
+            />
+          </Link>
         ))}
       </div>
     </div>
