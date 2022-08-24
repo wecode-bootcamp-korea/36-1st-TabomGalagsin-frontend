@@ -26,7 +26,6 @@
       }
 
       .orderContainer {
-        width: 20%;
         text-align: end;
 
         .orderBtn {
@@ -34,17 +33,17 @@
           padding: 0.2rem 1rem;
           border: 1px solid black;
           border-radius: 1rem;
+          cursor: pointer;
         }
       }
 
       .orderSelector {
         width: 230px;
-        height: 230px;
         margin-top: 1rem;
         position: absolute;
         background-color: white;
         transform: translateX(-20px);
-        z-index: 999;
+        z-index: 50;
         border-radius: 1rem;
 
         .selectorHeader {
@@ -53,6 +52,11 @@
           padding: 1rem 0 2rem 0;
           border-bottom: 1px solid #99999999;
           font-weight: 500;
+
+          .cancelButton {
+            padding: 0.5rem;
+            cursor: pointer;
+          }
 
           .orderTitle {
             @include flex(center, center);
