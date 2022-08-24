@@ -1,0 +1,26 @@
+{
+  "products": {
+    "productId": 1,
+    "name": "Top Market Filp Flops",
+    "price": "10000.00",
+    "description": "Top Market Filp Flops는 전통적인 Tabom Galagsin의 양각 패턴이 있는 스트랩과 슬라이드 모델의 만남을 촉진합니다. 발을 감싸는 4개의 수평 스트랩이 있어 완벽한 룩을 연출할 수 있습니다.",
+    "category": "flipflops",
+    "is_new": 1,
+    "imageUrl": "http://drive.google.com/uc?export=view&id=15OAKGoy-JDvbA2MaMuQmdfitgWtO7fN4",
+    "color": [
+      { "color": "white", "colorId": 1 },
+      { "color": "orange", "colorId": 2 },
+      { "color": "yellow", "colorId": 3 },
+      { "color": "blue", "colorId": 5 },
+      { "color": "black", "colorId": 7 }
+    ],
+    "size": [
+      { "size": "free(man)", "sizeId": 1 },
+      { "size": "free(woman)", "sizeId": 2 }
+    ],
+    "stock": [
+      { "size": "free(man)", "stock": 0, "sizeId": 1 },
+      { "size": "free(woman)", "stock": 2, "sizeId": 2 }
+    ]
+  }
+}

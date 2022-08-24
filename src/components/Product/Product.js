@@ -3,12 +3,13 @@ import { API } from '../../config.js';
 import './Product.scss';
 
 function Product({
-  productId,
+  dataArrIdx,
   productName,
   price,
   imgUrl,
   colorList,
   sizeList,
+  productId,
 }) {
   const [clickedInfo, setClickedInfo] = useState({
     color: '',
@@ -55,9 +56,13 @@ function Product({
   };
 
   const isClickedAll = !!clickedInfo.color && !!clickedInfo.size;
+  const colIndexOfCard = dataArrIdx % 3;
+  const rowIndexOfCard = Math.floor(dataArrIdx / 3);
 
   return (
-    <div className="product">
+    <div
+      className={`product product_col${colIndexOfCard}_row${rowIndexOfCard}`}
+    >
       <img alt="product" src={imgUrl} />
       <p className="description">{productName}</p>
       <p className="price">KRW {price}</p>

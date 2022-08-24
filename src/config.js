@@ -7,4 +7,5 @@ export const API = {
   RECOMMEND: `${BASE_URL}/products/recommend/list`,
   CART: `${BASE_URL}/cart`,
   PAYMENT: `${BASE_URL}/orders/payment`,
+  ORDERING: `${BASE_URL}/categories/1/type/1`,
 };

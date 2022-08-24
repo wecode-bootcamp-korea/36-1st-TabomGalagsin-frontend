@@ -1,5 +1,9 @@
 @import '../../styles/variables.scss';
 
+.pink {
+  background-color: #ffc3d4;
+}
+
 .footer {
   @include flex(center, center);
   flex-direction: column;
@@ -75,7 +79,7 @@
       padding-bottom: 5rem;
 
       p {
-        margin: 1rem 0;
+        padding: 1rem 0;
         line-height: 1rem;
       }
 
