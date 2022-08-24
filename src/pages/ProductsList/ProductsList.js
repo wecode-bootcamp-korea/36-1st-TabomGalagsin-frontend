@@ -95,7 +95,7 @@ function ProductsList() {
               </Link>
             </div>
             <div className="orderContainer">
-              <span className="bold">순서</span>
+              <span className="orderSpan bold">순서</span>
               <span
                 className="orderBtn"
                 onClick={() => setIsOpenedOrder(prev => !prev)}

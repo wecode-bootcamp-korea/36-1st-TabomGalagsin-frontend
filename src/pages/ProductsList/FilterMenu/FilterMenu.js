@@ -1,23 +1,11 @@
 import { useState } from 'react';
+import Filter from './Filter/Filter';
 import './FilterMenu.scss';
 
 function FilterMenu({ title, list, handleChangeFilter }) {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
 
   const handleClickOpenBtn = e => setIsMenuOpened(prev => !prev);
-
-  const handleCheckBox = e => {
-    clickCheck(e.target);
-    handleChangeFilter(e);
-  };
-
-  function clickCheck(target) {
-    document
-      .querySelectorAll(`input[type=checkbox]`)
-      .forEach(el => (el.checked = false));
-
-    target.checked = true;
-  }
 
   return (
     <div key={title} className={`filterMenu ${isMenuOpened ? 'openMenu' : ''}`}>
@@ -31,22 +19,13 @@ function FilterMenu({ title, list, handleChangeFilter }) {
       </div>
       {list.map(subMenu => {
         return (
-          <div
-            className={`filter ${isMenuOpened ? 'active' : ''}`}
+          <Filter
             key={subMenu}
-          >
-            <input
-              type="checkbox"
-              className="check"
-              placeholder={subMenu}
-              value={subMenu}
-              name="orderCheckBox"
-              onChange={e => handleCheckBox(e)}
-              data-filtertype={title}
-            />
-            <label htmlFor="check" />
-            <span>{subMenu}</span>
-          </div>
+            handleChangeFilter={handleChangeFilter}
+            isMenuOpened={isMenuOpened}
+            subMenu={subMenu}
+            title={title}
+          />
         );
       })}
     </div>
