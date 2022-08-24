@@ -7,7 +7,11 @@ const Categories = () => {
     <div className="categories">
       <ul>
         {categoryData.map(item => (
-          <Link key={item.id} to={`/category_1_type_${item.id}`}>
+          <Link
+            key={item.id}
+            to={`/category/1/type/${item.id}`}
+            style={{ textDecoration: 'none' }}
+          >
             <ItemList
               key={item.id}
               alt={item.alt}
@@ -32,37 +36,37 @@ const categoryData = [
   {
     id: 1,
     alt: 'flipflops',
-    src: 'images/Nav/flipflops.png',
+    src: '/images/Nav/flipflops.png',
     name: 'Flipflops',
   },
   {
     id: 2,
     alt: 'Sneakers',
-    src: 'images/Nav/sneakers.png',
+    src: '/images/Nav/sneakers.png',
     name: 'Sneakers',
   },
   {
     id: 3,
     alt: 'high-heels',
-    src: 'images/Nav/high-heel.png',
+    src: '/images/Nav/high-heel.png',
     name: 'high-heel',
   },
   {
     id: 4,
     alt: 'bag',
-    src: 'images/Nav/backpack.png',
+    src: '/images/Nav/backpack.png',
     name: 'Bag',
   },
   {
     id: 5,
     alt: 'chlothes',
-    src: 'images/Nav/tshirt.png',
+    src: '/images/Nav/tshirt.png',
     name: 'Clothes',
   },
   {
     id: 6,
     alt: 'accessories',
-    src: 'images/Nav/accessory.png',
+    src: '/images/Nav/accessory.png',
     name: 'Accessories',
   },
 ];

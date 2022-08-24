@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import Dropdown from './Dropdown/Dropdown';
 import './NavBottomContainer.scss';
@@ -15,7 +16,9 @@ function NavBottomContainer({ color }) {
           <i className="fa-solid fa-bars navIcon menu" />
           {isMouseEnter && <Dropdown />}
         </div>
-        <img className="logo" src="/images/Nav/logo-yellow.png" alt="logo" />
+        <Link to="/">
+          <img className="logo" src="/images/Nav/logo-yellow.png" alt="logo" />
+        </Link>
         <div className="iconLeftSide">
           <i className="fa-solid fa-user navIcon" />
           <i className="fa-solid fa-basket-shopping navIcon" />
