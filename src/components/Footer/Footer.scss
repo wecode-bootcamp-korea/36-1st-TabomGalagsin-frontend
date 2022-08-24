@@ -1,5 +1,9 @@
 @import '../../styles/variables.scss';
 
+.pink {
+  background-color: #ffc3d4;
+}
+
 .footer {
   max-width: 1140px;
   width: 84vw;
@@ -69,10 +73,10 @@
     }
 
     .infos {
-      margin-bottom: 5rem;
+      padding-bottom: 5rem;
 
       p {
-        margin: 1rem 0;
+        padding: 1rem 0;
         line-height: 1rem;
       }
 

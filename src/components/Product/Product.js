@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import './Product.scss';
 
-function Product({ productName, price, imgUrl, colorList, sizeList }) {
+function Product({
+  dataArrIdx,
+  productName,
+  price,
+  imgUrl,
+  colorList,
+  sizeList,
+}) {
   const [clickedInfo, setClickedInfo] = useState({
     color: '',
     size: '',
@@ -15,9 +22,13 @@ function Product({ productName, price, imgUrl, colorList, sizeList }) {
   };
 
   const isClickedAll = !!clickedInfo.color && !!clickedInfo.size;
+  const colIndexOfCard = dataArrIdx % 3;
+  const rowIndexOfCard = Math.floor(dataArrIdx / 3);
 
   return (
-    <div className="product">
+    <div
+      className={`product product_col${colIndexOfCard}_row${rowIndexOfCard}`}
+    >
       <img alt="product" src={imgUrl} />
       <p className="description">{productName}</p>
       <p className="price">KRW {price}</p>
