@@ -88,8 +88,10 @@ function ProductsList() {
                 Main page
               </Link>
               <span>&gt;</span>
-              <Link to="/" className="link bold">
-                <span className="bold">카테고리 넣을 곳 </span>
+              <Link to={`/catogories/${categoryId}/`} className="link bold">
+                <span className="bold">
+                  {categoryId === 1 ? '카테고리 별' : '색상 별'}
+                </span>
               </Link>
             </div>
             <div className="orderContainer">
@@ -145,7 +147,12 @@ function ProductsList() {
             </div>
           </div>
 
-          <main className="productsContainer">
+          <main
+            className="productsContainer"
+            style={{
+              height: `${Math.ceil(productsList.length / 3) * 320}px`,
+            }}
+          >
             <aside className="filterAside">
               {MENU_LIST.map(({ title, list }) => {
                 return (
