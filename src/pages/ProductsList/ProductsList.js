@@ -92,9 +92,16 @@ function ProductsList() {
                 Main page
               </Link>
               <span>&gt;</span>
-              <Link to={`/catogories/${categoryId}/`} className="link bold">
+              <Link
+                to={
+                  categoryId === '1'
+                    ? `/category/${categoryId}/type/${typeId}`
+                    : `/category/${categoryId}/color/${typeId}`
+                }
+                className="link bold"
+              >
                 <span className="bold">
-                  {categoryId === 1 ? '카테고리 별' : '색상 별'}
+                  {categoryId === '1' ? '카테고리 별' : '색상 별'}
                 </span>
               </Link>
             </div>
