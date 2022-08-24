@@ -1,0 +1,144 @@
+@import '/src/styles/variables.scss';
+
+.cartSummaryModal {
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(90, 90, 90);
+  opacity: 0.5;
+}
+.modalBox {
+  @include flex(flex-start, center);
+  flex-direction: column;
+  position: fixed;
+  z-index: 101;
+  width: 500px;
+  height: 600px;
+  top: calc((100vh - 600px) / 2);
+  left: calc((100vw - 500px) / 2);
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 3px 3px 6px 6px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+
+  .modalExit {
+    position: absolute;
+    top: 12px;
+    right: 25px;
+    border: none;
+    background-color: #ffffff;
+    font-size: 30px;
+  }
+
+  .modalTop {
+    @include flex(center, center);
+    margin: 5px 0;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: #b60060;
+    height: 60px;
+    width: 90%;
+    border-bottom: 1px solid rgb(146, 146, 146);
+  }
+
+  .modalMiddle {
+    @include flex(center, center);
+    flex-direction: column;
+    width: 90%;
+
+    .modalCurrentCredit {
+      @include flex(flex-start, center);
+      width: 100%;
+      height: 40px;
+      color: #b60060;
+      font-size: 20px;
+      font-weight: 600;
+      border-bottom: 1px solid rgb(146, 146, 146);
+    }
+    .modalProductList {
+      position: relative;
+      margin-top: 30px;
+      @include flex(flex-start, center);
+      flex-direction: column;
+      height: 300px;
+      width: 100%;
+      padding-top: 10px;
+      background-color: rgba(128, 128, 128, 0.3);
+      overflow-y: scroll;
+      .modalProductListWrap {
+        position: absolute;
+        left: 8px;
+        @include flex(flex-start, center);
+        flex-direction: column;
+        height: 200px;
+        width: 420px;
+        .productText {
+          width: 100%;
+          height: 100px;
+          margin-bottom: 15px;
+          .productTextName {
+            color: black;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+          }
+          .productTextPriceContainer {
+            @include flex(space-between, flex-end);
+            border-bottom: 1px solid rgb(146, 146, 146);
+            .productTextPriceWrap {
+              @include flex(flex-start, flex-start);
+              flex-direction: column;
+              .productTextPrice {
+                margin: 5px;
+                color: black;
+                font-size: 15px;
+                font-weight: 400;
+              }
+              .productTextQuantity {
+                margin: 5px;
+                color: black;
+                font-size: 18px;
+                font-weight: 400;
+              }
+            }
+            .productTextTotalPrice {
+              font-size: 20px;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+    .modalTotalPrice {
+      @include flex(flex-start, center);
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      font-size: 20px;
+      font-weight: 500;
+      color: #b60060;
+      border-bottom: 1px solid rgb(146, 146, 146);
+    }
+    .modalTatalResult {
+      @include flex(flex-start, center);
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      font-size: 20px;
+      font-weight: 500;
+      color: #b60060;
+      border-bottom: 1px solid rgb(146, 146, 146);
+    }
+    .modalTotalResult {
+      @include flex(flex-start, center);
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px 0 10px 70px;
+      font-size: 20px;
+      font-weight: 500;
+      color: #b60060;
+    }
+  }
+}

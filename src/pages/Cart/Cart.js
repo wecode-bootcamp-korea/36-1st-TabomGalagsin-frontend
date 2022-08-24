@@ -1,38 +1,70 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API } from '../../config';
 import CartProduct from './CartProduct/CartProduct';
 import CartSlideState from './CartSlideState/CartSlideState';
 import RecommendProduct from './RecommendProduct/RecommendProduct.js';
 import Nav from '../../components/Nav/Nav.js';
 import CartFooter from '../Cart/CartFooter/CartFooter.js';
 import './Cart.scss';
+import CartSummaryModal from './CartSummaryModal/CartSummaryModal';
 
 function Cart() {
   const navigate = useNavigate();
   const goToMainFunction = () => navigate('/');
-  const recommendProducts = [
-    ...recommendProductsPast,
-    ...recommendProductsPast,
-    ...recommendProductsPast,
-  ];
+  const [paymentModal, setPaymentModal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [trasitionSec, setTransitionSec] = useState(0.3);
-  const [productListData, setProductListData] = useState(productListDataPast);
+  const [productListData, setProductListData] = useState([]);
+  const [cartRecommeded, setCartRecommeded] = useState([]);
   const [summaryPrice, setSummaryPrice] = useState(
     productListData.reduce((acc, cur) => (acc += cur.price), 0)
   );
   useEffect(() => {
-    setProductListData(productListDataPast);
+    fetch(`${API.CART}`, {
+      headers: {
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+      },
+    })
+      .then(response => response.json())
+      .then(res => {
+        setProductListData(res.cart);
+        setSummaryPrice(
+          res.cart.reduce(
+            (acc, cur) => (acc += Number(cur.price * cur.quantity)),
+            0
+          )
+        );
+      });
   }, []);
 
+  useEffect(() => {
+    fetch(`${API.RECOMMEND}`, {
+      headers: {
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+      },
+    })
+      .then(response => response.json())
+      .then(res => {
+        setCartRecommeded(res.recommendProduct);
+      });
+  }, []);
+
+  const recommendProducts = [
+    ...cartRecommeded,
+    ...cartRecommeded,
+    ...cartRecommeded,
+  ];
   const clickButton = event => {
     if (
       event.target.className === 'previous' ||
       event.target.className === 'fa-solid fa-chevron-left fa-xl'
     ) {
-      if (currentIndex < -1) {
+      if (currentIndex < 0) {
         setTransitionSec(0);
-        setCurrentIndex(2);
+        setCurrentIndex(3);
         setTimeout(() => {
           setTransitionSec(0.3);
           setCurrentIndex(prev => prev - 1);
@@ -54,13 +86,21 @@ function Cart() {
     }
   };
 
-  const onRemove = id => {
-    setProductListData(productListData.filter(data => data.id !== id));
+  const onRemove = orderItemsId => {
+    setProductListData(
+      productListData.filter(data => data.orderItemsId !== orderItemsId)
+    );
   };
 
   return (
     <>
-      <Nav />
+      {paymentModal ? (
+        <CartSummaryModal
+          productListData={productListData}
+          summaryPrice={summaryPrice}
+        />
+      ) : null}
+      <Nav cartedProduct={productListData} />
       <main className="cart">
         <article className="cartMain">
           <section className="cartProductslist">
@@ -78,18 +118,29 @@ function Cart() {
             </header>
             {productListData &&
               productListData.map(
-                ({ productName, imageURL, color, size, price, id }) => (
+                ({
+                  productName,
+                  thumbnailUrl,
+                  color,
+                  size,
+                  price,
+                  orderItemsId,
+                  stock,
+                  quantity,
+                }) => (
                   <CartProduct
-                    key={id}
-                    id={id}
+                    key={orderItemsId}
+                    orderItemsId={orderItemsId}
                     productName={productName}
-                    imageURL={imageURL}
+                    imageURL={thumbnailUrl}
                     color={color}
                     size={size}
                     price={price}
                     onRemove={onRemove}
                     setSummaryPrice={setSummaryPrice}
                     productListData={productListData}
+                    stocks={stock}
+                    quantity={quantity}
                   />
                 )
               )}
@@ -99,7 +150,12 @@ function Cart() {
               <div className="priceTitle">주문 요약</div>
               <div className="productsPrice">
                 <span className="summaryText">예상 총계</span>
-                <span className="summaryPrice">BRL {summaryPrice}</span>
+                <span className="summaryPrice">
+                  ₩{' '}
+                  {summaryPrice
+                    .toString()
+                    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
+                </span>
               </div>
             </section>
             <section className="cartAsideRecommend">
@@ -114,14 +170,16 @@ function Cart() {
                     transition: `all ${trasitionSec}s`,
                   }}
                 >
-                  {recommendProducts.map((data, index) => (
-                    <RecommendProduct
-                      key={index}
-                      URL={data.URL}
-                      productName={data.productName}
-                      price={data.price}
-                    />
-                  ))}
+                  {recommendProducts.map(
+                    ({ name, thumbnailUrl, price }, index) => (
+                      <RecommendProduct
+                        key={index}
+                        URL={thumbnailUrl}
+                        productName={name}
+                        price={price}
+                      />
+                    )
+                  )}
                 </div>
               </div>
               <div className="recommendSlideContainer">
@@ -129,7 +187,7 @@ function Cart() {
                   <i className="fa-solid fa-chevron-left fa-xl" />
                 </button>
                 <ul className="cartSlideStateContainer">
-                  {recommendProductsPast.map((_, index) => {
+                  {cartRecommeded.map((_, index) => {
                     return (
                       <CartSlideState
                         key={index}
@@ -145,7 +203,14 @@ function Cart() {
               </div>
             </section>
             <section className="cartAsideBuyingSubmit">
-              <button className="buyingSubmit">확인</button>
+              <button
+                className="buyingSubmit"
+                onClick={() => {
+                  setPaymentModal(true);
+                }}
+              >
+                확인
+              </button>
             </section>
           </aside>
         </article>
@@ -156,56 +221,3 @@ function Cart() {
 }
 
 export default Cart;
-
-const recommendProductsPast = [
-  {
-    URL: 'https://havaianas.com.br/dw/image/v2/BDDJ_PRD/on/demandware.static/-/Sites-havaianas-master/default/dwbdef45c6/product-images/4148315_0090_HAVAIANAS-FARM-BOROGODO_A.png?sw=90&sh=90',
-    productName: 'Havaianas Top Market Flipflop',
-    price: 'BRL 149,99',
-  },
-  {
-    URL: 'https://havaianas.com.br/dw/image/v2/BDDJ_PRD/on/demandware.static/-/Sites-havaianas-master/default/dwbdef45c6/product-images/4148315_0090_HAVAIANAS-FARM-BOROGODO_A.png?sw=90&sh=90',
-    productName: 'Havaianas Top Market Flipflop',
-    price: 'BRL 149,99',
-  },
-  {
-    URL: 'https://havaianas.com.br/dw/image/v2/BDDJ_PRD/on/demandware.static/-/Sites-havaianas-master/default/dwbdef45c6/product-images/4148315_0090_HAVAIANAS-FARM-BOROGODO_A.png?sw=90&sh=90',
-    productName: 'Havaianas Top Market Flipflop',
-    price: 'BRL 149,99',
-  },
-  {
-    URL: 'https://havaianas.com.br/dw/image/v2/BDDJ_PRD/on/demandware.static/-/Sites-havaianas-master/default/dwbdef45c6/product-images/4148315_0090_HAVAIANAS-FARM-BOROGODO_A.png?sw=90&sh=90',
-    productName: 'Havaianas Top Market Flipflop',
-    price: 'BRL 149,99',
-  },
-];
-
-const productListDataPast = [
-  {
-    id: 1,
-    productName: 'Havainas Farm Brogodo Ring',
-    color: '블랙',
-    imageURL:
-      'https://havaianas.com.br/dw/image/v2/BDDJ_PRD/on/demandware.static/-/Sites-havaianas-master/default/dwbdef45c6/product-images/4148315_0090_HAVAIANAS-FARM-BOROGODO_A.png?sw=90&sh=90',
-    size: 'Free(Man)',
-    price: 210.0,
-  },
-  {
-    id: 2,
-    productName: 'Havainas Farm Brogodo Flipflop',
-    color: '화이트',
-    imageURL:
-      'https://havaianas.com.br/dw/image/v2/BDDJ_PRD/on/demandware.static/-/Sites-havaianas-master/default/dwbdef45c6/product-images/4148315_0090_HAVAIANAS-FARM-BOROGODO_A.png?sw=90&sh=90',
-    size: 'Free(Man)',
-    price: 222.0,
-  },
-  {
-    id: 3,
-    productName: 'Havainas Farm Brogodo Shirt',
-    color: '블루',
-    imageURL:
-      'https://havaianas.com.br/dw/image/v2/BDDJ_PRD/on/demandware.static/-/Sites-havaianas-master/default/dwbdef45c6/product-images/4148315_0090_HAVAIANAS-FARM-BOROGODO_A.png?sw=90&sh=90',
-    size: 'Free(Man)',
-    price: 219.0,
-  },
-];

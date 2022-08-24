@@ -19,6 +19,7 @@ function RecommendProducts({ productsList, title }) {
             return (
               <Product
                 key={productId}
+                productId={productId}
                 productName={name}
                 price={price}
                 imgUrl={thumbnailUrl}

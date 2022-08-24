@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { API } from '../../../../config.js';
 import NavCartProduct from '../NavCart/NavCartProduct/NavCartProduct.js';
 import './NavCart.scss';
 
 function NavCart({ onMouse }) {
-  const navigate = useNavigate();
-  const [productListData, setProductListData] = useState(productListDataPast);
-  const [summaryPrice, setSummaryPrice] = useState(
-    productListData.reduce((acc, cur) => (acc += cur.price), 0)
-  );
+  const [summaryPrice, setSummaryPrice] = useState();
+  const [productListData, setProductListData] = useState();
   const onRemove = id => {
-    setProductListData(productListData.filter(data => data.id !== id));
+    setProductListData(
+      productListData.filter(data => data.orderItemsId !== id)
+    );
   };
+
+  useEffect(() => {
+    fetch(`${API.CART}`, {
+      headers: {
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+      },
+    })
+      .then(response => response.json())
+      .then(res => {
+        setProductListData(res.cart);
+        setSummaryPrice(
+          res.cart.reduce((acc, cur) => (acc += Number(cur.price)), 0)
+        );
+      });
+  }, []);
 
   return (
     <div
@@ -24,19 +40,30 @@ function NavCart({ onMouse }) {
         <div className="cartSummaryProducts">
           {productListData &&
             productListData.map(
-              ({ productName, imageURL, color, size, price, id }) => {
+              ({
+                productName,
+                thumbnailUrl,
+                color,
+                size,
+                price,
+                orderItemsId,
+                stock,
+                quantity,
+              }) => {
                 return (
                   <NavCartProduct
-                    key={id}
-                    id={id}
+                    key={orderItemsId}
+                    orderItemsId={orderItemsId}
                     productName={productName}
-                    imageURL={imageURL}
+                    imgUrl={thumbnailUrl}
                     color={color}
                     size={size}
                     price={price}
+                    stocks={stock}
                     onRemove={onRemove}
                     setSummaryPrice={setSummaryPrice}
-                    productListData={productListData}
+                    cartedProduct={productListData}
+                    quantity={quantity}
                   />
                 );
               }
@@ -46,44 +73,21 @@ function NavCart({ onMouse }) {
       <div className="cartResult">
         <div className="cartResultTextContainer">
           <div className="cartResultText">총 금액</div>
-          <div className="cartResultPrice">BRL 220.0</div>
+          <div className="cartResultPrice">
+            ₩
+            {typeof summaryPrice !== 'number'
+              ? ' 0'
+              : Number(summaryPrice)
+                  .toString()
+                  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
+          </div>
         </div>
-        <button className="cartResultSubmit" onClick={() => navigate('/cart')}>
-          구매하기
-        </button>
+        <Link to={`${!!productListData ? '/cart' : '/'}`}>
+          <button className="cartResultSubmit">구매하기</button>
+        </Link>
       </div>
     </div>
   );
 }
 
 export default NavCart;
-
-const productListDataPast = [
-  {
-    id: 1,
-    productName: 'Havainas Farm Brogodo Ring',
-    color: '블랙',
-    imageURL:
-      'https://havaianas.com.br/dw/image/v2/BDDJ_PRD/on/demandware.static/-/Sites-havaianas-master/default/dwbdef45c6/product-images/4148315_0090_HAVAIANAS-FARM-BOROGODO_A.png?sw=90&sh=90',
-    size: 'Free(Man)',
-    price: 210.0,
-  },
-  {
-    id: 2,
-    productName: 'Havainas Farm Brogodo Flipflop',
-    color: '화이트',
-    imageURL:
-      'https://havaianas.com.br/dw/image/v2/BDDJ_PRD/on/demandware.static/-/Sites-havaianas-master/default/dwbdef45c6/product-images/4148315_0090_HAVAIANAS-FARM-BOROGODO_A.png?sw=90&sh=90',
-    size: 'Free(Man)',
-    price: 222.0,
-  },
-  {
-    id: 3,
-    productName: 'Havainas Farm Brogodo Shirt',
-    color: '블루',
-    imageURL:
-      'https://havaianas.com.br/dw/image/v2/BDDJ_PRD/on/demandware.static/-/Sites-havaianas-master/default/dwbdef45c6/product-images/4148315_0090_HAVAIANAS-FARM-BOROGODO_A.png?sw=90&sh=90',
-    size: 'Free(Man)',
-    price: 219.0,
-  },
-];

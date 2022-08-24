@@ -18,6 +18,7 @@
     width: 100%;
     .productHeader {
       @include flex(space-between, center);
+      margin: 10px 0;
 
       .productName {
         color: black;

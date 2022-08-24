@@ -1,8 +1,15 @@
+@import '/src/styles/variables.scss';
+
 .recommendProduct {
+  @include flex(space-between, flex-start);
+  flex-direction: column;
+  width: 180px;
+  height: 260px;
   margin: 20px;
   .recommendProductImage {
     img {
       width: 180px;
+      height: 180px;
     }
   }
   .recommendProductInfo {

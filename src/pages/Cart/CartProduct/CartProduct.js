@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { API } from '../../../config';
 import './CartProduct.scss';
 
 function CartProduct({
   productName,
-  id,
   imageURL,
   color,
   size,
@@ -11,14 +11,13 @@ function CartProduct({
   onRemove,
   setSummaryPrice,
   productListData,
+  orderItemsId,
+  stocks,
+  quantity,
 }) {
-  const [stock, setStock] = useState(1);
+  const [stock, setStock] = useState(quantity);
+  const [productPrice, setProductPrice] = useState(Number(price * quantity));
 
-  const stockButton = evnet => {
-    evnet.target.className === 'quantityMinus'
-      ? setStock(stock - 1)
-      : setStock(stock + 1);
-  };
   return (
     <div className="cartProduct">
       <div className="productImage">
@@ -30,9 +29,16 @@ function CartProduct({
           <button
             className="productDelete"
             onClick={() => {
-              onRemove(id);
+              onRemove(orderItemsId);
               productListData &&
-                setSummaryPrice(lastSummary => lastSummary - price);
+                setSummaryPrice(lastSummary => lastSummary - price * quantity);
+              fetch(`${API.CART}/${orderItemsId}`, {
+                method: 'DELETE',
+                headers: {
+                  authorization:
+                    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+                },
+              });
             }}
           >
             <img
@@ -45,17 +51,60 @@ function CartProduct({
         <p className="productSize">사이즈 : {size}</p>
         <div className="productFooter">
           <div className="productQuantityControlContainer">
-            <button className="quantityMinus" onClick={stockButton}>
+            <button
+              className="quantityMinus"
+              onClick={() => {
+                setStock(prev => prev - 1);
+                fetch(`${API.CART}/${orderItemsId}`, {
+                  method: 'PATCH',
+                  headers: {
+                    'Content-Type': 'Application/json',
+                    authorization:
+                      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+                  },
+                  body: JSON.stringify({
+                    quantity: stock - 1,
+                  }),
+                });
+                setSummaryPrice(prev => Number(prev) - Number(price));
+                setProductPrice(prev => Number(prev) - Number(price));
+              }}
+              disabled={stock === 1}
+            >
               {' '}
               -{' '}
             </button>
             <span className="productQuantity">{stock}</span>
-            <button className="quantityPlus" onClick={stockButton}>
+            <button
+              className="quantityPlus"
+              onClick={() => {
+                setStock(prev => prev + 1);
+                fetch(`${API.CART}/${orderItemsId}`, {
+                  method: 'PATCH',
+                  headers: {
+                    'Content-Type': 'Application/json',
+                    authorization:
+                      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+                  },
+                  body: JSON.stringify({
+                    quantity: stock + 1,
+                  }),
+                });
+                setSummaryPrice(prev => Number(prev) + Number(price));
+                setProductPrice(prev => Number(prev) + Number(price));
+              }}
+              disabled={stock === stocks}
+            >
               {' '}
               +{' '}
             </button>
           </div>
-          <div className="productPrice">BRL {price}</div>
+          <div className="productPrice">
+            ₩{' '}
+            {Number(productPrice)
+              .toString()
+              .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
+          </div>
         </div>
       </div>
     </div>

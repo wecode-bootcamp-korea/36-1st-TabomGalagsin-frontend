@@ -22,6 +22,8 @@ function Main() {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
+            authorization:
+              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
           },
         });
         if (!response.ok) {
@@ -97,7 +99,7 @@ function Main() {
           productsList={recommendProductsList}
           title="Recommend"
         />
-        <Footer />
+        <Footer color={mainSlideData[positionNow].color} />
       </div>
     </>
   );

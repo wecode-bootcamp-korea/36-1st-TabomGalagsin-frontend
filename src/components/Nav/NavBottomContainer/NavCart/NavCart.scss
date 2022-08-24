@@ -6,7 +6,7 @@
   position: absolute;
   top: 65px;
   right: 10px;
-  width: 450px;
+  width: 600px;
   height: 400px;
   background-color: #ffffff;
   border-radius: 0 0 15px 15px;
@@ -15,6 +15,7 @@
   .cartSummary {
     @include flex(center, center);
     flex-direction: column;
+    width: 80%;
 
     .cartSummaryHeader {
       @include flex(flex-start, center);
@@ -27,7 +28,10 @@
     }
 
     .cartSummaryProducts {
-      height: 220px;
+      @include flex(flex-start, center);
+      flex-direction: column;
+      height: 240px;
+      width: 100%;
       border-bottom: 1px solid rgb(177, 177, 177);
       overflow-y: scroll;
     }
@@ -36,7 +40,7 @@
     @include flex(space-between, center);
     flex-direction: column;
     margin-top: 30px;
-    width: 400px;
+    width: 80%;
     height: 60px;
 
     .cartResultTextContainer {
@@ -58,7 +62,7 @@
 
     .cartResultSubmit {
       padding: 8px;
-      width: 80%;
+      width: 360px;
       background-color: #1818a1;
       border: none;
       border-radius: 18px;
