@@ -16,14 +16,9 @@ function Main() {
   const [recommendProductsList, setRecommendProductsList] = useState([]);
 
   useEffect(() => {
-    const fetchData = async (uri, setState) => {
+    const fetchData = async (uri, options, setState) => {
       try {
-        const response = await fetch(uri, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+        const response = await fetch(uri, options);
         if (!response.ok) {
           throw new Error('서버가 이상합니다.');
         }
@@ -33,9 +28,15 @@ function Main() {
         throw new Error(`에러가 발생했습니다. ${error.message}`);
       }
     };
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
 
-    fetchData(API.NEW, setNewProductsList);
-    fetchData(API.RECOMMEND, setRecommendProductsList);
+    fetchData(API.NEW, options, setNewProductsList);
+    fetchData(API.RECOMMEND, options, setRecommendProductsList);
   }, []);
 
   const mainSlideButtonClick = event => {
