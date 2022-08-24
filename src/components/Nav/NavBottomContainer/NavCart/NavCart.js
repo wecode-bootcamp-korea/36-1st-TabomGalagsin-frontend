@@ -32,7 +32,6 @@ function NavCart({ onMouse }) {
       });
   }, []);
 
-  console.log(productListData);
   return (
     <div
       className="navCart"
