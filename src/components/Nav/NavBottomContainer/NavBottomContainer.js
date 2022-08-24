@@ -16,7 +16,7 @@ function NavBottomContainer({ color }) {
           <i className="fa-solid fa-bars navIcon menu" />
           {isMouseEnter && <Dropdown />}
         </div>
-        <Link to="/">
+        <Link to="/" className="linkComponent">
           <img className="logo" src="/images/Nav/logo-yellow.png" alt="logo" />
         </Link>
         <div className="iconLeftSide">

@@ -31,10 +31,10 @@ function Product({
     <div
       className={`product product_col${colIndexOfCard}_row${rowIndexOfCard}`}
     >
-      <Link to={`/products/${productId}`}>
+      <Link to={`/products/${productId}`} className="linkComponent">
         <img alt="product" src={imgUrl} />
       </Link>
-      <Link to={`/products/${productId}`}>
+      <Link to={`/products/${productId}`} className="linkComponent">
         <p className="description">{productName}</p>
       </Link>
       <p className="price">KRW {price}</p>

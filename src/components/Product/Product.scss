@@ -1,6 +1,11 @@
 @import '../../styles/variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
+.linkComponent {
+  text-decoration: none;
+  color: black;
+}
+
 .product {
   font-family: 'Roboto', sans-serif;
 
