@@ -15,7 +15,8 @@ function NavCartProduct({
   stocks,
   quantity,
 }) {
-  const [stock, setStock] = useState(quantity);
+  const [thisQuantity, setThisQuantity] = useState(quantity);
+  const [productPrice, setProductPrice] = useState(Number(price * quantity));
 
   return (
     <div className="navCartProduct">
@@ -30,7 +31,7 @@ function NavCartProduct({
             onClick={() => {
               onRemove(orderItemsId);
               cartedProduct &&
-                setSummaryPrice(lastSummary => lastSummary - price);
+                setSummaryPrice(lastSummary => lastSummary - price * quantity);
               fetch(`${API.CART}/${orderItemsId}`, {
                 method: 'DELETE',
                 headers: {
@@ -53,7 +54,7 @@ function NavCartProduct({
             <button
               className="quantityMinus"
               onClick={() => {
-                setStock(prev => prev - 1);
+                setThisQuantity(prev => prev - 1);
                 fetch(`${API.CART}/${orderItemsId}`, {
                   method: 'PATCH',
                   headers: {
@@ -62,20 +63,22 @@ function NavCartProduct({
                       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
                   },
                   body: JSON.stringify({
-                    quantity: stock - 1,
+                    quantity: thisQuantity - 1,
                   }),
                 });
+                setProductPrice(prev => Number(prev) - Number(price));
+                setSummaryPrice(prev => Number(prev) - Number(price));
               }}
-              disabled={stock === 1}
+              disabled={thisQuantity === 1}
             >
               {' '}
               -{' '}
             </button>
-            <span className="productQuantity">{stock}</span>
+            <span className="productQuantity">{thisQuantity}</span>
             <button
               className="quantityPlus"
               onClick={() => {
-                setStock(prev => prev + 1);
+                setThisQuantity(prev => prev + 1);
                 fetch(`${API.CART}/${orderItemsId}`, {
                   method: 'PATCH',
                   headers: {
@@ -84,11 +87,13 @@ function NavCartProduct({
                       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
                   },
                   body: JSON.stringify({
-                    quantity: stock + 1,
+                    quantity: thisQuantity + 1,
                   }),
                 });
+                setProductPrice(prev => Number(prev) + Number(price));
+                setSummaryPrice(prev => Number(prev) + Number(price));
               }}
-              disabled={stock === stocks}
+              disabled={thisQuantity === stocks}
             >
               {' '}
               +{' '}
@@ -96,7 +101,7 @@ function NavCartProduct({
           </div>
           <div className="productPrice">
             ₩{' '}
-            {Number(price)
+            {Number(productPrice)
               .toString()
               .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
           </div>

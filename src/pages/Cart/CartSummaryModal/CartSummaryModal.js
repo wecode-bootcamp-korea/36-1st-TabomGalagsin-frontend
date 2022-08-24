@@ -1,4 +1,5 @@
 import React from 'react';
+import { API } from '../../../config.js';
 import { useNavigate } from 'react-router-dom';
 import './CartSummaryModal.scss';
 
@@ -12,12 +13,12 @@ function CartSummaryModal({ productListData, summaryPrice }) {
           className="modalExit"
           onClick={() => {
             navigate('/');
-            fetch('http://10.58.0.234:3000/orders/payment', {
+            fetch(`${API.PAYMENT}`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'Application/json',
                 authorization:
-                  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJkZ2hnaEBza3MiLCJpYXQiOjE2NjEzMzE4MTV9.hAPDunWv2r37tJc5DfBxy1u9tRLLjEWyS6BhimsQVsg',
+                  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
               },
               body: JSON.stringify({
                 totalPrice: Number(summaryPrice),

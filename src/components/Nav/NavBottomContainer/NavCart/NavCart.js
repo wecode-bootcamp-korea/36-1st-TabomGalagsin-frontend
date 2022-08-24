@@ -24,11 +24,15 @@ function NavCart({ onMouse }) {
       .then(res => {
         setProductListData(res.cart);
         setSummaryPrice(
-          res.cart.reduce((acc, cur) => (acc += Number(cur.price)), 0)
+          res.cart.reduce(
+            (acc, cur) => (acc += Number(cur.price * cur.quantity)),
+            0
+          )
         );
       });
   }, []);
 
+  console.log(productListData);
   return (
     <div
       className="navCart"

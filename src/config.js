@@ -6,4 +6,5 @@ export const API = {
   NEW: `${BASE_URL}/products/new/list`,
   RECOMMEND: `${BASE_URL}/products/recommend/list`,
   CART: `${BASE_URL}/cart`,
+  PAYMENT: `${BASE_URL}/orders/payment`,
 };
