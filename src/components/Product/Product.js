@@ -27,6 +27,10 @@ function Product({
   const colIndexOfCard = dataArrIdx % 3;
   const rowIndexOfCard = Math.floor(dataArrIdx / 3);
 
+  const priceWithComma = price
+    .toString()
+    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+
   return (
     <div
       className={`product product_col${colIndexOfCard}_row${rowIndexOfCard}`}
@@ -37,7 +41,7 @@ function Product({
       <Link to={`/products/${productId}`} className="linkComponent">
         <p className="description">{productName}</p>
       </Link>
-      <p className="price">KRW {price}</p>
+      <p className="price">KRW {priceWithComma}</p>
       <div className="colorPickers">
         {colorList.map(({ color }) => {
           return (
