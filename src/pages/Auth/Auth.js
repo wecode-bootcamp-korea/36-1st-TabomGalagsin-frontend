@@ -56,9 +56,17 @@ function Auth() {
           </li>
         </ul>
         {currentId === 1 ? (
-          <SignIn inputValue={inputValue} setInputValue={setInputValue} />
+          <SignIn
+            inputValue={inputValue}
+            setInputValue={setInputValue}
+            currentId={currentId}
+          />
         ) : (
-          <SignUp inputValue={inputValue} setInputValue={setInputValue} />
+          <SignUp
+            inputValue={inputValue}
+            setInputValue={setInputValue}
+            currentId={currentId}
+          />
         )}
       </div>
     </div>

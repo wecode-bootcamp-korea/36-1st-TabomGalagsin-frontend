@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignIn.scss';
 
-function SignIn({ inputValue, setInputValue }) {
+function SignIn({ inputValue, setInputValue, currentId }) {
   const navigate = useNavigate();
-  const { email, password } = inputValue;
   const [error, setError] = useState({ email: '', password: '' });
+  const { email, password } = inputValue;
 
   const onChangeSignIn = e => {
     const { name, value } = e.target;
@@ -36,21 +36,17 @@ function SignIn({ inputValue, setInputValue }) {
 
   const validSignIn = e => {
     e.preventDefault();
-    fetch('http://10.58.0.234:3000/users/login', {
+    fetch('http://10.58.0.250:3000/users/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email, password: password }),
     })
-      .then(response => {
-        if (response.ok === true) {
-          return response.json();
-        }
-      })
+      .then(response => response.json())
       .then(data => {
-        if (data.message === 'success') {
-          localStorage.setItem('token', data.token);
+        if (data.accessToken) {
+          localStorage.setItem('token', data.accessToken);
           navigate('/main');
-        } else if (data.message === 'invalid') {
+        } else {
           alert('아이디 또는 비밀번호를 확인해주세요');
         }
       });
@@ -87,7 +83,7 @@ function SignIn({ inputValue, setInputValue }) {
           <span>{error.password}</span>
         </div>
       </div>
-      <button type="submit" className="loginBtn" onClick={validSignIn}>
+      <button className="loginBtn" onClick={validSignIn}>
         로그인
       </button>
     </form>

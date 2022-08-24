@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './SignUp.scss';
 
-function SignUp({ inputValue, setInputValue }) {
-  const navigate = useNavigate();
+function SignUp({ inputValue, setInputValue, currentId }) {
   const { email, password, firstName, lastName, nickName, address } =
     inputValue;
+
   const [error, setError] = useState({
     email: '',
     password: '',
@@ -55,7 +54,7 @@ function SignUp({ inputValue, setInputValue }) {
 
   const validSignUp = e => {
     e.preventDefault();
-    fetch('http://10.58.0.234:3000/users/signup', {
+    fetch('http://10.58.0.250:3000/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -68,9 +67,12 @@ function SignUp({ inputValue, setInputValue }) {
       }),
     })
       .then(response => response.json())
-      .then(validData => {
-        if (validData.message === 'success') {
-          navigate('/main');
+      .then(data => {
+        if (data.message === 'userCreated') {
+          alert('회원가입을 축하합니다! 로그인 해주세요');
+          window.location.replace('/login');
+        } else {
+          alert('올바른 회원가입 양식이 아닙니다.');
         }
       });
   };
@@ -164,7 +166,7 @@ function SignUp({ inputValue, setInputValue }) {
           <span>{error.password}</span>
         </div>
       </div>
-      <button type="submit" className="signupBtn" onClick={validSignUp}>
+      <button className="signupBtn" onClick={validSignUp}>
         회원가입
       </button>
     </form>
