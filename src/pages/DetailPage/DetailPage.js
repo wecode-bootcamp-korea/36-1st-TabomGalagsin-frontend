@@ -18,6 +18,15 @@ function DetailPage() {
   const { category, is_new, name, price, description, imageUrl, color, size } =
     productDetail;
 
+  const [selectColour, setSelectColour] = useState([]);
+  colourClickHandler = () => {
+    color.forEach((el, idx) => {
+      el.onclick = () => {
+        console.log(idx);
+      };
+    });
+  };
+
   return (
     <>
       <Nav />
@@ -56,6 +65,7 @@ function DetailPage() {
                         key={colourItem.colorId}
                         color={colourItem.color}
                         id={index}
+                        onClick={colourClickHandler}
                       />
                     );
                   })}
