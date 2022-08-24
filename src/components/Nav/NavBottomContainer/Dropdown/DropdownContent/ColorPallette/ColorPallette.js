@@ -7,7 +7,7 @@ const ColorPallette = () => {
     <div className="colorPalette">
       <div className="colorBoxContainer">
         {COLOUR_MOCK_DATA.map(box => (
-          <Link key={box.id} to={`/colors/${box.color}`}>
+          <Link key={box.id} to={`/category/2/type/${box.id}`}>
             <ColorBox
               key={box.id}
               color={box.color}
