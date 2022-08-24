@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Product.scss';
 
 function Product({
+  productId,
   dataArrIdx,
   productName,
   price,
@@ -29,8 +31,12 @@ function Product({
     <div
       className={`product product_col${colIndexOfCard}_row${rowIndexOfCard}`}
     >
-      <img alt="product" src={imgUrl} />
-      <p className="description">{productName}</p>
+      <Link to={`/products/${productId}`}>
+        <img alt="product" src={imgUrl} />
+      </Link>
+      <Link to={`/products/${productId}`}>
+        <p className="description">{productName}</p>
+      </Link>
       <p className="price">KRW {price}</p>
       <div className="colorPickers">
         {colorList.map(({ color }) => {
