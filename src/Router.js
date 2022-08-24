@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
-import DetailPage from './pages/DetailPage/DetailPage';
 import ProductsList from './pages/ProductsList/ProductsList';
 
 function Router() {
@@ -11,9 +10,8 @@ function Router() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/detail" element={<DetailPage />} />
         <Route
-          path="/category/:categoryId/type/:typeId"
+          path="/category_:categoryId_type_:typeId"
           element={<ProductsList />}
         />
       </Routes>

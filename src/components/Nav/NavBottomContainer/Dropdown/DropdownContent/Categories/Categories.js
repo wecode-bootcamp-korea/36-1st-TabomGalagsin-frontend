@@ -7,7 +7,7 @@ const Categories = () => {
     <div className="categories">
       <ul>
         {categoryData.map(item => (
-          <Link key={item.id} to={`/category/1/type/${item.id}`}>
+          <Link key={item.id} to={`/category_1_type_${item.id}`}>
             <ItemList
               key={item.id}
               alt={item.alt}
