@@ -1,0 +1,56 @@
+@import '../../../styles/variables.scss';
+
+.filterMenu {
+  line-height: 2rem;
+  transition: all 0.2s;
+  overflow: hidden;
+
+  &.openMenu {
+    margin-bottom: 2rem;
+  }
+
+  .filterTitleContainer {
+    @include flex(space-around, center);
+    cursor: pointer;
+
+    .filterTitle {
+      display: inline-block;
+      width: 100%;
+      pointer-events: none;
+      text-align: left;
+    }
+  }
+
+  .filter {
+    height: 0px;
+    min-width: 130px;
+    transition: all 0.5s;
+    line-height: 2rem;
+    transition: all 0.5s;
+    font-size: 1rem;
+    font-weight: 400;
+
+    span {
+      pointer-events: none;
+    }
+
+    .check {
+      accent-color: #b60060;
+    }
+  }
+
+  .open {
+    transform: rotate(0deg);
+    transition: all 0.2s;
+  }
+
+  .active {
+    height: 30px;
+    transition: all 0.5s;
+  }
+
+  .close {
+    transform: rotate(180deg);
+    transition: all 0.2s;
+  }
+}
