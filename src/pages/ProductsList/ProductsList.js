@@ -35,7 +35,6 @@ function ProductsList() {
       },
     };
     const uri = `${API.MAIN}/categories/${categoryId}/${CATEGORY_ID_MAP[categoryId]}/${typeId}`;
-    console.log(uri);
     fetchData(uri, options, setProductsList);
   }, [categoryId, typeId]);
 
@@ -107,6 +106,7 @@ function ProductsList() {
                   className={`orderSelector ${
                     isOpenedOrder ? 'openedOrder' : 'closedOrder'
                   }`}
+                  onMouseLeave={() => setIsOpenedOrder(false)}
                 >
                   <div className="selectorHeader">
                     <div className="orderTitle">

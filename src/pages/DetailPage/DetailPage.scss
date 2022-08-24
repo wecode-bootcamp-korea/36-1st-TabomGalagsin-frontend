@@ -12,7 +12,6 @@
   background-color: #fee3cb;
 
   .container {
-    // border: 2px solid pink;
     width: 75vw;
 
     .productNavigation {
@@ -35,14 +34,12 @@
 
       .leftSide {
         @include flex(center, center);
-        // border: 2px solid red;
         width: 45vw;
         background-color: white;
         border-radius: 20px;
         margin-bottom: 100px;
 
         .productPicWrapper {
-          // border: 2px solid blue;
           margin: 60px;
           width: 430px;
           height: 430px;
@@ -58,7 +55,6 @@
       .productDetail {
         @include flex(space-evenly, flex-start);
         flex-direction: column;
-        // border: 2px solid blue;
         width: 30vw;
         margin-left: 40px;
 

@@ -18,6 +18,7 @@
 
     button {
       display: none;
+      cursor: pointer;
     }
   }
 
@@ -26,12 +27,14 @@
 
     button {
       display: none;
+      cursor: pointer;
     }
   }
 
   .cartBtn {
     display: none;
     transition: all 0.2s ease-out;
+    cursor: pointer;
   }
 
   &:hover {

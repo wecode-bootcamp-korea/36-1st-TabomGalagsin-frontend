@@ -7,6 +7,10 @@ function FilterMenu({ title, list, handleChangeFilter }) {
   const handleClickOpenBtn = e => setIsMenuOpened(prev => !prev);
 
   const handleCheckBox = e => {
+    if (e.target.checked === true) {
+      e.target.checked = false;
+      return;
+    }
     clickCheck(e.target);
     handleChangeFilter(e);
   };
