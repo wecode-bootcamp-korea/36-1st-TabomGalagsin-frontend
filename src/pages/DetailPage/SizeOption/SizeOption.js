@@ -12,7 +12,7 @@ function SizeOption({ size, id, click, setClick }) {
   return (
     <button
       id={id}
-      className={click ? 'size' : 'clickedSize'}
+      className={click[id] ? 'size' : 'clickedSize'}
       onClick={handleClick}
     >
       {size}

@@ -10,7 +10,7 @@ function Router() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/detail" element={<DetailPage />} />
+        <Route path="/products/:productId" element={<DetailPage />} />
       </Routes>
     </BrowserRouter>
   );
