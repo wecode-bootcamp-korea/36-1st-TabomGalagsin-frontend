@@ -33,7 +33,7 @@ function DetailPage() {
     color.splice(id + 1, 1);
   };
 
-  const [click, setClick] = useState(false);
+  const [click, setClick] = useState({ 1: true, 2: false });
 
   return (
     <>

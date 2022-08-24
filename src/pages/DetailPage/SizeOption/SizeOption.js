@@ -6,13 +6,13 @@ function SizeOption({ size, id, click, setClick }) {
 
   const handleClick = () => {
     setClick(!click);
-    console.log(id);
+    console.log(click);
     // setClicked(target.id);
   };
   return (
     <button
       id={id}
-      className={click[id] ? 'size' : 'clickedSize'}
+     {click[id] === true ? 'size' : 'clickedSize'}
       onClick={handleClick}
     >
       {size}
