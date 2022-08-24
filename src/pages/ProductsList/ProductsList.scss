@@ -89,6 +89,7 @@
 
     .productsContainer {
       @include flex(center, flex-start);
+      min-height: 300px;
 
       .filterAside {
         height: 50rem;
