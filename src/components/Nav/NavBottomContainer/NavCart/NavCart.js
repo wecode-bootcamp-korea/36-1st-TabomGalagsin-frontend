@@ -38,11 +38,7 @@ function NavCart({ onMouse, setCartedCount }) {
   }, [userToken]);
 
   return (
-    <div
-      className="navCart"
-      onMouseLeave={() => onMouse(false)}
-      onMouseOver={() => onMouse(true)}
-    >
+    <div className="navCart">
       <div className="cartSummary">
         <div className="cartSummaryHeader">장바구니</div>
         <div className="cartSummaryProducts">
