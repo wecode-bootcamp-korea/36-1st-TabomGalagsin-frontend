@@ -3,8 +3,7 @@
 
 .cart {
   padding-top: 140px;
-  background-color: #fee3cb;
-
+  background-color: #ffc3d4;
   .cartMain {
     @include flex(center, flex-start);
 
@@ -109,7 +108,7 @@
 
         button {
           margin: 0 25px;
-          background-color: #fee3cb;
+          background-color: #ffc3d4;
           border: none;
           color: #ff0000;
         }
