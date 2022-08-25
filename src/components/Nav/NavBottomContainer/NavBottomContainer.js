@@ -43,14 +43,17 @@ function NavBottomContainer({ color, cartedCount, setCartedCount }) {
             >
               <i className="fa-solid fa-user navIcon" />
             </div>
-            <div className="navIconWrap" onMouseOver={() => setIsHover(true)}>
+
+            <div
+              className="navIconWrap"
+              onMouseEnter={() => setIsHover(!isHover)}
+              onMouseLeave={() => setIsHover(!isHover)}
+            >
               <i className="fa-solid fa-basket-shopping navIcon" />
               {cartedCount > 0 && (
                 <div className="cartedCount">{cartedCount}</div>
               )}
-              {isHover && (
-                <NavCart setCartedCount={setCartedCount} onMouse={setIsHover} />
-              )}
+              {isHover && <NavCart setCartedCount={setCartedCount} />}
             </div>
           </div>
         </div>
