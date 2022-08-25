@@ -18,6 +18,7 @@ function CartProduct({
 }) {
   const [stock, setStock] = useState(quantity);
   const [productPrice, setProductPrice] = useState(Number(price * quantity));
+  const [userToken] = useState(localStorage.getItem('token'));
 
   return (
     <div className="cartProduct">
@@ -36,8 +37,7 @@ function CartProduct({
               fetch(`${API.CART}/${orderItemsId}`, {
                 method: 'DELETE',
                 headers: {
-                  authorization:
-                    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+                  authorization: userToken,
                 },
               });
             }}
@@ -60,8 +60,7 @@ function CartProduct({
                   method: 'PATCH',
                   headers: {
                     'Content-Type': 'Application/json',
-                    authorization:
-                      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+                    authorization: userToken,
                   },
                   body: JSON.stringify({
                     quantity: stock - 1,
@@ -84,8 +83,7 @@ function CartProduct({
                   method: 'PATCH',
                   headers: {
                     'Content-Type': 'Application/json',
-                    authorization:
-                      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+                    authorization: userToken,
                   },
                   body: JSON.stringify({
                     quantity: stock + 1,
