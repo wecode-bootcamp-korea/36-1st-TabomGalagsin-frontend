@@ -1,6 +1,6 @@
 import ItemList from './ItemList/ItemList';
 import { useNavigate } from 'react-router-dom';
-import { goTo } from '../../../../../../utils';
+import { goToUrl } from '../../../../../../utils';
 import './Categories.scss';
 
 const Categories = () => {
@@ -13,7 +13,7 @@ const Categories = () => {
           <div
             key={item.id}
             className="linkComponent"
-            onClick={() => goTo(navigate, `/categories/1/type/${item.id}`)}
+            onClick={() => goToUrl(navigate, `/categories/1/type/${item.id}`)}
           >
             <ItemList
               key={item.id}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { goTo } from '../../function';
+import { goToUrl } from '../../function';
 import './Product.scss';
 
 function Product({
@@ -51,7 +51,7 @@ function Product({
       className={`product product_col${colIndexOfCard}_row${rowIndexOfCard}`}
     >
       <div
-        onClick={() => goTo(navigate, `/products/${productId}`)}
+        onClick={() => goToUrl(navigate, `/products/${productId}`)}
         className="linkComponent"
       >
         <img
@@ -60,7 +60,7 @@ function Product({
         />
       </div>
       <div
-        onClick={() => goTo(navigate, `/products/${productId}`)}
+        onClick={() => goToUrl(navigate, `/products/${productId}`)}
         className="linkComponent"
       >
         <p className="description">{productName}</p>

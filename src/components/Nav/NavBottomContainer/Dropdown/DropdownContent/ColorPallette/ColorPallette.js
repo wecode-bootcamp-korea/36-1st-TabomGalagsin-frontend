@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { goTo } from '../../../../../../function';
+import { goToUrl } from '../../../../../../function';
 import ColorBox from './ColorBox/ColorBox';
 import './ColorPallette.scss';
 
@@ -13,7 +13,7 @@ const ColorPallette = () => {
           <div
             key={box.id}
             className="linkComponent"
-            onClick={() => goTo(navigate, `/categories/2/color/${box.id}`)}
+            onClick={() => goToUrl(navigate, `/categories/2/color/${box.id}`)}
           >
             <ColorBox
               key={box.id}
@@ -28,7 +28,7 @@ const ColorPallette = () => {
         {COLOUR_MOCK_DATA2.map(box => (
           <div
             key={box.id}
-            onClick={() => goTo(navigate, `/categories/2/color/${box.id}`)}
+            onClick={() => goToUrl(navigate, `/categories/2/color/${box.id}`)}
             className="linkComponent"
           >
             <ColorBox

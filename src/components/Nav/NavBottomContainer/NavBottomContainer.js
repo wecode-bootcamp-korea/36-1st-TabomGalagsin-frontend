@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import Dropdown from './Dropdown/Dropdown';
-import { goTo } from '../../../function';
+import { goToUrl } from '../../../function';
 import './NavBottomContainer.scss';
 
 function NavBottomContainer({ color }) {
@@ -24,7 +24,7 @@ function NavBottomContainer({ color }) {
               className="logo"
               src="/images/Nav/logo-yellow.png"
               alt="logo"
-              onClick={() => goTo(navigate, '/')}
+              onClick={() => goToUrl(navigate, '/')}
             />
           </div>
 

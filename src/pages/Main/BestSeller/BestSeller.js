@@ -2,7 +2,7 @@ import { useState } from 'react';
 import SlideState from '../../../components/SlideState/SlideState.js';
 import BestSellerCard from './BestSellerCard/BestSellerCard';
 import { useNavigate } from 'react-router-dom';
-import { goTo } from '../../../utils.js';
+import { goToUrl } from '../../../utils.js';
 import './BestSeller.scss';
 
 function BestSeller({ color, textColor }) {
@@ -42,7 +42,7 @@ function BestSeller({ color, textColor }) {
         <h1 className="title">Best Seller</h1>
         <button
           className="linkButton"
-          onClick={() => goTo(navigate, '/categories/1/type/1')}
+          onClick={() => goToUrl(navigate, '/categories/1/type/1')}
         >
           <span>더 많은 제품 보기</span>
           <i className="fa-solid fa-angle-right fa-lg" />

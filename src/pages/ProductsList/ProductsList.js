@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { API } from '../../config.js';
-import { goTo } from '../../utils.js';
+import { goToUrl } from '../../utils.js';
 import Product from '../../components/Product/Product.js';
 import FilterMenu from './FilterMenu/FilterMenu.js';
 import Footer from '../../components/Footer/Footer.js';
@@ -90,13 +90,13 @@ function ProductsList() {
         <div className="productsListContainer">
           <div className="listNav">
             <div className="productNavigation">
-              <div onClick={() => goTo(navigate, '/')} className="link">
+              <div onClick={() => goToUrl(navigate, '/')} className="link">
                 Main page
               </div>
               <span>&gt;</span>
               <div
                 onClick={() =>
-                  goTo(
+                  goToUrl(
                     navigate,
                     categoryId === '1'
                       ? `/categories/${categoryId}/type/${typeId}`
