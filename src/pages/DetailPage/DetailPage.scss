@@ -7,21 +7,21 @@
 .detailPage {
   @include flex(center, center);
   flex-direction: column;
-  border: 2px dotted black;
   padding: 170px 80px;
+  border: 2px dotted black;
   background-color: #ffc3d4;
 
   .container {
-    // border: 2px solid pink;
     width: 75vw;
 
     .productNavigation {
       @include flex(flex-start, center);
       margin: 0 0 50px;
+
       .link {
-        text-decoration: none;
-        color: black;
         margin: 0 10px;
+        color: black;
+        text-decoration: none;
 
         .bold {
           font-weight: 600;
@@ -35,14 +35,12 @@
 
       .leftSide {
         @include flex(center, center);
-        // border: 2px solid red;
         width: 45vw;
-        background-color: white;
-        border-radius: 20px;
         margin-bottom: 1rem;
+        border-radius: 20px;
+        background-color: white;
 
         .productPicWrapper {
-          // border: 2px solid blue;
           margin: 60px;
           width: 430px;
           height: 430px;
@@ -58,21 +56,20 @@
       .productDetail {
         @include flex(space-evenly, flex-start);
         flex-direction: column;
-        // border: 2px solid blue;
         width: 30vw;
         margin-left: 40px;
 
         .status {
           background-color: #0063ff;
           padding: 6px;
+          height: 24px;
+          min-width: 39px;
           border-radius: 24px;
           color: white;
           font-size: 0.7rem;
           font-weight: 700;
           text-align: center;
           text-transform: uppercase;
-          height: 24px;
-          min-width: 39px;
           letter-spacing: 0.03em;
         }
 
@@ -84,13 +81,15 @@
         }
 
         .price {
+          margin-bottom: 3.9rem;
           font-size: 23px;
           font-weight: bolder;
-          margin-bottom: 3.9rem;
           @include font;
         }
 
         .option {
+          @include flex(flex-start, flex-start);
+          flex-direction: row;
           margin: 10px 0;
           font-weight: 700;
           font-size: 20px;
@@ -102,32 +101,48 @@
           height: 100px;
         }
 
-        .addToBag {
-          background-color: #8e8e8e;
-          color: white;
-          border-style: none;
+        .sizeOption {
+          @include flex(center, flex-start);
+          flex-direction: row;
+        }
+
+        .selectSize {
+          margin-top: 2rem;
           width: 100%;
           height: 3rem;
           border-radius: 20rem;
-          margin-top: 3rem;
-          cursor: pointer;
+          border-style: none;
+          background-color: #8e8e8e;
+          color: white;
           font-weight: 700;
+          cursor: pointer;
+        }
+
+        .addToBag {
+          margin-top: 2rem;
+          width: 100%;
+          height: 3rem;
+          border-style: none;
+          border-radius: 20rem;
+          background-color: green;
+          color: white;
+          font-weight: 700;
+          cursor: pointer;
         }
       }
     }
 
     .productDesc {
-      // margin-top: 1rem;
-
       .font {
         @include font;
-        font-size: 2rem;
         margin: 1.5rem 0;
+        font-size: 2rem;
       }
+
       .subFont {
-        color: black;
-        font-size: 1.4rem;
         margin: 1rem 0;
+        color: black;
+        font-size: 1.2rem;
         line-height: 2rem;
       }
     }

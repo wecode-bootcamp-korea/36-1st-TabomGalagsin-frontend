@@ -8,23 +8,15 @@ import './DetailPage.scss';
 function DetailPage() {
   const [productDetail, setProductDetail] = useState({});
   useEffect(() => {
-    fetch('http://10.58.0.250:3000/products/2', {
+    fetch('http://10.58.0.250:3000/products/6', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => setProductDetail(data.products));
   }, []);
 
-  const {
-    category,
-    is_new,
-    name,
-    price,
-    description,
-    thumbnailUrl,
-    color,
-    size,
-  } = productDetail;
+  const { category, is_new, name, price, description, color, size } =
+    productDetail;
 
   const setSelectColour = useState(0)[1];
 
@@ -33,7 +25,9 @@ function DetailPage() {
     color.splice(id + 1, 1);
   };
 
-  const [click, setClick] = useState({ 1: true, 2: false });
+  const [click, setClick] = useState({ 1: false, 2: false });
+
+  const [isClicked, setIsClicked] = useState(false);
 
   return (
     <>
@@ -55,7 +49,7 @@ function DetailPage() {
                 <img
                   className="pic"
                   alt="flipflops in sand"
-                  src={thumbnailUrl}
+                  src={color?.[0].thumbnailUrl}
                 />
               </div>
             </div>
@@ -76,7 +70,7 @@ function DetailPage() {
                       <ColourOption
                         key={colourItem.colorId}
                         color={colourItem.color}
-                        idex={index}
+                        index={index}
                         setSelectColour={setSelectColour}
                         changeColor={changeColor}
                         colorId={colourItem.colorId}
@@ -95,10 +89,16 @@ function DetailPage() {
                       size={sizeItem.size}
                       click={click}
                       setClick={setClick}
+                      setIsClicked={setIsClicked}
                     />
                   ))}
               </div>
-              <button className="addToBag">SELECT SIZE</button>
+              <button
+                className={isClicked ? 'addToBag' : 'selectSize'}
+                disabled={isClicked ? false : true}
+              >
+                {isClicked ? 'ADD TO BAG' : 'SELECT SIZE'}
+              </button>
             </div>
           </div>
           <hr />
@@ -111,5 +111,4 @@ function DetailPage() {
     </>
   );
 }
-
 export default DetailPage;

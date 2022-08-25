@@ -1,22 +1,21 @@
-import { useState } from 'react';
 import './SizeOption.scss';
 
-function SizeOption({ size, id, click, setClick }) {
-  // const [clicked, setClicked] = useState(1);
-
+function SizeOption({ size, id, click, setClick, setIsClicked }) {
   const handleClick = () => {
-    setClick(!click);
-    console.log(click);
-    // setClicked(target.id);
+    setClick({ 1: false, 2: false, [id]: true });
+    setIsClicked(true);
   };
+
   return (
-    <button
-      id={id}
-     {click[id] === true ? 'size' : 'clickedSize'}
-      onClick={handleClick}
-    >
-      {size}
-    </button>
+    <div className="sizeOption">
+      <button
+        id={id}
+        className={click[id] ? 'clickedSize' : 'size'}
+        onClick={handleClick}
+      >
+        {size}
+      </button>
+    </div>
   );
 }
 
