@@ -17,8 +17,7 @@ function NavCart({ onMouse }) {
   useEffect(() => {
     fetch(`${API.CART}`, {
       headers: {
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+        authorization: localStorage.getItem('token'),
       },
     })
       .then(response => response.json())

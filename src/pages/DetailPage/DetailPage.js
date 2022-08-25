@@ -15,12 +15,12 @@ function DetailPage() {
   const [isClicked, setIsClicked] = useState(false);
   const { productId } = useParams();
   const [clickedInfo, setClickedInfo] = useState({
-    colorId: 0,
+    colorId: 1,
     sizeId: 0,
   });
 
   useEffect(() => {
-    fetch(`http://10.58.0.250:3000/products/${productId}`, {
+    fetch(`http://10.58.0.234:3000/products/${productId}`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -52,7 +52,7 @@ function DetailPage() {
     })
       .then(res => res.json())
       .then(data => setProductsList(Object.values(data)[0]));
-  }, []);
+  }, [productId]);
 
   const { category, is_new, name, price, description, color, size } =
     productDetail;
@@ -86,11 +86,11 @@ function DetailPage() {
     setClickedInfo(
       prev =>
         (prev = {
-          colorId: 0,
+          colorId: 1,
           sizeId: 0,
         })
     );
-    setClick({ 1: false, 2: false });
+    setClick({ 1: false, 2: false, 3: true });
   };
   const setSelectColour = useState(0)[1];
 
