@@ -50,7 +50,7 @@ function NavBottomContainer({ color, cartedCount, setCartedCount }) {
                   goToUrl(navigate, '/login');
                 }}
               >
-                <i className="fa-solid fa-user navIcon" />
+                <i class="fa-solid fa-arrow-right-from-bracket navIcon" />
               </div>
             )}
             <div
