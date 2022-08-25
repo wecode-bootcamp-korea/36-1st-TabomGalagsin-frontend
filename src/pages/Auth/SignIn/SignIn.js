@@ -31,7 +31,7 @@ function SignIn() {
     } else if (name === 'password') {
       if (value === '') {
         setError({ ...error, [name]: '필수 입력 항목입니다.' });
-      } else if (value.length < 5) {
+      } else if (value.length < 4) {
         setError({ ...error, [name]: '비밀번호를 확인해주세요.' });
       } else {
         setError({ ...error, [name]: '' });
@@ -49,7 +49,13 @@ function SignIn() {
         password: inputValue.password,
       }),
     })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          alert('로그인 정보를 확인해주세요!');
+          return;
+        }
+        return response.json();
+      })
       .then(data => {
         if (data.userInfo.token) {
           localStorage.setItem('token', data.userInfo.token);
@@ -92,7 +98,18 @@ function SignIn() {
           <span>{error.password}</span>
         </div>
       </div>
-      <button type="submit" className="loginBtn">
+      <button
+        type="submit"
+        className="loginBtn"
+        onClick={() => {
+          Object.keys(inputValue).forEach(key => {
+            !inputValue.key &&
+              setError(
+                prev => (prev = { ...prev, [key]: '필수 입력 항목입니다.' })
+              );
+          });
+        }}
+      >
         로그인
       </button>
     </form>

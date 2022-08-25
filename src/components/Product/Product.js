@@ -22,10 +22,20 @@ function Product({
     sizeId: 0,
   });
   const [userToken] = useState(localStorage.getItem('token'));
+  const [thumbnailUrl, setThumbnailUrl] = useState(imgUrl);
 
   const handleClickButton = e => {
     const { name, value } = e.target;
     const valueObj = JSON.parse(value);
+
+    if ('color' === Object.keys(valueObj)[0]) {
+      imgUrl = colorList.filter(
+        colorInfo => colorInfo.color === valueObj.color
+      )[0].thumbnailUrl;
+
+      setThumbnailUrl(imgUrl);
+    }
+
     clickedInfo[name] === name
       ? setClickedInfo({ ...clickedInfo, [name]: '', [name + 'Id']: 0 })
       : setClickedInfo({
@@ -34,6 +44,7 @@ function Product({
           [name + 'Id']: valueObj[name + 'Id'],
         });
   };
+
   const handleFetch = () => {
     if (localStorage.getItem('token')) {
       fetch(`${API.CART}`, {
@@ -86,7 +97,7 @@ function Product({
         onClick={() => goToUrl(navigate, `/products/${productId}`)}
         className="linkComponent"
       >
-        <img alt="product" src={imgUrl} />
+        <img alt="product" src={thumbnailUrl} />
       </div>
       <div
         onClick={() => goToUrl(navigate, `/products/${productId}`)}
@@ -100,7 +111,7 @@ function Product({
           return (
             <button
               key={color}
-              value={JSON.stringify({ color: color, colorId: colorId })}
+              value={JSON.stringify({ color, colorId })}
               name="color"
               onClick={handleClickButton}
               className={color === clickedInfo.color ? 'active' : ''}

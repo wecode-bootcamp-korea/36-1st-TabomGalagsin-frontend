@@ -3,6 +3,7 @@ import './auth.scss';
 import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
 import Nav from '../../components/Nav/Nav';
+import Footer from '../../components/Footer/Footer';
 
 function Auth() {
   const [currentId, setCurrentId] = useState(false);
@@ -41,6 +42,7 @@ function Auth() {
           {currentId ? <SignUp /> : <SignIn />}
         </div>
       </div>
+      <Footer backgroundColor="pink" />
     </div>
   );
 }

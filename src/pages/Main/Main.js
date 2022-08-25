@@ -49,7 +49,11 @@ function Main() {
     };
 
     fetchData(API.NEW, options, setNewProductsList);
-    fetchData(API.RECOMMEND, optionsWithToken, setRecommendProductsList);
+    if (userToken) {
+      fetchData(API.RECOMMEND, optionsWithToken, setRecommendProductsList);
+    } else {
+      fetchData(API.RECOMMEND_RANDOM, options, setRecommendProductsList);
+    }
     fetch(API.CART, optionsWithToken)
       .then(response => response.json())
       .then(data => {

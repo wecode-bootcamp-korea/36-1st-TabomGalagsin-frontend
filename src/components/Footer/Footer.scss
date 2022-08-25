@@ -1,5 +1,7 @@
 @import '../../styles/variables.scss';
 
+@include colors();
+
 .footer {
   @include flex(center, center);
   flex-direction: column;
