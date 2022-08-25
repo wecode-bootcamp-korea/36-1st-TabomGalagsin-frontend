@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API } from '../../config';
-import { appendComma } from '../../function';
+import { appendComma } from '../../utils';
 import CartProduct from './CartProduct/CartProduct';
 import CartSlideState from './CartSlideState/CartSlideState';
 import RecommendProduct from './RecommendProduct/RecommendProduct.js';
 import Nav from '../../components/Nav/Nav.js';
 import CartFooter from '../Cart/CartFooter/CartFooter.js';
-import './Cart.scss';
 import CartSummaryModal from './CartSummaryModal/CartSummaryModal';
+import './Cart.scss';
 
 function Cart() {
   const navigate = useNavigate();
@@ -95,7 +95,7 @@ function Cart() {
 
   return (
     <>
-      {paymentModal ? <CartSummaryModal summaryPrice={summaryPrice} /> : null}
+      {paymentModal && <CartSummaryModal summaryPrice={summaryPrice} />}
       <Nav cartedProduct={productListData} />
       <main className="cart">
         <article className="cartMain">

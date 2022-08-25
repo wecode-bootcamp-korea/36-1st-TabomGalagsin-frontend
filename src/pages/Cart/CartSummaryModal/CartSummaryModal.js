@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { API } from '../../../config.js';
-import { appendComma } from '../../../function';
+import { appendComma } from '../../../utils';
 import { useNavigate } from 'react-router-dom';
 import './CartSummaryModal.scss';
 
@@ -56,8 +56,7 @@ function CartSummaryModal({ summaryPrice }) {
             });
           }}
         >
-          {' '}
-          x{' '}
+          x
         </button>
         <div className="modalTop">결제 내역</div>
         <div className="modalMiddle">

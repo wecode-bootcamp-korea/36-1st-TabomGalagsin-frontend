@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { API } from '../../../../config.js';
-import { appendComma } from '../../../../function.js';
+import { appendComma } from '../../../../utils.js';
 import NavCartProduct from '../NavCart/NavCartProduct/NavCartProduct.js';
 import './NavCart.scss';
 

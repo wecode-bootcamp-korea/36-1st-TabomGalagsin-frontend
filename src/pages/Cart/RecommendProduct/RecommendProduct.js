@@ -1,5 +1,5 @@
 import React from 'react';
-import { appendComma } from '../../../function';
+import { appendComma } from '../../../utils';
 import './RecommendProduct.scss';
 
 function RecommendProduct({ URL, productName, price }) {

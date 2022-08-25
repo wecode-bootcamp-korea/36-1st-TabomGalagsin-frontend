@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { API } from '../../../../../config';
-import { appendComma } from '../../../../../function.js';
+import { appendComma } from '../../../../../utils.js';
 import './NavCartProduct.scss';
 
 function NavCartProduct({
