@@ -14,6 +14,7 @@ function Main() {
   const [positionNow, setPositionNow] = useState(0);
   const [newProductsList, setNewProductsList] = useState([]);
   const [recommendProductsList, setRecommendProductsList] = useState([]);
+  const [userToken] = useState(localStorage.getItem('token'));
 
   useEffect(() => {
     const fetchData = async (uri, options, setState) => {
@@ -40,14 +41,13 @@ function Main() {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJ0ZXN0QGVtYWlsLmNvbSIsImlhdCI6MTY2MTIxMTQzNX0.iE6H7FA8L1x5zE3K85qypYPtQoWN1Btki8yw4mru5U0',
+        Authorization: userToken,
       },
     };
 
     fetchData(API.NEW, options, setNewProductsList);
     fetchData(API.RECOMMEND, optionsWithToken, setRecommendProductsList);
-  }, []);
+  }, [userToken]);
 
   const mainSlideButtonClick = event => {
     event.target.className === 'previous' ||

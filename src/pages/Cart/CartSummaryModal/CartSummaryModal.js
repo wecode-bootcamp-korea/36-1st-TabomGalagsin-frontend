@@ -9,32 +9,32 @@ function CartSummaryModal({ summaryPrice }) {
 
   const [userPoints, setUserPoints] = useState(0);
   const [productListData, setProductListData] = useState([]);
+  const [userToken] = useState(localStorage.getItem('token'));
 
   useEffect(() => {
     fetch(`${API.POINTS}`, {
       headers: {
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+        authorization: userToken,
       },
     })
       .then(response => response.json())
       .then(res => {
         setUserPoints(res.beforeUserPoint);
       });
-  }, []);
+  }, [userToken]);
 
   useEffect(() => {
     fetch(`${API.CART}`, {
       headers: {
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+        authorization: userToken,
       },
     })
       .then(response => response.json())
       .then(res => {
         setProductListData(res.cart);
       });
-  }, []);
+  }, [userToken]);
+
   return (
     <>
       <div className="cartSummaryModal" />
@@ -47,8 +47,7 @@ function CartSummaryModal({ summaryPrice }) {
               method: 'POST',
               headers: {
                 'Content-Type': 'Application/json',
-                authorization:
-                  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+                authorization: userToken,
               },
               body: JSON.stringify({
                 totalPrice: Number(summaryPrice),

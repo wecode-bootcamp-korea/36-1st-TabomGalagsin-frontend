@@ -21,11 +21,12 @@ function Cart() {
   const [summaryPrice, setSummaryPrice] = useState(
     productListData.reduce((acc, cur) => (acc += cur.price), 0)
   );
+  const [userToken] = useState(localStorage.getItem('token'));
+
   useEffect(() => {
     fetch(`${API.CART}`, {
       headers: {
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+        authorization: userToken,
       },
     })
       .then(response => response.json())
@@ -38,20 +39,19 @@ function Cart() {
           )
         );
       });
-  }, []);
+  }, [userToken]);
 
   useEffect(() => {
     fetch(`${API.RECOMMEND}`, {
       headers: {
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+        authorization: userToken,
       },
     })
       .then(response => response.json())
       .then(res => {
         setCartRecommeded(res.recommendProduct);
       });
-  }, []);
+  }, [userToken]);
 
   const recommendProducts = [
     ...cartRecommeded,

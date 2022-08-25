@@ -9,6 +9,7 @@ function NavBottomContainer({ color }) {
   const navigate = useNavigate();
   const [isMouseEnter, setIsMouseEnter] = useState(false);
   const [isHover, setIsHover] = useState(false);
+  const [userToken] = useState(localStorage.getItem('token'));
 
   return (
     <div className="navBottomContainer">
@@ -31,7 +32,13 @@ function NavBottomContainer({ color }) {
           </div>
           <div className="iconLeftSide">
             <div
-              onClick={() => goToUrl(navigate, '/login')}
+              onClick={() => {
+                if (!!userToken) {
+                  alert('로그인 되어 있습니다 ~! ♥️♥️♥️♥️♥️♥️');
+                } else {
+                  goToUrl(navigate, '/login');
+                }
+              }}
               className="navIconWrap"
             >
               <i className="fa-solid fa-user navIcon" />
