@@ -51,7 +51,12 @@ function Product({
       }),
     })
       .then(response => response.json())
-      .then(data => console.log(data));
+      .then(res => {
+        res.message === 'PRODUCT_STOCK_WAS_EMPTY' &&
+          alert('상품의 재고가 없습니다.');
+        res.message === 'PRODUCT_ALREADY_EXISTS_IN_CART' &&
+          alert('이미 장바구니에 담긴 상품입니다.');
+      });
     setClickedInfo(
       prev =>
         (prev = {

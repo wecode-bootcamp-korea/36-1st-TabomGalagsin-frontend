@@ -20,6 +20,10 @@
 
       .menu {
         padding: 20px;
+        font-size: 23px;
+        &:hover {
+          transform: scale(1.2, 1.2);
+        }
       }
 
       .iconLeftSide {
@@ -50,7 +54,7 @@
 
           .navIcon {
             color: white;
-            font-size: 20px;
+            font-size: 23px;
             cursor: pointer;
             position: relative;
 

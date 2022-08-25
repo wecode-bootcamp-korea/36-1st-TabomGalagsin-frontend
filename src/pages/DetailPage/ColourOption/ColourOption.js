@@ -1,6 +1,13 @@
 import './ColourOption.scss';
 
-function ColourOption({ color, index, setSelectColour, changeColor }) {
+function ColourOption({
+  color,
+  index,
+  setSelectColour,
+  changeColor,
+  handleClickButton,
+  id,
+}) {
   return (
     <div className="colourOption">
       <button
@@ -8,6 +15,7 @@ function ColourOption({ color, index, setSelectColour, changeColor }) {
         onClick={() => {
           setSelectColour(prev => prev + 1);
           changeColor(index);
+          handleClickButton('colorId', id);
         }}
       >
         <div
