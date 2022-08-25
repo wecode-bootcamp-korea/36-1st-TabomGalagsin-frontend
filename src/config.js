@@ -8,4 +8,5 @@ export const API = {
   CART: `${BASE_URL}/cart`,
   PAYMENT: `${BASE_URL}/orders/payment`,
   ORDERING: `${BASE_URL}/categories/1/type/1`,
+  POINTS: `${BASE_URL}/orders/point`,
 };

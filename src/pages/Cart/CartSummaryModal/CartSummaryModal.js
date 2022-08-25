@@ -3,8 +3,9 @@ import { API } from '../../../config.js';
 import { useNavigate } from 'react-router-dom';
 import './CartSummaryModal.scss';
 
-function CartSummaryModal({ productListData, summaryPrice }) {
+function CartSummaryModal({ productListData, summaryPrice, userPoints }) {
   const navigate = useNavigate();
+
   return (
     <>
       <div className="cartSummaryModal" />
@@ -31,7 +32,14 @@ function CartSummaryModal({ productListData, summaryPrice }) {
         </button>
         <div className="modalTop">결제 내역</div>
         <div className="modalMiddle">
-          <div className="modalCurrentCredit">보유 크레딧 : {}</div>
+          <div className="modalCurrentCredit">
+            보유 크레딧 : ₩{' '}
+            {!!userPoints
+              ? Number(userPoints)
+                  .toString()
+                  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')
+              : 0}
+          </div>
           <div className="modalProductList">
             <div className="modalProductListWrap">
               {productListData.map(
@@ -73,7 +81,12 @@ function CartSummaryModal({ productListData, summaryPrice }) {
               .toString()
               .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
           </div>
-          <div className="modalTotalResult">결제 후 잔액 : {}</div>
+          <div className="modalTotalResult">
+            결제 후 잔액 : ₩
+            {Number(userPoints - summaryPrice)
+              .toString()
+              .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
+          </div>
         </div>
         <div className="modalBottom" />
       </div>
