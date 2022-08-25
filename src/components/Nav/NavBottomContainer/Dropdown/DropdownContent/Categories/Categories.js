@@ -17,7 +17,6 @@ const Categories = () => {
           >
             <ItemList
               key={item.id}
-              id={item.id}
               alt={item.alt}
               src={item.src}
               name={item.name}
