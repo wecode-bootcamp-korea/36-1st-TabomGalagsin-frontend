@@ -91,10 +91,14 @@ function NavCart({ onMouse, setCartedCount }) {
         </div>
         <button
           onClick={() => {
-            if (productListData.length === 0) {
-              alert('장바구니 비어있어요 ♥️♥️♥️');
+            if (localStorage.getItem('token')) {
+              if (productListData.length === 0) {
+                alert('장바구니 비어있어요 ♥️♥️♥️');
+              } else {
+                goToUrl(navigate, '/cart');
+              }
             } else {
-              goToUrl(navigate, '/cart');
+              alert('비회원은 이용할 수 없는 기능입니다.');
             }
           }}
           className="cartResultSubmit"

@@ -4,7 +4,7 @@ import { appendComma } from '../../../utils';
 import { useNavigate } from 'react-router-dom';
 import './CartSummaryModal.scss';
 
-function CartSummaryModal({ summaryPrice }) {
+function CartSummaryModal({ summaryPrice, setCartedCount }) {
   const navigate = useNavigate();
 
   const [userPoints, setUserPoints] = useState(0);
@@ -39,24 +39,6 @@ function CartSummaryModal({ summaryPrice }) {
     <>
       <div className="cartSummaryModal" />
       <div className="modalBox">
-        <button
-          className="modalExit"
-          onClick={() => {
-            navigate('/');
-            fetch(`${API.PAYMENT}`, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'Application/json',
-                authorization: userToken,
-              },
-              body: JSON.stringify({
-                totalPrice: Number(summaryPrice),
-              }),
-            });
-          }}
-        >
-          x
-        </button>
         <div className="modalTop">결제 내역</div>
         <div className="modalMiddle">
           <div className="modalCurrentCredit">
@@ -93,7 +75,35 @@ function CartSummaryModal({ summaryPrice }) {
             전체 합산 금액 : ₩{appendComma(Number(summaryPrice))}
           </div>
           <div className="modalTotalResult">
-            결제 후 잔액 : ₩{appendComma(Number(userPoints - summaryPrice))}
+            <div className="modalTotalResultPrice">
+              결제 후 잔액 : ₩{appendComma(Number(userPoints - summaryPrice))}
+            </div>
+            <div className="modalTotalResultSubmit">
+              <button
+                className="modalExit"
+                onClick={() => {
+                  if (userPoints - summaryPrice < 0) {
+                    alert('크레딧이 부족합니다, 메인화면으로 이동합니다.');
+                  } else {
+                    setCartedCount(0);
+                    localStorage.setItem('totalProduct', 0);
+                  }
+                  fetch(`${API.PAYMENT}`, {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'Application/json',
+                      authorization: userToken,
+                    },
+                    body: JSON.stringify({
+                      totalPrice: Number(summaryPrice),
+                    }),
+                  });
+                  navigate('/');
+                }}
+              >
+                결제하기
+              </button>
+            </div>
           </div>
         </div>
         <div className="modalBottom" />

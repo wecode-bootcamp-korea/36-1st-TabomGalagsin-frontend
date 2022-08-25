@@ -66,38 +66,42 @@ function DetailPage() {
   };
 
   const handleFetch = () => {
-    fetch(`${API.CART}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'Application/json',
-        authorization: userToken,
-      },
-      body: JSON.stringify({
-        productId: productId,
-        quantity: 1,
-        sizeId: clickedInfo.sizeId,
-        colorId: clickedInfo.colorId,
-      }),
-    })
-      .then(response => response.json())
-      .then(res => {
-        res.message === 'PRODUCT_STOCK_WAS_EMPTY' &&
-          alert('상품의 재고가 없습니다.');
-        res.message === 'PRODUCT_ALREADY_EXISTS_IN_CART' &&
-          alert('이미 장바구니에 담긴 상품입니다.');
-        if (res.totalProduct) {
-          setCartedCount(res.totalProduct);
-          localStorage.setItem('totalProduct', res.totalProduct);
-        }
-      });
-    setClickedInfo(
-      prev =>
-        (prev = {
-          colorId: 1,
-          sizeId: 0,
-        })
-    );
-    setClick({ 1: false, 2: false, 3: true });
+    if (localStorage.getItem('token')) {
+      fetch(`${API.CART}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'Application/json',
+          authorization: userToken,
+        },
+        body: JSON.stringify({
+          productId: productId,
+          quantity: 1,
+          sizeId: clickedInfo.sizeId,
+          colorId: clickedInfo.colorId,
+        }),
+      })
+        .then(response => response.json())
+        .then(res => {
+          res.message === 'PRODUCT_STOCK_WAS_EMPTY' &&
+            alert('상품의 재고가 없습니다.');
+          res.message === 'PRODUCT_ALREADY_EXISTS_IN_CART' &&
+            alert('이미 장바구니에 담긴 상품입니다.');
+          if (res.totalProduct) {
+            setCartedCount(res.totalProduct);
+            localStorage.setItem('totalProduct', res.totalProduct);
+          }
+        });
+      setClickedInfo(
+        prev =>
+          (prev = {
+            colorId: 1,
+            sizeId: 0,
+          })
+      );
+      setClick({ 1: false, 2: false, 3: true });
+    } else {
+      alert('비회원은 이용할 수 없는 기능입니다');
+    }
   };
   const setSelectColour = useState(0)[1];
 
