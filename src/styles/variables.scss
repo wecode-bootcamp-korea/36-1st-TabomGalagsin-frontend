@@ -20,6 +20,10 @@
   .green {
     background-color: $themeColorGreen;
   }
+
+  .pink {
+    background-color: $themeColorPink;
+  }
 }
 
 /* main */
@@ -28,3 +32,4 @@ $themeColorYellow: #ffee4d;
 $themeColorGreen: #00c9a2;
 $themeColorSkyBlue: #2cdcdf;
 $themeColorRed: #f24936;
+$themeColorPink: #ffc3d4;
