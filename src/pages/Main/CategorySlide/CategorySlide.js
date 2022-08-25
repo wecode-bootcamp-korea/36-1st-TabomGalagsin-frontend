@@ -67,7 +67,7 @@ function CategorySlide({ color, textColor }) {
       </div>
       <div className="slideButtonContainer">
         <button
-          className={`previousButton ${color}`}
+          className={`previousButton flipflopCursor ${color}`}
           onClick={buttonClick}
           style={{ color: textColor }}
         >
@@ -93,7 +93,7 @@ function CategorySlide({ color, textColor }) {
           ))}
         </ul>
         <button
-          className={`nextButton ${color}`}
+          className={`nextButton flipflopCursor ${color}`}
           onClick={buttonClick}
           style={{ color: textColor }}
         >

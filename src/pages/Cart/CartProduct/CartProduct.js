@@ -30,7 +30,7 @@ function CartProduct({
         <div className="productHeader">
           <p className="productName">{productName}</p>
           <button
-            className="productDeleteButton"
+            className="productDeleteButton flipflopCursor"
             onClick={() => {
               onRemove(orderItemsId);
               productListData &&
@@ -59,7 +59,7 @@ function CartProduct({
         <div className="productFooter">
           <div className="productQuantityControlContainer">
             <button
-              className="quantityMinus"
+              className="quantityMinus flipflopCursor"
               onClick={() => {
                 setStock(prev => prev - 1);
                 fetch(`${API.CART}/${orderItemsId}`, {
@@ -83,7 +83,7 @@ function CartProduct({
             </button>
             <span className="productQuantity">{stock}</span>
             <button
-              className="quantityPlus"
+              className="quantityPlus flipflopCursor"
               onClick={() => {
                 setStock(prev => prev + 1);
                 fetch(`${API.CART}/${orderItemsId}`, {

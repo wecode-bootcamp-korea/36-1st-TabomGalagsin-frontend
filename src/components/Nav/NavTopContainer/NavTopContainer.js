@@ -10,7 +10,9 @@ function NavTopContainer() {
   const currentData = [...CAROUSEL_DATA, ...CAROUSEL_DATA, ...CAROUSEL_DATA];
 
   const clickButton = event => {
-    if (event.target.className !== 'fa-solid fa-chevron-left arrow') {
+    if (
+      event.target.className !== 'fa-solid fa-chevron-left arrow flipflopCursor'
+    ) {
       if (currentPosition > 2) {
         setTransitionTime(0);
         setCurrentPosition(-2);
@@ -53,7 +55,7 @@ function NavTopContainer() {
       <div className="carousel">
         <div className="leftCover">
           <i
-            className="fa-solid fa-chevron-left arrow"
+            className="fa-solid fa-chevron-left arrow flipflopCursor"
             onClick={event => {
               clickButton(event);
               setResetAuto(prev => prev * -1);
@@ -79,7 +81,7 @@ function NavTopContainer() {
         </div>
         <div className="rightCover">
           <i
-            className="fa-solid fa-chevron-right arrow"
+            className="fa-solid fa-chevron-right arrow flipflopCursor"
             onClick={event => {
               clickButton(event);
               setResetAuto(prev => prev * -1);

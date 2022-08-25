@@ -19,20 +19,17 @@
     transition: all 0.2s ease-out;
     button {
       display: none;
-      cursor: pointer;
     }
   }
   .sizePickers {
     transition: all 0.2s ease-out;
     button {
       display: none;
-      cursor: pointer;
     }
   }
   .cartBtn {
     display: none;
     transition: all 0.2s ease-out;
-    cursor: pointer;
   }
   &:hover {
     background-color: white;

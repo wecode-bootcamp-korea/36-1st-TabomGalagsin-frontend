@@ -21,7 +21,13 @@ function Auth() {
               }}
             >
               <div className="loginNavFont">
-                <font className={currentId ? 'loginText' : 'clickedLoginText'}>
+                <font
+                  className={
+                    currentId
+                      ? 'loginText flipflopCursor'
+                      : 'clickedLoginText flipflopCursor'
+                  }
+                >
                   로그인
                 </font>
               </div>
@@ -33,7 +39,13 @@ function Auth() {
               }}
             >
               <div className="loginNavFont">
-                <font className={currentId ? 'clickedLoginText' : 'loginText'}>
+                <font
+                  className={
+                    currentId
+                      ? 'clickedLoginText flipflopCursor'
+                      : 'loginText flipflopCursor'
+                  }
+                >
                   회원가입
                 </font>
               </div>

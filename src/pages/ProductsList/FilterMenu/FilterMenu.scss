@@ -11,7 +11,6 @@
 
   .filterTitleContainer {
     @include flex(space-around, center);
-    cursor: pointer;
 
     .filterTitle {
       display: inline-block;

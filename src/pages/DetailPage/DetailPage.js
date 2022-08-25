@@ -177,7 +177,11 @@ function DetailPage() {
                   ))}
               </div>
               <button
-                className={isClicked ? 'addToBag' : 'selectSize'}
+                className={
+                  isClicked
+                    ? 'addToBag flipflopCursor'
+                    : 'selectSize flipflopCursor'
+                }
                 disabled={!isClicked}
                 onClick={() => handleFetch()}
               >

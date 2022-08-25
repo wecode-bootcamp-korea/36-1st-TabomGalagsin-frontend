@@ -97,7 +97,7 @@ function NavCart({ onMouse, setCartedCount }) {
               alert('비회원은 이용할 수 없는 기능입니다.');
             }
           }}
-          className="cartResultSubmit"
+          className="cartResultSubmit flipflopCursor"
         >
           구매하기
         </button>

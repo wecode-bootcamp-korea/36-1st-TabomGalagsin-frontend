@@ -14,7 +14,7 @@ function MainText({ mainSlideData, positionNow }) {
           {mainSlideData[positionNow].textSmall}
         </div>
         <div
-          className="aboutLink"
+          className="aboutLink flipflopCursor"
           onClick={() => navigate('/categories/1/type/1')}
         >
           지금 보러가기
