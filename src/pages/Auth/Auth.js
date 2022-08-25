@@ -4,7 +4,7 @@ import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
 
 function Auth() {
-  const [currentId, setCurrentId] = useState(1);
+  const [currentId, setCurrentId] = useState(false);
 
   return (
     <div className="loginField">
@@ -13,25 +13,29 @@ function Auth() {
           <li
             className="navItem"
             onClick={() => {
-              setCurrentId(1);
+              setCurrentId(false);
             }}
           >
-            <div className="loginNav">
-              <font className="loginText">로그인</font>
+            <div className="loginNavFont">
+              <font className={currentId ? 'loginText' : 'clickedLoginText'}>
+                로그인
+              </font>
             </div>
           </li>
           <li
             className="navItem"
             onClick={() => {
-              setCurrentId(0);
+              setCurrentId(true);
             }}
           >
-            <div className="loginNav">
-              <font className="loginText">회원가입</font>
+            <div className="loginNavFont">
+              <font className={currentId ? 'clickedLoginText' : 'loginText'}>
+                회원가입
+              </font>
             </div>
           </li>
         </ul>
-        {currentId === 1 ? <SignIn /> : <SignUp />}
+        {currentId ? <SignUp /> : <SignIn />}
       </div>
     </div>
   );

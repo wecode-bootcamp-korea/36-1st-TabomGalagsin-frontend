@@ -85,7 +85,7 @@ function SignUp() {
   };
 
   return (
-    <form className="signUp">
+    <form className="signUp" onSubmit={validSignUp}>
       <div className="emailForm">
         <label className="formLabel">
           <font className="labelFont">이메일</font>
@@ -173,7 +173,7 @@ function SignUp() {
           <span>{error.password}</span>
         </div>
       </div>
-      <button className="signupBtn" onClick={validSignUp}>
+      <button type="submit" className="signupBtn">
         회원가입
       </button>
     </form>

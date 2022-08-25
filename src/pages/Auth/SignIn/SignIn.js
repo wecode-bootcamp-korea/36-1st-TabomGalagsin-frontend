@@ -37,7 +37,7 @@ function SignIn() {
       }
     }
   };
-  console.log(email);
+  console.log(regEmail.test(email));
   const validSignIn = e => {
     e.preventDefault();
     fetch('http://10.58.0.250:3000/users/login', {
@@ -60,7 +60,7 @@ function SignIn() {
   };
 
   return (
-    <form className="signIn">
+    <form className="signIn" onSubmit={validSignIn}>
       <div className="emailForm">
         <label className="formLabel">
           <font className="labelFont">이메일</font>
@@ -90,7 +90,7 @@ function SignIn() {
           <span>{error.password}</span>
         </div>
       </div>
-      <button className="loginBtn" onClick={validSignIn}>
+      <button type="submit" className="loginBtn">
         로그인
       </button>
     </form>
@@ -99,4 +99,4 @@ function SignIn() {
 
 export default SignIn;
 const regEmail =
-  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[a-zA-Z])*\.[a-zA-Z]{2,}$/;

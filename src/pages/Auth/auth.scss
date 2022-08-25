@@ -1,3 +1,4 @@
+@import '../../styles/variables.scss';
 .loginField {
   display: flex;
   justify-content: center;
@@ -12,25 +13,38 @@
     .loginNav {
       display: flex;
       list-style: none;
-      height: 50px;
+      height: 60px;
+      position: relative;
 
-      .navItem {
+      .loginText {
         font-size: 20px;
-        font-weight: 700;
+        font-weight: 500;
         margin: 0 8px;
         color: #646464;
         letter-spacing: 0.03em;
+        height: 60px;
+        top: 5px;
+        padding-bottom: 0.5rem;
 
         &:hover {
           color: #b60060;
           cursor: pointer;
-          padding-bottom: 20px;
-          font-weight: 900;
         }
+      }
+      .clickedLoginText {
+        font-size: 22px;
+        font-weight: 500;
+        margin: 0 8px;
+        color: #b60060;
+        letter-spacing: 0.03em;
+        height: 60px;
+        top: 5px;
+        border-bottom: 4px solid #b60060;
+        padding-bottom: 0.5rem;
 
-        &:hover font {
-          font-size: 20px;
-          font-weight: 500;
+        &:hover {
+          color: #b60060;
+          cursor: pointer;
         }
       }
     }
