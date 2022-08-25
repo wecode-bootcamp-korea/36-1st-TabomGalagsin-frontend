@@ -1,8 +1,8 @@
 import './Footer.scss';
 
-function Footer({ color }) {
+function Footer({ backgroudColor }) {
   return (
-    <div className="footer" style={{ backgroudColor: color }}>
+    <div className="footer" style={{ backgroudColor }}>
       <div className="menuContainer">
         {MENU_LIST.map(({ title, iconSrc, detailedMenus }) => {
           return (

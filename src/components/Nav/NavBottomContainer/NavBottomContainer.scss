@@ -14,36 +14,41 @@
     font-size: 35px;
     z-index: 1;
 
-    .menu {
-      padding: 20px;
-    }
-
-    .iconLeftSide {
+    .navIconWrapper {
       @include flex(space-between, center);
-      width: 100px;
-      height: 100%;
-      .navIconWrap {
-        @include flex(center, center);
+      width: 1140px;
+
+      .menu {
+        padding: 20px;
+      }
+
+      .iconLeftSide {
+        @include flex(space-between, center);
         width: 100px;
         height: 100%;
-        position: relative;
-        .navIcon {
-          color: white;
-          font-size: 20px;
-          cursor: pointer;
+        .navIconWrap {
+          @include flex(center, center);
+          width: 100px;
+          height: 100%;
           position: relative;
+          .navIcon {
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
 
-          &:hover {
-            transform: scale(1.2, 1.2);
+            &:hover {
+              transform: scale(1.2, 1.2);
+            }
           }
         }
       }
-    }
 
-    .logo {
-      height: 200px;
-      margin-bottom: 10px;
-      cursor: pointer;
+      .logo {
+        height: 200px;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
     }
   }
 }

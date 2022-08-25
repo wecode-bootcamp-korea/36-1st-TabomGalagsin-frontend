@@ -1,50 +1,59 @@
 @import '../../styles/variables.scss';
 
 .productsList {
-  width: 100vw;
+  @include flex(null, center);
+  flex-direction: column;
   margin: 5rem 0 auto;
   background-color: #ffc3d4;
+  font-family: 'Roboto', sans-serif;
 
   .bold {
     font-weight: 600;
   }
 
   .productsListContainer {
-    width: 880px;
+    width: 960px;
     min-width: 880px;
     margin: 0rem auto;
     padding: 5rem 0rem;
+    position: relative;
+    left: 20px;
 
     .listNav {
       @include flex(space-between, center);
-      width: 880px;
-      min-width: 880px;
+      width: 960px;
+      min-width: 960px;
       margin-bottom: 2rem;
-
+      position: relative;
+      left: -40px;
       .breadCrumps {
         width: 80%;
       }
 
       .orderContainer {
-        width: 20%;
         text-align: end;
+        min-width: 14rem;
 
         .orderBtn {
           margin-left: 1rem;
           padding: 0.2rem 1rem;
           border: 1px solid black;
           border-radius: 1rem;
+          cursor: pointer;
+
+          i {
+            margin-left: 0.5rem;
+          }
         }
       }
 
       .orderSelector {
         width: 230px;
-        height: 230px;
         margin-top: 1rem;
         position: absolute;
         background-color: white;
         transform: translateX(-20px);
-        z-index: 999;
+        z-index: 50;
         border-radius: 1rem;
 
         .selectorHeader {
@@ -53,6 +62,11 @@
           padding: 1rem 0 2rem 0;
           border-bottom: 1px solid #99999999;
           font-weight: 500;
+
+          .cancelButton {
+            padding: 0.5rem;
+            cursor: pointer;
+          }
 
           .orderTitle {
             @include flex(center, center);
@@ -85,6 +99,7 @@
 
     .productsContainer {
       @include flex(center, flex-start);
+      min-height: 300px;
 
       .filterAside {
         height: 50rem;

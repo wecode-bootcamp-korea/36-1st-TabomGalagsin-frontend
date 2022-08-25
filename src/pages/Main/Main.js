@@ -16,16 +16,9 @@ function Main() {
   const [recommendProductsList, setRecommendProductsList] = useState([]);
 
   useEffect(() => {
-    const fetchData = async (uri, setState) => {
+    const fetchData = async (uri, options, setState) => {
       try {
-        const response = await fetch(uri, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
-          },
-        });
+        const response = await fetch(uri, options);
         if (!response.ok) {
           throw new Error('서버가 이상합니다.');
         }
@@ -36,8 +29,24 @@ function Main() {
       }
     };
 
-    fetchData(API.NEW, setNewProductsList);
-    fetchData(API.RECOMMEND, setRecommendProductsList);
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const optionsWithToken = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJ0ZXN0QGVtYWlsLmNvbSIsImlhdCI6MTY2MTIxMTQzNX0.iE6H7FA8L1x5zE3K85qypYPtQoWN1Btki8yw4mru5U0',
+      },
+    };
+
+    fetchData(API.NEW, options, setNewProductsList);
+    fetchData(API.RECOMMEND, optionsWithToken, setRecommendProductsList);
   }, []);
 
   const mainSlideButtonClick = event => {
