@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { API } from '../../config.js';
 import { appendComma, goToUrl } from '../../utils.js';
 import './Product.scss';
