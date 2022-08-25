@@ -11,7 +11,10 @@ function RecommendProducts({ productsList, title }) {
         <h1 className="title">{title}</h1>
         <button
           className="linkButton"
-          onClick={() => navigate('/categories/1/type/1')}
+          onClick={() => {
+            navigate('/categories/1/type/1');
+            window.scrollTo(0, 0);
+          }}
         >
           <span>더 많은 제품 보기</span>
           <i className="fa-solid fa-angle-right fa-lg" />
