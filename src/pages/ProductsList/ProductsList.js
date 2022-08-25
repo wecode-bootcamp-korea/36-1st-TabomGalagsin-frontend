@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { API } from '../../config.js';
 import Product from '../../components/Product/Product.js';
 import FilterMenu from './FilterMenu/FilterMenu.js';
@@ -12,7 +12,7 @@ function ProductsList() {
   const [selectedOrder, setSelectedOrder] = useState(ORDER_LIST[0]);
   const [isOpenedOrder, setIsOpenedOrder] = useState(false);
 
-  const backgroudColor = 'pink';
+  const { categoryId, typeId } = useParams();
 
   const fetchData = async (uri, options, setState) => {
     try {
@@ -34,9 +34,9 @@ function ProductsList() {
         'Content-Type': 'application/json',
       },
     };
-
-    fetchData(API.PRODUCTS, options, setProductsList);
-  }, []);
+    const uri = `${API.MAIN}/categories/${categoryId}/${CATEGORY_ID_MAP[categoryId]}/${typeId}`;
+    fetchData(uri, options, setProductsList);
+  }, [categoryId, typeId]);
 
   const handleChange = e => {
     const { value, dataset } = e.target;
@@ -48,11 +48,37 @@ function ProductsList() {
     };
 
     setSelectedOrder(value);
+    const uri = `${API.MAIN}/categories/${categoryId}/${CATEGORY_ID_MAP[categoryId]}/${typeId}`;
     fetchData(
-      `${API.ORDERING}?ordering=${dataset.querystring}`,
+      `${uri}?ordering=${dataset.querystring}`,
       options,
       setProductsList
     );
+
+    document
+      .querySelectorAll(`input[type=checkbox]`)
+      .forEach(el => (el.checked = false));
+  };
+
+  const handleChangeFilter = e => {
+    const { value, dataset } = e.target;
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    let uri = `${API.MAIN}/categories/${categoryId}/${CATEGORY_ID_MAP[categoryId]}/${typeId}`;
+    const [priceMin, priceMax] = value.split('~');
+
+    if (dataset.filtertype === '가격') {
+      uri += `?pricemin=${priceMin}&pricemax=${priceMax || 999999}`;
+    } else if (dataset.filtertype === '테마') {
+      uri += `?theme=${value}`;
+    }
+
+    fetchData(uri, options, setProductsList);
   };
 
   return (
@@ -66,17 +92,26 @@ function ProductsList() {
                 Main page
               </Link>
               <span>&gt;</span>
-              <Link to="/" className="link bold">
-                <span className="bold">카테고리 넣을 곳 </span>
+              <Link
+                to={
+                  categoryId === '1'
+                    ? `/category/${categoryId}/type/${typeId}`
+                    : `/category/${categoryId}/color/${typeId}`
+                }
+                className="link bold"
+              >
+                <span className="bold">
+                  {categoryId === '1' ? '카테고리 별' : '색상 별'}
+                </span>
               </Link>
             </div>
             <div className="orderContainer">
-              <span className="bold">순서</span>
+              <span className="orderSpan bold">순서</span>
               <span
                 className="orderBtn"
                 onClick={() => setIsOpenedOrder(prev => !prev)}
               >
-                릴리스
+                {selectedOrder}
                 <i className="fa-solid fa-chevron-down" />
               </span>
               {isOpenedOrder && (
@@ -84,6 +119,7 @@ function ProductsList() {
                   className={`orderSelector ${
                     isOpenedOrder ? 'openedOrder' : 'closedOrder'
                   }`}
+                  onMouseLeave={() => setIsOpenedOrder(false)}
                 >
                   <div className="selectorHeader">
                     <div className="orderTitle">
@@ -93,7 +129,10 @@ function ProductsList() {
                       />
                       <span>{selectedOrder}</span>
                     </div>
-                    <div>
+                    <div
+                      className="cancelButton"
+                      onClick={() => setIsOpenedOrder(prev => !prev)}
+                    >
                       <i className="fa-solid fa-x fa-xs" />
                     </div>
                   </div>
@@ -119,10 +158,22 @@ function ProductsList() {
             </div>
           </div>
 
-          <main className="productsContainer">
+          <main
+            className="productsContainer"
+            style={{
+              height: `${Math.ceil(productsList.length / 3) * 320}px`,
+            }}
+          >
             <aside className="filterAside">
               {MENU_LIST.map(({ title, list }) => {
-                return <FilterMenu key={title} title={title} list={list} />;
+                return (
+                  <FilterMenu
+                    key={title}
+                    handleChangeFilter={handleChangeFilter}
+                    title={title}
+                    list={list}
+                  />
+                );
               })}
             </aside>
             <section className="listContainer">
@@ -133,6 +184,7 @@ function ProductsList() {
                   return (
                     <Product
                       key={productId}
+                      productId={productId}
                       dataArrIdx={idx}
                       productName={name}
                       price={price}
@@ -145,7 +197,7 @@ function ProductsList() {
             </section>
           </main>
         </div>
-        <Footer backgroudColor={backgroudColor} />
+        <Footer backgroudColor="#ffc3d4" />
       </div>
     </>
   );
@@ -162,10 +214,11 @@ const ORDER_LIST = [
 const ORDER_QUERY_STRINGS = ['created_at', '-created_at', 'price', '-price'];
 
 const MENU_LIST = [
-  { title: '그림 물감', list: ['노란색', '푸른', '베이지', '하얀색', 'ㅇㅇ'] },
-  { title: '느낌', list: ['좋음', '나쁨', '적당'] },
+  { title: '가격', list: ['0~29999', '30000~59999', '60000~'] },
   {
-    title: '사이즈',
-    list: ['Free(Man)', 'Free(Woman)', 'One'],
+    title: '테마',
+    list: ['Beach', 'Daily', 'Activity'],
   },
 ];
+
+const CATEGORY_ID_MAP = ['', 'type', 'color'];

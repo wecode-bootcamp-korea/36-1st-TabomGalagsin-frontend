@@ -9,19 +9,26 @@ function NavBottomContainer({ color }) {
   return (
     <div className="navBottomContainer">
       <div className={`navbar ${color}`}>
-        <div
-          onMouseEnter={() => setIsMouseEnter(!isMouseEnter)}
-          onMouseLeave={() => setIsMouseEnter(!isMouseEnter)}
-        >
-          <i className="fa-solid fa-bars navIcon menu" />
-          {isMouseEnter && <Dropdown />}
-        </div>
-        <Link to="/">
-          <img className="logo" src="/images/Nav/logo-yellow.png" alt="logo" />
-        </Link>
-        <div className="iconLeftSide">
-          <i className="fa-solid fa-user navIcon" />
-          <i className="fa-solid fa-basket-shopping navIcon" />
+        <div className="navIconWrapper">
+          <div
+            onMouseEnter={() => setIsMouseEnter(!isMouseEnter)}
+            onMouseLeave={() => setIsMouseEnter(!isMouseEnter)}
+          >
+            <i className="fa-solid fa-bars navIcon menu" />
+            {isMouseEnter && <Dropdown />}
+          </div>
+          <Link to="/" className="linkComponent">
+            <img
+              className="logo"
+              src="/images/Nav/logo-yellow.png"
+              alt="logo"
+            />
+          </Link>
+
+          <div className="iconLeftSide">
+            <i className="fa-solid fa-user navIcon" />
+            <i className="fa-solid fa-basket-shopping navIcon" />
+          </div>
         </div>
       </div>
     </div>

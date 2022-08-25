@@ -5,7 +5,7 @@
   background-color: #ffc3d4;
 
   .navbar {
-    @include flex(space-between, center);
+    @include flex(center, center);
     padding: 1px 50px;
     height: 65px;
     width: 100vw;
@@ -14,29 +14,34 @@
     font-size: 35px;
     z-index: 1;
 
-    .navIcon {
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
+    .navIconWrapper {
+      @include flex(space-between, center);
+      width: 1140px;
 
-      &:hover {
-        transform: scale(1.2, 1.2);
+      .navIcon {
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.2, 1.2);
+        }
       }
-    }
 
-    .menu {
-      padding: 20px;
-    }
+      .menu {
+        padding: 20px;
+      }
 
-    .iconLeftSide {
-      @include flex(space-between, null);
-      width: 70px;
-    }
+      .iconLeftSide {
+        @include flex(space-between, null);
+        width: 70px;
+      }
 
-    .logo {
-      height: 200px;
-      margin-bottom: 10px;
-      cursor: pointer;
+      .logo {
+        height: 200px;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
     }
   }
 }
