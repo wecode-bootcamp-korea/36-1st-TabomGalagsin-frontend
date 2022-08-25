@@ -31,7 +31,7 @@ function SignIn() {
     } else if (name === 'password') {
       if (value === '') {
         setError({ ...error, [name]: '필수 입력 항목입니다.' });
-      } else if (value.length < 5) {
+      } else if (value.length < 4) {
         setError({ ...error, [name]: '비밀번호를 확인해주세요.' });
       } else {
         setError({ ...error, [name]: '' });
