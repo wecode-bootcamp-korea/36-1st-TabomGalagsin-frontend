@@ -23,8 +23,8 @@
         font-weight: 500;
       }
 
-      .productDelete {
-        background-color: #fee3cb;
+      .productDeleteButton {
+        background-color: #ffc3d4;
         border: none;
 
         img {
@@ -55,7 +55,7 @@
           @include flex(center, center);
           width: 18px;
           height: 18px;
-          background-color: #fee3cb;
+          background-color: #ffc3d4;
           border: 1.5px solid #b60060;
           border-radius: 10px;
           color: #b60060;

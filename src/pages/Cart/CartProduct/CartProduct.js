@@ -28,7 +28,7 @@ function CartProduct({
         <div className="productHeader">
           <p className="productName">{productName}</p>
           <button
-            className="productDelete"
+            className="productDeleteButton"
             onClick={() => {
               onRemove(orderItemsId);
               productListData &&
