@@ -11,7 +11,11 @@ function ColourOption({
   return (
     <div className="colourOption">
       <button
-        className={index === 0 ? 'selectedColour' : 'nonSelectedColour'}
+        className={
+          index === 0
+            ? 'selectedColour flipflopCursor'
+            : 'nonSelectedColour flipflopCursor'
+        }
         onClick={() => {
           setSelectColour(prev => prev + 1);
           changeColor(index);

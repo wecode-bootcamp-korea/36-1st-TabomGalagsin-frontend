@@ -84,7 +84,7 @@ function Main() {
         <MainText mainSlideData={mainSlideData} positionNow={positionNow} />
         <div className="buttonContainer">
           <button
-            className={`previous ${mainSlideData[positionNow].color}`}
+            className={`previous flipflopCursor ${mainSlideData[positionNow].color}`}
             onClick={mainSlideButtonClick}
             style={{
               color: `${mainSlideData[positionNow].textColor}`,
@@ -103,7 +103,7 @@ function Main() {
             ))}
           </ul>
           <button
-            className={`next ${mainSlideData[positionNow].color}`}
+            className={`next flipflopCursor ${mainSlideData[positionNow].color}`}
             onClick={mainSlideButtonClick}
             style={{
               color: `${mainSlideData[positionNow].textColor}`,

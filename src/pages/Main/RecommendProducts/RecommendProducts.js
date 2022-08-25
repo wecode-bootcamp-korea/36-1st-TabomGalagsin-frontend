@@ -11,7 +11,7 @@ function RecommendProducts({ productsList, title, setCartedCount }) {
       <div className="header">
         <h1 className="title">{title}</h1>
         <button
-          className="linkButton"
+          className="linkButton flipflopCursor"
           onClick={() => goToUrl(navigate, '/categories/1/type/1')}
         >
           <span>더 많은 제품 보기</span>

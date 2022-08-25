@@ -190,7 +190,10 @@ function Cart() {
                 </div>
               </div>
               <div className="recommendSlideContainer">
-                <button className="previous" onClick={clickButton}>
+                <button
+                  className="previous flipflopCursor"
+                  onClick={clickButton}
+                >
                   <i className="fa-solid fa-chevron-left fa-xl" />
                 </button>
                 <ul className="cartSlideStateContainer">
@@ -204,14 +207,14 @@ function Cart() {
                     );
                   })}
                 </ul>
-                <button className="next" onClick={clickButton}>
+                <button className="next flipflopCursor" onClick={clickButton}>
                   <i className="fa-solid fa-chevron-right fa-xl" />
                 </button>
               </div>
             </section>
             <section className="cartAsideBuyingSubmit">
               <button
-                className="buyingSubmit"
+                className="buyingSubmit flipflopCursor"
                 onClick={() => {
                   setPaymentModal(true);
                 }}

@@ -8,7 +8,7 @@ function RecommendProduct({ URL, productName, price, productId }) {
   return (
     <div
       onClick={() => goToUrl(navigate, `/products/${productId}`)}
-      className="recommendProduct"
+      className="recommendProduct flipflopCursor"
     >
       <div className="recommendProductImage">
         <img src={URL} alt="productImage" />

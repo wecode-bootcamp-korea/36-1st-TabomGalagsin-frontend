@@ -91,17 +91,17 @@ function Product({
 
   return (
     <div
-      className={`product product_col${colIndexOfCard}_row${rowIndexOfCard}`}
+      className={`product product_col${colIndexOfCard}_row${rowIndexOfCard} flipflopCursor`}
     >
       <div
         onClick={() => goToUrl(navigate, `/products/${productId}`)}
-        className="linkComponent"
+        className="linkComponent flipflopCursor"
       >
         <img alt="product" src={thumbnailUrl} />
       </div>
       <div
         onClick={() => goToUrl(navigate, `/products/${productId}`)}
-        className="linkComponent"
+        className="linkComponent flipflopCursor"
       >
         <p className="description">{productName}</p>
       </div>
@@ -114,7 +114,11 @@ function Product({
               value={JSON.stringify({ color, colorId })}
               name="color"
               onClick={handleClickButton}
-              className={color === clickedInfo.color ? 'active' : ''}
+              className={
+                color === clickedInfo.color
+                  ? 'active flipflopCursor '
+                  : 'flipflopCursor'
+              }
               style={{ backgroundColor: color }}
             />
           );
@@ -128,7 +132,11 @@ function Product({
               value={JSON.stringify({ size, sizeId })}
               name="size"
               onClick={handleClickButton}
-              className={size === clickedInfo.size ? 'active' : ''}
+              className={
+                size === clickedInfo.size
+                  ? 'active flipflopCursor'
+                  : 'flipflopCursor'
+              }
             >
               {size}
             </button>
@@ -137,7 +145,7 @@ function Product({
       </div>
       <button
         disabled={!isClickedAll}
-        className={`cartBtn ${isClickedAll ? 'enabledBtn' : ''}`}
+        className={`cartBtn flipflopCursor ${isClickedAll ? 'enabledBtn' : ''}`}
         onClick={handleFetch}
       >
         장바구니에 담기

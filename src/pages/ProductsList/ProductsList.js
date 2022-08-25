@@ -98,8 +98,11 @@ function ProductsList() {
       <div className="productsList">
         <div className="productsListContainer">
           <div className="listNav">
-            <div className="productNavigation">
-              <div onClick={() => goToUrl(navigate, '/')} className="link">
+            <div className="productNavigation ">
+              <div
+                onClick={() => goToUrl(navigate, '/')}
+                className="link flipflopCursor"
+              >
                 Main page
               </div>
               <span>&gt;</span>
@@ -112,7 +115,7 @@ function ProductsList() {
                       : `/categories/${categoryId}/color/${typeId}`
                   )
                 }
-                className="link bold"
+                className="link bold flipflopCursor"
               >
                 <span className="bold">
                   {productsList.length > 0 && categoryId === '1'
@@ -121,8 +124,8 @@ function ProductsList() {
                 </span>
               </div>
             </div>
-            <div className="orderContainer">
-              <span className="orderSpan bold">순서</span>
+            <div className="orderContainer flipflopCursor">
+              <span className="orderSpan bold ">순서</span>
               <span
                 className="orderBtn"
                 onClick={() => setIsOpenedOrder(prev => !prev)}
@@ -160,6 +163,7 @@ function ProductsList() {
                             type="radio"
                             name="order"
                             value={title}
+                            className="flipflopCursor"
                             data-querystring={ORDER_QUERY_STRINGS[idx]}
                             checked={selectedOrder === title}
                             onChange={handleChange}

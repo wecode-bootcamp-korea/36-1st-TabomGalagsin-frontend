@@ -91,7 +91,7 @@ function SignUp() {
           <font className="labelFont">이메일</font>
           <input
             name="email"
-            className="inputEmail"
+            className="inputEmail flipflopCursor"
             value={email}
             onChange={onChangeSignUp}
           />
@@ -106,7 +106,7 @@ function SignUp() {
             <font className="labelFont">이름</font>
             <input
               name="firstName"
-              className="inputName"
+              className="inputName flipflopCursor"
               value={firstName}
               onChange={onChangeSignUp}
             />
@@ -120,7 +120,7 @@ function SignUp() {
             <font className="labelFont">성</font>
             <input
               name="lastName"
-              className="inputName"
+              className="inputName flipflopCursor"
               value={lastName}
               onChange={onChangeSignUp}
             />
@@ -135,7 +135,7 @@ function SignUp() {
           <font className="labelFont">닉네임</font>
           <input
             name="nickName"
-            className="inputNickname"
+            className="inputNickname flipflopCursor"
             value={nickName}
             onChange={onChangeSignUp}
           />
@@ -149,7 +149,7 @@ function SignUp() {
           <font className="labelFont">주소</font>
           <input
             name="address"
-            className="inputAddress"
+            className="inputAddress flipflopCursor"
             value={address}
             onChange={onChangeSignUp}
           />
@@ -164,7 +164,7 @@ function SignUp() {
           <input
             name="password"
             type="password"
-            className="inputPassword"
+            className="inputPassword flipflopCursor"
             value={password}
             onChange={onChangeSignUp}
           />
@@ -175,7 +175,7 @@ function SignUp() {
       </div>
       <button
         type="submit"
-        className="signupBtn"
+        className="signupBtn flipflopCursor"
         onClick={() => {
           Object.keys(inputValue).forEach(key => {
             !inputValue.key &&

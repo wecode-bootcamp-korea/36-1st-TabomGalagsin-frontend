@@ -41,7 +41,7 @@ function BestSeller({ color, textColor }) {
       <div className="header">
         <h1 className="title">Best Seller</h1>
         <button
-          className="linkButton"
+          className="linkButton flipflopCursor"
           onClick={() => goToUrl(navigate, '/categories/1/type/1')}
         >
           <span>더 많은 제품 보기</span>
@@ -65,7 +65,7 @@ function BestSeller({ color, textColor }) {
       <div className="slideButtonContainer">
         <button
           onClick={handleClickLeftButton}
-          className={color}
+          className={`flipflopCursor ${color}`}
           style={{ color: textColor }}
         >
           <i className="fa-solid fa-angle-left fa-xl" />
@@ -83,7 +83,7 @@ function BestSeller({ color, textColor }) {
           })}
         </ul>
         <button
-          className={color}
+          className={`flipflopCursor ${color}`}
           style={{ color: textColor }}
           onClick={handleClickRightButton}
         >

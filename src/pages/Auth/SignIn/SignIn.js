@@ -74,7 +74,7 @@ function SignIn() {
           <font className="labelFont">이메일</font>
           <input
             name="email"
-            className="inputEmail"
+            className="inputEmail flipflopCursor"
             value={email}
             onChange={onChangeSignIn}
           />
@@ -90,7 +90,7 @@ function SignIn() {
             name="password"
             type="password"
             value={password}
-            className="inputPassword"
+            className="inputPassword flipflopCursor"
             onChange={onChangeSignIn}
           />
         </label>
@@ -100,7 +100,7 @@ function SignIn() {
       </div>
       <button
         type="submit"
-        className="loginBtn"
+        className="loginBtn flipflopCursor"
         onClick={() => {
           Object.keys(inputValue).forEach(key => {
             !inputValue.key &&

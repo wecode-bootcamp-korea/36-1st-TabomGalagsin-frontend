@@ -12,7 +12,7 @@ const ColorPallette = () => {
         {COLOUR_MOCK_DATA.map(box => (
           <div
             key={box.id}
-            className="linkComponent"
+            className="linkComponent flipflopCursor"
             onClick={() => goToUrl(navigate, `/categories/2/color/${box.id}`)}
           >
             <ColorBox
@@ -29,7 +29,7 @@ const ColorPallette = () => {
           <div
             key={box.id}
             onClick={() => goToUrl(navigate, `/categories/2/color/${box.id}`)}
-            className="linkComponent"
+            className="linkComponent flipflopCursor"
           >
             <ColorBox
               key={box.id}

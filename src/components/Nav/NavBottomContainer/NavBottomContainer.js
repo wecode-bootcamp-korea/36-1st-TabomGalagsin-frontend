@@ -14,7 +14,7 @@ function NavBottomContainer({ color, cartedCount, setCartedCount }) {
   return (
     <div className="navBottomContainer">
       <div className={`navbar ${color}`}>
-        <div className="navIconWrapper">
+        <div className="navIconWrapper flipflopCursor">
           <div
             onMouseEnter={() => setIsMouseEnter(!isMouseEnter)}
             onMouseLeave={() => setIsMouseEnter(!isMouseEnter)}
@@ -24,7 +24,7 @@ function NavBottomContainer({ color, cartedCount, setCartedCount }) {
           </div>
           <div className="linkComponent">
             <img
-              className="logo"
+              className="logo flipflopCursor"
               src="/images/Nav/logo-yellow.png"
               alt="logo"
               onClick={() => goToUrl(navigate, '/')}
@@ -34,13 +34,13 @@ function NavBottomContainer({ color, cartedCount, setCartedCount }) {
             {!userToken ? (
               <div
                 onClick={() => goToUrl(navigate, '/login')}
-                className="navIconWrap"
+                className="navIconWrap flipflopCursor"
               >
-                <i className="fa-solid fa-user navIcon" />
+                <i className="fa-solid fa-user navIcon flipflopCursor" />
               </div>
             ) : (
               <div
-                className="navIconWrap"
+                className="navIconWrap flipflopCursor"
                 onClick={() => {
                   localStorage.removeItem('token');
                   localStorage.removeItem('totalProduct');
@@ -50,17 +50,17 @@ function NavBottomContainer({ color, cartedCount, setCartedCount }) {
                   goToUrl(navigate, '/login');
                 }}
               >
-                <i class="fa-solid fa-arrow-right-from-bracket navIcon" />
+                <i class="fa-solid fa-arrow-right-from-bracket navIcon flipflopCursor" />
               </div>
             )}
             <div
-              className="navIconWrap"
+              className="navIconWrap flipflopCursor"
               onMouseEnter={() => setIsHover(!isHover)}
               onMouseLeave={() => setIsHover(!isHover)}
             >
-              <i className="fa-solid fa-basket-shopping navIcon" />
+              <i className="fa-solid fa-basket-shopping navIcon flipflopCursor" />
               {cartedCount > 0 && (
-                <div className="cartedCount">{cartedCount}</div>
+                <div className="cartedCount ">{cartedCount}</div>
               )}
               {isHover && <NavCart setCartedCount={setCartedCount} />}
             </div>

@@ -63,7 +63,10 @@ function NavCartProduct({
       <div className="productInfo">
         <div className="productHeader">
           <p className="productName">{productName}</p>
-          <button className="productDelete" onClick={() => setDelete()}>
+          <button
+            className="productDelete flipflopCursor"
+            onClick={() => setDelete()}
+          >
             <img
               src="https://cdn-icons-png.flaticon.com/512/13/13514.png"
               alt="deletButton"
@@ -75,7 +78,7 @@ function NavCartProduct({
         <div className="productFooter">
           <div className="productQuantityControlContainer">
             <button
-              className="quantityMinus"
+              className="quantityMinus flipflopCursor"
               onClick={() => setQuantity(-1)}
               disabled={thisQuantity === 1}
             >
@@ -83,7 +86,7 @@ function NavCartProduct({
             </button>
             <span className="productQuantity">{thisQuantity}</span>
             <button
-              className="quantityPlus"
+              className="quantityPlus flipflopCursor"
               onClick={() => setQuantity(1)}
               disabled={thisQuantity === stocks}
             >

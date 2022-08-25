@@ -80,7 +80,7 @@ function CartSummaryModal({ summaryPrice, setCartedCount }) {
             </div>
             <div className="modalTotalResultSubmit">
               <button
-                className="modalExit"
+                className="modalExit flipflopCursor"
                 onClick={() => {
                   if (userPoints - summaryPrice < 0) {
                     alert('크레딧이 부족합니다, 메인화면으로 이동합니다.');

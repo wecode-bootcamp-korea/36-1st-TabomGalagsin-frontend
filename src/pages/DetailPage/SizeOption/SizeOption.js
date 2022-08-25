@@ -17,7 +17,9 @@ function SizeOption({
     <div className="sizeOption">
       <button
         id={id}
-        className={click[id] ? 'clickedSize' : 'size'}
+        className={
+          click[id] ? 'clickedSize flipflopCursor' : 'size flipflopCursor'
+        }
         onClick={() => {
           handleClick();
           handleClickButton('sizeId', id);

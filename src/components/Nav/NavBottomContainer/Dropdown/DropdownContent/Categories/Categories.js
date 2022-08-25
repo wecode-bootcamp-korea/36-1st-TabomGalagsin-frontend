@@ -12,7 +12,7 @@ const Categories = () => {
         {categoryData.map(item => (
           <div
             key={item.id}
-            className="linkComponent"
+            className="linkComponent flipflopCursor"
             onClick={() => goToUrl(navigate, `/categories/1/type/${item.id}`)}
           >
             <ItemList
