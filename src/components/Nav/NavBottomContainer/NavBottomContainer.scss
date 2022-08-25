@@ -16,9 +16,14 @@
     .navIconWrapper {
       @include flex(space-between, center);
       width: 1140px;
+      height: 100%;
 
       .menu {
         padding: 20px;
+        font-size: 23px;
+        &:hover {
+          transform: scale(1.2, 1.2);
+        }
       }
 
       .iconLeftSide {
@@ -32,7 +37,7 @@
           position: relative;
           .navIcon {
             color: white;
-            font-size: 20px;
+            font-size: 23px;
             cursor: pointer;
             position: relative;
 

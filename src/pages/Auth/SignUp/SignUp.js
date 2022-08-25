@@ -173,7 +173,18 @@ function SignUp() {
           <span>{error.password}</span>
         </div>
       </div>
-      <button type="submit" className="signupBtn">
+      <button
+        type="submit"
+        className="signupBtn"
+        onClick={() => {
+          Object.keys(inputValue).forEach(key => {
+            !inputValue.key &&
+              setError(
+                prev => (prev = { ...prev, [key]: '필수 입력 항목입니다.' })
+              );
+          });
+        }}
+      >
         회원가입
       </button>
     </form>

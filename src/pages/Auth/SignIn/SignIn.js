@@ -91,7 +91,18 @@ function SignIn() {
           <span>{error.password}</span>
         </div>
       </div>
-      <button type="submit" className="loginBtn">
+      <button
+        type="submit"
+        className="loginBtn"
+        onClick={() => {
+          Object.keys(inputValue).forEach(key => {
+            !inputValue.key &&
+              setError(
+                prev => (prev = { ...prev, [key]: '필수 입력 항목입니다.' })
+              );
+          });
+        }}
+      >
         로그인
       </button>
     </form>
