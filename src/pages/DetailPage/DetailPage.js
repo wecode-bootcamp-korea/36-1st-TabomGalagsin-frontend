@@ -20,7 +20,7 @@ function DetailPage() {
   });
 
   useEffect(() => {
-    fetch(`http://10.58.0.234:3000/products/${productId}`, {
+    fetch(`http://10.58.0.250:3000/products/${productId}`, {
       method: 'GET',
     })
       .then(res => res.json())

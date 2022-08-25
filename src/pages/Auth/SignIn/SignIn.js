@@ -41,7 +41,7 @@ function SignIn() {
 
   const validSignIn = e => {
     e.preventDefault();
-    fetch('http://10.58.0.234:3000/users/login', {
+    fetch('http://10.58.0.250:3000/users/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -51,8 +51,8 @@ function SignIn() {
     })
       .then(response => response.json())
       .then(data => {
-        if (data.accessToken) {
-          localStorage.setItem('token', data.accessToken);
+        if (data.userInfo.token) {
+          localStorage.setItem('token', data.userInfo.token);
           goToUrl(navigate, '/');
         } else {
           alert('아이디 또는 비밀번호를 확인해주세요');
