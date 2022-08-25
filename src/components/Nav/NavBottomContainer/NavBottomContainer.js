@@ -40,6 +40,7 @@ function NavBottomContainer({ color, cartedCount, setCartedCount }) {
               </div>
             ) : (
               <div
+                className="navIconWrap"
                 onClick={() => {
                   localStorage.removeItem('token');
                   localStorage.removeItem('totalProduct');
@@ -47,16 +48,15 @@ function NavBottomContainer({ color, cartedCount, setCartedCount }) {
                   setCartedCount(0);
                   alert('로그아웃 되었습니다!!!!!');
                   goToUrl(navigate, '/login');
-                }
-              }}
+                }}
+              >
+                <i className="fa-solid fa-user navIcon" />
+              </div>
+            )}
+            <div
               className="navIconWrap"
-            >
-              <i className="fa-solid fa-user navIcon" />
-            </div>
-           <div
-            className="navIconWrap"
-            onMouseEnter={() => setIsHover(!isHover)}
-            onMouseLeave={() => setIsHover(!isHover)}
+              onMouseEnter={() => setIsHover(!isHover)}
+              onMouseLeave={() => setIsHover(!isHover)}
             >
               <i className="fa-solid fa-basket-shopping navIcon" />
               {cartedCount > 0 && (
