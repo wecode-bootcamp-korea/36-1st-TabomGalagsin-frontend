@@ -47,21 +47,22 @@ function NavBottomContainer({ color, cartedCount, setCartedCount }) {
                   setCartedCount(0);
                   alert('로그아웃 되었습니다!!!!!');
                   goToUrl(navigate, '/login');
-                }}
-                className="navIconWrap"
-              >
-                <i className="fa-solid fa-right-from-bracket navIcon" />
-              </div>
-            )}
-
-            <div className="navIconWrap" onMouseOver={() => setIsHover(true)}>
+                }
+              }}
+              className="navIconWrap"
+            >
+              <i className="fa-solid fa-user navIcon" />
+            </div>
+           <div
+            className="navIconWrap"
+            onMouseEnter={() => setIsHover(!isHover)}
+            onMouseLeave={() => setIsHover(!isHover)}
+            >
               <i className="fa-solid fa-basket-shopping navIcon" />
               {cartedCount > 0 && (
                 <div className="cartedCount">{cartedCount}</div>
               )}
-              {isHover && (
-                <NavCart setCartedCount={setCartedCount} onMouse={setIsHover} />
-              )}
+              {isHover && <NavCart setCartedCount={setCartedCount} />}
             </div>
           </div>
         </div>
