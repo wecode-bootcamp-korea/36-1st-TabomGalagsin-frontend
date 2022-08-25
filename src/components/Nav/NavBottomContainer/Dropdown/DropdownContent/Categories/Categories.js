@@ -1,24 +1,28 @@
-import { Link } from 'react-router-dom';
 import ItemList from './ItemList/ItemList';
+import { useNavigate } from 'react-router-dom';
+import { goTo } from '../../../../../../function';
 import './Categories.scss';
 
 const Categories = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="categories">
       <ul>
         {categoryData.map(item => (
-          <Link
+          <div
             key={item.id}
-            to={`/categories/1/type/${item.id}`}
             className="linkComponent"
+            onClick={() => goTo(navigate, `/categories/1/type/${item.id}`)}
           >
             <ItemList
               key={item.id}
+              id={item.id}
               alt={item.alt}
               src={item.src}
               name={item.name}
             />
-          </Link>
+          </div>
         ))}
       </ul>
       <img

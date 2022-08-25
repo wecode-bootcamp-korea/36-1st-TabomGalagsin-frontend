@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import Dropdown from './Dropdown/Dropdown';
+import { goTo } from '../../../function';
 import './NavBottomContainer.scss';
 
 function NavBottomContainer({ color }) {
+  const navigate = useNavigate();
   const [isMouseEnter, setIsMouseEnter] = useState(false);
 
   return (
@@ -17,13 +19,14 @@ function NavBottomContainer({ color }) {
             <i className="fa-solid fa-bars navIcon menu" />
             {isMouseEnter && <Dropdown />}
           </div>
-          <Link to="/" className="linkComponent">
+          <div className="linkComponent">
             <img
               className="logo"
               src="/images/Nav/logo-yellow.png"
               alt="logo"
+              onClick={() => goTo(navigate, '/')}
             />
-          </Link>
+          </div>
 
           <div className="iconLeftSide">
             <i className="fa-solid fa-user navIcon" />

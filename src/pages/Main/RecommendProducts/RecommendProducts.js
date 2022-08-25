@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { goTo } from '../../../function.js';
 import Product from '../../../components/Product/Product';
 import './RecommendProducts.scss';
 
@@ -11,10 +12,7 @@ function RecommendProducts({ productsList, title }) {
         <h1 className="title">{title}</h1>
         <button
           className="linkButton"
-          onClick={() => {
-            navigate('/categories/1/type/1');
-            window.scrollTo(0, 0);
-          }}
+          onClick={() => goTo(navigate, '/categories/1/type/1')}
         >
           <span>더 많은 제품 보기</span>
           <i className="fa-solid fa-angle-right fa-lg" />

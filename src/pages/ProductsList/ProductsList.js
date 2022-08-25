@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { API } from '../../config.js';
+import { goTo } from '../../function.js';
 import Product from '../../components/Product/Product.js';
 import FilterMenu from './FilterMenu/FilterMenu.js';
 import Footer from '../../components/Footer/Footer.js';
@@ -8,6 +9,7 @@ import Nav from '../../components/Nav/Nav.js';
 import './ProductsList.scss';
 
 function ProductsList() {
+  const navigate = useNavigate();
   const [productsList, setProductsList] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(ORDER_LIST[0]);
   const [isOpenedOrder, setIsOpenedOrder] = useState(false);
@@ -88,22 +90,25 @@ function ProductsList() {
         <div className="productsListContainer">
           <div className="listNav">
             <div className="productNavigation">
-              <Link to="/" className="link">
+              <div onClick={() => goTo(navigate, '/')} className="link">
                 Main page
-              </Link>
+              </div>
               <span>&gt;</span>
-              <Link
-                to={
-                  categoryId === '1'
-                    ? `/categories/${categoryId}/type/${typeId}`
-                    : `/categories/${categoryId}/color/${typeId}`
+              <div
+                onClick={() =>
+                  goTo(
+                    navigate,
+                    categoryId === '1'
+                      ? `/categories/${categoryId}/type/${typeId}`
+                      : `/categories/${categoryId}/color/${typeId}`
+                  )
                 }
                 className="link bold"
               >
                 <span className="bold">
                   {categoryId === '1' ? '카테고리 별' : '색상 별'}
                 </span>
-              </Link>
+              </div>
             </div>
             <div className="orderContainer">
               <span className="orderSpan bold">순서</span>

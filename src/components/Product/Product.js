@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { goTo } from '../../function';
 import './Product.scss';
 
 function Product({
@@ -20,6 +21,7 @@ function Product({
     isSelected: false,
     imgUrl: '',
   });
+  const navigate = useNavigate();
 
   const handleClickButton = e => {
     const { name, value } = e.target;
@@ -48,15 +50,21 @@ function Product({
     <div
       className={`product product_col${colIndexOfCard}_row${rowIndexOfCard}`}
     >
-      <Link to={`/products/${productId}`} className="linkComponent">
+      <div
+        onClick={() => goTo(navigate, `/products/${productId}`)}
+        className="linkComponent"
+      >
         <img
           alt="product"
           src={selectColor.isSelected ? selectColor.imgUrl : imgUrl}
         />
-      </Link>
-      <Link to={`/products/${productId}`} className="linkComponent">
+      </div>
+      <div
+        onClick={() => goTo(navigate, `/products/${productId}`)}
+        className="linkComponent"
+      >
         <p className="description">{productName}</p>
-      </Link>
+      </div>
       <p className="price">KRW {priceWithComma}</p>
       <div className="colorPickers">
         {colorList.map(({ color }) => {
