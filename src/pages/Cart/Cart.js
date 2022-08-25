@@ -94,10 +94,10 @@ function Cart() {
   };
 
   return (
-    <>
+    <div className="cart">
       {paymentModal && <CartSummaryModal summaryPrice={summaryPrice} />}
       <Nav cartedProduct={productListData} />
-      <main className="cart">
+      <main className="cartContainer">
         <article className="cartMain">
           <section className="cartProductslist">
             <header className="cartBreadScrum">
@@ -209,7 +209,7 @@ function Cart() {
         </article>
       </main>
       <CartFooter />
-    </>
+    </div>
   );
 }
 
