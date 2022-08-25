@@ -40,6 +40,7 @@ function ProductsList() {
         'Content-Type': 'application/json',
       },
     };
+    console.log('들어옴');
     const uri = `${API.MAIN}/categories/${categoryId}/${CATEGORY_ID_MAP[categoryId]}/${typeId}`;
     fetchData(uri, options, setProductsList);
     fetchData(uri, options, setInitialProductsList);
@@ -88,6 +89,9 @@ function ProductsList() {
     fetchData(uri, options, setProductsList);
   };
 
+  console.log(productsList[0]?.color);
+  console.log(typeId);
+
   return (
     <>
       <Nav cartedCount={cartedCount} setCartedCount={setCartedCount} />
@@ -111,7 +115,9 @@ function ProductsList() {
                 className="link bold"
               >
                 <span className="bold">
-                  {categoryId === '1' ? '카테고리 별' : '색상 별'}
+                  {productsList.length > 0 && categoryId === '1'
+                    ? productsList[0].category
+                    : CATEGORY_COLORS[typeId]}
                 </span>
               </div>
             </div>
@@ -235,3 +241,15 @@ const MENU_LIST = [
 ];
 
 const CATEGORY_ID_MAP = ['', 'type', 'color'];
+
+const CATEGORY_COLORS = [
+  '',
+  'white',
+  'orange',
+  'yellow',
+  'green',
+  'blue',
+  'purple',
+  'black',
+  'red',
+];

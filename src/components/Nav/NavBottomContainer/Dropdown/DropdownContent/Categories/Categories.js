@@ -52,7 +52,7 @@ const categoryData = [
     id: 3,
     alt: 'high-heels',
     src: '/images/Nav/high-heel.png',
-    name: 'high-heel',
+    name: 'High-heel',
   },
   {
     id: 4,
