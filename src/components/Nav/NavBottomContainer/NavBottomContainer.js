@@ -9,7 +9,7 @@ function NavBottomContainer({ color, cartedCount, setCartedCount }) {
   const navigate = useNavigate();
   const [isMouseEnter, setIsMouseEnter] = useState(false);
   const [isHover, setIsHover] = useState(false);
-  const [userToken] = useState(localStorage.getItem('token'));
+  const [userToken, setUserToken] = useState(localStorage.getItem('token'));
 
   return (
     <div className="navBottomContainer">
@@ -31,18 +31,29 @@ function NavBottomContainer({ color, cartedCount, setCartedCount }) {
             />
           </div>
           <div className="iconLeftSide">
-            <div
-              onClick={() => {
-                if (!!userToken) {
-                  alert('로그인 되어 있습니다 ~! ♥️♥️♥️♥️♥️♥️');
-                } else {
+            {!userToken ? (
+              <div
+                onClick={() => goToUrl(navigate, '/login')}
+                className="navIconWrap"
+              >
+                <i className="fa-solid fa-user navIcon" />
+              </div>
+            ) : (
+              <div
+                onClick={() => {
+                  localStorage.removeItem('token');
+                  localStorage.removeItem('totalProduct');
+                  setUserToken('');
+                  setCartedCount(0);
+                  alert('로그아웃 되었습니다!!!!!');
                   goToUrl(navigate, '/login');
-                }
-              }}
-              className="navIconWrap"
-            >
-              <i className="fa-solid fa-user navIcon" />
-            </div>
+                }}
+                className="navIconWrap"
+              >
+                <i className="fa-solid fa-right-from-bracket navIcon" />
+              </div>
+            )}
+
             <div className="navIconWrap" onMouseOver={() => setIsHover(true)}>
               <i className="fa-solid fa-basket-shopping navIcon" />
               {cartedCount > 0 && (
