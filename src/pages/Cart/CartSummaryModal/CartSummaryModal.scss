@@ -23,15 +23,6 @@
   box-shadow: 3px 3px 6px 6px rgba(0, 0, 0, 0.3);
   opacity: 1;
 
-  .modalExit {
-    position: absolute;
-    top: 12px;
-    right: 25px;
-    border: none;
-    background-color: #ffffff;
-    font-size: 30px;
-  }
-
   .modalTop {
     @include flex(center, center);
     margin: 5px 0;
@@ -133,25 +124,36 @@
       font-weight: 500;
     }
 
-    .modalTatalResult {
-      @include flex(flex-start, center);
-      margin-top: 20px;
-      padding: 10px;
-      width: 100%;
-      border-bottom: 1px solid rgb(146, 146, 146);
-      color: #b60060;
-      font-size: 20px;
-      font-weight: 500;
-    }
-
     .modalTotalResult {
-      @include flex(flex-start, center);
-      margin-top: 20px;
-      padding: 15px 12px;
+      position: relative;
       width: 100%;
-      color: #b60060;
-      font-size: 20px;
-      font-weight: 500;
+
+      .modalTotalResultPrice {
+        @include flex(flex-start, center);
+        margin-top: 20px;
+        padding: 15px 12px;
+        width: 100%;
+        border-bottom: 1px solid rgb(146, 146, 146);
+        color: #b60060;
+        font-size: 20px;
+        font-weight: 500;
+      }
+
+      .modalTotalResultSubmit {
+        .modalExit {
+          position: absolute;
+          top: 20px;
+          right: 25px;
+          width: 100px;
+          height: 40px;
+          border: none;
+          background-color: #b60060;
+          border-radius: 16px;
+          color: white;
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
     }
   }
 }
