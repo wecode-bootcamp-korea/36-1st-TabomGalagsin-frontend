@@ -21,7 +21,6 @@ function RecommendProducts({ productsList, title }) {
                 key={productId}
                 productId={productId}
                 dataArrIdx={idx}
-                productId={productId}
                 productName={name}
                 price={price}
                 imgUrl={thumbnailUrl}
