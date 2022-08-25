@@ -25,12 +25,13 @@ function Product({
     clickedInfo[name] === name
       ? setClickedInfo({ ...clickedInfo, [name]: '' })
       : setClickedInfo({ ...clickedInfo, [name]: value });
-
-    setSelectColor({
-      isSelected: true,
-      imgUrl: colorList.filter(colorInfo => colorInfo.color === value)[0]
-        .thumbnailUrl,
-    });
+    if (name === 'color') {
+      setSelectColor({
+        isSelected: true,
+        imgUrl: colorList.filter(colorInfo => colorInfo.color === value)[0]
+          .thumbnailUrl,
+      });
+    }
   };
 
   const isClickedAll = !!clickedInfo.color && !!clickedInfo.size;
