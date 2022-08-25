@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
+import Cart from './pages/Cart/Cart';
 import ProductsList from './pages/ProductsList/ProductsList';
 
 function Router() {
@@ -18,6 +19,7 @@ function Router() {
           path="/categories/:categoryId/color/:typeId"
           element={<ProductsList />}
         />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </BrowserRouter>
   );
