@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { API } from '../../config.js';
 import { appendComma, goToUrl } from '../../utils.js';
 import './Product.scss';
@@ -21,6 +21,9 @@ function Product({
     sizeId: 0,
   });
   const [userToken] = useState(localStorage.getItem('token'));
+  const [cartedCount, setCartedCount] = useState(
+    localStorage.getItem('totalProduct')
+  );
 
   const handleClickButton = e => {
     const { name, value } = e.target;

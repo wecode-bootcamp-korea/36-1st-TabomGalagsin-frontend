@@ -15,6 +15,7 @@ function Main() {
   const [newProductsList, setNewProductsList] = useState([]);
   const [recommendProductsList, setRecommendProductsList] = useState([]);
   const [userToken] = useState(localStorage.getItem('token'));
+  const [cartedCount, setCartedCount] = useState(localStorage.getItem('to'));
 
   useEffect(() => {
     const fetchData = async (uri, options, setState) => {
