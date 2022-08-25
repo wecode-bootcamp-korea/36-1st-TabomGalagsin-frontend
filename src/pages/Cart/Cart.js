@@ -17,7 +17,6 @@ function Cart() {
   const [trasitionSec, setTransitionSec] = useState(0.3);
   const [productListData, setProductListData] = useState([]);
   const [cartRecommeded, setCartRecommeded] = useState([]);
-  const [userPoints, setUserPoints] = useState(0);
   const [summaryPrice, setSummaryPrice] = useState(
     productListData.reduce((acc, cur) => (acc += cur.price), 0)
   );
@@ -37,19 +36,6 @@ function Cart() {
             0
           )
         );
-      });
-  }, []);
-
-  useEffect(() => {
-    fetch(`${API.POINTS}`, {
-      headers: {
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
-      },
-    })
-      .then(response => response.json())
-      .then(res => {
-        setUserPoints(res.beforeUserPoint);
       });
   }, []);
 
@@ -108,13 +94,7 @@ function Cart() {
 
   return (
     <>
-      {paymentModal ? (
-        <CartSummaryModal
-          productListData={productListData}
-          summaryPrice={summaryPrice}
-          userPoints={userPoints}
-        />
-      ) : null}
+      {paymentModal ? <CartSummaryModal summaryPrice={summaryPrice} /> : null}
       <Nav cartedProduct={productListData} />
       <main className="cart">
         <article className="cartMain">

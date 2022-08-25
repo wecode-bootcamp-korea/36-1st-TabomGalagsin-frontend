@@ -1,11 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { API } from '../../../config.js';
 import { useNavigate } from 'react-router-dom';
 import './CartSummaryModal.scss';
 
-function CartSummaryModal({ productListData, summaryPrice, userPoints }) {
+function CartSummaryModal({ summaryPrice }) {
   const navigate = useNavigate();
 
+  const [userPoints, setUserPoints] = useState(0);
+  const [productListData, setProductListData] = useState([]);
+
+  useEffect(() => {
+    fetch(`${API.POINTS}`, {
+      headers: {
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+      },
+    })
+      .then(response => response.json())
+      .then(res => {
+        setUserPoints(res.beforeUserPoint);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch(`${API.CART}`, {
+      headers: {
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+      },
+    })
+      .then(response => response.json())
+      .then(res => {
+        setProductListData(res.cart);
+      });
+  }, []);
   return (
     <>
       <div className="cartSummaryModal" />

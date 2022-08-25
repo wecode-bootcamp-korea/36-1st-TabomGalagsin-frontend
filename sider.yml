@@ -4,3 +4,4 @@ linter:
     root_dir: 'src/'
     npm_install: false
     config: '/.eslintrc'
+\]ㅜ
