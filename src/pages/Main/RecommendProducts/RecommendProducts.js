@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { goTo } from '../../../function.js';
+import { goTo } from '../../../utils.js';
 import Product from '../../../components/Product/Product';
 import './RecommendProducts.scss';
 

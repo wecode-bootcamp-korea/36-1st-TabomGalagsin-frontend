@@ -1,6 +1,6 @@
 import ItemList from './ItemList/ItemList';
 import { useNavigate } from 'react-router-dom';
-import { goTo } from '../../../../../../function';
+import { goTo } from '../../../../../../utils';
 import './Categories.scss';
 
 const Categories = () => {

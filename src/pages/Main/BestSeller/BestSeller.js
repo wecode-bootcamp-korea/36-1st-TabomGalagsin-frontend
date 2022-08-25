@@ -2,7 +2,7 @@ import { useState } from 'react';
 import SlideState from '../../../components/SlideState/SlideState.js';
 import BestSellerCard from './BestSellerCard/BestSellerCard';
 import { useNavigate } from 'react-router-dom';
-import { goTo } from '../../../function.js';
+import { goTo } from '../../../utils.js';
 import './BestSeller.scss';
 
 function BestSeller({ color, textColor }) {

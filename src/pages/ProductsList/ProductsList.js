@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { API } from '../../config.js';
-import { goTo } from '../../function.js';
+import { goTo } from '../../utils.js';
 import Product from '../../components/Product/Product.js';
 import FilterMenu from './FilterMenu/FilterMenu.js';
 import Footer from '../../components/Footer/Footer.js';
