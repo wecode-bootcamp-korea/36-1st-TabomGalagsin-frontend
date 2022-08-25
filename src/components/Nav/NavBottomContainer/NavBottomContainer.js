@@ -9,8 +9,8 @@ function NavBottomContainer({ color }) {
   const navigate = useNavigate();
   const [isMouseEnter, setIsMouseEnter] = useState(false);
   const [isHover, setIsHover] = useState(false);
-  const [cartedProductCount, setCartedProductCount] = useState(0);
   const [userToken] = useState(localStorage.getItem('token'));
+  const cartedCount = localStorage.getItem('totalProduct');
 
   return (
     <div className="navBottomContainer">
@@ -46,8 +46,8 @@ function NavBottomContainer({ color }) {
             </div>
             <div className="navIconWrap" onMouseOver={() => setIsHover(true)}>
               <i className="fa-solid fa-basket-shopping navIcon" />
-              {!!cartedProductCount && (
-                <div className="cartedCount">{cartedProductCount}</div>
+              {!!cartedCount && (
+                <div className="cartedCount">{cartedCount}</div>
               )}
               {isHover && <NavCart onMouse={setIsHover} />}
             </div>

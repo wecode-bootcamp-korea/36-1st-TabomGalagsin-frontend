@@ -21,6 +21,9 @@ function Product({
     sizeId: 0,
   });
   const [userToken] = useState(localStorage.getItem('token'));
+  const [cartedCount, setCartedCount] = useState(
+    localStorage.getItem('totalProduct')
+  );
 
   const handleClickButton = e => {
     const { name, value } = e.target;
@@ -46,7 +49,9 @@ function Product({
         sizeId: clickedInfo.sizeId,
         colorId: clickedInfo.colorId,
       }),
-    });
+    })
+      .then(response => response.json())
+      .then(data => console.log(data));
     setClickedInfo(
       prev =>
         (prev = {
