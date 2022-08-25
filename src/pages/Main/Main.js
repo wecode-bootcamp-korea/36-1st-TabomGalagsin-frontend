@@ -108,7 +108,7 @@ function Main() {
           productsList={recommendProductsList}
           title="Recommend"
         />
-        <Footer color={mainSlideData[positionNow].color} />
+        <Footer backgroundColor={mainSlideData[positionNow].color} />
       </div>
     </>
   );
