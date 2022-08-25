@@ -7,14 +7,14 @@
   font-size: 20px;
   transition: 0.2s;
   color: black;
-}
 
-.itemList:hover {
-  color: tomato;
-  cursor: pointer;
-}
+  &:hover {
+    color: tomato;
+    cursor: pointer;
+  }
 
-.icon {
-  height: 30px;
-  margin: -10px 10px 0 0;
+  .icon {
+    height: 30px;
+    margin: -10px 10px 0 0;
+  }
 }

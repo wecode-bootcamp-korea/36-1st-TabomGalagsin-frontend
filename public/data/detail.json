@@ -19,7 +19,7 @@
       { "size": "free(woman)", "sizeId": 2 }
     ],
     "stock": [
-      { "size": "free(man)", "stock": 0, "sizeId": 1 },
+      { "size": "free(man)", "stock": 1, "sizeId": 1 },
       { "size": "free(woman)", "stock": 2, "sizeId": 2 }
     ]
   }
