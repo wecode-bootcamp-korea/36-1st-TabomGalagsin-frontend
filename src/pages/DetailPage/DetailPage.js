@@ -4,6 +4,7 @@ import Nav from '../../components/Nav/Nav';
 import ColourOption from './ColourOption/ColourOption';
 import SizeOption from './SizeOption/SizeOption';
 import RecommendProducts from '../Main/RecommendProducts/RecommendProducts';
+import Footer from '../../components/Footer/Footer';
 import './DetailPage.scss';
 import { API } from '../../config';
 
@@ -74,7 +75,14 @@ function DetailPage() {
         sizeId: clickedInfo.sizeId,
         colorId: clickedInfo.colorId,
       }),
-    });
+    })
+      .then(response => response.json())
+      .then(res => {
+        res.message === 'PRODUCT_STOCK_WAS_EMPTY' &&
+          alert('상품의 재고가 없습니다.');
+        res.message === 'PRODUCT_ALREADY_EXISTS_IN_CART' &&
+          alert('이미 장바구니에 담긴 상품입니다.');
+      });
     setClickedInfo(
       prev =>
         (prev = {
@@ -90,8 +98,6 @@ function DetailPage() {
     color.unshift(color[id]);
     color.splice(id + 1, 1);
   };
-
-  console.log(clickedInfo);
 
   return (
     <>
@@ -175,6 +181,7 @@ function DetailPage() {
           </div>
         </div>
         <RecommendProducts productsList={productsList} title="Recommend" />
+        <Footer />
       </div>
     </>
   );
