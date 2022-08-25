@@ -5,7 +5,7 @@ import { appendComma, goToUrl } from '../../../../utils.js';
 import NavCartProduct from '../NavCart/NavCartProduct/NavCartProduct.js';
 import './NavCart.scss';
 
-function NavCart({ onMouse }) {
+function NavCart({ onMouse, setCartedProductCount }) {
   const navigate = useNavigate();
   const [userToken] = useState(localStorage.getItem('token'));
   const [summaryPrice, setSummaryPrice] = useState(0);
@@ -25,6 +25,7 @@ function NavCart({ onMouse }) {
     })
       .then(response => response.json())
       .then(res => {
+        setCartedProductCount(res.cart.length);
         setProductListData(res.cart);
         if (!!res.cart) {
           setSummaryPrice(
