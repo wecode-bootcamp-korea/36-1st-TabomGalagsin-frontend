@@ -14,6 +14,9 @@ function ProductsList() {
   const [initialProductsList, setInitialProductsList] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(ORDER_LIST[0]);
   const [isOpenedOrder, setIsOpenedOrder] = useState(false);
+  const [cartedCount, setCartedCount] = useState(
+    localStorage.getItem('totalProduct')
+  );
 
   const { categoryId, typeId } = useParams();
 
@@ -87,7 +90,7 @@ function ProductsList() {
 
   return (
     <>
-      <Nav />
+      <Nav cartedCount={cartedCount} setCartedCount={setCartedCount} />
       <div className="productsList">
         <div className="productsListContainer">
           <div className="listNav">
@@ -193,6 +196,7 @@ function ProductsList() {
                   return (
                     <Product
                       key={productId}
+                      setCartedCount={setCartedCount}
                       productId={productId}
                       dataArrIdx={idx}
                       productName={name}

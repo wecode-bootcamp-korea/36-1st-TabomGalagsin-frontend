@@ -18,6 +18,10 @@ function DetailPage() {
     colorId: 1,
     sizeId: 0,
   });
+  const [cartedCount, setCartedCount] = useState(
+    localStorage.getItem('totalProduct')
+  );
+  const [userToken] = useState(localStorage.getItem('token'));
 
   useEffect(() => {
     fetch(`http://10.58.0.250:3000/products/${productId}`, {
@@ -66,8 +70,7 @@ function DetailPage() {
       method: 'POST',
       headers: {
         'Content-Type': 'Application/json',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+        authorization: userToken,
       },
       body: JSON.stringify({
         productId: productId,
@@ -82,6 +85,10 @@ function DetailPage() {
           alert('상품의 재고가 없습니다.');
         res.message === 'PRODUCT_ALREADY_EXISTS_IN_CART' &&
           alert('이미 장바구니에 담긴 상품입니다.');
+        if (res.totalProduct) {
+          setCartedCount(res.totalProduct);
+          localStorage.setItem('totalProduct', res.totalProduct);
+        }
       });
     setClickedInfo(
       prev =>
@@ -101,7 +108,7 @@ function DetailPage() {
 
   return (
     <>
-      <Nav />
+      <Nav cartedCount={cartedCount} setCartedCount={setCartedCount} />
       <div className="detailPage">
         <div className="container">
           <div className="productNavigation">
@@ -180,7 +187,11 @@ function DetailPage() {
             <p className="subFont">{description}</p>
           </div>
         </div>
-        <RecommendProducts productsList={productsList} title="Recommend" />
+        <RecommendProducts
+          setCartedCount={setCartedCount}
+          productsList={productsList}
+          title="Recommend"
+        />
         <Footer />
       </div>
     </>

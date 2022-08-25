@@ -15,6 +15,7 @@ function CartProduct({
   orderItemsId,
   stocks,
   quantity,
+  setCartedCount,
 }) {
   const [stock, setStock] = useState(quantity);
   const [productPrice, setProductPrice] = useState(Number(price * quantity));
@@ -40,6 +41,11 @@ function CartProduct({
                   authorization: userToken,
                 },
               });
+              setCartedCount(prev => Number(prev) - 1);
+              localStorage.setItem(
+                'totalProduct',
+                Number(localStorage.getItem('totalProduct')) - 1
+              );
             }}
           >
             <img
@@ -66,6 +72,7 @@ function CartProduct({
                     quantity: stock - 1,
                   }),
                 });
+
                 setSummaryPrice(prev => Number(prev) - Number(price));
                 setProductPrice(prev => Number(prev) - Number(price));
               }}
