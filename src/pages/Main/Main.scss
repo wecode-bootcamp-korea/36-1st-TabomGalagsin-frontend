@@ -4,6 +4,7 @@
 .main {
   @include flex(center, center);
   flex-direction: column;
+  margin-top: 97px;
 
   .buttonContainer {
     @include flex(center, center);

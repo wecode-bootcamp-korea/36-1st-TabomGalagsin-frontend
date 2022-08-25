@@ -8,7 +8,6 @@
 
 .product {
   font-family: 'Roboto', sans-serif;
-
   @include flex(null, center);
   flex-direction: column;
   width: 12rem;
@@ -16,36 +15,30 @@
   padding: 1rem 1rem;
   border-radius: 1rem;
   line-height: 1.25rem;
-
   .colorPickers {
     transition: all 0.2s ease-out;
-
     button {
       display: none;
       cursor: pointer;
     }
   }
-
   .sizePickers {
     transition: all 0.2s ease-out;
-
     button {
       display: none;
       cursor: pointer;
     }
   }
-
   .cartBtn {
     display: none;
     transition: all 0.2s ease-out;
     cursor: pointer;
   }
-
   &:hover {
     background-color: white;
     border-radius: 1rem;
     transition: all 0.2s ease-out;
-    z-index: 25;
+    z-index: 101;
 
     button {
       display: inline;
@@ -55,35 +48,29 @@
       border-radius: 1rem;
       background-color: white;
     }
-
     .colorPickers {
       @include flex(flex-start, center);
       width: 100%;
       margin-top: 1rem;
-
       button {
         width: 1.5rem;
       }
-
       .active {
         border: 2px solid black;
         transition: all 0.2s;
         transform: scale(1.25);
       }
     }
-
     .sizePickers {
       @include flex(flex-start, center);
       width: 100%;
       margin-top: 1rem;
-
       .active {
         border: 2px solid black;
         transition: all 0.2s;
         transform: scale(1.25);
       }
     }
-
     .cartBtn {
       width: 100%;
       margin-top: 1.5rem;
@@ -93,18 +80,15 @@
       background-color: grey;
       color: white;
     }
-
     .enabledBtn {
       background-color: blue;
       transform: scale(1.1);
     }
   }
-
   .tagContainer {
     width: 100%;
     display: flex;
   }
-
   .young {
     margin: 0.2rem;
     padding: 0.2rem;
@@ -113,7 +97,6 @@
     color: white;
     font-weight: 500;
   }
-
   img {
     width: 10rem;
     height: 10rem;
@@ -130,7 +113,6 @@
     text-align: left;
     font-weight: 500;
   }
-
   .price {
     width: 100%;
     font-weight: bolder;
