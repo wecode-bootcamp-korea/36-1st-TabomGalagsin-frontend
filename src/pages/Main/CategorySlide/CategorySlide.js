@@ -57,6 +57,7 @@ function CategorySlide({ color, textColor }) {
           {categoryData.map((data, index) => (
             <CategoryImage
               key={index}
+              categoryId={data.id}
               className={data.className}
               url={data.url}
               text={data.text}
@@ -107,31 +108,42 @@ export default CategorySlide;
 
 const categoryDataPast = [
   {
+    id: 1,
     className: 'sliper',
     url: 'https://cdn-icons-png.flaticon.com/512/7705/7705554.png',
     text: '슬리퍼',
   },
   {
+    id: 2,
+
     className: 'snikers',
     url: 'https://cdn-icons-png.flaticon.com/512/2553/2553852.png',
     text: '운동화',
   },
   {
+    id: 3,
+
     className: 'shoes',
     url: 'https://cdn-icons-png.flaticon.com/512/2290/2290456.png',
     text: '구두',
   },
   {
+    id: 4,
+
     className: 'backpack',
     url: 'https://cdn-icons-png.flaticon.com/512/8185/8185975.png',
     text: '가방',
   },
   {
+    id: 5,
+
     className: 'shirt',
     url: 'https://cdn-icons-png.flaticon.com/512/1867/1867631.png',
     text: '티셔츠',
   },
   {
+    id: 6,
+
     className: 'ring',
     url: 'https://cdn-icons-png.flaticon.com/512/4003/4003300.png',
     text: '악세사리',

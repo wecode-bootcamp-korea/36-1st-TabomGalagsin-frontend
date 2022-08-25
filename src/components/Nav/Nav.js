@@ -3,7 +3,7 @@ import NavTopContainer from './NavTopContainer/NavTopContainer';
 import NavBottomContainer from './NavBottomContainer/NavBottomContainer';
 import './Nav.scss';
 
-function Nav({ color }) {
+function Nav({ color, cartedCount, setCartedCount }) {
   const [scroll, setScroll] = useState(0);
 
   useEffect(() => {
@@ -19,7 +19,11 @@ function Nav({ color }) {
       style={scroll < 32 ? { top: 0 - scroll } : { top: -32 }}
     >
       <NavTopContainer />
-      <NavBottomContainer color={color} />
+      <NavBottomContainer
+        setCartedCount={setCartedCount}
+        cartedCount={cartedCount}
+        color={color}
+      />
     </nav>
   );
 }

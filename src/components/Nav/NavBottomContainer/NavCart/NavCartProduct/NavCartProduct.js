@@ -15,6 +15,7 @@ function NavCartProduct({
   cartedProduct,
   stocks,
   quantity,
+  setCartedCount,
 }) {
   const [thisQuantity, setThisQuantity] = useState(quantity);
   const [productPrice, setProductPrice] = useState(Number(price * quantity));
@@ -46,6 +47,12 @@ function NavCartProduct({
         authorization: userToken,
       },
     });
+
+    setCartedCount(prev => Number(prev) - 1);
+    localStorage.setItem(
+      'totalProduct',
+      Number(localStorage.getItem('totalProduct')) - 1
+    );
   };
 
   return (

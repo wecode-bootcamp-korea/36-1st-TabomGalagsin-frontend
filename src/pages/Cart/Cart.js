@@ -22,6 +22,9 @@ function Cart() {
     productListData.reduce((acc, cur) => (acc += cur.price), 0)
   );
   const [userToken] = useState(localStorage.getItem('token'));
+  const [cartedCount, setCartedCount] = useState(
+    localStorage.getItem('totalProduct')
+  );
 
   useEffect(() => {
     fetch(`${API.CART}`, {
@@ -96,7 +99,11 @@ function Cart() {
   return (
     <div className="cart">
       {paymentModal && <CartSummaryModal summaryPrice={summaryPrice} />}
-      <Nav cartedProduct={productListData} />
+      <Nav
+        cartedCount={cartedCount}
+        setCartedCount={setCartedCount}
+        cartedProduct={productListData}
+      />
       <main className="cartContainer">
         <article className="cartMain">
           <section className="cartProductslist">
@@ -126,6 +133,7 @@ function Cart() {
                 }) => (
                   <CartProduct
                     key={orderItemsId}
+                    setCartedCount={setCartedCount}
                     orderItemsId={orderItemsId}
                     productName={productName}
                     imageURL={thumbnailUrl}
@@ -164,9 +172,10 @@ function Cart() {
                   }}
                 >
                   {recommendProducts.map(
-                    ({ name, thumbnailUrl, price }, index) => (
+                    ({ name, thumbnailUrl, price, productId }, index) => (
                       <RecommendProduct
                         key={index}
+                        productId={productId}
                         URL={thumbnailUrl}
                         productName={name}
                         price={price}

@@ -15,7 +15,9 @@ function Main() {
   const [newProductsList, setNewProductsList] = useState([]);
   const [recommendProductsList, setRecommendProductsList] = useState([]);
   const [userToken] = useState(localStorage.getItem('token'));
-  const [cartedCount, setCartedCount] = useState(localStorage.getItem('to'));
+  const [cartedCount, setCartedCount] = useState(
+    localStorage.getItem('totalProduct')
+  );
 
   useEffect(() => {
     const fetchData = async (uri, options, setState) => {
@@ -48,6 +50,12 @@ function Main() {
 
     fetchData(API.NEW, options, setNewProductsList);
     fetchData(API.RECOMMEND, optionsWithToken, setRecommendProductsList);
+    fetch(API.CART, optionsWithToken)
+      .then(response => response.json())
+      .then(data => {
+        localStorage.setItem('totalProduct', data.cart.length);
+        setCartedCount(data.cart.length);
+      });
   }, [userToken]);
 
   const mainSlideButtonClick = event => {
@@ -63,7 +71,11 @@ function Main() {
 
   return (
     <>
-      <Nav color={mainSlideData[positionNow].color} />
+      <Nav
+        setCartedCount={setCartedCount}
+        cartedCount={cartedCount}
+        color={mainSlideData[positionNow].color}
+      />
       <div className={`main  ${mainSlideData[positionNow].color}`}>
         <MainText mainSlideData={mainSlideData} positionNow={positionNow} />
         <div className="buttonContainer">
@@ -104,8 +116,13 @@ function Main() {
           color={mainSlideData[positionNow].color}
           textColor={mainSlideData[positionNow].textColor}
         />
-        <RecommendProducts productsList={newProductsList} title="New" />
         <RecommendProducts
+          setCartedCount={setCartedCount}
+          productsList={newProductsList}
+          title="New"
+        />
+        <RecommendProducts
+          setCartedCount={setCartedCount}
           productsList={recommendProductsList}
           title="Recommend"
         />

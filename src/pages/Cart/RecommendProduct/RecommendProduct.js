@@ -1,10 +1,15 @@
 import React from 'react';
-import { appendComma } from '../../../utils';
+import { useNavigate } from 'react-router-dom';
+import { appendComma, goToUrl } from '../../../utils';
 import './RecommendProduct.scss';
 
-function RecommendProduct({ URL, productName, price }) {
+function RecommendProduct({ URL, productName, price, productId }) {
+  const navigate = useNavigate();
   return (
-    <div className="recommendProduct">
+    <div
+      onClick={() => goToUrl(navigate, `/products/${productId}`)}
+      className="recommendProduct"
+    >
       <div className="recommendProductImage">
         <img src={URL} alt="productImage" />
       </div>

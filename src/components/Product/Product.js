@@ -12,6 +12,7 @@ function Product({
   colorList,
   sizeList,
   productId,
+  setCartedCount,
 }) {
   const navigate = useNavigate();
   const [clickedInfo, setClickedInfo] = useState({
@@ -21,9 +22,6 @@ function Product({
     sizeId: 0,
   });
   const [userToken] = useState(localStorage.getItem('token'));
-  const [cartedCount, setCartedCount] = useState(
-    localStorage.getItem('totalProduct')
-  );
 
   const handleClickButton = e => {
     const { name, value } = e.target;
@@ -56,6 +54,10 @@ function Product({
           alert('상품의 재고가 없습니다.');
         res.message === 'PRODUCT_ALREADY_EXISTS_IN_CART' &&
           alert('이미 장바구니에 담긴 상품입니다.');
+        if (res.totalProduct) {
+          setCartedCount(res.totalProduct);
+          localStorage.setItem('totalProduct', res.totalProduct);
+        }
       });
     setClickedInfo(
       prev =>

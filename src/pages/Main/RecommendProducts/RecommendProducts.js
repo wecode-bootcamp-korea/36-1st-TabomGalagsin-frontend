@@ -3,7 +3,7 @@ import { goToUrl } from '../../../utils.js';
 import Product from '../../../components/Product/Product';
 import './RecommendProducts.scss';
 
-function RecommendProducts({ productsList, title }) {
+function RecommendProducts({ productsList, title, setCartedCount }) {
   const navigate = useNavigate();
 
   return (
@@ -26,6 +26,7 @@ function RecommendProducts({ productsList, title }) {
             return (
               <Product
                 key={productId}
+                setCartedCount={setCartedCount}
                 productName={name}
                 productId={productId}
                 dataArrIdx={idx}
