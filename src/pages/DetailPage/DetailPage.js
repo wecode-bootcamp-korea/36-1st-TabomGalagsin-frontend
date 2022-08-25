@@ -8,7 +8,7 @@ import './DetailPage.scss';
 function DetailPage() {
   const [productDetail, setProductDetail] = useState({});
   useEffect(() => {
-    fetch('http://10.58.0.250:3000/products/6', {
+    fetch('http://10.58.0.250:3000/products/1', {
       method: 'GET',
     })
       .then(res => res.json())
