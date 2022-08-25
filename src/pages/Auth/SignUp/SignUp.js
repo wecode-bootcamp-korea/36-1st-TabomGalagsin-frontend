@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './SignUp.scss';
+import './signUp.scss';
 
 function SignUp() {
   const [inputValue, setInputValue] = useState({

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './SignIn.scss';
+import { goToUrl } from '../../../utils';
+import './signIn.scss';
 
 function SignIn() {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ function SignIn() {
     if (name === 'email') {
       if (value === '') {
         setError({ ...error, [name]: '필수 입력 항목입니다.' });
-      } else if (!regEmail.test(email)) {
+      } else if (value.indexOf('@') === -1) {
         setError({ ...error, [name]: '이메일을 확인해주세요.' });
       } else {
         setError({ ...error, [name]: '' });
@@ -37,7 +38,7 @@ function SignIn() {
       }
     }
   };
-  console.log(regEmail.test(email));
+
   const validSignIn = e => {
     e.preventDefault();
     fetch('http://10.58.0.250:3000/users/login', {
@@ -52,7 +53,7 @@ function SignIn() {
       .then(data => {
         if (data.accessToken) {
           localStorage.setItem('token', data.accessToken);
-          navigate('/main');
+          goToUrl(navigate, '/');
         } else {
           alert('아이디 또는 비밀번호를 확인해주세요');
         }
@@ -98,5 +99,3 @@ function SignIn() {
 }
 
 export default SignIn;
-const regEmail =
-  /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[a-zA-Z])*\.[a-zA-Z]{2,}$/;
