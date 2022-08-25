@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Nav from '../../components/Nav/Nav';
 import ColourOption from './ColourOption/ColourOption';
 import SizeOption from './SizeOption/SizeOption';
@@ -10,15 +10,38 @@ import { API } from '../../config';
 function DetailPage() {
   const [productDetail, setProductDetail] = useState({});
   const [productsList, setProductsList] = useState([]);
-  const [click, setClick] = useState({ 1: false, 2: false });
+  const [click, setClick] = useState({ 1: false, 2: false, 3: true });
   const [isClicked, setIsClicked] = useState(false);
+  const { productId } = useParams();
+  const [clickedInfo, setClickedInfo] = useState({
+    colorId: 0,
+    sizeId: 0,
+  });
 
   useEffect(() => {
-    fetch('http://10.58.0.250:3000/products/1', {
+    fetch(`http://10.58.0.250:3000/products/${productId}`, {
       method: 'GET',
     })
       .then(res => res.json())
-      .then(data => setProductDetail(data.products));
+      .then(data => {
+        setProductDetail(data.products);
+        if (
+          data.products.color.length === 1 &&
+          data.products.size.length === 1
+        ) {
+          setClickedInfo({ colorId: 1, sizeId: 3 });
+        } else if (data.products.color.length === 1) {
+          setClickedInfo({ ...clickedInfo, colorId: 1 });
+        } else if (data.products.size.length === 1) {
+          setClickedInfo(prev => (prev = { ...clickedInfo, sizeId: 3 }));
+        }
+        if (
+          data.products.color.length === 1 &&
+          data.products.size.length === 1
+        ) {
+          setIsClicked(true);
+        }
+      });
 
     fetch(API.RECOMMEND_RANDOM, {
       method: 'GET',
@@ -33,12 +56,42 @@ function DetailPage() {
   const { category, is_new, name, price, description, color, size } =
     productDetail;
 
+  const handleClickButton = (name, value) => {
+    setClickedInfo({ ...clickedInfo, [name]: value });
+  };
+
+  const handleFetch = () => {
+    fetch(`${API.CART}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'Application/json',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0ZXN0QDEiLCJpYXQiOjE2NjEzMTg5MDR9.byKbkYPoP3KbJtxPA1txesXuppi3AbJXHqTr2ptmJQc',
+      },
+      body: JSON.stringify({
+        productId: productId,
+        quantity: 1,
+        sizeId: clickedInfo.sizeId,
+        colorId: clickedInfo.colorId,
+      }),
+    });
+    setClickedInfo(
+      prev =>
+        (prev = {
+          colorId: 0,
+          sizeId: 0,
+        })
+    );
+    setClick({ 1: false, 2: false });
+  };
   const setSelectColour = useState(0)[1];
 
   const changeColor = id => {
     color.unshift(color[id]);
     color.splice(id + 1, 1);
   };
+
+  console.log(clickedInfo);
 
   return (
     <>
@@ -80,8 +133,10 @@ function DetailPage() {
                     return (
                       <ColourOption
                         key={colourItem.colorId}
+                        id={colourItem.colorId}
                         color={colourItem.color}
                         index={index}
+                        handleClickButton={handleClickButton}
                         setSelectColour={setSelectColour}
                         changeColor={changeColor}
                       />
@@ -98,6 +153,7 @@ function DetailPage() {
                       id={sizeItem.sizeId}
                       size={sizeItem.size}
                       click={click}
+                      handleClickButton={handleClickButton}
                       setClick={setClick}
                       setIsClicked={setIsClicked}
                     />
@@ -106,6 +162,7 @@ function DetailPage() {
               <button
                 className={isClicked ? 'addToBag' : 'selectSize'}
                 disabled={!isClicked}
+                onClick={() => handleFetch()}
               >
                 {isClicked ? 'ADD TO BAG' : 'SELECT SIZE'}
               </button>
