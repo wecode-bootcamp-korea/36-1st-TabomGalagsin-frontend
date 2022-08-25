@@ -19,9 +19,9 @@ function RecommendProducts({ productsList, title }) {
             return (
               <Product
                 key={productId}
+                productName={name}
                 productId={productId}
                 dataArrIdx={idx}
-                productName={name}
                 price={price}
                 imgUrl={thumbnailUrl}
                 colorList={color}
