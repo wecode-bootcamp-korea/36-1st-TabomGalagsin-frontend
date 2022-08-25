@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
+import { goToUrl } from '../../../utils.js';
 import Dropdown from './Dropdown/Dropdown';
 import NavCart from './NavCart/NavCart';
 import './NavBottomContainer.scss';
 
 function NavBottomContainer({ color }) {
+  const navigate = useNavigate();
   const [isMouseEnter, setIsMouseEnter] = useState(false);
   const [isHover, setIsHover] = useState(false);
 
@@ -19,13 +21,14 @@ function NavBottomContainer({ color }) {
             <i className="fa-solid fa-bars navIcon menu" />
             {isMouseEnter && <Dropdown />}
           </div>
-          <Link to="/" className="linkComponent">
+          <div className="linkComponent">
             <img
               className="logo"
               src="/images/Nav/logo-yellow.png"
               alt="logo"
+              onClick={() => goToUrl(navigate, '/')}
             />
-          </Link>
+          </div>
           <div className="iconLeftSide">
             <div className="navIconWrap">
               <i className="fa-solid fa-user navIcon" />

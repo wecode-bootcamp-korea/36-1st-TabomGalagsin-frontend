@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import SlideState from '../../../components/SlideState/SlideState.js';
 import BestSellerCard from './BestSellerCard/BestSellerCard';
+import { useNavigate } from 'react-router-dom';
+import { goToUrl } from '../../../utils.js';
 import './BestSeller.scss';
 
 function BestSeller({ color, textColor }) {
+  const navigate = useNavigate();
   const [currentPosition, setCurrentPosition] = useState(0);
   const [transitionTime, setTransitionTime] = useState(0.3);
   const cardSize = 21;
@@ -37,7 +40,10 @@ function BestSeller({ color, textColor }) {
     <div className="bestSeller">
       <div className="header">
         <h1 className="title">Best Seller</h1>
-        <button className="linkButton">
+        <button
+          className="linkButton"
+          onClick={() => goToUrl(navigate, '/categories/1/type/1')}
+        >
           <span>더 많은 제품 보기</span>
           <i className="fa-solid fa-angle-right fa-lg" />
         </button>

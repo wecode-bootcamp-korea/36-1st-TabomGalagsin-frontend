@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { API } from '../../config.js';
-import { appendComma } from '../../utils.js';
+import { appendComma, goToUrl } from '../../utils.js';
 import './Product.scss';
 
 function Product({
@@ -13,6 +13,7 @@ function Product({
   sizeList,
   productId,
 }) {
+  const navigate = useNavigate();
   const [clickedInfo, setClickedInfo] = useState({
     color: '',
     colorId: 0,
@@ -65,12 +66,18 @@ function Product({
     <div
       className={`product product_col${colIndexOfCard}_row${rowIndexOfCard}`}
     >
-      <Link to={`/products/${productId}`} className="linkComponent">
+      <div
+        onClick={() => goToUrl(navigate, `/products/${productId}`)}
+        className="linkComponent"
+      >
         <img alt="product" src={imgUrl} />
-      </Link>
-      <Link to={`/products/${productId}`} className="linkComponent">
+      </div>
+      <div
+        onClick={() => goToUrl(navigate, `/products/${productId}`)}
+        className="linkComponent"
+      >
         <p className="description">{productName}</p>
-      </Link>
+      </div>
       <p className="price">KRW {appendComma(Number(price))}</p>
       <div className="colorPickers">
         {colorList.map(({ color, colorId }) => {

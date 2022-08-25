@@ -6,7 +6,7 @@ export const API = {
   LOGIN: `${BASE_URL}/users/login`,
   NEW: `${BASE_URL}/products/new/list`,
   RECOMMEND: `${BASE_URL}/products/recommend/list`,
-  RECOMMEND_RANDOM: `${BASE_URL}/products/recommend/random/list`,
+  RECOMMEND_RANDOM: `${BASE_URL}/products/random/list`,
   CART: `${BASE_URL}/cart`,
   PAYMENT: `${BASE_URL}/orders/payment`,
   POINTS: `${BASE_URL}/orders/point`,
