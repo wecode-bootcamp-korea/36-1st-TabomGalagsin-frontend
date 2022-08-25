@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { API } from '../../../config';
+import { appendComma } from '../../../function.js';
 import './CartProduct.scss';
 
 function CartProduct({
@@ -100,10 +101,7 @@ function CartProduct({
             </button>
           </div>
           <div className="productPrice">
-            ₩{' '}
-            {Number(productPrice)
-              .toString()
-              .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
+            ₩ {appendComma(Number(productPrice))}
           </div>
         </div>
       </div>

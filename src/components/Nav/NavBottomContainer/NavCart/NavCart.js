@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { API } from '../../../../config.js';
+import { appendComma } from '../../../../function.js';
 import NavCartProduct from '../NavCart/NavCartProduct/NavCartProduct.js';
 import './NavCart.scss';
 
 function NavCart({ onMouse }) {
-  const [summaryPrice, setSummaryPrice] = useState();
-  const [productListData, setProductListData] = useState();
+  const [summaryPrice, setSummaryPrice] = useState(0);
+  const [productListData, setProductListData] = useState([]);
   const onRemove = id => {
     setProductListData(
       productListData.filter(data => data.orderItemsId !== id)
@@ -80,9 +81,7 @@ function NavCart({ onMouse }) {
             ₩
             {typeof summaryPrice !== 'number'
               ? ' 0'
-              : Number(summaryPrice)
-                  .toString()
-                  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
+              : appendComma(Number(summaryPrice))}
           </div>
         </div>
         <Link to={`${!!productListData ? '/cart' : '/'}`}>

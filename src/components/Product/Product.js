@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { API } from '../../config.js';
+import { appendComma } from '../../function.js';
 import './Product.scss';
 
 function Product({
@@ -60,10 +61,6 @@ function Product({
   const colIndexOfCard = dataArrIdx % 3;
   const rowIndexOfCard = Math.floor(dataArrIdx / 3);
 
-  const priceWithComma = price
-    .toString()
-    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
-
   return (
     <div
       className={`product product_col${colIndexOfCard}_row${rowIndexOfCard}`}
@@ -74,7 +71,7 @@ function Product({
       <Link to={`/products/${productId}`} className="linkComponent">
         <p className="description">{productName}</p>
       </Link>
-      <p className="price">KRW {priceWithComma}</p>
+      <p className="price">KRW {appendComma(Number(price))}</p>
       <div className="colorPickers">
         {colorList.map(({ color, colorId }) => {
           return (

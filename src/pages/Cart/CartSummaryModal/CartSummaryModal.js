@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { API } from '../../../config.js';
+import { appendComma } from '../../../function';
 import { useNavigate } from 'react-router-dom';
 import './CartSummaryModal.scss';
 
@@ -61,12 +62,7 @@ function CartSummaryModal({ summaryPrice }) {
         <div className="modalTop">결제 내역</div>
         <div className="modalMiddle">
           <div className="modalCurrentCredit">
-            보유 크레딧 : ₩{' '}
-            {!!userPoints
-              ? Number(userPoints)
-                  .toString()
-                  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')
-              : 0}
+            보유 크레딧 : ₩ {!!userPoints ? appendComma(Number(userPoints)) : 0}
           </div>
           <div className="modalProductList">
             <div className="modalProductListWrap">
@@ -78,13 +74,7 @@ function CartSummaryModal({ summaryPrice }) {
                       <div className="productTextPriceContainer">
                         <div className="productTextPriceWrap">
                           <div className="productTextPrice">
-                            상품 가격 : ₩{' '}
-                            {Number(price)
-                              .toString()
-                              .replace(
-                                /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
-                                ','
-                              )}{' '}
+                            상품 가격 : ₩ {appendComma(Number(price))}{' '}
                           </div>
                           <div className="productTextQuantity">
                             구입 수량 : {quantity}
@@ -92,9 +82,7 @@ function CartSummaryModal({ summaryPrice }) {
                         </div>
                         <div className="productTextTotalPrice">
                           품목 별 금액 : ₩{' '}
-                          {Number(price * quantity)
-                            .toString()
-                            .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
+                          {appendComma(Number(price * quantity))}
                         </div>
                       </div>
                     </div>
@@ -104,16 +92,10 @@ function CartSummaryModal({ summaryPrice }) {
             </div>
           </div>
           <div className="modalTotalPrice">
-            전체 합산 금액 : ₩
-            {Number(summaryPrice)
-              .toString()
-              .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
+            전체 합산 금액 : ₩{appendComma(Number(summaryPrice))}
           </div>
           <div className="modalTotalResult">
-            결제 후 잔액 : ₩
-            {Number(userPoints - summaryPrice)
-              .toString()
-              .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
+            결제 후 잔액 : ₩{appendComma(Number(userPoints - summaryPrice))}
           </div>
         </div>
         <div className="modalBottom" />

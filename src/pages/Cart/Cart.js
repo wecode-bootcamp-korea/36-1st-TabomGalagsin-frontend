@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API } from '../../config';
+import { appendComma } from '../../function';
 import CartProduct from './CartProduct/CartProduct';
 import CartSlideState from './CartSlideState/CartSlideState';
 import RecommendProduct from './RecommendProduct/RecommendProduct.js';
@@ -146,10 +147,7 @@ function Cart() {
               <div className="productsPrice">
                 <span className="summaryText">예상 총계</span>
                 <span className="summaryPrice">
-                  ₩{' '}
-                  {summaryPrice
-                    .toString()
-                    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
+                  ₩ {appendComma(summaryPrice)}
                 </span>
               </div>
             </section>

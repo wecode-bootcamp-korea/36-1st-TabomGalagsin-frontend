@@ -32,7 +32,7 @@ function NavBottomContainer({ color }) {
             </div>
             <div className="navIconWrap" onMouseOver={() => setIsHover(true)}>
               <i className="fa-solid fa-basket-shopping navIcon" />
-              {isHover ? <NavCart onMouse={setIsHover} /> : null}
+              {isHover && <NavCart onMouse={setIsHover} />}
             </div>
           </div>
         </div>
