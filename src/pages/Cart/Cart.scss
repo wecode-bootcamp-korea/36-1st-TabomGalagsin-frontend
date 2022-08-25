@@ -1,0 +1,135 @@
+@import '/src/styles/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+.cart {
+  padding-top: 140px;
+  background-color: #ffc3d4;
+  .cartMain {
+    @include flex(center, flex-start);
+
+    .cartProductslist {
+      width: 585px;
+
+      .cartBreadScrum {
+        @include flex(flex-start, center);
+        padding: 10px 5px;
+        border-bottom: 1px solid rgb(171, 171, 171);
+
+        .goToMain {
+          margin: 0 20px 0 0;
+          font-size: 14px;
+          font-weight: 400;
+        }
+
+        .cartBreadScrumPartition {
+          @include flex(flex-start, center);
+
+          img {
+            width: 18px;
+          }
+        }
+
+        .cartBreadScrumLast {
+          margin: 0 30px;
+          font-size: 14px;
+          font-weight: bolder;
+        }
+      }
+    }
+  }
+  .cartAside {
+    @include flex(center, center);
+    flex-direction: column;
+    margin-left: 30px;
+    width: 440px;
+
+    .cartAsidePriceResult {
+      width: 100%;
+
+      .priceTitle {
+        margin-bottom: 50px;
+        color: #b60060;
+        font-size: 21px;
+        font-weight: 500;
+        letter-spacing: 2px;
+      }
+
+      .productsPrice {
+        @include flex(space-between, center);
+        padding-bottom: 30px;
+        border-bottom: 1px solid rgb(171, 171, 171);
+
+        .summaryText {
+          color: #b60060;
+          font-size: 18px;
+          font-weight: bolder;
+        }
+
+        .summaryPrice {
+          color: #b60060;
+          font-size: 18px;
+          font-weight: bolder;
+        }
+      }
+    }
+
+    .cartAsideRecommend {
+      @include flex(space-between, center);
+      flex-direction: column;
+      margin-top: 40px;
+      width: 100%;
+
+      .recommendTitle {
+        width: 100%;
+        color: #b60060;
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .recommendProductsList {
+        width: 100%;
+        overflow: hidden;
+
+        .recommendProductsWrap {
+          @include flex(center, center);
+          width: 100%;
+        }
+      }
+
+      .recommendSlideContainer {
+        @include flex(center, center);
+        padding: 30px 0;
+        width: 100%;
+        border-bottom: 1px solid rgb(171, 171, 171);
+
+        .cartSlideStateContainer {
+          @include flex(center, center);
+        }
+
+        button {
+          margin: 0 25px;
+          background-color: #ffc3d4;
+          border: none;
+          color: #ff0000;
+        }
+      }
+    }
+
+    .cartAsideBuyingSubmit {
+      @include flex(center, center);
+      width: 100%;
+
+      .buyingSubmit {
+        margin: 20px;
+        padding: 15px;
+        width: 90%;
+        background-color: #007300;
+        border: none;
+        border-radius: 22px;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+  }
+}

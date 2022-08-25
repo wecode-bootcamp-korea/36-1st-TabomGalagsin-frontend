@@ -1,0 +1,16 @@
+@import '/src/styles/variables.scss';
+
+.state {
+  margin: 6px;
+  width: 8px;
+  height: 8px;
+  background-color: #ff0000;
+  border-radius: 4px;
+  opacity: 0.33;
+  transition: all 0.3s;
+}
+
+.stateNow {
+  width: 35px;
+  opacity: 1;
+}
