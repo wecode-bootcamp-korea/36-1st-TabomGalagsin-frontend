@@ -11,6 +11,7 @@ import './ProductsList.scss';
 function ProductsList() {
   const navigate = useNavigate();
   const [productsList, setProductsList] = useState([]);
+  const [initialProductsList, setInitialProductsList] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(ORDER_LIST[0]);
   const [isOpenedOrder, setIsOpenedOrder] = useState(false);
 
@@ -38,6 +39,7 @@ function ProductsList() {
     };
     const uri = `${API.MAIN}/categories/${categoryId}/${CATEGORY_ID_MAP[categoryId]}/${typeId}`;
     fetchData(uri, options, setProductsList);
+    fetchData(uri, options, setInitialProductsList);
   }, [categoryId, typeId]);
 
   const handleChange = e => {
@@ -175,6 +177,8 @@ function ProductsList() {
                   <FilterMenu
                     key={title}
                     handleChangeFilter={handleChangeFilter}
+                    initialProductsList={initialProductsList}
+                    setProductsList={setProductsList}
                     title={title}
                     list={list}
                   />

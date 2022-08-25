@@ -16,6 +16,7 @@
     .navIconWrapper {
       @include flex(space-between, center);
       width: 1140px;
+      height: 100%;
 
       .menu {
         padding: 20px;
