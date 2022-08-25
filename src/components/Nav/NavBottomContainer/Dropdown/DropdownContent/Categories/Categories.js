@@ -9,7 +9,7 @@ const Categories = () => {
         {categoryData.map(item => (
           <Link
             key={item.id}
-            to={`/category/1/type/${item.id}`}
+            to={`/categories/1/type/${item.id}`}
             className="linkComponent"
           >
             <ItemList

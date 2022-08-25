@@ -15,6 +15,7 @@ function Product({
     color: '',
     size: '',
   });
+
   const [selectColor, setSelectColor] = useState({
     isSelected: false,
     imgUrl: '',
@@ -25,6 +26,7 @@ function Product({
     clickedInfo[name] === name
       ? setClickedInfo({ ...clickedInfo, [name]: '' })
       : setClickedInfo({ ...clickedInfo, [name]: value });
+
     if (name === 'color') {
       setSelectColor({
         isSelected: true,

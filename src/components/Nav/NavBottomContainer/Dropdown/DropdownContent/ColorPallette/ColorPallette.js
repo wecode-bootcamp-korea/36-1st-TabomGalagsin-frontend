@@ -9,7 +9,7 @@ const ColorPallette = () => {
         {COLOUR_MOCK_DATA.map(box => (
           <Link
             key={box.id}
-            to={`/category/2/color/${box.id}`}
+            to={`/categories/2/color/${box.id}`}
             className="linkComponent"
           >
             <ColorBox
@@ -25,7 +25,7 @@ const ColorPallette = () => {
         {COLOUR_MOCK_DATA2.map(box => (
           <Link
             key={box.id}
-            to={`/category/2/color/${box.id}`}
+            to={`/categories/2/color/${box.id}`}
             className="linkComponent"
           >
             <ColorBox

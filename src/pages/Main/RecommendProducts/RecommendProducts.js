@@ -1,12 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import Product from '../../../components/Product/Product';
 import './RecommendProducts.scss';
 
 function RecommendProducts({ productsList, title }) {
+  const navigate = useNavigate();
+
   return (
     <div className="recommendProducts">
       <div className="header">
         <h1 className="title">{title}</h1>
-        <button className="linkButton">
+        <button
+          className="linkButton"
+          onClick={() => navigate('/categories/1/type/1')}
+        >
           <span>더 많은 제품 보기</span>
           <i className="fa-solid fa-angle-right fa-lg" />
         </button>

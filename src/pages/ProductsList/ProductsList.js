@@ -95,8 +95,8 @@ function ProductsList() {
               <Link
                 to={
                   categoryId === '1'
-                    ? `/category/${categoryId}/type/${typeId}`
-                    : `/category/${categoryId}/color/${typeId}`
+                    ? `/categories/${categoryId}/type/${typeId}`
+                    : `/categories/${categoryId}/color/${typeId}`
                 }
                 className="link bold"
               >
