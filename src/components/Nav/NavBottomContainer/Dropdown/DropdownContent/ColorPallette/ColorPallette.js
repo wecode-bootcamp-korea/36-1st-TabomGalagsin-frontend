@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { goToUrl } from '../../../../../../function';
+import { goToUrl } from '../../../../../../utils.js';
 import ColorBox from './ColorBox/ColorBox';
 import './ColorPallette.scss';
 
