@@ -30,7 +30,10 @@ function NavBottomContainer({ color }) {
             />
           </div>
           <div className="iconLeftSide">
-            <div className="navIconWrap">
+            <div
+              onClick={() => goToUrl(navigate, '/login')}
+              className="navIconWrap"
+            >
               <i className="fa-solid fa-user navIcon" />
             </div>
             <div className="navIconWrap" onMouseOver={() => setIsHover(true)}>

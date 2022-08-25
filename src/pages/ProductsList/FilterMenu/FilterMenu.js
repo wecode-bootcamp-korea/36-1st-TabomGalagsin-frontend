@@ -1,14 +1,23 @@
 import { useState } from 'react';
 import './FilterMenu.scss';
 
-function FilterMenu({ title, list, handleChangeFilter }) {
+function FilterMenu({
+  title,
+  list,
+  handleChangeFilter,
+  setProductsList,
+  initialProductsList,
+}) {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [checkedBox, setCheckedBox] = useState('');
 
   const handleClickOpenBtn = e => setIsMenuOpened(prev => !prev);
 
   const handleCheckBox = e => {
-    clickCheck(e.target);
+    const isFilterCanceled = clickCheck(e.target);
+    if (isFilterCanceled) {
+      return;
+    }
     handleChangeFilter(e);
   };
 
@@ -19,11 +28,13 @@ function FilterMenu({ title, list, handleChangeFilter }) {
 
     if (checkedBox === target.value) {
       setCheckedBox('');
-      return;
+      setProductsList(initialProductsList);
+      return true;
     }
 
     target.checked = true;
     setCheckedBox(target.value);
+    return false;
   }
 
   return (

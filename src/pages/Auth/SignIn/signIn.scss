@@ -1,0 +1,90 @@
+.signIn {
+  .emailForm {
+    .formLabel {
+      position: relative;
+
+      .labelFont {
+        font-size: 14px;
+        margin-left: 20px;
+        padding: 0 5px;
+        height: 18px;
+        color: gray;
+        letter-spacing: 0.03em;
+        position: absolute;
+        top: -20px;
+        background-color: #ffc3d4;
+      }
+
+      .inputEmail {
+        margin-bottom: 20px;
+        border: 1px solid #646464;
+        border-radius: 9px;
+        width: 100%;
+        height: 48px;
+        background-color: #ffc3d4;
+        outline-style: none;
+      }
+    }
+
+    .errorMessage {
+      margin-top: -15px;
+      height: 17px;
+      font-size: 80%;
+      color: #c00;
+      letter-spacing: 0.03em;
+      padding-bottom: 45px;
+    }
+  }
+
+  .passswordForm {
+    margin-bottom: 15px;
+
+    .formLabel {
+      position: relative;
+
+      .labelFont {
+        margin-left: 20px;
+        padding: 0 5px;
+        font-size: 14px;
+        height: 18px;
+        color: gray;
+        letter-spacing: 0.03em;
+        position: absolute;
+        top: -20px;
+        background-color: #ffc3d4;
+      }
+
+      .inputPassword {
+        margin-bottom: 30px;
+        border: 1px solid #646464;
+        border-radius: 9px;
+        width: 100%;
+        height: 48px;
+        background-color: #ffc3d4;
+        outline-style: none;
+      }
+    }
+
+    .errorMessage {
+      margin-top: -25px;
+      height: 17px;
+      font-size: 80%;
+      color: #c00;
+      letter-spacing: 0.03em;
+      padding-bottom: 45px;
+    }
+  }
+
+  .loginBtn {
+    cursor: pointer;
+    width: 100%;
+    background-color: #007300;
+    border: 1px solid #007300;
+    color: white;
+    padding: 0 23px;
+    border-radius: 48px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 43px;
+  }
+}
