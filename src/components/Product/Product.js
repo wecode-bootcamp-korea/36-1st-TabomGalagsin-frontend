@@ -35,39 +35,43 @@ function Product({
         });
   };
   const handleFetch = () => {
-    fetch(`${API.CART}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'Application/json',
-        authorization: userToken,
-      },
-      body: JSON.stringify({
-        productId: productId,
-        quantity: 1,
-        sizeId: clickedInfo.sizeId,
-        colorId: clickedInfo.colorId,
-      }),
-    })
-      .then(response => response.json())
-      .then(res => {
-        res.message === 'PRODUCT_STOCK_WAS_EMPTY' &&
-          alert('상품의 재고가 없습니다.');
-        res.message === 'PRODUCT_ALREADY_EXISTS_IN_CART' &&
-          alert('이미 장바구니에 담긴 상품입니다.');
-        if (res.totalProduct) {
-          setCartedCount(res.totalProduct);
-          localStorage.setItem('totalProduct', res.totalProduct);
-        }
-      });
-    setClickedInfo(
-      prev =>
-        (prev = {
-          color: '',
-          colorId: 0,
-          size: '',
-          sizeId: 0,
-        })
-    );
+    if (localStorage.getItem('token')) {
+      fetch(`${API.CART}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'Application/json',
+          authorization: userToken,
+        },
+        body: JSON.stringify({
+          productId: productId,
+          quantity: 1,
+          sizeId: clickedInfo.sizeId,
+          colorId: clickedInfo.colorId,
+        }),
+      })
+        .then(response => response.json())
+        .then(res => {
+          res.message === 'PRODUCT_STOCK_WAS_EMPTY' &&
+            alert('상품의 재고가 없습니다.');
+          res.message === 'PRODUCT_ALREADY_EXISTS_IN_CART' &&
+            alert('이미 장바구니에 담긴 상품입니다.');
+          if (res.totalProduct) {
+            setCartedCount(res.totalProduct);
+            localStorage.setItem('totalProduct', res.totalProduct);
+          }
+        });
+      setClickedInfo(
+        prev =>
+          (prev = {
+            color: '',
+            colorId: 0,
+            size: '',
+            sizeId: 0,
+          })
+      );
+    } else {
+      alert('비회원은 이용할 수 없는 기능입니다');
+    }
   };
 
   const isClickedAll = !!clickedInfo.color && !!clickedInfo.size;

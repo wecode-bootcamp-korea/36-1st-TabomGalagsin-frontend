@@ -98,7 +98,12 @@ function Cart() {
 
   return (
     <div className="cart">
-      {paymentModal && <CartSummaryModal summaryPrice={summaryPrice} />}
+      {paymentModal && (
+        <CartSummaryModal
+          setCartedCount={setCartedCount}
+          summaryPrice={summaryPrice}
+        />
+      )}
       <Nav
         cartedCount={cartedCount}
         setCartedCount={setCartedCount}
