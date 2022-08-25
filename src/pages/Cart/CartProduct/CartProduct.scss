@@ -1,0 +1,85 @@
+@import '/src/styles/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+.cartProduct {
+  margin: 32px 0;
+  @include flex(null, null);
+
+  .productImage {
+    margin-right: 10px;
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  .productInfo {
+    .productHeader {
+      @include flex(space-between, center);
+      width: 485px;
+
+      .productName {
+        color: black;
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .productDelete {
+        background-color: #fee3cb;
+        border: none;
+
+        img {
+          width: 16px;
+        }
+      }
+    }
+
+    .productColor {
+      margin: 5px 0;
+      color: #646464;
+      font-size: 13px;
+    }
+
+    .productSize {
+      margin: 5px 0;
+      color: #646464;
+      font-size: 13px;
+    }
+
+    .productFooter {
+      @include flex(space-between, center);
+
+      .productQuantityControlContainer {
+        @include flex(center, center);
+
+        button {
+          @include flex(center, center);
+          width: 18px;
+          height: 18px;
+          background-color: #fee3cb;
+          border: 1.5px solid #b60060;
+          border-radius: 10px;
+          color: #b60060;
+          font-size: 16px;
+          font-weight: 400;
+
+          &:disabled {
+            border: 1.5px solid #979797;
+            color: #979797;
+          }
+        }
+
+        .productQuantity {
+          margin: 0 10px;
+          padding-top: 3px;
+          color: #b60060;
+        }
+      }
+
+      .productPrice {
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        font-weight: bolder;
+      }
+    }
+  }
+}

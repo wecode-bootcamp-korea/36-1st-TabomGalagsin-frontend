@@ -1,0 +1,53 @@
+@import '../../../styles/variables.scss';
+
+.navBottomContainer {
+  @include colors();
+  background-color: #ffc3d4;
+
+  .navbar {
+    @include flex(center, center);
+    padding: 1px 50px;
+    height: 65px;
+    box-shadow: 0 8px 15px rgb(0 0 0 / 10%);
+    color: white;
+    font-size: 35px;
+    z-index: 1;
+
+    .navIconWrapper {
+      @include flex(space-between, center);
+      width: 1140px;
+
+      .menu {
+        padding: 20px;
+      }
+
+      .iconLeftSide {
+        @include flex(space-between, center);
+        width: 100px;
+        height: 100%;
+        .navIconWrap {
+          @include flex(center, center);
+          width: 100px;
+          height: 100%;
+          position: relative;
+          .navIcon {
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+
+            &:hover {
+              transform: scale(1.2, 1.2);
+            }
+          }
+        }
+      }
+
+      .logo {
+        height: 200px;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}

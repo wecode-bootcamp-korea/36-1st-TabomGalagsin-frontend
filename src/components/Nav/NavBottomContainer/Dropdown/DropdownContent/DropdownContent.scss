@@ -1,0 +1,16 @@
+@import '../../../../../styles/variables.scss';
+
+.dropdownContent {
+  width: 40vw;
+  height: 60vh;
+  padding: 70px 10px 0 20px;
+  font-size: 20px;
+  font-family: sans-serif;
+
+  .title {
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom: 1px solid rgb(0 0 0 / 10%);
+    padding-bottom: 5px;
+  }
+}
