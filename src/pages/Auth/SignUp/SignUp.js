@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import './SignUp.scss';
 
-function SignUp({ inputValue, setInputValue, currentId }) {
+function SignUp() {
+  const [inputValue, setInputValue] = useState({
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    nickName: '',
+    address: '',
+  });
   const { email, password, firstName, lastName, nickName, address } =
     inputValue;
-
   const [error, setError] = useState({
     email: '',
     password: '',

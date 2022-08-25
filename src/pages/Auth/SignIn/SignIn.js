@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignIn.scss';
 
-function SignIn({ inputValue, setInputValue, currentId }) {
+function SignIn() {
   const navigate = useNavigate();
   const [error, setError] = useState({ email: '', password: '' });
+  const [inputValue, setInputValue] = useState({
+    email: '',
+    password: '',
+  });
   const { email, password } = inputValue;
-
   const onChangeSignIn = e => {
     const { name, value } = e.target;
     setInputValue({ ...inputValue, [name]: value });
@@ -15,10 +18,11 @@ function SignIn({ inputValue, setInputValue, currentId }) {
 
   const isValidSignIn = e => {
     const { name, value } = e.target;
+
     if (name === 'email') {
       if (value === '') {
         setError({ ...error, [name]: '필수 입력 항목입니다.' });
-      } else if (value.indexOf('@') === -1) {
+      } else if (!regEmail.test(email)) {
         setError({ ...error, [name]: '이메일을 확인해주세요.' });
       } else {
         setError({ ...error, [name]: '' });
@@ -33,13 +37,16 @@ function SignIn({ inputValue, setInputValue, currentId }) {
       }
     }
   };
-
+  console.log(email);
   const validSignIn = e => {
     e.preventDefault();
     fetch('http://10.58.0.250:3000/users/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, password: password }),
+      body: JSON.stringify({
+        email: inputValue.email,
+        password: inputValue.password,
+      }),
     })
       .then(response => response.json())
       .then(data => {
@@ -91,3 +98,5 @@ function SignIn({ inputValue, setInputValue, currentId }) {
 }
 
 export default SignIn;
+const regEmail =
+  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;

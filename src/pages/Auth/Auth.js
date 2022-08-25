@@ -5,14 +5,6 @@ import SignUp from './SignUp/SignUp';
 
 function Auth() {
   const [currentId, setCurrentId] = useState(1);
-  const [inputValue, setInputValue] = useState({
-    email: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    nickName: '',
-    address: '',
-  });
 
   return (
     <div className="loginField">
@@ -22,14 +14,6 @@ function Auth() {
             className="navItem"
             onClick={() => {
               setCurrentId(1);
-              setInputValue({
-                email: '',
-                password: '',
-                firstName: '',
-                lastName: '',
-                nickName: '',
-                address: '',
-              });
             }}
           >
             <div className="loginNav">
@@ -40,14 +24,6 @@ function Auth() {
             className="navItem"
             onClick={() => {
               setCurrentId(0);
-              setInputValue({
-                email: '',
-                password: '',
-                firstName: '',
-                lastName: '',
-                nickName: '',
-                address: '',
-              });
             }}
           >
             <div className="loginNav">
@@ -55,19 +31,7 @@ function Auth() {
             </div>
           </li>
         </ul>
-        {currentId === 1 ? (
-          <SignIn
-            inputValue={inputValue}
-            setInputValue={setInputValue}
-            currentId={currentId}
-          />
-        ) : (
-          <SignUp
-            inputValue={inputValue}
-            setInputValue={setInputValue}
-            currentId={currentId}
-          />
-        )}
+        {currentId === 1 ? <SignIn /> : <SignUp />}
       </div>
     </div>
   );
