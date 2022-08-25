@@ -10,7 +10,7 @@ const Categories = () => {
           <Link
             key={item.id}
             to={`/category/1/type/${item.id}`}
-            style={{ textDecoration: 'none' }}
+            className="linkComponent"
           >
             <ItemList
               key={item.id}

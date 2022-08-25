@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Product.scss';
 
 function Product({
+  productId,
   dataArrIdx,
   productName,
   price,
@@ -25,13 +27,21 @@ function Product({
   const colIndexOfCard = dataArrIdx % 3;
   const rowIndexOfCard = Math.floor(dataArrIdx / 3);
 
+  const priceWithComma = price
+    .toString()
+    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+
   return (
     <div
       className={`product product_col${colIndexOfCard}_row${rowIndexOfCard}`}
     >
-      <img alt="product" src={imgUrl} />
-      <p className="description">{productName}</p>
-      <p className="price">KRW {price}</p>
+      <Link to={`/products/${productId}`} className="linkComponent">
+        <img alt="product" src={imgUrl} />
+      </Link>
+      <Link to={`/products/${productId}`} className="linkComponent">
+        <p className="description">{productName}</p>
+      </Link>
+      <p className="price">KRW {priceWithComma}</p>
       <div className="colorPickers">
         {colorList.map(({ color }) => {
           return (
