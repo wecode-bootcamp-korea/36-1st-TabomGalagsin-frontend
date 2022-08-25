@@ -7,6 +7,9 @@ import './DetailPage.scss';
 
 function DetailPage() {
   const [productDetail, setProductDetail] = useState({});
+  const [click, setClick] = useState({ 1: false, 2: false });
+  const [isClicked, setIsClicked] = useState(false);
+
   useEffect(() => {
     fetch('http://10.58.0.250:3000/products/1', {
       method: 'GET',
@@ -24,10 +27,6 @@ function DetailPage() {
     color.unshift(color[id]);
     color.splice(id + 1, 1);
   };
-
-  const [click, setClick] = useState({ 1: false, 2: false });
-
-  const [isClicked, setIsClicked] = useState(false);
 
   return (
     <>
@@ -73,7 +72,6 @@ function DetailPage() {
                         index={index}
                         setSelectColour={setSelectColour}
                         changeColor={changeColor}
-                        colorId={colourItem.colorId}
                       />
                     );
                   })}
@@ -95,7 +93,7 @@ function DetailPage() {
               </div>
               <button
                 className={isClicked ? 'addToBag' : 'selectSize'}
-                disabled={isClicked ? false : true}
+                disabled={!isClicked}
               >
                 {isClicked ? 'ADD TO BAG' : 'SELECT SIZE'}
               </button>
