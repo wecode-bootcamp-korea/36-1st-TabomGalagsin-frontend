@@ -15,12 +15,22 @@ function Product({
     color: '',
     size: '',
   });
+  const [selectColor, setSelectColor] = useState({
+    isSelected: false,
+    imgUrl: '',
+  });
 
   const handleClickButton = e => {
     const { name, value } = e.target;
     clickedInfo[name] === name
       ? setClickedInfo({ ...clickedInfo, [name]: '' })
       : setClickedInfo({ ...clickedInfo, [name]: value });
+
+    setSelectColor({
+      isSelected: true,
+      imgUrl: colorList.filter(colorInfo => colorInfo.color === value)[0]
+        .thumbnailUrl,
+    });
   };
 
   const isClickedAll = !!clickedInfo.color && !!clickedInfo.size;
@@ -36,7 +46,10 @@ function Product({
       className={`product product_col${colIndexOfCard}_row${rowIndexOfCard}`}
     >
       <Link to={`/products/${productId}`} className="linkComponent">
-        <img alt="product" src={imgUrl} />
+        <img
+          alt="product"
+          src={selectColor.isSelected ? selectColor.imgUrl : imgUrl}
+        />
       </Link>
       <Link to={`/products/${productId}`} className="linkComponent">
         <p className="description">{productName}</p>
