@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { API } from '../../../../config.js';
-import { appendComma } from '../../../../utils.js';
+import { appendComma, goToUrl } from '../../../../utils.js';
 import NavCartProduct from '../NavCart/NavCartProduct/NavCartProduct.js';
 import './NavCart.scss';
 
-function NavCart({ onMouse }) {
+function NavCart({ onMouse, setCartedProductCount }) {
+  const navigate = useNavigate();
+  const [userToken] = useState(localStorage.getItem('token'));
   const [summaryPrice, setSummaryPrice] = useState(0);
   const [productListData, setProductListData] = useState([]);
+
   const onRemove = id => {
     setProductListData(
       productListData.filter(data => data.orderItemsId !== id)
@@ -17,20 +20,23 @@ function NavCart({ onMouse }) {
   useEffect(() => {
     fetch(`${API.CART}`, {
       headers: {
-        authorization: localStorage.getItem('token'),
+        authorization: userToken,
       },
     })
       .then(response => response.json())
       .then(res => {
+        setCartedProductCount(res.cart.length);
         setProductListData(res.cart);
-        setSummaryPrice(
-          res.cart.reduce(
-            (acc, cur) => (acc += Number(cur.price * cur.quantity)),
-            0
-          )
-        );
+        if (!!res.cart) {
+          setSummaryPrice(
+            res.cart.reduce(
+              (acc, cur) => (acc += Number(cur.price * cur.quantity)),
+              0
+            )
+          );
+        }
       });
-  }, []);
+  }, [userToken]);
 
   return (
     <div
@@ -83,9 +89,18 @@ function NavCart({ onMouse }) {
               : appendComma(Number(summaryPrice))}
           </div>
         </div>
-        <Link to={`${!!productListData ? '/cart' : '/'}`}>
-          <button className="cartResultSubmit">구매하기</button>
-        </Link>
+        <button
+          onClick={() => {
+            if (productListData.length === 0) {
+              alert('장바구니 비어있어요 ♥️♥️♥️');
+            } else {
+              goToUrl(navigate, '/cart');
+            }
+          }}
+          className="cartResultSubmit"
+        >
+          구매하기
+        </button>
       </div>
     </div>
   );
