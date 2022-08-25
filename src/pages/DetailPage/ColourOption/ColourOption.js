@@ -8,7 +8,6 @@ function ColourOption({ color, index, setSelectColour, changeColor }) {
         onClick={() => {
           setSelectColour(prev => prev + 1);
           changeColor(index);
-          console.log(index);
         }}
       >
         <div

@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 import Nav from '../../components/Nav/Nav';
 import ColourOption from './ColourOption/ColourOption';
 import SizeOption from './SizeOption/SizeOption';
+import RecommendProducts from '../Main/RecommendProducts/RecommendProducts';
 import './DetailPage.scss';
+import { API } from '../../config';
 
 function DetailPage() {
   const [productDetail, setProductDetail] = useState({});
+  const [productsList, setProductsList] = useState([]);
   const [click, setClick] = useState({ 1: false, 2: false });
   const [isClicked, setIsClicked] = useState(false);
 
@@ -16,6 +19,15 @@ function DetailPage() {
     })
       .then(res => res.json())
       .then(data => setProductDetail(data.products));
+
+    fetch(API.RECOMMEND_RANDOM, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'Application/json',
+      },
+    })
+      .then(res => res.json())
+      .then(data => setProductsList(Object.values(data)[0]));
   }, []);
 
   const { category, is_new, name, price, description, color, size } =
@@ -105,6 +117,7 @@ function DetailPage() {
             <p className="subFont">{description}</p>
           </div>
         </div>
+        <RecommendProducts productsList={productsList} title="Recommend" />
       </div>
     </>
   );
