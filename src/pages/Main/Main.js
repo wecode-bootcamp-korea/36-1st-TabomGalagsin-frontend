@@ -54,11 +54,12 @@ function Main() {
     } else {
       fetchData(API.RECOMMEND_RANDOM, options, setRecommendProductsList);
     }
+
     fetch(API.CART, optionsWithToken)
       .then(response => response.json())
       .then(data => {
-        localStorage.setItem('totalProduct', data.cart.length);
-        setCartedCount(data.cart.length);
+        localStorage.setItem('totalProduct', data.cart?.length);
+        setCartedCount(data.cart?.length);
       });
   }, [userToken]);
 
