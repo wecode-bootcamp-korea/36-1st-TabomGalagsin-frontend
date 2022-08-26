@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { API } from '../../config.js';
 import { appendComma, goToUrl } from '../../utils.js';
 import './Product.scss';
@@ -14,6 +14,7 @@ function Product({
   productId,
   setCartedCount,
 }) {
+  const { typeId } = useParams();
   const navigate = useNavigate();
   const [clickedInfo, setClickedInfo] = useState({
     color: '',
@@ -22,18 +23,35 @@ function Product({
     sizeId: 0,
   });
   const [userToken] = useState(localStorage.getItem('token'));
-  const [thumbnailUrl, setThumbnailUrl] = useState(imgUrl);
+  const [selectColor, setSelectColor] = useState({
+    isSelected: false,
+    imgUrl: '',
+  });
+
+  useEffect(() => {
+    setClickedInfo({
+      color: '',
+      colorId: 0,
+      size: '',
+      sizeId: 0,
+    });
+    setSelectColor({
+      isSelected: false,
+      imgUrl,
+    });
+  }, [typeId, imgUrl]);
 
   const handleClickButton = e => {
     const { name, value } = e.target;
     const valueObj = JSON.parse(value);
 
     if ('color' === Object.keys(valueObj)[0]) {
-      imgUrl = colorList.filter(
-        colorInfo => colorInfo.color === valueObj.color
-      )[0].thumbnailUrl;
-
-      setThumbnailUrl(imgUrl);
+      setSelectColor({
+        isSelected: true,
+        imgUrl: colorList.filter(
+          colorInfo => colorInfo.color === valueObj.color
+        )[0].thumbnailUrl,
+      });
     }
 
     clickedInfo[name] === name
@@ -97,7 +115,10 @@ function Product({
         onClick={() => goToUrl(navigate, `/products/${productId}`)}
         className="linkComponent flipflopCursor"
       >
-        <img alt="product" src={thumbnailUrl} />
+        <img
+          alt="product"
+          src={selectColor.isSelected ? selectColor.imgUrl : imgUrl}
+        />
       </div>
       <div
         onClick={() => goToUrl(navigate, `/products/${productId}`)}

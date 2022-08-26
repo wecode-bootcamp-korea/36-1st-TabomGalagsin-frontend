@@ -84,10 +84,12 @@ function CartSummaryModal({ summaryPrice, setCartedCount }) {
                 onClick={() => {
                   if (userPoints - summaryPrice < 0) {
                     alert('크레딧이 부족합니다, 메인화면으로 이동합니다.');
-                  } else {
-                    setCartedCount(0);
-                    localStorage.setItem('totalProduct', 0);
+                    navigate('/');
+                    return;
                   }
+                  setCartedCount(0);
+                  localStorage.setItem('totalProduct', 0);
+
                   fetch(`${API.PAYMENT}`, {
                     method: 'POST',
                     headers: {
@@ -98,6 +100,7 @@ function CartSummaryModal({ summaryPrice, setCartedCount }) {
                       totalPrice: Number(summaryPrice),
                     }),
                   });
+
                   navigate('/');
                 }}
               >
