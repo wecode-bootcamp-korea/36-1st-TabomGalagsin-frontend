@@ -1,5 +1,10 @@
 # 따봉 가락신 🏖
 
+## 프로젝트 시연 영상 및 이미지
+[![Video Label](http://img.youtube.com/vi/kaVLMD1Mfi4/0.jpg)](https://youtu.be/kaVLMD1Mfi4)
+👉 화면을 클릭하면 영상으로 이동합니다.
+<br />
+
 ![따봉 가락신](https://user-images.githubusercontent.com/105341553/186824307-3933622b-ec51-4228-a71c-33245c54e5b0.png)
 
 클론 사이트 : 하바이아나스 https://havaianas.com.br/
