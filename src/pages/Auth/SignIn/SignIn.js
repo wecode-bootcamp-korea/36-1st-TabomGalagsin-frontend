@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { goToUrl } from '../../../utils';
+import request from '../../../utils/axiosClient';
 import './signIn.scss';
 
 function SignIn() {
   const navigate = useNavigate();
-  const [error, setError] = useState({ email: '', password: '' });
+  const [errorMessage, setErrorMessage] = useState({ email: '', password: '' });
   const [inputValue, setInputValue] = useState({
     email: '',
     password: '',
   });
-  const { email, password } = inputValue;
-  const onChangeSignIn = e => {
+
+  const handleChange = e => {
     const { name, value } = e.target;
     setInputValue({ ...inputValue, [name]: value });
     isValidSignIn(e);
@@ -22,58 +23,124 @@ function SignIn() {
 
     if (name === 'email') {
       if (value === '') {
-        setError({ ...error, [name]: '필수 입력 항목입니다.' });
+        setErrorMessage({ ...errorMessage, [name]: '필수 입력 항목입니다.' });
       } else if (value.indexOf('@') === -1) {
-        setError({ ...error, [name]: '이메일을 확인해주세요.' });
+        setErrorMessage({ ...errorMessage, [name]: '이메일을 확인해주세요.' });
       } else {
-        setError({ ...error, [name]: '' });
+        setErrorMessage({ ...errorMessage, [name]: '' });
       }
-    } else if (name === 'password') {
+    }
+
+    if (name === 'password') {
       if (value === '') {
-        setError({ ...error, [name]: '필수 입력 항목입니다.' });
+        setErrorMessage({ ...errorMessage, [name]: '필수 입력 항목입니다.' });
       } else if (value.length < 4) {
-        setError({ ...error, [name]: '비밀번호를 확인해주세요.' });
+        setErrorMessage({
+          ...errorMessage,
+          [name]: '비밀번호를 확인해주세요.',
+        });
       } else {
-        setError({ ...error, [name]: '' });
+        setErrorMessage({ ...errorMessage, [name]: '' });
       }
     }
   };
 
-  const validSignIn = e => {
-    e.preventDefault();
-    fetch('http://10.58.0.250:3000/users/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: inputValue.email,
-        password: inputValue.password,
-      }),
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.accessToken) {
-          localStorage.setItem('token', data.accessToken);
-          goToUrl(navigate, '/');
-        } else {
-          alert('아이디 또는 비밀번호를 확인해주세요');
-        }
+  // const handleRequest = () => {
+  //   fetch('http://10.58.0.250:3000/users/login', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({
+  //       email: inputValue.email,
+  //       password: inputValue.password,
+  //     }),
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       if (data.accessToken) {
+  //         localStorage.setItem('token', data.accessToken);
+  //         goToUrl(navigate, '/');
+  //       } else {
+  //         alert('아이디 또는 비밀번호를 확인해주세요');
+  //       }
+  //     });
+  // };
+
+  const handleRequest = async () => {
+    try {
+      const response = await request({
+        url: '/users/login',
+        method: 'post',
+        data: {
+          email: inputValue.email,
+          password: inputValue.password,
+        },
       });
+
+      if (response.accessToken) {
+        localStorage.setItem('token', response.accessToken);
+        goToUrl(navigate, '/');
+      } else {
+        alert('아이디 또는 비밀번호를 확인해주세요');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+
+    // fetch('http://10.58.0.250:3000/users/login', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({
+    //     email: inputValue.email,
+    //     password: inputValue.password,
+    //   }),
+    // })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     if (data.accessToken) {
+    //       localStorage.setItem('token', data.accessToken);
+    //       goToUrl(navigate, '/');
+    //     } else {
+    //       alert('아이디 또는 비밀번호를 확인해주세요');
+    //     }
+    //   });
+
+    // fetch('url')
+    //   .then(res => res.json())
+    //   .then(data => setData(data));
+
+    // const res = await fetch('url');
+    // const data = res.json();
+    // setData(data);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    if (!inputValue.email || !inputValue.password) {
+      return setErrorMessage({
+        email: '필수 입력 항목입니다.',
+        password: '필수 입력 항목입니다.',
+      });
+    }
+    if (errorMessage.email || errorMessage.password) return;
+    console.log('isWork?');
+    handleRequest();
   };
 
   return (
-    <form className="signIn" onSubmit={validSignIn}>
+    <form className="signIn" onSubmit={handleSubmit}>
       <div className="emailForm">
         <label className="formLabel">
           <font className="labelFont">이메일</font>
           <input
             name="email"
             className="inputEmail"
-            value={email}
-            onChange={onChangeSignIn}
+            value={inputValue.email}
+            onChange={handleChange}
           />
         </label>
         <div className="errorMessage">
-          <span>{error.email}</span>
+          <span>{errorMessage.email}</span>
         </div>
       </div>
       <div className="passswordForm">
@@ -82,26 +149,26 @@ function SignIn() {
           <input
             name="password"
             type="password"
-            value={password}
+            value={inputValue.password}
             className="inputPassword"
-            onChange={onChangeSignIn}
+            onChange={handleChange}
           />
         </label>
         <div className="errorMessage">
-          <span>{error.password}</span>
+          <span>{errorMessage.password}</span>
         </div>
       </div>
       <button
         type="submit"
         className="loginBtn"
-        onClick={() => {
-          Object.keys(inputValue).forEach(key => {
-            !inputValue.key &&
-              setError(
-                prev => (prev = { ...prev, [key]: '필수 입력 항목입니다.' })
-              );
-          });
-        }}
+        // onClick={() => {
+        //   Object.keys(inputValue).forEach(key => {
+        //     !inputValue.key &&
+        //       setErrorMessage(
+        //         prev => (prev = { ...prev, [key]: '필수 입력 항목입니다.' })
+        //       );
+        //   });
+        // }}
       >
         로그인
       </button>
